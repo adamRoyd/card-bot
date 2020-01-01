@@ -1,0 +1,13 @@
+
+bot.tests/bin
+bot.tests/obj
+bot/bin
+Engine.Tests/obj
+bot/obj
+OCR.tests/bin
+OCR.tests/obj
+OCR/bin
+OCR/obj
+Engine/obj
+Engine/bin
+.vs
