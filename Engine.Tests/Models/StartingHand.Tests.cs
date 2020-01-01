@@ -14,7 +14,7 @@ namespace Engine.Tests.Models
 
             var card1 = new Card(Enums.CardValue.ace, Enums.CardSuit.Clubs);
 
-            var startingHand = new Engine.Models.StartingHand(); 
+            //var startingHand = new Engine.Models.StartingHand(); 
         }
     }
 }
