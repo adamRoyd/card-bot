@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engine", "Engine\Engine.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engine.Tests", "Engine.Tests\Engine.Tests.csproj", "{55633AF2-FE95-44E9-9FED-0B3E2EEAF938}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OCR", "OCR\OCR.csproj", "{42B05B63-73D1-411B-B3F2-6C32450F969C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OCR", "OCR\OCR.csproj", "{42B05B63-73D1-411B-B3F2-6C32450F969C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OCR.Tests", "OCR.Tests\OCR.Tests.csproj", "{EDC782F5-C254-4F5B-B550-87E8ACDD8EA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OCR.Tests", "OCR.Tests\OCR.Tests.csproj", "{EDC782F5-C254-4F5B-B550-87E8ACDD8EA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
