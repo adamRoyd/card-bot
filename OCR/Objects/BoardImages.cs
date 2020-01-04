@@ -9,10 +9,21 @@ namespace OCR.Objects
     {
         public BoardImages()
         {
-            StartingCard1 = new Bitmap(100, 100);
+            StartingCard1 = new BoardImage
+            {
+                Image = new Bitmap(300, 300),
+                X = 500,
+                Y = 700
+            };
+            StartingCard1 = new BoardImage
+            {
+                Image = new Bitmap(300, 300),
+                X = 500,
+                Y = 700
+            };
         }
 
-        public Bitmap StartingCard1 { get; set; }
-        public Bitmap StartingCard2 { get; set; }
+        public BoardImage StartingCard1 { get; set; }
+        public BoardImage StartingCard2 { get; set; }
     }
 }
