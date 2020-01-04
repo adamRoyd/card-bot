@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using OCR;
+using Engine.Models;
 
 namespace bot
 {
@@ -14,6 +15,9 @@ namespace bot
         public static void Main(string[] args)
         {
             Console.ReadKey(true);
+
+
+
         }
     }
 }

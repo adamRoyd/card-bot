@@ -59,6 +59,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Engine\Engine.csproj" />
     <ProjectReference Include="..\OCR\OCR.csproj" />
   </ItemGroup>
 

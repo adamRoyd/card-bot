@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OCR", "OCR\OCR.csproj", "{4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OCR.Tests", "OCR.Tests\OCR.Tests.csproj", "{EDC782F5-C254-4F5B-B550-87E8ACDD8EA8}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bot.tests", "bot.tests\bot.tests.csproj", "{6A423D9B-44B5-412A-A1B9-15200E6A4F0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{EDC782F5-C254-4F5B-B550-87E8ACDD8EA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDC782F5-C254-4F5B-B550-87E8ACDD8EA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDC782F5-C254-4F5B-B550-87E8ACDD8EA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A423D9B-44B5-412A-A1B9-15200E6A4F0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A423D9B-44B5-412A-A1B9-15200E6A4F0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A423D9B-44B5-412A-A1B9-15200E6A4F0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A423D9B-44B5-412A-A1B9-15200E6A4F0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,7 +12,7 @@ namespace Engine.Tests.Models
         public void StartingHand_AKo_ReturnsCorrectHandCode()
         {
 
-            var card1 = new Card(Enums.CardValue.ace, Enums.CardSuit.Clubs);
+            var card1 = new Card(Enums.CardValue.A, Enums.CardSuit.Clubs);
 
             //var startingHand = new Engine.Models.StartingHand(); 
         }

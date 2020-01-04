@@ -15,9 +15,9 @@ namespace Engine.Enums
         eight = 8,
         nine = 9,
         ten = 10,
-        jack = 11,
-        queen = 12,
-        king = 13,
-        ace = 14
+        J = 11,
+        Q = 12,
+        K = 13,
+        A = 14
     }
 }

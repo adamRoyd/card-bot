@@ -4,8 +4,38 @@ namespace OCR.Objects
 {
     public class BoardImage
     {
-        public Image Image{ get; set; }
+        public ImageName Name { get; set; }
+        public Image Image { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
+        public ImageType Type { get; set; }
+    }
+
+    public enum ImageName
+    {
+        StartingCard1,
+        StartingCard2,
+        Flop1, 
+        Flop2, 
+        Flop3, 
+        Turn, 
+        River, 
+        Position1,
+        Position2,
+        Position3,
+        Position4,
+        Position5,
+        Position6,
+        Position7,
+        Position8,
+        Position9,
+        Pot,
+    }
+
+    public enum ImageType
+    {
+        Card,
+        Pot,
+        Bet
     }
 }

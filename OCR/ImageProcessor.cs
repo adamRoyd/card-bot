@@ -1,5 +1,7 @@
-﻿using OCR.Objects;
+﻿using Engine.Enums;
+using OCR.Objects;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Text.RegularExpressions;
@@ -9,7 +11,7 @@ namespace OCR
 {
     public class ImageProcessor
     {
-        public string GetTextFromImage(Pix img)
+        public CardValue GetCardValueFromImage(Pix img)
         {
             string result = null;
 
@@ -46,38 +48,55 @@ namespace OCR
                 result = e.ToString();
             }
 
-            return result;
+
+            try
+            {
+                Enum.TryParse<CardValue>(result, out CardValue cardValue);
+                return cardValue;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine($"Unable to parse card value from string ${result}");
+                throw;
+            }
         }
 
-        public BoardImages SliceBoardImage(string path)
+        public List<BoardImage> SliceBoardScreenShot(string path)
         {
             var boardImages = new BoardImages();
 
             var img = Image.FromFile(path);
 
-            var graphic = Graphics.FromImage(boardImages.StartingCard1.Image);
+            foreach(var boardImage in boardImages.BoardImageList)
+            {
+                DrawImage(boardImage, img);
+            }    
+
+            return boardImages.BoardImageList;
+        }
+
+        private void DrawImage(BoardImage boardImage, Image baseImage)
+        {
+            var graphic = Graphics.FromImage(boardImage.Image);
 
             graphic.DrawImage(
-                img, 
+                baseImage,
                 new Rectangle(
-                    0, 
-                    0, 
-                    boardImages.StartingCard1.Image.Width,
-                    boardImages.StartingCard1.Image.Height
-                ), 
+                    0,
+                    0,
+                    boardImage.Image.Width,
+                    boardImage.Image.Height
+                ),
                 new Rectangle(
-                    boardImages.StartingCard1.X, 
-                    boardImages.StartingCard1.Y,
-                    boardImages.StartingCard1.Image.Width,
-                    boardImages.StartingCard1.Image.Height
-                ), 
+                    boardImage.X,
+                    boardImage.Y,
+                    boardImage.Image.Width,
+                    boardImage.Image.Height
+                ),
                 GraphicsUnit.Pixel
                 );
 
             graphic.Dispose();
-
-
-            return boardImages;
         }
     }
 }

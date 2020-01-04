@@ -7,7 +7,7 @@ using System.Text;
 
 namespace OCR
 {
-    public static class SuitFinder
+    public class SuitFinder
     {
         public static List<Color> TenMostUsedColors { get; private set; }
         public static List<int> TenMostUsedColorIncidences { get; private set; }
@@ -19,7 +19,7 @@ namespace OCR
 
         private static Dictionary<int, int> dctColorIncidence;
 
-        public static CardSuit GetSuitFromColor(string path)
+        public CardSuit GetSuitFromColor(string path)
         {
             Bitmap theBitMap = Bitmap.FromFile(path) as Bitmap;
 
