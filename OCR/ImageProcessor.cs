@@ -15,6 +15,7 @@ namespace OCR
         public CardValue GetCardValueFromImage(Image img)
         {
             var byteArray = ImageToByteArray(img);
+
             var pix = Pix.LoadTiffFromMemory(byteArray);
 
             string result = null;
@@ -107,7 +108,7 @@ namespace OCR
         {
             using (var ms = new MemoryStream())
             {
-                imageIn.Save(ms, imageIn.RawFormat);
+                imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Tiff);
                 return ms.ToArray();
             }
         }

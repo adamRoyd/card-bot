@@ -27,7 +27,7 @@ namespace OCR
         }
 
 
-        public CardSuit GetSuitFromColor(string path)
+        public CardSuit GetSuitFromImage(string path)
         {
             var topColor = GetTopRGBColor(path);
 

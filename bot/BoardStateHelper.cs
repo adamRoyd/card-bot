@@ -32,11 +32,10 @@ namespace bot
             }
         }
 
-        internal Card GetCardFromImage(Image img)
+        internal Card GetCardFromImage(Image img, string path)
         {
-            //var image = Pix.LoadFromFile(path);
             var value = _imageProcessor.GetCardValueFromImage(img);
-            var suit = CardSuit.Spades;//_suitFinder.GetSuitFromColor(path);
+            var suit = _suitFinder.GetSuitFromImage(path);
 
             if (value == 0) // No card found
             {
