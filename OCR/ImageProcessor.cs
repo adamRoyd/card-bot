@@ -12,7 +12,38 @@ namespace OCR
 {
     public class ImageProcessor
     {
+        private readonly TesseractEngine engine;
+
+        public ImageProcessor()
+        {
+            engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default);
+        }
+
+        public int GetPotValueFromImage(Image img)
+        {
+            var result = GetCharacters(img, PageSegMode.SingleLine);
+            int.TryParse(result, out int value);
+            return value;
+        }
+
+
         public CardValue GetCardValueFromImage(Image img)
+        {
+            var result = GetCharacters(img, PageSegMode.SingleBlock);
+
+            try
+            {
+                Enum.TryParse(result, out CardValue cardValue);
+                return cardValue;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine($"Unable to parse card value from string ${result}");
+                throw;
+            }
+        }
+
+        private string GetCharacters(Image img, PageSegMode mode)
         {
             var byteArray = ImageToByteArray(img);
 
@@ -23,7 +54,7 @@ namespace OCR
             try
             {
 
-                using (var engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default))
+                using (engine)
                 {
                     engine.DefaultPageSegMode = PageSegMode.SingleBlock;
 
@@ -39,10 +70,12 @@ namespace OCR
                             text = text.RemoveLineBreaks().StripPunctuation().Trim();
 
                             result = text;
-                            
+
                         }
                     }
                 }
+
+                return result;
             }
             catch (Exception e)
             {
@@ -51,17 +84,6 @@ namespace OCR
                 Console.WriteLine("Details: ");
                 Console.WriteLine(e.ToString());
                 result = e.ToString();
-            }
-
-
-            try
-            {
-                Enum.TryParse(result, out CardValue cardValue);
-                return cardValue;
-            }
-            catch (Exception)
-            {
-                Console.WriteLine($"Unable to parse card value from string ${result}");
                 throw;
             }
         }

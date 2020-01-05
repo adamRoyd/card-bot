@@ -7,10 +7,16 @@ namespace OCR.Tests
 {
     public class ImageProcessorTests
     {
+        private readonly ImageProcessor imageProcessor;
+
+        public ImageProcessorTests()
+        {
+            imageProcessor = new ImageProcessor();
+        }
+
         [Fact]
         public void GetCardValueFromImage_2_ReturnsCorrectValue()
         {
-            var imageProcessor = new ImageProcessor();
             var image = System.Drawing.Image.FromFile("C:\\Temp\\images\\2.png");
 
             var text = imageProcessor.GetCardValueFromImage(image);
@@ -21,7 +27,7 @@ namespace OCR.Tests
         [Fact]
         public void GetCardValueFromImage_3_ReturnsCorrectValue()
         {
-            var imageProcessor = new ImageProcessor();
+
             var image = System.Drawing.Image.FromFile("C:\\Temp\\images\\3.png");
 
             var text = imageProcessor.GetCardValueFromImage(image);
@@ -33,7 +39,7 @@ namespace OCR.Tests
         [Fact]
         public void GetCardValueFromImage_4_ReturnsCorrectValue()
         {
-            var imageProcessor = new ImageProcessor();
+
             var image = System.Drawing.Image.FromFile("C:\\Temp\\images\\4.png");
 
             var text = imageProcessor.GetCardValueFromImage(image);
@@ -45,7 +51,7 @@ namespace OCR.Tests
         [Fact]
         public void GetCardValueFromImage_5_ReturnsCorrectValue()
         {
-            var imageProcessor = new ImageProcessor();
+
             var image = System.Drawing.Image.FromFile("C:\\Temp\\images\\5.png");
 
             var text = imageProcessor.GetCardValueFromImage(image);
@@ -57,7 +63,7 @@ namespace OCR.Tests
         [Fact]
         public void GetCardValueFromImage_6_ReturnsCorrectValue()
         {
-            var imageProcessor = new ImageProcessor();
+
             var image = System.Drawing.Image.FromFile("C:\\Temp\\images\\6.png");
 
             var text = imageProcessor.GetCardValueFromImage(image);
@@ -69,7 +75,7 @@ namespace OCR.Tests
         [Fact]
         public void GetCardValueFromImage_7_ReturnsCorrectValue()
         {
-            var imageProcessor = new ImageProcessor();
+
             var image = System.Drawing.Image.FromFile("C:\\Temp\\images\\7.png");
 
             var text = imageProcessor.GetCardValueFromImage(image);
@@ -81,7 +87,7 @@ namespace OCR.Tests
         [Fact]
         public void GetCardValueFromImage_8_ReturnsCorrectValue()
         {
-            var imageProcessor = new ImageProcessor();
+
             var image = System.Drawing.Image.FromFile("C:\\Temp\\images\\8.png");
 
             var text = imageProcessor.GetCardValueFromImage(image);
@@ -92,7 +98,7 @@ namespace OCR.Tests
         [Fact]
         public void GetCardValueFromImage_9_ReturnsCorrectValue()
         {
-            var imageProcessor = new ImageProcessor();
+
             var image = System.Drawing.Image.FromFile("C:\\Temp\\images\\9.png");
 
             var text = imageProcessor.GetCardValueFromImage(image);
@@ -103,7 +109,7 @@ namespace OCR.Tests
         [Fact]
         public void GetCardValueFromImage_10_ReturnsCorrectValue()
         {
-            var imageProcessor = new ImageProcessor();
+
             var image = System.Drawing.Image.FromFile("C:\\Temp\\images\\10.png");
 
             var text = imageProcessor.GetCardValueFromImage(image);
@@ -114,7 +120,7 @@ namespace OCR.Tests
         [Fact]
         public void GetCardValueFromImage_J_ReturnsCorrectValue()
         {
-            var imageProcessor = new ImageProcessor();
+
             var image = System.Drawing.Image.FromFile("C:\\Temp\\images\\J.png");
 
             var text = imageProcessor.GetCardValueFromImage(image);
@@ -125,7 +131,7 @@ namespace OCR.Tests
         [Fact]
         public void GetCardValueFromImage_Q_ReturnsCorrectValue()
         {
-            var imageProcessor = new ImageProcessor();
+
             var image = System.Drawing.Image.FromFile("C:\\Temp\\images\\Q.png");
 
             var text = imageProcessor.GetCardValueFromImage(image);
@@ -136,7 +142,7 @@ namespace OCR.Tests
         [Fact]
         public void GetCardValueFromImage_K_ReturnsCorrectValue()
         {
-            var imageProcessor = new ImageProcessor();
+
             var image = System.Drawing.Image.FromFile("C:\\Temp\\images\\K.png");
 
             var text = imageProcessor.GetCardValueFromImage(image);
@@ -147,7 +153,7 @@ namespace OCR.Tests
         [Fact]
         public void GetCardValueFromImage_A_ReturnsCorrectValue()
         {
-            var imageProcessor = new ImageProcessor();
+
             var image = System.Drawing.Image.FromFile("C:\\Temp\\images\\A.png");
 
             var text = imageProcessor.GetCardValueFromImage(image);
@@ -159,7 +165,7 @@ namespace OCR.Tests
         public void SliceBoardImage_Board4_ReturnsCorrectStartingCard1()
         {
             var path = "..\\..\\..\\images\\board1.png";
-            var imageProcessor = new ImageProcessor();
+
 
             var boardImages = imageProcessor.SliceBoardScreenShot(path);
 
