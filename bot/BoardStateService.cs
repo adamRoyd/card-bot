@@ -2,6 +2,7 @@
 using OCR;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Tesseract;
 
@@ -32,16 +33,18 @@ namespace bot
 
             _boardStateHelper.SaveBoardImages(boardImages);
 
+
             foreach (var boardImage in boardImages)
             {
-                var boardImagePath = $"..\\..\\..\\images\\spliced\\{boardImage.Name}.png";
+                var boardImagepath = $"..\\..\\..\\images\\spliced\\{boardImage.Name}.png";
 
-                var image = Pix.LoadFromFile(boardImagePath);
-                var value = _imageProcessor.GetCardValueFromImage(image);
-                var suit = _suitFinder.GetSuitFromColor(boardImagePath);
-
-                // if type card...
-                boardState[boardImage.Name.ToString()] = new Card(value, suit);
+                boardState[boardImage.Name.ToString()] = boardImage.Type switch
+                {
+                    OCR.Objects.ImageType.Card => _boardStateHelper.GetCardFromImage(boardImage.Image),
+                    OCR.Objects.ImageType.Bet => _boardStateHelper.GetBetFromImage(boardImagepath),
+                    OCR.Objects.ImageType.Pot => _boardStateHelper.GetPotFromImage(boardImagepath),
+                    OCR.Objects.ImageType.DealerButton => _boardStateHelper.GetIsDealerButtonFromImage(boardImagepath)
+                };
             }
 
             return boardState;

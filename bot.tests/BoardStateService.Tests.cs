@@ -17,25 +17,25 @@ namespace bot
         public BoardStateServiceTests()
         {
             _imageProcessor = new ImageProcessor();
-            _boardStateHelper = new BoardStateHelper();
             _suitFinder = new SuitFinder();
 
+            _boardStateHelper = new BoardStateHelper(_imageProcessor, _suitFinder);
             _boardStateService = new BoardStateService(_imageProcessor, _boardStateHelper, _suitFinder);
         }
 
         [Fact]
-        public void GetBoardStateFromImagePath_Board1_ReturnsCorrectStateCards()
+        public void GetBoardStateFromImagePath_Board4_ReturnsCorrectStateCards()
         {
-            var path = "..\\..\\..\\images\\board1.png";
+            var path = "..\\..\\..\\images\\board4.png";
             var expectedState = new BoardState
             {
-                StartingCard1 = new Card(Engine.Enums.CardValue.J, Engine.Enums.CardSuit.Spades),
-                StartingCard2 = new Card(Engine.Enums.CardValue.Q, Engine.Enums.CardSuit.Spades),
-                Flop1 = new Card(Engine.Enums.CardValue.seven, Engine.Enums.CardSuit.Diamonds),
-                Flop2 = new Card(Engine.Enums.CardValue.A, Engine.Enums.CardSuit.Diamonds),
-                Flop3 = new Card(Engine.Enums.CardValue.six, Engine.Enums.CardSuit.Spades),
-                Turn = new Card(Engine.Enums.CardValue.two, Engine.Enums.CardSuit.Diamonds),
-                River = new Card(Engine.Enums.CardValue.five, Engine.Enums.CardSuit.Spades),
+                StartingCard1 = new Card(Engine.Enums.CardValue.Q, Engine.Enums.CardSuit.Clubs),
+                StartingCard2 = new Card(Engine.Enums.CardValue.two, Engine.Enums.CardSuit.Hearts),
+                Flop1 = new Card(Engine.Enums.CardValue.J, Engine.Enums.CardSuit.Clubs),
+                Flop2 = new Card(Engine.Enums.CardValue.four, Engine.Enums.CardSuit.Clubs),
+                Flop3 = new Card(Engine.Enums.CardValue.two, Engine.Enums.CardSuit.Diamonds),
+                Turn = new Card(Engine.Enums.CardValue.eight, Engine.Enums.CardSuit.Diamonds),
+                River = null,
             };
 
             var state = _boardStateService.GetBoardStateFromImagePath(path);
@@ -46,7 +46,6 @@ namespace bot
             Assert.Equal(expectedState.Flop2.Value, state.Flop2.Value);
             Assert.Equal(expectedState.Flop3.Value, state.Flop3.Value);
             Assert.Equal(expectedState.Turn.Value, state.Turn.Value);
-            Assert.Equal(expectedState.River.Value, state.River.Value);
 
             Assert.Equal(expectedState.StartingCard1.Suit, state.StartingCard1.Suit);
             Assert.Equal(expectedState.StartingCard2.Suit, state.StartingCard2.Suit);
@@ -54,8 +53,272 @@ namespace bot
             Assert.Equal(expectedState.Flop2.Suit, state.Flop2.Suit);
             Assert.Equal(expectedState.Flop3.Suit, state.Flop3.Suit);
             Assert.Equal(expectedState.Turn.Suit, state.Turn.Suit);
-            Assert.Equal(expectedState.River.Suit, state.River.Suit);
+
+            Assert.Equal(expectedState.River, state.River);
         }
 
+        [Fact]
+        public void GetBoardStateFromImagePath_Board5_ReturnsCorrectStateCards()
+        {
+            var path = "..\\..\\..\\images\\board5.png";
+            var expectedState = new BoardState
+            {
+                StartingCard1 = new Card(Engine.Enums.CardValue.Q, Engine.Enums.CardSuit.Spades),
+                StartingCard2 = new Card(Engine.Enums.CardValue.six, Engine.Enums.CardSuit.Clubs),
+                Flop1 = new Card(Engine.Enums.CardValue.three, Engine.Enums.CardSuit.Spades),
+                Flop2 = new Card(Engine.Enums.CardValue.two, Engine.Enums.CardSuit.Clubs),
+                Flop3 = new Card(Engine.Enums.CardValue.Q, Engine.Enums.CardSuit.Hearts),
+                Turn = null,
+                River = null,
+            };
+
+            var state = _boardStateService.GetBoardStateFromImagePath(path);
+
+            Assert.Equal(expectedState.StartingCard1.Value, state.StartingCard1.Value);
+            Assert.Equal(expectedState.StartingCard2.Value, state.StartingCard2.Value);
+            Assert.Equal(expectedState.Flop1.Value, state.Flop1.Value);
+            Assert.Equal(expectedState.Flop2.Value, state.Flop2.Value);
+            Assert.Equal(expectedState.Flop3.Value, state.Flop3.Value);
+
+            Assert.Equal(expectedState.StartingCard1.Suit, state.StartingCard1.Suit);
+            Assert.Equal(expectedState.StartingCard2.Suit, state.StartingCard2.Suit);
+            Assert.Equal(expectedState.Flop1.Suit, state.Flop1.Suit);
+            Assert.Equal(expectedState.Flop2.Suit, state.Flop2.Suit);
+            Assert.Equal(expectedState.Flop3.Suit, state.Flop3.Suit);
+
+            Assert.Equal(expectedState.Turn, state.Turn);
+            Assert.Equal(expectedState.River, state.River);
+        }
+
+        [Fact]
+        public void GetBoardStateFromImagePath_Board9_ReturnsCorrectStateCards()
+        {
+            var path = "..\\..\\..\\images\\board9.png";
+            var expectedState = new BoardState
+            {
+                StartingCard1 = new Card(Engine.Enums.CardValue.ten, Engine.Enums.CardSuit.Spades),
+                StartingCard2 = new Card(Engine.Enums.CardValue.J, Engine.Enums.CardSuit.Spades),
+                Flop1 = new Card(Engine.Enums.CardValue.Q, Engine.Enums.CardSuit.Hearts),
+                Flop2 = new Card(Engine.Enums.CardValue.five, Engine.Enums.CardSuit.Spades),
+                Flop3 = new Card(Engine.Enums.CardValue.two, Engine.Enums.CardSuit.Hearts),
+                Turn = null,
+                River = null,
+            };
+
+            var state = _boardStateService.GetBoardStateFromImagePath(path);
+
+            Assert.Equal(expectedState.StartingCard1.Value, state.StartingCard1.Value);
+            Assert.Equal(expectedState.StartingCard2.Value, state.StartingCard2.Value);
+            Assert.Equal(expectedState.Flop1.Value, state.Flop1.Value);
+            Assert.Equal(expectedState.Flop2.Value, state.Flop2.Value);
+            Assert.Equal(expectedState.Flop3.Value, state.Flop3.Value);
+
+            Assert.Equal(expectedState.StartingCard1.Suit, state.StartingCard1.Suit);
+            Assert.Equal(expectedState.StartingCard2.Suit, state.StartingCard2.Suit);
+            Assert.Equal(expectedState.Flop1.Suit, state.Flop1.Suit);
+            Assert.Equal(expectedState.Flop2.Suit, state.Flop2.Suit);
+            Assert.Equal(expectedState.Flop3.Suit, state.Flop3.Suit);
+
+            Assert.Equal(expectedState.Turn, state.Turn);
+            Assert.Equal(expectedState.River, state.River);
+        }
+
+        [Fact]
+        public void GetBoardStateFromImagePath_Board1_ReturnsCorrectDealerPosition()
+        {
+            var path = "..\\..\\..\\images\\board1.png";
+            var expectedState = new BoardState
+            {
+                Position1 = true
+            };
+
+            var state = _boardStateService.GetBoardStateFromImagePath(path);
+
+            Assert.Equal(expectedState.Position1, state.Position1);
+            Assert.Equal(expectedState.Position2, state.Position2);
+            Assert.Equal(expectedState.Position3, state.Position3);
+            Assert.Equal(expectedState.Position4, state.Position4);
+            Assert.Equal(expectedState.Position5, state.Position5);
+            Assert.Equal(expectedState.Position6, state.Position6);
+            Assert.Equal(expectedState.Position7, state.Position7);
+            Assert.Equal(expectedState.Position8, state.Position8);
+            Assert.Equal(expectedState.Position9, state.Position9);
+        }
+
+        [Fact]
+        public void GetBoardStateFromImagePath_Board2_ReturnsCorrectDealerPosition()
+        {
+            var path = "..\\..\\..\\images\\board2.png";
+            var expectedState = new BoardState
+            {
+                Position2 = true
+            };
+
+            var state = _boardStateService.GetBoardStateFromImagePath(path);
+
+            Assert.Equal(expectedState.Position1, state.Position1);
+            Assert.Equal(expectedState.Position2, state.Position2);
+            Assert.Equal(expectedState.Position3, state.Position3);
+            Assert.Equal(expectedState.Position4, state.Position4);
+            Assert.Equal(expectedState.Position5, state.Position5);
+            Assert.Equal(expectedState.Position6, state.Position6);
+            Assert.Equal(expectedState.Position7, state.Position7);
+            Assert.Equal(expectedState.Position8, state.Position8);
+            Assert.Equal(expectedState.Position9, state.Position9);
+        }
+
+        [Fact]
+        public void GetBoardStateFromImagePath_Board3_ReturnsCorrectDealerPosition()
+        {
+            var path = "..\\..\\..\\images\\board3.png";
+            var expectedState = new BoardState
+            {
+                Position3 = true
+            };
+
+            var state = _boardStateService.GetBoardStateFromImagePath(path);
+
+            Assert.Equal(expectedState.Position1, state.Position1);
+            Assert.Equal(expectedState.Position2, state.Position2);
+            Assert.Equal(expectedState.Position3, state.Position3);
+            Assert.Equal(expectedState.Position4, state.Position4);
+            Assert.Equal(expectedState.Position5, state.Position5);
+            Assert.Equal(expectedState.Position6, state.Position6);
+            Assert.Equal(expectedState.Position7, state.Position7);
+            Assert.Equal(expectedState.Position8, state.Position8);
+            Assert.Equal(expectedState.Position9, state.Position9);
+        }
+
+        [Fact]
+        public void GetBoardStateFromImagePath_Board4_ReturnsCorrectDealerPosition()
+        {
+            var path = "..\\..\\..\\images\\board4.png";
+            var expectedState = new BoardState
+            {
+                Position4 = true
+            };
+
+            var state = _boardStateService.GetBoardStateFromImagePath(path);
+
+            Assert.Equal(expectedState.Position1, state.Position1);
+            Assert.Equal(expectedState.Position2, state.Position2);
+            Assert.Equal(expectedState.Position3, state.Position3);
+            Assert.Equal(expectedState.Position4, state.Position4);
+            Assert.Equal(expectedState.Position5, state.Position5);
+            Assert.Equal(expectedState.Position6, state.Position6);
+            Assert.Equal(expectedState.Position7, state.Position7);
+            Assert.Equal(expectedState.Position8, state.Position8);
+            Assert.Equal(expectedState.Position9, state.Position9);
+        }
+
+        [Fact]
+        public void GetBoardStateFromImagePath_Board5_ReturnsCorrectDealerPosition()
+        {
+            var path = "..\\..\\..\\images\\board5.png";
+            var expectedState = new BoardState
+            {
+                Position5 = true
+            };
+
+            var state = _boardStateService.GetBoardStateFromImagePath(path);
+
+            Assert.Equal(expectedState.Position1, state.Position1);
+            Assert.Equal(expectedState.Position2, state.Position2);
+            Assert.Equal(expectedState.Position3, state.Position3);
+            Assert.Equal(expectedState.Position4, state.Position4);
+            Assert.Equal(expectedState.Position5, state.Position5);
+            Assert.Equal(expectedState.Position6, state.Position6);
+            Assert.Equal(expectedState.Position7, state.Position7);
+            Assert.Equal(expectedState.Position8, state.Position8);
+            Assert.Equal(expectedState.Position9, state.Position9);
+        }
+
+        [Fact]
+        public void GetBoardStateFromImagePath_Board6_ReturnsCorrectDealerPosition()
+        {
+            var path = "..\\..\\..\\images\\board6.png";
+            var expectedState = new BoardState
+            {
+                Position6 = true
+            };
+
+            var state = _boardStateService.GetBoardStateFromImagePath(path);
+
+            Assert.Equal(expectedState.Position1, state.Position1);
+            Assert.Equal(expectedState.Position2, state.Position2);
+            Assert.Equal(expectedState.Position3, state.Position3);
+            Assert.Equal(expectedState.Position4, state.Position4);
+            Assert.Equal(expectedState.Position5, state.Position5);
+            Assert.Equal(expectedState.Position6, state.Position6);
+            Assert.Equal(expectedState.Position7, state.Position7);
+            Assert.Equal(expectedState.Position8, state.Position8);
+            Assert.Equal(expectedState.Position9, state.Position9);
+        }
+
+        [Fact]
+        public void GetBoardStateFromImagePath_Board7_ReturnsCorrectDealerPosition()
+        {
+            var path = "..\\..\\..\\images\\board7.png";
+            var expectedState = new BoardState
+            {
+                Position7 = true
+            };
+
+            var state = _boardStateService.GetBoardStateFromImagePath(path);
+
+            Assert.Equal(expectedState.Position1, state.Position1);
+            Assert.Equal(expectedState.Position2, state.Position2);
+            Assert.Equal(expectedState.Position3, state.Position3);
+            Assert.Equal(expectedState.Position4, state.Position4);
+            Assert.Equal(expectedState.Position5, state.Position5);
+            Assert.Equal(expectedState.Position6, state.Position6);
+            Assert.Equal(expectedState.Position7, state.Position7);
+            Assert.Equal(expectedState.Position8, state.Position8);
+            Assert.Equal(expectedState.Position9, state.Position9);
+        }
+
+        [Fact]
+        public void GetBoardStateFromImagePath_Board8_ReturnsCorrectDealerPosition()
+        {
+            var path = "..\\..\\..\\images\\board8.png";
+            var expectedState = new BoardState
+            {
+                Position8 = true
+            };
+
+            var state = _boardStateService.GetBoardStateFromImagePath(path);
+
+            Assert.Equal(expectedState.Position1, state.Position1);
+            Assert.Equal(expectedState.Position2, state.Position2);
+            Assert.Equal(expectedState.Position3, state.Position3);
+            Assert.Equal(expectedState.Position4, state.Position4);
+            Assert.Equal(expectedState.Position5, state.Position5);
+            Assert.Equal(expectedState.Position6, state.Position6);
+            Assert.Equal(expectedState.Position7, state.Position7);
+            Assert.Equal(expectedState.Position8, state.Position8);
+            Assert.Equal(expectedState.Position9, state.Position9);
+        }
+
+        [Fact]
+        public void GetBoardStateFromImagePath_Board9_ReturnsCorrectDealerPosition()
+        {
+            var path = "..\\..\\..\\images\\board9.png";
+            var expectedState = new BoardState
+            {
+                Position9 = true
+            };
+
+            var state = _boardStateService.GetBoardStateFromImagePath(path);
+
+            Assert.Equal(expectedState.Position1, state.Position1);
+            Assert.Equal(expectedState.Position2, state.Position2);
+            Assert.Equal(expectedState.Position3, state.Position3);
+            Assert.Equal(expectedState.Position4, state.Position4);
+            Assert.Equal(expectedState.Position5, state.Position5);
+            Assert.Equal(expectedState.Position6, state.Position6);
+            Assert.Equal(expectedState.Position7, state.Position7);
+            Assert.Equal(expectedState.Position8, state.Position8);
+            Assert.Equal(expectedState.Position9, state.Position9);
+        }
     }
 }

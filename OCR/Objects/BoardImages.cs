@@ -19,7 +19,7 @@ namespace OCR.Objects
                     Name = ImageName.StartingCard1,
                     Type = ImageType.Card,
                     Image = new Bitmap(51, 75),
-                    X = 931,
+                    X = 906,
                     Y = 644
                 },
                 new BoardImage
@@ -27,7 +27,7 @@ namespace OCR.Objects
                     Name = ImageName.StartingCard2,
                     Type = ImageType.Card,
                     Image = new Bitmap(51, 75),
-                    X = 1021,
+                    X = 996,
                     Y = 644
                 },
                 new BoardImage
@@ -35,7 +35,7 @@ namespace OCR.Objects
                     Name = ImageName.Flop1,
                     Type = ImageType.Card,
                     Image = new Bitmap(51, 75),
-                    X = 780,
+                    X = 755,
                     Y = 357
                 },
                 new BoardImage
@@ -43,7 +43,7 @@ namespace OCR.Objects
                     Name = ImageName.Flop2,
                     Type = ImageType.Card,
                     Image = new Bitmap(51, 75),
-                    X = 873,
+                    X = 848,
                     Y = 357
                 },
                 new BoardImage
@@ -51,7 +51,7 @@ namespace OCR.Objects
                     Name = ImageName.Flop3,
                     Type = ImageType.Card,
                     Image = new Bitmap(51, 75),
-                    X = 980,
+                    X = 955,
                     Y = 357
                 },
                 new BoardImage
@@ -59,7 +59,7 @@ namespace OCR.Objects
                     Name = ImageName.Turn,
                     Type = ImageType.Card,
                     Image = new Bitmap(51, 75),
-                    X = 1080,
+                    X = 1055,
                     Y = 357
                 },
                 new BoardImage
@@ -67,8 +67,80 @@ namespace OCR.Objects
                     Name = ImageName.River,
                     Type = ImageType.Card,
                     Image = new Bitmap(51, 75),
-                    X = 1180,
+                    X = 1155,
                     Y = 357
+                },
+                new BoardImage
+                {
+                    Name = ImageName.Position1,
+                    Type = ImageType.DealerButton,
+                    Image = new Bitmap(25, 25),
+                    X = 831,
+                    Y = 641
+                },
+                new BoardImage
+                {
+                    Name = ImageName.Position2,
+                    Type = ImageType.DealerButton,
+                    Image = new Bitmap(25, 25),
+                    X = 590,
+                    Y = 521
+                },
+                new BoardImage
+                {
+                    Name = ImageName.Position3,
+                    Type = ImageType.DealerButton,
+                    Image = new Bitmap(25, 25),
+                    X = 505,
+                    Y = 378
+                },
+                new BoardImage
+                {
+                    Name = ImageName.Position4,
+                    Type = ImageType.DealerButton,
+                    Image = new Bitmap(25, 25),
+                    X = 670,
+                    Y = 288
+                },
+                new BoardImage
+                {
+                    Name = ImageName.Position5,
+                    Type = ImageType.DealerButton,
+                    Image = new Bitmap(25, 25),
+                    X = 900,
+                    Y = 221
+                },
+                new BoardImage
+                {
+                    Name = ImageName.Position6,
+                    Type = ImageType.DealerButton,
+                    Image = new Bitmap(25, 25),
+                    X = 1189,
+                    Y = 249
+                },
+                new BoardImage
+                {
+                    Name = ImageName.Position7,
+                    Type = ImageType.DealerButton,
+                    Image = new Bitmap(25, 25),
+                    X = 1339,
+                    Y = 323
+                },
+                new BoardImage
+                {
+                    Name = ImageName.Position8,
+                    Type = ImageType.DealerButton,
+                    Image = new Bitmap(25, 25),
+                    X = 1385,
+                    Y = 517
+                },
+                new BoardImage
+                {
+                    Name = ImageName.Position9,
+                    Type = ImageType.DealerButton,
+                    Image = new Bitmap(25, 25),
+                    X = 1215,
+                    Y = 591
                 },
             };
         }

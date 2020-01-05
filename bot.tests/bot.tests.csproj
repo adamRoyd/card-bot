@@ -19,4 +19,8 @@
     <ProjectReference Include="..\OCR\OCR.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="images\spliced\" />
+  </ItemGroup>
+
 </Project>

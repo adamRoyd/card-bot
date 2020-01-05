@@ -15,7 +15,15 @@ namespace Engine.Models
         public Card Turn { get; set; }
         public Card River { get; set; }
         public HandType Hand { get; set; }
-        public int Position { get; set; }
+        public bool Position1 { get; set; } = false;
+        public bool Position2 { get; set; } = false;
+        public bool Position3 { get; set; } = false;
+        public bool Position4 { get; set; } = false;
+        public bool Position5 { get; set; } = false;
+        public bool Position6 { get; set; } = false;
+        public bool Position7 { get; set; } = false;
+        public bool Position8 { get; set; } = false;
+        public bool Position9 { get; set; } = false;
         public int Pot { get; set; }
         public Stage Stage { get; set; }
         public Action Action { get; set; }

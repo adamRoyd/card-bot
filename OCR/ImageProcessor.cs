@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Text.RegularExpressions;
 using Tesseract;
 
@@ -11,8 +12,11 @@ namespace OCR
 {
     public class ImageProcessor
     {
-        public CardValue GetCardValueFromImage(Pix img)
+        public CardValue GetCardValueFromImage(Image img)
         {
+            var byteArray = ImageToByteArray(img);
+            var pix = Pix.LoadTiffFromMemory(byteArray);
+
             string result = null;
 
             try
@@ -24,7 +28,7 @@ namespace OCR
 
                     using (img)
                     {
-                        using (var page = engine.Process(img))
+                        using (var page = engine.Process(pix))
                         {
                             var text = page.GetText();
                             Console.WriteLine("Mean confidence: {0}", page.GetMeanConfidence());
@@ -51,7 +55,7 @@ namespace OCR
 
             try
             {
-                Enum.TryParse<CardValue>(result, out CardValue cardValue);
+                Enum.TryParse(result, out CardValue cardValue);
                 return cardValue;
             }
             catch (Exception)
@@ -97,6 +101,15 @@ namespace OCR
                 );
 
             graphic.Dispose();
+        }
+
+        private byte[] ImageToByteArray(System.Drawing.Image imageIn)
+        {
+            using (var ms = new MemoryStream())
+            {
+                imageIn.Save(ms, imageIn.RawFormat);
+                return ms.ToArray();
+            }
         }
     }
 }

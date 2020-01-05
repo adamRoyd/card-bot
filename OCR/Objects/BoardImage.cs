@@ -36,6 +36,7 @@ namespace OCR.Objects
     {
         Card,
         Pot,
-        Bet
+        Bet,
+        DealerButton,
     }
 }

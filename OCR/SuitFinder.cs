@@ -19,12 +19,41 @@ namespace OCR
 
         private static Dictionary<int, int> dctColorIncidence;
 
+        public bool IsDealerButton(string path)
+        {
+            var topColor = GetTopRGBColor(path);
+
+            return topColor != "green";
+        }
+
+
         public CardSuit GetSuitFromColor(string path)
+        {
+            var topColor = GetTopRGBColor(path);
+
+            if (topColor == "red")
+            {
+                return CardSuit.Hearts;
+            }
+
+            if (topColor == "blue")
+            {
+                return CardSuit.Diamonds;
+            }
+
+            if (topColor == "green")
+            {
+                return CardSuit.Clubs;
+            }
+
+            return CardSuit.Spades;
+        }
+
+        private string GetTopRGBColor(string path)
         {
             Bitmap theBitMap = Bitmap.FromFile(path) as Bitmap;
 
             TenMostUsedColors = new List<Color>();
-            TenMostUsedColorIncidences = new List<int>();
 
             MostUsedColor = Color.Empty;
             MostUsedColorIncidence = 0;
@@ -53,7 +82,6 @@ namespace OCR
             foreach (KeyValuePair<int, int> kvp in dctSortedByValueHighToLow.Take(10))
             {
                 TenMostUsedColors.Add(Color.FromArgb(kvp.Key));
-                TenMostUsedColorIncidences.Add(kvp.Value);
             }
 
             var redCount = 0;
@@ -80,23 +108,20 @@ namespace OCR
 
             if (redCount > blueCount && redCount > greenCount)
             {
-                return CardSuit.Hearts;
+                return "red";
             }
 
             if (blueCount > redCount && blueCount > greenCount)
             {
-                return CardSuit.Diamonds;
+                return "blue";
             }
 
             if (greenCount > blueCount && greenCount > redCount)
             {
-                return CardSuit.Clubs;
+                return "green";
             }
 
-            //if (blueCount == redCount && greenCount == blueCount && greenCount == redCount)
-            //{
-                return CardSuit.Spades;
-            //}
+            return "black";
         }
 
     }
