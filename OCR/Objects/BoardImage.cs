@@ -29,7 +29,18 @@ namespace OCR.Objects
         Position7,
         Position8,
         Position9,
+        Bet1,
+        Bet2,
+        Bet3,
+        Bet4,
+        Bet5,
+        Bet6,
+        Bet7,
+        Bet8,
+        Bet9,
+        CallAmount,
         Pot,
+        Stack
     }
 
     public enum ImageType

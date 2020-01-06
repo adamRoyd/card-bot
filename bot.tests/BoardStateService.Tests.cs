@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
+using Newtonsoft.Json;
 
 namespace bot
 {
@@ -21,6 +22,36 @@ namespace bot
 
             _boardStateHelper = new BoardStateHelper(_imageProcessor, _suitFinder);
             _boardStateService = new BoardStateService(_imageProcessor, _boardStateHelper, _suitFinder);
+        }
+
+        [Fact]
+        public void GetBoardStateFromImagePath_Board1_ReturnsCorrectState()
+        {
+            var path = "..\\..\\..\\images\\board1.png";
+            var expectedState = new BoardState
+            {
+                CallAmount = 536,
+                Stack = 1650,
+                Position1 = true,
+                Pot = 661
+            };
+
+            var state = _boardStateService.GetBoardStateFromImagePath(path);
+
+            var serialized = JsonConvert.SerializeObject(state);
+
+            Assert.Equal(expectedState.CallAmount, state.CallAmount);
+            Assert.Equal(expectedState.Stack, state.Stack);
+            Assert.Equal(expectedState.Position1, state.Position1);
+            Assert.Equal(expectedState.Position2, state.Position2);
+            Assert.Equal(expectedState.Position3, state.Position3);
+            Assert.Equal(expectedState.Position4, state.Position4);
+            Assert.Equal(expectedState.Position5, state.Position5);
+            Assert.Equal(expectedState.Position6, state.Position6);
+            Assert.Equal(expectedState.Position7, state.Position7);
+            Assert.Equal(expectedState.Position8, state.Position8);
+            Assert.Equal(expectedState.Position9, state.Position9);
+            Assert.Equal(expectedState.Pot, state.Pot);
         }
 
         [Fact]
@@ -121,28 +152,6 @@ namespace bot
 
             Assert.Equal(expectedState.Turn, state.Turn);
             Assert.Equal(expectedState.River, state.River);
-        }
-
-        [Fact]
-        public void GetBoardStateFromImagePath_Board1_ReturnsCorrectDealerPosition()
-        {
-            var path = "..\\..\\..\\images\\board1.png";
-            var expectedState = new BoardState
-            {
-                Position1 = true
-            };
-
-            var state = _boardStateService.GetBoardStateFromImagePath(path);
-
-            Assert.Equal(expectedState.Position1, state.Position1);
-            Assert.Equal(expectedState.Position2, state.Position2);
-            Assert.Equal(expectedState.Position3, state.Position3);
-            Assert.Equal(expectedState.Position4, state.Position4);
-            Assert.Equal(expectedState.Position5, state.Position5);
-            Assert.Equal(expectedState.Position6, state.Position6);
-            Assert.Equal(expectedState.Position7, state.Position7);
-            Assert.Equal(expectedState.Position8, state.Position8);
-            Assert.Equal(expectedState.Position9, state.Position9);
         }
 
         [Fact]
@@ -322,17 +331,89 @@ namespace bot
         }
 
         [Fact]
-        public void GetBoardStateFromImagePath_Board1_ReturnsCorrectPot()
+        public void GetBoardStateFromImagePath_Board2_ReturnsCorrectPot()
         {
-            var path = "..\\..\\..\\images\\board1.png";
+            var path = "..\\..\\..\\images\\board2.png";
             var expectedState = new BoardState
             {
-                Pot = 661
+                Pot = 120
             };
 
             var state = _boardStateService.GetBoardStateFromImagePath(path);
 
-            Assert.Equal(expectedState.Pot, state.Pot); 
+            Assert.Equal(expectedState.Pot, state.Pot);
+        }
+
+        [Fact]
+        public void GetBoardStateFromImagePath_Board3_ReturnsCorrectPot()
+        {
+            var path = "..\\..\\..\\images\\board3.png";
+            var expectedState = new BoardState
+            {
+                Pot = 150
+            };
+
+            var state = _boardStateService.GetBoardStateFromImagePath(path);
+
+            Assert.Equal(expectedState.Pot, state.Pot);
+        }
+
+        [Fact]
+        public void GetBoardStateFromImagePath_Board9_ReturnsCorrectPot()
+        {
+            var path = "..\\..\\..\\images\\board9.png";
+            var expectedState = new BoardState
+            {
+                Pot = 1600
+            };
+
+            var state = _boardStateService.GetBoardStateFromImagePath(path);
+
+            Assert.Equal(expectedState.Pot, state.Pot);
+        }
+
+        [Fact]
+        public void GetBoardStateFromImagePath_Board3_ReturnsCorrectBets()
+        {
+            var path = "..\\..\\..\\images\\board3.png";
+            var expectedState = new BoardState
+            {
+                Bet1 = 20,
+                Bet2 = 0,
+                Bet3 = 20,
+                Bet4 = 10,
+                Bet5 = 20,
+                Bet6 = 20,
+                Bet7 = 20,
+                Bet8 = 20,
+                Bet9 = 20
+            };
+
+            var state = _boardStateService.GetBoardStateFromImagePath(path);
+
+            Assert.Equal(expectedState.Bet1, state.Bet1);
+            Assert.Equal(expectedState.Bet2, state.Bet2);
+            Assert.Equal(expectedState.Bet3, state.Bet3);
+            Assert.Equal(expectedState.Bet4, state.Bet4);
+            Assert.Equal(expectedState.Bet5, state.Bet5);
+            Assert.Equal(expectedState.Bet6, state.Bet6);
+            Assert.Equal(expectedState.Bet7, state.Bet7);
+            Assert.Equal(expectedState.Bet8, state.Bet8);
+            Assert.Equal(expectedState.Bet9, state.Bet9);
+        }
+
+        [Fact]
+        public void GetBoardStateFromImagePath_Board6_ReturnsCorrectCallAmount()
+        {
+            var path = "..\\..\\..\\images\\board6.png";
+            var expectedState = new BoardState
+            {
+                CallAmount = 30
+            };
+
+            var state = _boardStateService.GetBoardStateFromImagePath(path);
+
+            Assert.Equal(expectedState.CallAmount, state.CallAmount);
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Engine.Models
 {
-    public class Action
+    public class PredictedAction
     {
         public ActionType ActionType { get; set; }
         public int BetAmount { get; set; }

@@ -45,14 +45,14 @@ namespace bot
             return new Card(value, suit);
         }
 
-        internal int GetBetFromImage(string path)
+        internal int GetBetFromImage(Image image, string path)
         {
-            throw new NotImplementedException();
+            return _imageProcessor.GetNumberFromImage(image);
         }
 
         internal int GetPotFromImage(Image image, string path)
         {
-            return _imageProcessor.GetPotValueFromImage(image);
+            return _imageProcessor.GetNumberFromImage(image);
         }
 
         internal bool GetIsDealerButtonFromImage(string path)

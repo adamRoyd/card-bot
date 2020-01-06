@@ -18,10 +18,10 @@ namespace OCR
            
         }
 
-        public int GetPotValueFromImage(Image image)
+        public int GetNumberFromImage(Image image)
         {
             var result = GetCharacters(image, PageSegMode.Auto);
-            result = result.ToLower().Replace("pot", "").Replace(":", "").Trim();
+            result = result.ToLower().Replace("pot", "").Replace(":", "").Replace(",","").Trim();
             int.TryParse(result, out int value);
             return value;
         }

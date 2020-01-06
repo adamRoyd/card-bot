@@ -98,7 +98,6 @@ namespace OCR.Tests
         [Fact]
         public void GetCardValueFromImage_9_ReturnsCorrectValue()
         {
-
             var image = System.Drawing.Image.FromFile("C:\\Temp\\images\\9.png");
 
             var text = imageProcessor.GetCardValueFromImage(image);
