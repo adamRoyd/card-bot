@@ -320,5 +320,19 @@ namespace bot
             Assert.Equal(expectedState.Position8, state.Position8);
             Assert.Equal(expectedState.Position9, state.Position9);
         }
+
+        [Fact]
+        public void GetBoardStateFromImagePath_Board1_ReturnsCorrectPot()
+        {
+            var path = "..\\..\\..\\images\\board1.png";
+            var expectedState = new BoardState
+            {
+                Pot = 661
+            };
+
+            var state = _boardStateService.GetBoardStateFromImagePath(path);
+
+            Assert.Equal(expectedState.Pot, state.Pot); 
+        }
     }
 }

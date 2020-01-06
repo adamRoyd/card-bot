@@ -12,24 +12,24 @@ namespace OCR
 {
     public class ImageProcessor
     {
-        private readonly TesseractEngine engine;
 
         public ImageProcessor()
         {
-            engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default);
+           
         }
 
-        public int GetPotValueFromImage(Image img)
+        public int GetPotValueFromImage(Image image)
         {
-            var result = GetCharacters(img, PageSegMode.SingleLine);
+            var result = GetCharacters(image, PageSegMode.Auto);
+            result = result.ToLower().Replace("pot", "").Replace(":", "").Trim();
             int.TryParse(result, out int value);
             return value;
         }
 
 
-        public CardValue GetCardValueFromImage(Image img)
+        public CardValue GetCardValueFromImage(Image image)
         {
-            var result = GetCharacters(img, PageSegMode.SingleBlock);
+            var result = GetCharacters(image, PageSegMode.SingleBlock);
 
             try
             {
@@ -54,11 +54,11 @@ namespace OCR
             try
             {
 
-                using (engine)
+                using (var engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default))
                 {
                     engine.DefaultPageSegMode = PageSegMode.SingleBlock;
 
-                    using (img)
+                    using (pix)
                     {
                         using (var page = engine.Process(pix))
                         {
@@ -72,6 +72,8 @@ namespace OCR
                             result = text;
 
                         }
+
+                        engine.Dispose();
                     }
                 }
 

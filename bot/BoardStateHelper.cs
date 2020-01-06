@@ -50,9 +50,9 @@ namespace bot
             throw new NotImplementedException();
         }
 
-        internal int GetPotFromImage(string path)
+        internal int GetPotFromImage(Image image, string path)
         {
-            throw new NotImplementedException();
+            return _imageProcessor.GetPotValueFromImage(image);
         }
 
         internal bool GetIsDealerButtonFromImage(string path)

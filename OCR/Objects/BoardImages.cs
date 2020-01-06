@@ -142,6 +142,14 @@ namespace OCR.Objects
                     X = 1215,
                     Y = 591
                 },
+                new BoardImage
+                {
+                    Name = ImageName.Pot,
+                    Type = ImageType.Pot,
+                    Image = new Bitmap(200, 40),
+                    X = 894,
+                    Y = 318
+                },
             };
         }
     }

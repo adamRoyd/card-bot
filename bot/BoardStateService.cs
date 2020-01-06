@@ -42,7 +42,7 @@ namespace bot
                 {
                     OCR.Objects.ImageType.Card => _boardStateHelper.GetCardFromImage(boardImage.Image, boardImagepath),
                     OCR.Objects.ImageType.Bet => _boardStateHelper.GetBetFromImage(boardImagepath),
-                    OCR.Objects.ImageType.Pot => _boardStateHelper.GetPotFromImage(boardImagepath),
+                    OCR.Objects.ImageType.Pot => _boardStateHelper.GetPotFromImage(boardImage.Image, boardImagepath),
                     OCR.Objects.ImageType.DealerButton => _boardStateHelper.GetIsDealerButtonFromImage(boardImagepath)
                 };
             }
