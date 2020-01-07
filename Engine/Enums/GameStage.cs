@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Engine.Enums
 {
-    enum GameStage
+    public enum GameStage
     {
         EarlyGame,
         MiddleGame,

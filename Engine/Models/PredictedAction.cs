@@ -15,6 +15,7 @@ namespace Engine.Models
         Fold = 1,
         Check = 2,
         Bet = 3,
-        Raise = 4
+        Raise = 4,
+        Unknown = 5
     }
 }

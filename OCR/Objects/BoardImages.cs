@@ -238,6 +238,22 @@ namespace OCR.Objects
                     X = 829,
                     Y = 767
                 },
+                new BoardImage
+                {
+                    Name = ImageName.BigBlind,
+                    Type = ImageType.Bet,
+                    Image = new Bitmap(200, 25),
+                    X = 1760,
+                    Y = 110
+                },
+                new BoardImage
+                {
+                    Name = ImageName.Players,
+                    Type = ImageType.Bet,
+                    Image = new Bitmap(200, 25),
+                    X = 1832,
+                    Y = 85
+                }
             };
         }
     }

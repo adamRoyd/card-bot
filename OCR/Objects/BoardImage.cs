@@ -40,7 +40,9 @@ namespace OCR.Objects
         Bet9,
         CallAmount,
         Pot,
-        Stack
+        Stack,
+        BigBlind,
+        Players
     }
 
     public enum ImageType

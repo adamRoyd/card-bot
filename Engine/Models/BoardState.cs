@@ -1,6 +1,7 @@
 ﻿using Engine.Enums;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace Engine.Models
@@ -14,7 +15,7 @@ namespace Engine.Models
         public Card Flop3 { get; set; }
         public Card Turn { get; set; }
         public Card River { get; set; }
-        public HandType Hand { get; set; }
+        public HandType HandType { get; set; }
         public bool Position1 { get; set; } = false;
         public bool Position2 { get; set; } = false;
         public bool Position3 { get; set; } = false;
@@ -36,14 +37,22 @@ namespace Engine.Models
         public int CallAmount { get; set; }
         public int Pot { get; set; }
         public int Stack { get; set; }
-        public HandStage HandStage {
+        public int BigBlind { get; set; }
+        public int Players { get; set; }
+        public Hand StartingHand
+        {
+            get { return GetStartingHand(); }
+        }
+        public HandStage HandStage
+        {
             get { return GetHandStage(); }
         }
         public GameStage GameStage
         {
-            get { return GetGameStage();  }
+            get { return GetGameStage(); }
         }
-        public PredictedAction PredictedAction {
+        public PredictedAction PredictedAction
+        {
             get { return GetPredictedAction(); }
         }
 
@@ -51,31 +60,73 @@ namespace Engine.Models
         {
             var result = new PredictedAction();
 
-            // The magic starts here
+            if (GameStage == GameStage.EarlyGame)
+            {
+                GetEarlyGameAction(result);
+            }
 
             return result;
         }
 
-        private string GetHandCode()
+        private void GetEarlyGameAction(PredictedAction action)
+        {
+            if (StartingHand == null)
+            {
+                action.ActionType = ActionType.Fold;
+            }
+            else
+            {
+                action.ActionType = ActionType.Unknown;
+            }
+        }
+
+        private GameStage GetGameStage()
+        {
+            if (BigBlind < 100)
+            {
+                return GameStage.EarlyGame;
+            }
+
+            if ((BigBlind >= 100 && BigBlind < 300) && Players > 4)
+            {
+                return GameStage.MiddleGame;
+            }
+
+            if (Players < 5)
+            {
+                return GameStage.LateGame;
+            }
+
+            return GameStage.EarlyGame;
+        }
+
+        private Hand GetStartingHand()
         {
             string suited = StartingCard1.Suit == StartingCard2.Suit ? "s" : "o";
 
-            string handCode = $"{StartingCard1.Value.ToString()}{StartingCard2.Value.ToString()}{suited}";
+            var card1Number = (int)StartingCard1.Value;
+            var card1 = card1Number < 11 ? card1Number.ToString() : StartingCard1.Value.ToString();
+            var card2Number = (int)StartingCard2.Value;
+            var card2 = card1Number < 11 ? card1Number.ToString() : StartingCard2.Value.ToString();
 
-            return handCode;
+            string handCode = $"{card1}{card2}{suited}";
+
+            var hand = GameHands.EarlyGameHands.FirstOrDefault(h => h.HandCode == handCode);
+
+            return hand;
         }
 
         private HandStage GetHandStage()
         {
-            if(Flop1 == null && Flop2 == null && Flop3 == null)
+            if (Flop1 == null && Flop2 == null && Flop3 == null)
             {
                 return HandStage.PreFlop;
             }
-            else if(Turn == null)
+            else if (Turn == null)
             {
                 return HandStage.Flop;
             }
-            else if(River == null)
+            else if (River == null)
             {
                 return HandStage.Turn;
             }

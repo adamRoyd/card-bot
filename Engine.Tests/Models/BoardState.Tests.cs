@@ -10,29 +10,7 @@ namespace Engine.Tests.Models
     public class BoardStateTests
     {
         [Fact]
-        public void GetAction_Board1State_ReturnsCorrectCalculations()
-        {
-            var state = new BoardState
-            {
-                Position1 = true,
-                Pot = 661,
-                CallAmount = 536,
-                StartingCard1 = new Card(
-                    Enums.CardValue.seven, 
-                    Enums.CardSuit.Spades
-                ),
-                StartingCard2 = new Card(
-                    Enums.CardValue.seven,
-                    Enums.CardSuit.Hearts
-                )
-            };
-
-            Assert.Equal(HandStage.PreFlop, state.HandStage);
-            Assert.Equal(ActionType.Fold, state.PredictedAction.ActionType);
-        }
-
-        [Fact]
-        public void GetAction_Board6State_ReturnsCorrectCalculations()
+        public void GetAction_EGPreFlopBadHand_Fold()
         {
             var state = new BoardState
             {
@@ -47,10 +25,12 @@ namespace Engine.Tests.Models
                     Enums.CardValue.two,
                     Enums.CardSuit.Clubs
                 ),
-                Stack = 1530
+                Stack = 1530,
+                Players = 8,
+                BigBlind = 30
             };
 
-            Assert.Equal(HandStage.PreFlop, state.HandStage);
+            Assert.Null(state.StartingHand);
             Assert.Equal(ActionType.Fold, state.PredictedAction.ActionType);
         }
     }
