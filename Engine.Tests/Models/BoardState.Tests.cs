@@ -27,7 +27,30 @@ namespace Engine.Tests.Models
                 )
             };
 
-            Assert.Equal(Stage.PreFlop, state.Stage);
+            Assert.Equal(HandStage.PreFlop, state.HandStage);
+            Assert.Equal(ActionType.Fold, state.PredictedAction.ActionType);
+        }
+
+        [Fact]
+        public void GetAction_Board6State_ReturnsCorrectCalculations()
+        {
+            var state = new BoardState
+            {
+                Position6 = true,
+                Pot = 45,
+                CallAmount = 60,
+                StartingCard1 = new Card(
+                    Enums.CardValue.Q,
+                    Enums.CardSuit.Spades
+                ),
+                StartingCard2 = new Card(
+                    Enums.CardValue.two,
+                    Enums.CardSuit.Clubs
+                ),
+                Stack = 1530
+            };
+
+            Assert.Equal(HandStage.PreFlop, state.HandStage);
             Assert.Equal(ActionType.Fold, state.PredictedAction.ActionType);
         }
     }

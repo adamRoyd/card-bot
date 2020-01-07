@@ -4,11 +4,10 @@ using System.Text;
 
 namespace Engine.Enums
 {
-    public enum Stage
+    enum GameStage
     {
-        PreFlop = 1,
-        Flop = 2,
-        Turn = 3,
-        River = 4
+        EarlyGame,
+        MiddleGame,
+        LateGame
     }
 }

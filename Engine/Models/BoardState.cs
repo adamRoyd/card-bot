@@ -36,8 +36,12 @@ namespace Engine.Models
         public int CallAmount { get; set; }
         public int Pot { get; set; }
         public int Stack { get; set; }
-        public Stage Stage {
-            get { return GetStage(); }
+        public HandStage HandStage {
+            get { return GetHandStage(); }
+        }
+        public GameStage GameStage
+        {
+            get { return GetGameStage();  }
         }
         public PredictedAction PredictedAction {
             get { return GetPredictedAction(); }
@@ -61,23 +65,23 @@ namespace Engine.Models
             return handCode;
         }
 
-        private Stage GetStage()
+        private HandStage GetHandStage()
         {
             if(Flop1 == null && Flop2 == null && Flop3 == null)
             {
-                return Stage.PreFlop;
+                return HandStage.PreFlop;
             }
             else if(Turn == null)
             {
-                return Stage.Flop;
+                return HandStage.Flop;
             }
             else if(River == null)
             {
-                return Stage.Turn;
+                return HandStage.Turn;
             }
             else
             {
-                return Stage.River;
+                return HandStage.River;
             }
         }
 
