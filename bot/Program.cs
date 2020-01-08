@@ -7,17 +7,30 @@ using System.Drawing.Imaging;
 using System.IO;
 using OCR;
 using Engine.Models;
+using System.Threading.Tasks;
 
 namespace bot
 {
     class Program
     {
-        public static void Main(string[] args)
+        public async static Task Main(string[] args)
         {
-            Console.ReadKey(true);
+            await BeTheBot();
+        }
 
 
+        public static async Task BeTheBot()
+        {
+            while (true)
+            {
+                ScreenCaptureService.TakeScreenCapture();
 
+                Console.WriteLine("Scren capture taken");
+
+                await Task.Delay(3000);
+
+
+            }
         }
     }
 }
