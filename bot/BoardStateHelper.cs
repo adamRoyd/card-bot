@@ -23,11 +23,11 @@ namespace bot
             _suitFinder = suitFinder;
         }
 
-        public void SaveBoardImages(List<BoardImage> boardImages)
+        public void SaveBoardImages(List<BoardImage> boardImages, string path)
         {
             foreach (var boardImage in boardImages)
             {
-                var boardImagePath = $"..\\..\\..\\images\\spliced\\{boardImage.Name}.png";
+                var boardImagePath = $"{path}\\spliced\\{boardImage.Name}.png";
                 boardImage.Image.Save(boardImagePath);
             }
         }

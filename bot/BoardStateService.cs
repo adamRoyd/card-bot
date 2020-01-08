@@ -27,29 +27,38 @@ namespace bot
 
         public BoardState GetBoardStateFromImagePath(string path)
         {
-            var boardImages = _imageProcessor.SliceBoardScreenShot(path);
-
-            var boardState = new BoardState();
-
-            _boardStateHelper.SaveBoardImages(boardImages);
-
-
-            foreach (var boardImage in boardImages)
+            try
             {
-                var boardImagepath = $"..\\..\\..\\images\\spliced\\{boardImage.Name}.png";
+                var boardImages = _imageProcessor.SliceBoardScreenShot(path);
 
-                boardState[boardImage.Name.ToString()] = boardImage.Type switch
+                var boardState = new BoardState();
+
+                _boardStateHelper.SaveBoardImages(boardImages, path);
+
+
+                foreach (var boardImage in boardImages)
                 {
-                    //TODO rename these image types to Number / Word etc
-                    OCR.Objects.ImageType.Card => _boardStateHelper.GetCardFromImage(boardImage.Image, boardImagepath),
-                    OCR.Objects.ImageType.Bet => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),
-                    OCR.Objects.ImageType.Pot => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),
-                    OCR.Objects.ImageType.DealerButton => _boardStateHelper.GetIsDealerButtonFromImage(boardImagepath),
-                    OCR.Objects.ImageType.Word => _boardStateHelper.GetWordFromImage(boardImage.Image, boardImagepath)
-                };
+                    var boardImagepath = $"{path}\\spliced\\{boardImage.Name}.png";
+
+                    boardState[boardImage.Name.ToString()] = boardImage.Type switch
+                    {
+                        //TODO rename these image types to Number / Word etc
+                        OCR.Objects.ImageType.Card => _boardStateHelper.GetCardFromImage(boardImage.Image, boardImagepath),
+                        OCR.Objects.ImageType.Bet => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),
+                        OCR.Objects.ImageType.Pot => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),
+                        OCR.Objects.ImageType.DealerButton => _boardStateHelper.GetIsDealerButtonFromImage(boardImagepath),
+                        OCR.Objects.ImageType.Word => _boardStateHelper.GetWordFromImage(boardImage.Image, boardImagepath)
+                    };
+                }
+
+                return boardState;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
             }
 
-            return boardState;
         }
     }
 }

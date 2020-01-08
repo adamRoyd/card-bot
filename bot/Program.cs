@@ -13,23 +13,40 @@ namespace bot
 {
     class Program
     {
-        public async static Task Main(string[] args)
-        {
+        public static async Task Main(string[] args)
+        { 
             await BeTheBot();
         }
 
-
         public static async Task BeTheBot()
         {
+            var imageProcessor = new ImageProcessor();
+            var suitFinder = new SuitFinder();
+            var boardStateHelper = new BoardStateHelper(imageProcessor, suitFinder);
+            var boardStateService = new BoardStateService(imageProcessor,boardStateHelper, suitFinder);
+
             while (true)
             {
-                ScreenCaptureService.TakeScreenCapture();
+                var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                Console.WriteLine("Scren capture taken");
+                var path = $"..\\..\\..\\images\\{dateStamp}";
+                var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
+
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                    Directory.CreateDirectory(splicedPath);
+                }
+
+                ScreenCaptureService.TakeScreenCapture(path);
+
+                await Task.Delay(1000);
+
+                var boardState = boardStateService.GetBoardStateFromImagePath(path);
+
+                Console.WriteLine($"Action: {boardState.PredictedAction.ActionType}");
 
                 await Task.Delay(3000);
-
-
             }
         }
     }

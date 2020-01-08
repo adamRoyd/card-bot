@@ -61,9 +61,9 @@ namespace OCR
                         using (var page = engine.Process(pix))
                         {
                             var text = page.GetText();
-                            Console.WriteLine("Mean confidence: {0}", page.GetMeanConfidence());
+                            //Console.WriteLine("Mean confidence: {0}", page.GetMeanConfidence());
 
-                            Console.WriteLine($"Text (GetText): {text}");
+                            //Console.WriteLine($"Text (GetText): {text}");
 
                             text = text.RemoveLineBreaks().StripPunctuation().Trim();
 
@@ -92,7 +92,8 @@ namespace OCR
         {
             var boardImages = new BoardImages();
 
-            var img = Image.FromFile(path);
+            var fileName = $"{path}\\board.png";
+            var img = Image.FromFile(fileName);
 
             foreach(var boardImage in boardImages.BoardImageList)
             {
