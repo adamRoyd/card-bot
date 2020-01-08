@@ -12,3 +12,4 @@ Engine/obj
 Engine/bin
 .vs
 bot/images/
+bot.tests/images/foldAction.png

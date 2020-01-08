@@ -16,6 +16,10 @@ namespace Engine.Models
         public Card Turn { get; set; }
         public Card River { get; set; }
         public HandType HandType { get; set; }
+        public string HandCode
+        {
+            get { return GetHandCode(); }
+        }
         public bool Position1 { get; set; } = false;
         public bool Position2 { get; set; } = false;
         public bool Position3 { get; set; } = false;
@@ -46,6 +50,7 @@ namespace Engine.Models
         public PredictedAction PredictedAction
         {
             get { return GetPredictedAction(); }
+            set { }
         }
 
         private PredictedAction GetPredictedAction()
@@ -77,25 +82,20 @@ namespace Engine.Models
 
         private void GetPreFlopAction(PredictedAction action)
         {
-            switch (GameStage)
-            {
-                case GameStage.EarlyGame:
-                    GetEarlyGamePreFlopAction(action);
-                    break;
-                default:
-                    action.ActionType = ActionType.Unknown;
-                    break;
-            }
+            GetEarlyGamePreFlopAction(action);
+            //switch (GameStage)
+            //{
+            //    case GameStage.EarlyGame:
+            //        GetEarlyGamePreFlopAction(action);
+            //        break;
+            //    default:
+            //        action.ActionType = ActionType.Unknown;
+            //        break;
+            //}
         }
 
         private void GetEarlyGamePreFlopAction(PredictedAction action)
         {
-            if (StartingHand == null)
-            {
-                action.ActionType = ActionType.Fold;
-                return;
-            }
-
             switch (StartingHand.Rank)
             {
                 case 1:
@@ -126,18 +126,34 @@ namespace Engine.Models
             return GameStage.EarlyGame;
         }
 
-        private Hand GetStartingHand()
+        private string GetHandCode()
         {
+            if(StartingCard1 == null || StartingCard2 == null)
+            {
+                return "N/A";
+            }
+
             string suited = StartingCard1.Suit == StartingCard2.Suit ? "s" : "o";
 
             var card1Number = (int)StartingCard1.Value;
             var card1 = card1Number < 11 ? card1Number.ToString() : StartingCard1.Value.ToString();
             var card2Number = (int)StartingCard2.Value;
-            var card2 = card1Number < 11 ? card1Number.ToString() : StartingCard2.Value.ToString();
+            var card2 = card2Number < 11 ? card2Number.ToString() : StartingCard2.Value.ToString();
 
             string handCode = $"{card1}{card2}{suited}";
 
-            var hand = GameHands.EarlyGameHands.FirstOrDefault(h => h.HandCode == handCode);
+            return handCode;
+        }
+
+        private Hand GetStartingHand()
+        {
+
+            var hand = GameHands.EarlyGameHands.FirstOrDefault(h => h.HandCode == HandCode);
+
+            if (hand == null)
+            {
+                hand = new Hand(HandCode, 0);
+            }
 
             return hand;
         }
