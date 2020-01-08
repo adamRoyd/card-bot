@@ -45,14 +45,19 @@ namespace bot
             return new Card(value, suit);
         }
 
-        internal int GetBetFromImage(Image image, string path)
+        internal int GetNumberFromImage(Image image, string path)
         {
-            return _imageProcessor.GetNumberFromImage(image);
+            string result = _imageProcessor.GetImageCharactersAuto(image);
+            result = result.ToLower().Replace("pot", "").Replace(":", "").Replace(",", "").Trim();
+            int.TryParse(result, out int value);
+            return value;
         }
 
-        internal int GetPotFromImage(Image image, string path)
+        internal string GetWordFromImage(Image image, string path)
         {
-            return _imageProcessor.GetNumberFromImage(image);
+            string result = _imageProcessor.GetImageCharactersAuto(image);
+            result = result.ToLower().Trim();
+            return result;
         }
 
         internal bool GetIsDealerButtonFromImage(string path)

@@ -40,10 +40,12 @@ namespace bot
 
                 boardState[boardImage.Name.ToString()] = boardImage.Type switch
                 {
+                    //TODO rename these image types to Number / Word etc
                     OCR.Objects.ImageType.Card => _boardStateHelper.GetCardFromImage(boardImage.Image, boardImagepath),
-                    OCR.Objects.ImageType.Bet => _boardStateHelper.GetBetFromImage(boardImage.Image, boardImagepath),
-                    OCR.Objects.ImageType.Pot => _boardStateHelper.GetPotFromImage(boardImage.Image, boardImagepath),
-                    OCR.Objects.ImageType.DealerButton => _boardStateHelper.GetIsDealerButtonFromImage(boardImagepath)
+                    OCR.Objects.ImageType.Bet => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),
+                    OCR.Objects.ImageType.Pot => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),
+                    OCR.Objects.ImageType.DealerButton => _boardStateHelper.GetIsDealerButtonFromImage(boardImagepath),
+                    OCR.Objects.ImageType.Word => _boardStateHelper.GetWordFromImage(boardImage.Image, boardImagepath)
                 };
             }
 

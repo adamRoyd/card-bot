@@ -25,20 +25,12 @@ namespace Engine.Models
         public bool Position7 { get; set; } = false;
         public bool Position8 { get; set; } = false;
         public bool Position9 { get; set; } = false;
-        public int? Bet1 { get; set; }
-        public int? Bet2 { get; set; }
-        public int? Bet3 { get; set; }
-        public int? Bet4 { get; set; }
-        public int? Bet5 { get; set; }
-        public int? Bet6 { get; set; }
-        public int? Bet7 { get; set; }
-        public int? Bet8 { get; set; }
-        public int? Bet9 { get; set; }
         public int CallAmount { get; set; }
         public int Pot { get; set; }
         public int Stack { get; set; }
         public int BigBlind { get; set; }
         public int Players { get; set; }
+        public string FoldButton { get; set; }
         public Hand StartingHand
         {
             get { return GetStartingHand(); }
@@ -60,23 +52,57 @@ namespace Engine.Models
         {
             var result = new PredictedAction();
 
-            if (GameStage == GameStage.EarlyGame)
+            if (FoldButton != "fold")
             {
-                GetEarlyGameAction(result);
+                // Not ready to make action
+                result.ActionType = ActionType.Unknown;
+                return result;
+            }
+
+            // Use polymorphism for each Card stage action type
+            // Pre, post etc.
+            // Early, Middle, Late etc.
+            switch (HandStage)
+            {
+                case HandStage.PreFlop:
+                    GetPreFlopAction(result);
+                    break;
+                default:
+                    result.ActionType = ActionType.Unknown;
+                    break;
             }
 
             return result;
         }
 
-        private void GetEarlyGameAction(PredictedAction action)
+        private void GetPreFlopAction(PredictedAction action)
+        {
+            switch (GameStage)
+            {
+                case GameStage.EarlyGame:
+                    GetEarlyGamePreFlopAction(action);
+                    break;
+                default:
+                    action.ActionType = ActionType.Unknown;
+                    break;
+            }
+        }
+
+        private void GetEarlyGamePreFlopAction(PredictedAction action)
         {
             if (StartingHand == null)
             {
                 action.ActionType = ActionType.Fold;
+                return;
             }
-            else
+
+            switch (StartingHand.Rank)
             {
-                action.ActionType = ActionType.Unknown;
+                case 1:
+                case 2:
+                case 3:
+                    action.ActionType = ActionType.Unknown;
+                    break;
             }
         }
 

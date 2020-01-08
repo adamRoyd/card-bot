@@ -42,7 +42,8 @@ namespace OCR.Objects
         Pot,
         Stack,
         BigBlind,
-        Players
+        Players,
+        FoldButton
     }
 
     public enum ImageType
@@ -50,6 +51,7 @@ namespace OCR.Objects
         Card,
         Pot,
         Bet,
+        Word,
         DealerButton,
     }
 }

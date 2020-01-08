@@ -27,7 +27,8 @@ namespace Engine.Tests.Models
                 ),
                 Stack = 1530,
                 Players = 8,
-                BigBlind = 30
+                BigBlind = 30,
+                FoldButton = "fold"
             };
 
             Assert.Null(state.StartingHand);
