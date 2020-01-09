@@ -35,6 +35,7 @@ namespace Engine.Models
         public int BigBlind { get; set; }
         public int Players { get; set; }
         public string FoldButton { get; set; }
+
         public Hand StartingHand
         {
             get { return GetStartingHand(); }
@@ -47,64 +48,7 @@ namespace Engine.Models
         {
             get { return GetGameStage(); }
         }
-        public PredictedAction PredictedAction
-        {
-            get { return GetPredictedAction(); }
-            set { }
-        }
 
-        private PredictedAction GetPredictedAction()
-        {
-            var result = new PredictedAction();
-
-            if (FoldButton != "fold")
-            {
-                // Not ready to make action
-                result.ActionType = ActionType.Unknown;
-                return result;
-            }
-
-            // Use polymorphism for each Card stage action type
-            // Pre, post etc.
-            // Early, Middle, Late etc.
-            switch (HandStage)
-            {
-                case HandStage.PreFlop:
-                    GetPreFlopAction(result);
-                    break;
-                default:
-                    result.ActionType = ActionType.Unknown;
-                    break;
-            }
-
-            return result;
-        }
-
-        private void GetPreFlopAction(PredictedAction action)
-        {
-            GetEarlyGamePreFlopAction(action);
-            //switch (GameStage)
-            //{
-            //    case GameStage.EarlyGame:
-            //        GetEarlyGamePreFlopAction(action);
-            //        break;
-            //    default:
-            //        action.ActionType = ActionType.Unknown;
-            //        break;
-            //}
-        }
-
-        private void GetEarlyGamePreFlopAction(PredictedAction action)
-        {
-            switch (StartingHand.Rank)
-            {
-                case 1:
-                case 2:
-                case 3:
-                    action.ActionType = ActionType.Unknown;
-                    break;
-            }
-        }
 
         private GameStage GetGameStage()
         {
@@ -128,19 +72,20 @@ namespace Engine.Models
 
         private string GetHandCode()
         {
-            if(StartingCard1 == null || StartingCard2 == null)
+            if (StartingCard1 == null || StartingCard2 == null)
             {
-                return "N/A";
+                return "null";
             }
 
             string suited = StartingCard1.Suit == StartingCard2.Suit ? "s" : "o";
 
+            //TODO this should be in the Card class to get the cleaned up value for Flop turn river
             var card1Number = (int)StartingCard1.Value;
             var card1 = card1Number < 11 ? card1Number.ToString() : StartingCard1.Value.ToString();
             var card2Number = (int)StartingCard2.Value;
             var card2 = card2Number < 11 ? card2Number.ToString() : StartingCard2.Value.ToString();
 
-            string handCode = $"{card1}{card2}{suited}";
+            string handCode = card1Number >= card2Number ? $"{card1}{card2}{suited}" : $"{card2}{card1}{suited}";
 
             return handCode;
         }
@@ -152,7 +97,7 @@ namespace Engine.Models
 
             if (hand == null)
             {
-                hand = new Hand(HandCode, 0);
+                hand = new Hand(HandCode, -1);
             }
 
             return hand;

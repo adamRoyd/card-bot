@@ -43,25 +43,36 @@ namespace bot
                 await Task.Delay(1000);
 
                 var boardState = boardStateService.GetBoardStateFromImagePath(path);
+                var predictedAction = new PredictedAction(boardState);
 
-                var rank = boardState.StartingHand == null ? -1 : boardState.StartingHand.Rank;
-                var flop1 = boardState.Flop1 == null ? "1" : $"{boardState.Flop1.Value}{boardState.Flop1.Suit}";
-                var flop2 = boardState.Flop2 == null ? "2" : $"{boardState.Flop2.Value}{boardState.Flop2.Suit}";
-                var flop3 = boardState.Flop3 == null ? "3" : $"{boardState.Flop3.Value}{boardState.Flop3.Suit}";
-                var turn = boardState.Turn == null ? "" : $"{boardState.Turn.Value}{boardState.Turn.Suit}";
-                var river = boardState.River == null ? "" : $"{boardState.River.Value}{boardState.River.Suit}";
+                WriteStatsToConsole(dateStamp, boardState, predictedAction);
 
-                Console.WriteLine(
-                    $"Id: {dateStamp} " +
-                    $"HandCode: {boardState.HandCode} " +
-                    $"Rank: {rank} " +
-                    $"Action: {boardState.PredictedAction.ActionType}" +
-                    $"Flop: {flop1} {flop2} {flop3}" +
-                    $"Turn: {turn}" +
-                    $"River: {river}");
 
-                await Task.Delay(3000);
+                await Task.Delay(2000);
             }
+        }
+
+        public static void WriteStatsToConsole(
+            string dateStamp, 
+            BoardState boardState, 
+            PredictedAction predictedAction
+        )
+        {
+            var rank = boardState.StartingHand == null ? -1 : boardState.StartingHand.Rank;
+            var flop1 = boardState.Flop1 == null ? "1" : $"{boardState.Flop1.Value}{boardState.Flop1.Suit}";
+            var flop2 = boardState.Flop2 == null ? "2" : $"{boardState.Flop2.Value}{boardState.Flop2.Suit}";
+            var flop3 = boardState.Flop3 == null ? "3" : $"{boardState.Flop3.Value}{boardState.Flop3.Suit}";
+            var turn = boardState.Turn == null ? "" : $"{boardState.Turn.Value}{boardState.Turn.Suit}";
+            var river = boardState.River == null ? "" : $"{boardState.River.Value}{boardState.River.Suit}";
+
+            Console.WriteLine(
+                $"Id: {dateStamp} " +
+                $"HandCode: {boardState.HandCode} " +
+                $"Rank: {rank} " +
+                $"Action: {predictedAction.ActionType}");
+
+            Console.WriteLine(
+                $"{flop1} {flop2} {flop3} {turn} {river}");
         }
     }
 }

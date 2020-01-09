@@ -57,24 +57,6 @@ namespace bot
         }
 
         [Fact]
-        public void GetBoardStateFromImagePath_FoldAction_ReturnsCorrectState()
-        {
-            var path = "..\\..\\..\\images\\foldAction.png";
-            var expectedState = new BoardState
-            {
-                PredictedAction = new PredictedAction
-                {
-                    ActionType = ActionType.Fold
-                }
-            };
-
-            var state = _boardStateService.GetBoardStateFromImagePath(path);
-
-            
-            Assert.Equal(expectedState.PredictedAction.ActionType, state.PredictedAction.ActionType);
-        }
-
-        [Fact]
         public void GetBoardStateFromImagePath_Board4_ReturnsCorrectStateCards()
         {
             var path = "..\\..\\..\\images\\board4.png";

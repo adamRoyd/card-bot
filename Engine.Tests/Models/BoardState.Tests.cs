@@ -10,29 +10,57 @@ namespace Engine.Tests.Models
     public class BoardStateTests
     {
         [Fact]
-        public void GetAction_EGPreFlopBadHand_Fold()
+        public void HandCode_ReversedCards_ReturnsCorrectHandCode()
         {
             var state = new BoardState
             {
-                Position6 = true,
-                Pot = 45,
-                CallAmount = 60,
                 StartingCard1 = new Card(
-                    Enums.CardValue.Q,
+                    Enums.CardValue.two,
                     Enums.CardSuit.Spades
                 ),
                 StartingCard2 = new Card(
-                    Enums.CardValue.two,
+                    Enums.CardValue.Q,
                     Enums.CardSuit.Clubs
-                ),
-                Stack = 1530,
-                Players = 8,
-                BigBlind = 30,
-                FoldButton = "fold"
+                )
             };
 
-            Assert.Null(state.StartingHand);
-            Assert.Equal(ActionType.Fold, state.PredictedAction.ActionType);
+            string expectedHandcode = "Q2o"; 
+
+            Assert.Equal(state.HandCode, expectedHandcode);
+        }
+
+        [Fact]
+        public void StartingHand_AKs_ReturnsCorrectStartingHand()
+        {
+            var state = new BoardState
+            {
+                StartingCard1 = new Card(
+                    Enums.CardValue.A,
+                    Enums.CardSuit.Spades
+                ),
+                StartingCard2 = new Card(
+                    Enums.CardValue.K,
+                    Enums.CardSuit.Spades
+                )
+            };
+
+            Assert.Equal(1, state.StartingHand.Rank);
+            Assert.Equal("AKs", state.StartingHand.HandCode);
+        }
+
+        [Fact]
+        public void StartingHand_BadHand_ReturnsCorrectStartingHand()
+        {
+            var state = new BoardState
+            {
+                StartingCard2 = new Card(
+                    Enums.CardValue.K,
+                    Enums.CardSuit.Spades
+                )
+            };
+
+            Assert.Equal(-1, state.StartingHand.Rank);
+            Assert.Equal("null", state.StartingHand.HandCode);
         }
     }
 }
