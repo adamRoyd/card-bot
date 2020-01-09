@@ -52,6 +52,8 @@ namespace bot
             }
         }
 
+        // TODO make a process/test to be able to rerun a loop by id - if the bot gets it wrong,
+        // we can replay and find out why.
         public static void WriteStatsToConsole(
             string dateStamp, 
             BoardState boardState, 
