@@ -1,7 +1,8 @@
+54o limp?
+32o limp?
+109o limp?
+
+
 
 -- TODO - factor position into calculation
 	- hit keyboard keys with suggested action
-
-
-
-

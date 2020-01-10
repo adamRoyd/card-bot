@@ -23,9 +23,9 @@ namespace bot
 
             while (true)
             {
-                //var dateStamp = DateTime.Now.ToString("hhmmss");
+                var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                var dateStamp = "063921";
+                //var dateStamp = "063921";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -47,7 +47,7 @@ namespace bot
 
                 DoAction(predictedAction, boardState);
 
-                await Task.Delay(2000);
+                await Task.Delay(1000);
             }
         }
 
@@ -55,9 +55,10 @@ namespace bot
         {
             if (state.FoldButton == "fold" && action.ActionType == ActionType.Fold)
             {
+                Console.WriteLine("Folding...");
                 //var key = Key.A;
                 //var target = Keyboard.FocusedElement;
-                System.Windows.Forms.SendKeys.Send("F");
+                System.Windows.Forms.SendKeys.SendWait("f");
             }
         }
 
