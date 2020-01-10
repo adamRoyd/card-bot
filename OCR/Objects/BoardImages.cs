@@ -35,7 +35,7 @@ namespace OCR.Objects
                     Name = ImageName.Flop1,
                     Type = ImageType.Card,
                     Image = new Bitmap(51, 75),
-                    X = 755,
+                    X = 749,
                     Y = 357
                 },
                 new BoardImage
@@ -51,7 +51,7 @@ namespace OCR.Objects
                     Name = ImageName.Flop3,
                     Type = ImageType.Card,
                     Image = new Bitmap(51, 75),
-                    X = 955,
+                    X = 949,
                     Y = 357
                 },
                 new BoardImage
@@ -59,7 +59,7 @@ namespace OCR.Objects
                     Name = ImageName.Turn,
                     Type = ImageType.Card,
                     Image = new Bitmap(51, 75),
-                    X = 1055,
+                    X = 1050,
                     Y = 357
                 },
                 new BoardImage
@@ -67,7 +67,7 @@ namespace OCR.Objects
                     Name = ImageName.River,
                     Type = ImageType.Card,
                     Image = new Bitmap(51, 75),
-                    X = 1155,
+                    X = 1152,
                     Y = 357
                 },
                 new BoardImage

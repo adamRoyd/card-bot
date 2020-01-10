@@ -39,6 +39,9 @@ namespace Engine.Models
                     return ActionType.Bet;
                 case 3:
                     return ActionType.Limp;
+                case 4:
+                case 5:
+                    return ActionType.Fold;
                 default:
                     return ActionType.Unknown;
             }

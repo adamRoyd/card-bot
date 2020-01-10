@@ -5,6 +5,7 @@ using OCR.Objects;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using Tesseract;
 
 namespace bot
@@ -24,10 +25,16 @@ namespace bot
         }
 
         public void SaveBoardImages(List<BoardImage> boardImages, string path)
-        {
+        {            
             foreach (var boardImage in boardImages)
             {
                 var boardImagePath = $"{path}\\spliced\\{boardImage.Name}.png";
+
+                if (File.Exists(boardImagePath))
+                {                    
+                    return;
+                }
+
                 boardImage.Image.Save(boardImagePath);
             }
         }

@@ -1,9 +1,5 @@
 ﻿using System;
-using Tesseract;
-using System.Diagnostics;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Imaging;
+using System.Windows.Input;
 using System.IO;
 using OCR;
 using Engine.Models;
@@ -27,7 +23,9 @@ namespace bot
 
             while (true)
             {
-                var dateStamp = DateTime.Now.ToString("hhmmss");
+                //var dateStamp = DateTime.Now.ToString("hhmmss");
+
+                var dateStamp = "063921";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -36,9 +34,9 @@ namespace bot
                 {
                     Directory.CreateDirectory(path);
                     Directory.CreateDirectory(splicedPath);
-                }
 
-                ScreenCaptureService.TakeScreenCapture(path);
+                    ScreenCaptureService.TakeScreenCapture(path);
+                }
 
                 await Task.Delay(1000);
 
@@ -47,13 +45,22 @@ namespace bot
 
                 WriteStatsToConsole(dateStamp, boardState, predictedAction);
 
+                DoAction(predictedAction, boardState);
 
                 await Task.Delay(2000);
             }
         }
 
-        // TODO make a process/test to be able to rerun a loop by id - if the bot gets it wrong,
-        // we can replay and find out why.
+        public static void DoAction(PredictedAction action, BoardState state)
+        {
+            if (state.FoldButton == "fold" && action.ActionType == ActionType.Fold)
+            {
+                //var key = Key.A;
+                //var target = Keyboard.FocusedElement;
+                System.Windows.Forms.SendKeys.Send("F");
+            }
+        }
+
         public static void WriteStatsToConsole(
             string dateStamp, 
             BoardState boardState, 

@@ -35,7 +35,6 @@ namespace bot
 
                 _boardStateHelper.SaveBoardImages(boardImages, path);
 
-
                 foreach (var boardImage in boardImages)
                 {
                     var boardImagepath = $"{path}\\spliced\\{boardImage.Name}.png";
