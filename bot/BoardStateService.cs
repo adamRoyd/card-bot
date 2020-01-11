@@ -35,15 +35,33 @@ namespace bot
                 {
                     Players = new Player[] 
                     {
-                        new Player(),
-                        new Player(),
-                        new Player(),
-                        new Player(),
-                        new Player(),
-                        new Player(),
-                        new Player(),
-                        new Player(),
-                        new Player()
+                        new Player{
+                            Position = 1
+                        },
+                        new Player{
+                            Position = 2
+                        },
+                        new Player{
+                            Position = 3
+                        },
+                        new Player{
+                            Position = 4
+                        },
+                        new Player{
+                            Position = 5
+                        },
+                        new Player{
+                            Position = 6
+                        },
+                        new Player{
+                            Position = 7
+                        },
+                        new Player{
+                            Position = 8
+                        },
+                        new Player{
+                            Position = 9
+                        },
                     }
                 };
 

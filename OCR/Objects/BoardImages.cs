@@ -251,8 +251,8 @@ namespace OCR.Objects
                     Name = ImageName.Stack1,
                     Type = ImageType.PlayerStack,
                     PlayerNumber = 1,
-                    Image = new Bitmap(170, 40),
-                    X = 829,
+                    Image = new Bitmap(150, 40),
+                    X = 849,
                     Y = 767
                 },
                 new BoardImage
@@ -260,26 +260,26 @@ namespace OCR.Objects
                     Name = ImageName.Stack2,
                     Type = ImageType.PlayerStack,
                     PlayerNumber = 2,
-                    Image = new Bitmap(170, 40),
-                    X = 451,
-                    Y = 676
+                    Image = new Bitmap(150, 40),
+                    X = 411,
+                    Y = 667
                 },
                 new BoardImage
                 {
                     Name = ImageName.Stack3,
                     Type = ImageType.PlayerStack,
                     PlayerNumber = 3,
-                    Image = new Bitmap(170, 40),
-                    X = 291,
-                    Y = 465
+                    Image = new Bitmap(150, 40),
+                    X = 261,
+                    Y = 461
                 },
                 new BoardImage
                 {
                     Name = ImageName.Stack4,
                     Type = ImageType.PlayerStack,
                     PlayerNumber = 4,
-                    Image = new Bitmap(170, 40),
-                    X = 350,
+                    Image = new Bitmap(150, 40),
+                    X = 340,
                     Y = 266
                 },
                 new BoardImage
@@ -287,8 +287,8 @@ namespace OCR.Objects
                     Name = ImageName.Stack5,
                     Type = ImageType.PlayerStack,
                     PlayerNumber = 5,
-                    Image = new Bitmap(170, 40),
-                    X = 623,
+                    Image = new Bitmap(150, 40),
+                    X = 613,
                     Y = 166
                 },
                 new BoardImage
@@ -296,9 +296,9 @@ namespace OCR.Objects
                     Name = ImageName.Stack6,
                     Type = ImageType.PlayerStack,
                     PlayerNumber = 6,
-                    Image = new Bitmap(170, 40),
+                    Image = new Bitmap(150, 40),
                     X = 1171,
-                    Y = 167
+                    Y = 162
                 },
                 new BoardImage
                 {
@@ -314,18 +314,18 @@ namespace OCR.Objects
                     Name = ImageName.Stack8,
                     Type = ImageType.PlayerStack,
                     PlayerNumber = 8,
-                    Image = new Bitmap(170, 40),
-                    X = 1516,
-                    Y = 468
+                    Image = new Bitmap(150, 40),
+                    X = 1496,
+                    Y = 462
                 },
                 new BoardImage
                 {
                     Name = ImageName.Stack9,
                     Type = ImageType.PlayerStack,
                     PlayerNumber = 9,
-                    Image = new Bitmap(170, 40),
-                    X = 1373,
-                    Y = 677
+                    Image = new Bitmap(150, 40),
+                    X = 1343,
+                    Y = 669
                 }
             };
         }

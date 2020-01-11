@@ -25,7 +25,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                dateStamp = "081723";
+                //dateStamp = "081723";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -41,9 +41,15 @@ namespace bot
                 await Task.Delay(1000);
 
                 var boardState = boardStateService.GetBoardStateFromImagePath(path);
+
+                foreach(var p in boardState.Players)
+                {
+                    Console.WriteLine($"{p.Position}: {p.Stack}");
+                }
+
                 var predictedAction = new PredictedAction(boardState);
 
-                WriteStatsToConsole(dateStamp, boardState, predictedAction);
+                //WriteStatsToConsole(dateStamp, boardState, predictedAction);
 
                 DoAction(predictedAction, boardState);
 
