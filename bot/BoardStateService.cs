@@ -15,8 +15,8 @@ namespace bot
         private readonly SuitFinder _suitFinder;
 
         public BoardStateService(
-            ImageProcessor imageProcessor, 
-            BoardStateHelper boardStateHelper, 
+            ImageProcessor imageProcessor,
+            BoardStateHelper boardStateHelper,
             SuitFinder suitFinder
         )
         {
@@ -31,7 +31,21 @@ namespace bot
             {
                 var boardImages = _imageProcessor.SliceBoardScreenShot(path);
 
-                var boardState = new BoardState();
+                var boardState = new BoardState
+                {
+                    Players = new Player[] 
+                    {
+                        new Player(),
+                        new Player(),
+                        new Player(),
+                        new Player(),
+                        new Player(),
+                        new Player(),
+                        new Player(),
+                        new Player(),
+                        new Player()
+                    }
+                };
 
                 _boardStateHelper.SaveBoardImages(boardImages, path);
 
@@ -39,17 +53,28 @@ namespace bot
                 {
                     var boardImagepath = $"{path}\\spliced\\{boardImage.Name}.png";
 
-                    boardState[boardImage.Name.ToString()] = boardImage.Type switch
+                    if (boardImage.Type == OCR.Objects.ImageType.PlayerStack)
                     {
-                        //TODO rename these image types to Number / Word etc
-                        OCR.Objects.ImageType.Card => _boardStateHelper.GetCardFromImage(boardImage.Image, boardImagepath),
-                        OCR.Objects.ImageType.Bet => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),
-                        OCR.Objects.ImageType.Pot => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),
-                        OCR.Objects.ImageType.DealerButton => _boardStateHelper.GetIsDealerButtonFromImage(boardImagepath),
-                        OCR.Objects.ImageType.Word => _boardStateHelper.GetWordFromImage(boardImage.Image, boardImagepath),
-                        OCR.Objects.ImageType.BigBlind => _boardStateHelper.GetBigBlindFromImage(boardImage.Image, boardImagepath),
-                        OCR.Objects.ImageType.ReadyForAction => _boardStateHelper.GetReadyForAction(boardImage.Image, boardImagepath)
-                    };
+                        _boardStateHelper.SetPlayerStack(boardImage, boardState);
+                    }
+                    else if (boardImage.Type == OCR.Objects.ImageType.PlayerDealerButton)
+                    {
+                        // TODO
+                        //_boardStateHelper.GetIsDealerButtonFromImage(boardImagepath)
+                    }
+                    else
+                    {
+                        boardState[boardImage.Name.ToString()] = boardImage.Type switch
+                        {
+                            //TODO rename these image types to Number / Word etc
+                            OCR.Objects.ImageType.Card => _boardStateHelper.GetCardFromImage(boardImage.Image, boardImagepath),
+                            OCR.Objects.ImageType.Bet => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),
+                            OCR.Objects.ImageType.Pot => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),
+                            OCR.Objects.ImageType.Word => _boardStateHelper.GetWordFromImage(boardImage.Image, boardImagepath),
+                            OCR.Objects.ImageType.BigBlind => _boardStateHelper.GetBigBlindFromImage(boardImage.Image, boardImagepath),
+                            OCR.Objects.ImageType.ReadyForAction => _boardStateHelper.GetReadyForAction(boardImage.Image, boardImagepath)
+                        };
+                    }
                 }
 
                 return boardState;

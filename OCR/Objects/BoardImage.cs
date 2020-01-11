@@ -6,6 +6,7 @@ namespace OCR.Objects
     {
         public ImageName Name { get; set; }
         public Image Image { get; set; }
+        public int PlayerNumber { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         public ImageType Type { get; set; }
@@ -40,7 +41,15 @@ namespace OCR.Objects
         Bet9,
         CallAmount,
         Pot,
-        Stack,
+        Stack1,
+        Stack2,
+        Stack3,
+        Stack4,
+        Stack5,
+        Stack6,
+        Stack7,
+        Stack8,
+        Stack9,
         BigBlind,
         Players,
         ReadyForAction
@@ -52,8 +61,9 @@ namespace OCR.Objects
         Pot,
         Bet,
         Word,
-        DealerButton,
+        PlayerDealerButton,
         BigBlind,
-        ReadyForAction
+        ReadyForAction,
+        PlayerStack
     }
 }

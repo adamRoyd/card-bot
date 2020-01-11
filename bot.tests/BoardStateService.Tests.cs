@@ -31,8 +31,7 @@ namespace bot
             var expectedState = new BoardState
             {
                 CallAmount = 536,
-                Stack = 1650,
-                Position1 = true,
+                Stack1 = 1650,
                 Pot = 661,
             };
 
@@ -41,16 +40,7 @@ namespace bot
             var serialized = JsonConvert.SerializeObject(state);
 
             Assert.Equal(expectedState.CallAmount, state.CallAmount);
-            Assert.Equal(expectedState.Stack, state.Stack);
-            Assert.Equal(expectedState.Position1, state.Position1);
-            Assert.Equal(expectedState.Position2, state.Position2);
-            Assert.Equal(expectedState.Position3, state.Position3);
-            Assert.Equal(expectedState.Position4, state.Position4);
-            Assert.Equal(expectedState.Position5, state.Position5);
-            Assert.Equal(expectedState.Position6, state.Position6);
-            Assert.Equal(expectedState.Position7, state.Position7);
-            Assert.Equal(expectedState.Position8, state.Position8);
-            Assert.Equal(expectedState.Position9, state.Position9);
+            Assert.Equal(expectedState.Stack1, state.Stack1);
             Assert.Equal(expectedState.Pot, state.Pot);
         }
 
@@ -160,20 +150,10 @@ namespace bot
             var path = "..\\..\\..\\images\\board2.png";
             var expectedState = new BoardState
             {
-                Position2 = true
             };
 
             var state = _boardStateService.GetBoardStateFromImagePath(path);
 
-            Assert.Equal(expectedState.Position1, state.Position1);
-            Assert.Equal(expectedState.Position2, state.Position2);
-            Assert.Equal(expectedState.Position3, state.Position3);
-            Assert.Equal(expectedState.Position4, state.Position4);
-            Assert.Equal(expectedState.Position5, state.Position5);
-            Assert.Equal(expectedState.Position6, state.Position6);
-            Assert.Equal(expectedState.Position7, state.Position7);
-            Assert.Equal(expectedState.Position8, state.Position8);
-            Assert.Equal(expectedState.Position9, state.Position9);
         }
 
         [Fact]
@@ -182,20 +162,11 @@ namespace bot
             var path = "..\\..\\..\\images\\board3.png";
             var expectedState = new BoardState
             {
-                Position3 = true
+
             };
 
             var state = _boardStateService.GetBoardStateFromImagePath(path);
 
-            Assert.Equal(expectedState.Position1, state.Position1);
-            Assert.Equal(expectedState.Position2, state.Position2);
-            Assert.Equal(expectedState.Position3, state.Position3);
-            Assert.Equal(expectedState.Position4, state.Position4);
-            Assert.Equal(expectedState.Position5, state.Position5);
-            Assert.Equal(expectedState.Position6, state.Position6);
-            Assert.Equal(expectedState.Position7, state.Position7);
-            Assert.Equal(expectedState.Position8, state.Position8);
-            Assert.Equal(expectedState.Position9, state.Position9);
         }
 
         [Fact]
@@ -204,20 +175,11 @@ namespace bot
             var path = "..\\..\\..\\images\\board4.png";
             var expectedState = new BoardState
             {
-                Position4 = true
+
             };
 
             var state = _boardStateService.GetBoardStateFromImagePath(path);
 
-            Assert.Equal(expectedState.Position1, state.Position1);
-            Assert.Equal(expectedState.Position2, state.Position2);
-            Assert.Equal(expectedState.Position3, state.Position3);
-            Assert.Equal(expectedState.Position4, state.Position4);
-            Assert.Equal(expectedState.Position5, state.Position5);
-            Assert.Equal(expectedState.Position6, state.Position6);
-            Assert.Equal(expectedState.Position7, state.Position7);
-            Assert.Equal(expectedState.Position8, state.Position8);
-            Assert.Equal(expectedState.Position9, state.Position9);
         }
 
         [Fact]
@@ -226,20 +188,11 @@ namespace bot
             var path = "..\\..\\..\\images\\board5.png";
             var expectedState = new BoardState
             {
-                Position5 = true
             };
 
             var state = _boardStateService.GetBoardStateFromImagePath(path);
 
-            Assert.Equal(expectedState.Position1, state.Position1);
-            Assert.Equal(expectedState.Position2, state.Position2);
-            Assert.Equal(expectedState.Position3, state.Position3);
-            Assert.Equal(expectedState.Position4, state.Position4);
-            Assert.Equal(expectedState.Position5, state.Position5);
-            Assert.Equal(expectedState.Position6, state.Position6);
-            Assert.Equal(expectedState.Position7, state.Position7);
-            Assert.Equal(expectedState.Position8, state.Position8);
-            Assert.Equal(expectedState.Position9, state.Position9);
+
         }
 
         [Fact]
@@ -248,20 +201,11 @@ namespace bot
             var path = "..\\..\\..\\images\\board6.png";
             var expectedState = new BoardState
             {
-                Position6 = true
+
             };
 
             var state = _boardStateService.GetBoardStateFromImagePath(path);
 
-            Assert.Equal(expectedState.Position1, state.Position1);
-            Assert.Equal(expectedState.Position2, state.Position2);
-            Assert.Equal(expectedState.Position3, state.Position3);
-            Assert.Equal(expectedState.Position4, state.Position4);
-            Assert.Equal(expectedState.Position5, state.Position5);
-            Assert.Equal(expectedState.Position6, state.Position6);
-            Assert.Equal(expectedState.Position7, state.Position7);
-            Assert.Equal(expectedState.Position8, state.Position8);
-            Assert.Equal(expectedState.Position9, state.Position9);
         }
 
         [Fact]
@@ -270,20 +214,12 @@ namespace bot
             var path = "..\\..\\..\\images\\board7.png";
             var expectedState = new BoardState
             {
-                Position7 = true
+
             };
 
             var state = _boardStateService.GetBoardStateFromImagePath(path);
 
-            Assert.Equal(expectedState.Position1, state.Position1);
-            Assert.Equal(expectedState.Position2, state.Position2);
-            Assert.Equal(expectedState.Position3, state.Position3);
-            Assert.Equal(expectedState.Position4, state.Position4);
-            Assert.Equal(expectedState.Position5, state.Position5);
-            Assert.Equal(expectedState.Position6, state.Position6);
-            Assert.Equal(expectedState.Position7, state.Position7);
-            Assert.Equal(expectedState.Position8, state.Position8);
-            Assert.Equal(expectedState.Position9, state.Position9);
+  
         }
 
         [Fact]
@@ -292,20 +228,12 @@ namespace bot
             var path = "..\\..\\..\\images\\board8.png";
             var expectedState = new BoardState
             {
-                Position8 = true
+
             };
 
             var state = _boardStateService.GetBoardStateFromImagePath(path);
 
-            Assert.Equal(expectedState.Position1, state.Position1);
-            Assert.Equal(expectedState.Position2, state.Position2);
-            Assert.Equal(expectedState.Position3, state.Position3);
-            Assert.Equal(expectedState.Position4, state.Position4);
-            Assert.Equal(expectedState.Position5, state.Position5);
-            Assert.Equal(expectedState.Position6, state.Position6);
-            Assert.Equal(expectedState.Position7, state.Position7);
-            Assert.Equal(expectedState.Position8, state.Position8);
-            Assert.Equal(expectedState.Position9, state.Position9);
+
         }
 
         [Fact]
@@ -314,20 +242,12 @@ namespace bot
             var path = "..\\..\\..\\images\\board9.png";
             var expectedState = new BoardState
             {
-                Position9 = true
+
             };
 
             var state = _boardStateService.GetBoardStateFromImagePath(path);
 
-            Assert.Equal(expectedState.Position1, state.Position1);
-            Assert.Equal(expectedState.Position2, state.Position2);
-            Assert.Equal(expectedState.Position3, state.Position3);
-            Assert.Equal(expectedState.Position4, state.Position4);
-            Assert.Equal(expectedState.Position5, state.Position5);
-            Assert.Equal(expectedState.Position6, state.Position6);
-            Assert.Equal(expectedState.Position7, state.Position7);
-            Assert.Equal(expectedState.Position8, state.Position8);
-            Assert.Equal(expectedState.Position9, state.Position9);
+
         }
 
         [Fact]

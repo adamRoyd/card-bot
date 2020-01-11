@@ -4,13 +4,11 @@ using System.Text;
 
 namespace Engine.Models
 {
-    public class Players
-    {
-    }
-
     public class Player
     {
+        public int Position { get; set; }
         public int Stack { get; set; }
         public int Bet { get; set; }
+        public bool isDealer { get; set; }
     }
 }

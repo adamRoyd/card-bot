@@ -73,6 +73,17 @@ namespace bot
             return result == "red";
         }
 
+        internal void SetPlayerStack(BoardImage boardImage, BoardState state)
+        {
+            string result = _imageProcessor.GetImageCharacters(boardImage.Image, PageSegMode.Auto);
+
+            int.TryParse(result, out int value);
+
+            var index = boardImage.PlayerNumber - 1;
+
+            state.Players[index].Stack = value;
+        }
+
         internal int GetBigBlindFromImage(Image image, string path)
         {
             string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);

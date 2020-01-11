@@ -20,15 +20,7 @@ namespace Engine.Models
         {
             get { return GetHandCode(); }
         }
-        public bool Position1 { get; set; } = false;
-        public bool Position2 { get; set; } = false;
-        public bool Position3 { get; set; } = false;
-        public bool Position4 { get; set; } = false;
-        public bool Position5 { get; set; } = false;
-        public bool Position6 { get; set; } = false;
-        public bool Position7 { get; set; } = false;
-        public bool Position8 { get; set; } = false;
-        public bool Position9 { get; set; } = false;
+        public Player[] Players { get; set; }
         public int MyPosition
         {
             get { return GetMyPosition(); }
@@ -36,9 +28,8 @@ namespace Engine.Models
         }
         public int CallAmount { get; set; }
         public int Pot { get; set; }
-        public int Stack { get; set; }
+        public int Stack1 { get; set; }
         public int BigBlind { get; set; }
-        public int Players { get; set; }
         public bool ReadyForAction { get; set; }
 
         public Hand StartingHand
@@ -56,42 +47,6 @@ namespace Engine.Models
 
         private int GetMyPosition()
         {
-            if (Position1)
-            {
-                return 1;
-            }
-            if (Position2)
-            {
-                return 2;
-            }
-            if (Position3)
-            {
-                return 3;
-            }
-            if (Position4)
-            {
-                return 4;
-            }
-            if (Position5)
-            {
-                return 5;
-            }
-            if (Position6)
-            {
-                return 6;
-            }
-            if (Position7)
-            {
-                return 7;
-            }
-            if (Position8)
-            {
-                return 8;
-            }
-            if (Position9)
-            {
-                return 9;
-            }
             return 0;
         }
 
@@ -102,12 +57,12 @@ namespace Engine.Models
                 return GameStage.EarlyGame;
             }
 
-            if ((BigBlind >= 100 && BigBlind < 300) && Players > 4)
+            if ((BigBlind >= 100 && BigBlind < 300))
             {
                 return GameStage.MiddleGame;
             }
 
-            if (Players < 5)
+            if (false)
             {
                 return GameStage.LateGame;
             }
