@@ -54,7 +54,7 @@ namespace bot
 
         internal int GetNumberFromImage(Image image, string path)
         {
-            string result = _imageProcessor.GetImageCharactersAuto(image);
+            string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
             result = result.ToLower().Replace("pot", "").Replace(":", "").Replace(",", "").Trim();
             int.TryParse(result, out int value);
             return value;
@@ -62,9 +62,53 @@ namespace bot
 
         internal string GetWordFromImage(Image image, string path)
         {
-            string result = _imageProcessor.GetImageCharactersAuto(image);
+            string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
             result = result.ToLower().Trim();
             return result;
+        }
+
+        internal bool GetReadyForAction(Image image, string path)
+        {
+            string result = _suitFinder.GetTopRGBColor(path);
+            return result == "red";
+        }
+
+        internal int GetBigBlindFromImage(Image image, string path)
+        {
+            string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
+
+            if (result.Split(" ").Length < 4)
+            {
+                return 0;
+            }
+
+            var bigBlind = result.Split(" ")[3];
+
+            if(bigBlind == "1530")
+            {
+                return 20;
+            }
+            if (bigBlind == "2550")
+            {
+                return 30;
+            }
+            if(bigBlind == "50100")
+            {
+                return 50;
+            }
+            if(bigBlind == "75150")
+            {
+                return 100;
+            }
+            if(bigBlind == "100200")
+            {
+                return 150;
+            }
+            if(bigBlind == "150300")
+            {
+                return 200;
+            }
+            return 0;
         }
 
         internal bool GetIsDealerButtonFromImage(string path)

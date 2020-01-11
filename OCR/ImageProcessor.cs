@@ -18,9 +18,9 @@ namespace OCR
            
         }
 
-        public string GetImageCharactersAuto(Image image)
+        public string GetImageCharacters(Image image, PageSegMode segMode)
         {
-            var result = GetCharacters(image, PageSegMode.Auto);
+            var result = GetCharacters(image, segMode);
             return result;
         }
 

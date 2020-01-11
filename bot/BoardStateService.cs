@@ -46,7 +46,9 @@ namespace bot
                         OCR.Objects.ImageType.Bet => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),
                         OCR.Objects.ImageType.Pot => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),
                         OCR.Objects.ImageType.DealerButton => _boardStateHelper.GetIsDealerButtonFromImage(boardImagepath),
-                        OCR.Objects.ImageType.Word => _boardStateHelper.GetWordFromImage(boardImage.Image, boardImagepath)
+                        OCR.Objects.ImageType.Word => _boardStateHelper.GetWordFromImage(boardImage.Image, boardImagepath),
+                        OCR.Objects.ImageType.BigBlind => _boardStateHelper.GetBigBlindFromImage(boardImage.Image, boardImagepath),
+                        OCR.Objects.ImageType.ReadyForAction => _boardStateHelper.GetReadyForAction(boardImage.Image, boardImagepath)
                     };
                 }
 

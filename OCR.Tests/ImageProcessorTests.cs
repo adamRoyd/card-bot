@@ -173,5 +173,22 @@ namespace OCR.Tests
 
             Assert.Equal(Engine.Enums.CardValue.A, cardValue);
         }
+
+
+        [Fact]
+        public void SliceBoardImage_Board1_ReturnsBigBlind()
+        {
+            var path = "..\\..\\..\\images\\1";
+
+
+            var boardImages = imageProcessor.SliceBoardScreenShot(path);
+
+            var boardImage = boardImages.FirstOrDefault(b => b.Name == Objects.ImageName.BigBlind);
+            var raw = imageProcessor.GetImageCharacters(boardImage.Image,PageSegMode.SingleLine);
+
+            var bigBlind = raw.Split(" ")[3];
+
+            Assert.Equal("2550", bigBlind);
+        }
     }
 }

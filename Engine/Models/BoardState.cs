@@ -29,12 +29,17 @@ namespace Engine.Models
         public bool Position7 { get; set; } = false;
         public bool Position8 { get; set; } = false;
         public bool Position9 { get; set; } = false;
+        public int MyPosition
+        {
+            get { return GetMyPosition(); }
+            set { }
+        }
         public int CallAmount { get; set; }
         public int Pot { get; set; }
         public int Stack { get; set; }
         public int BigBlind { get; set; }
         public int Players { get; set; }
-        public string FoldButton { get; set; }
+        public bool ReadyForAction { get; set; }
 
         public Hand StartingHand
         {
@@ -49,6 +54,46 @@ namespace Engine.Models
             get { return GetGameStage(); }
         }
 
+        private int GetMyPosition()
+        {
+            if (Position1)
+            {
+                return 1;
+            }
+            if (Position2)
+            {
+                return 2;
+            }
+            if (Position3)
+            {
+                return 3;
+            }
+            if (Position4)
+            {
+                return 4;
+            }
+            if (Position5)
+            {
+                return 5;
+            }
+            if (Position6)
+            {
+                return 6;
+            }
+            if (Position7)
+            {
+                return 7;
+            }
+            if (Position8)
+            {
+                return 8;
+            }
+            if (Position9)
+            {
+                return 9;
+            }
+            return 0;
+        }
 
         private GameStage GetGameStage()
         {

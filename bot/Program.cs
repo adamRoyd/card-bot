@@ -25,7 +25,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                //var dateStamp = "063921";
+                dateStamp = "084135";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -53,12 +53,30 @@ namespace bot
 
         public static void DoAction(PredictedAction action, BoardState state)
         {
-            if (state.FoldButton == "fold" && action.ActionType == ActionType.Fold)
+            if (!state.ReadyForAction)
+            {
+                return;
+            }
+
+            if(state.CallAmount == 0)
+            {
+                Console.WriteLine("Checking...");
+                System.Windows.Forms.SendKeys.SendWait("c");
+                return;
+            }
+
+            if (action.ActionType == ActionType.Fold)
             {
                 Console.WriteLine("Folding...");
-                //var key = Key.A;
-                //var target = Keyboard.FocusedElement;
                 System.Windows.Forms.SendKeys.SendWait("f");
+                return;
+            }
+
+            if (action.ActionType == ActionType.Limp)
+            {
+                Console.WriteLine("Limping...");
+                System.Windows.Forms.SendKeys.SendWait("c");
+                return;
             }
         }
 
@@ -79,6 +97,8 @@ namespace bot
                 $"Id: {dateStamp} " +
                 $"HandCode: {boardState.HandCode} " +
                 $"Rank: {rank} " +
+                $"My Position: {boardState.MyPosition} " +
+                $"BB: {boardState.BigBlind} " +
                 $"Action: {predictedAction.ActionType}");
 
             Console.WriteLine(

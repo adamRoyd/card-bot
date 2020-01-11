@@ -241,7 +241,7 @@ namespace OCR.Objects
                 new BoardImage
                 {
                     Name = ImageName.BigBlind,
-                    Type = ImageType.Bet,
+                    Type = ImageType.BigBlind,
                     Image = new Bitmap(200, 25),
                     X = 1760,
                     Y = 110
@@ -256,10 +256,10 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
-                    Name = ImageName.FoldButton,
-                    Type = ImageType.Word,
+                    Name = ImageName.ReadyForAction,
+                    Type = ImageType.ReadyForAction,
                     Image = new Bitmap(160, 50),
-                    X = 1059,
+                    X = 1159,
                     Y = 967
                 }
             };

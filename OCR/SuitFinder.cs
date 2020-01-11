@@ -26,7 +26,6 @@ namespace OCR
             return topColor != "green";
         }
 
-
         public CardSuit GetSuitFromImage(string path)
         {
             var topColor = GetTopRGBColor(path);
@@ -49,7 +48,7 @@ namespace OCR
             return CardSuit.Spades;
         }
 
-        private string GetTopRGBColor(string path)
+        public string GetTopRGBColor(string path)
         {
             Bitmap theBitMap = Bitmap.FromFile(path) as Bitmap;
 

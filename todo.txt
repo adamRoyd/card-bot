@@ -1,8 +1,4 @@
-54o limp?
-32o limp?
-109o limp?
+Get number of players left and where - work out position in separate class
 
 
-
--- TODO - factor position into calculation
-	- hit keyboard keys with suggested action
+083819 should be limp

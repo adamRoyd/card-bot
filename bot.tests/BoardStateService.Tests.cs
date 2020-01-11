@@ -27,14 +27,13 @@ namespace bot
         [Fact]
         public void GetBoardStateFromImagePath_Board1_ReturnsCorrectState()
         {
-            var path = "..\\..\\..\\images\\board1.png";
+            var path = "..\\..\\..\\images\\1";
             var expectedState = new BoardState
             {
                 CallAmount = 536,
                 Stack = 1650,
                 Position1 = true,
                 Pot = 661,
-                FoldButton = "fold"
             };
 
             var state = _boardStateService.GetBoardStateFromImagePath(path);
@@ -53,7 +52,6 @@ namespace bot
             Assert.Equal(expectedState.Position8, state.Position8);
             Assert.Equal(expectedState.Position9, state.Position9);
             Assert.Equal(expectedState.Pot, state.Pot);
-            Assert.Equal(expectedState.FoldButton, state.FoldButton);
         }
 
         [Fact]

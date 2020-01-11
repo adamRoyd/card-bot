@@ -43,7 +43,7 @@ namespace OCR.Objects
         Stack,
         BigBlind,
         Players,
-        FoldButton
+        ReadyForAction
     }
 
     public enum ImageType
@@ -53,5 +53,7 @@ namespace OCR.Objects
         Bet,
         Word,
         DealerButton,
+        BigBlind,
+        ReadyForAction
     }
 }

@@ -38,7 +38,7 @@ namespace Engine.Models
                 case 2:
                     return ActionType.Bet;
                 case 3:
-                    return ActionType.Limp;
+                    return GetLimpHandAction();
                 case 4:
                 case 5:
                     return ActionType.Fold;
@@ -46,6 +46,30 @@ namespace Engine.Models
                     return ActionType.Unknown;
             }
         }
+
+        private ActionType GetLimpHandAction()
+        {
+            if(_state.MyPosition > 5)
+            {
+                Console.WriteLine("No limp from early position");
+                return ActionType.Fold;
+            }
+
+            if(_state.CallAmount != _state.BigBlind)
+            {
+                Console.WriteLine("Call Amount does not match big blind");
+                return ActionType.Fold;
+            }
+
+            if(_state.BigBlind > 50)
+            {
+                Console.WriteLine("Big blind too high");
+                return ActionType.Fold;
+            }
+
+            return ActionType.Limp;
+        }
+
 
         private int GetBetAmount()
         {
