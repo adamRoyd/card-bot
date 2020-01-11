@@ -1,4 +1,0 @@
-Get number of players left and where - work out position in separate class
-
-
-083819 should be limp

@@ -38,18 +38,18 @@ namespace bot
                     ScreenCaptureService.TakeScreenCapture(path);
                 }
 
-                await Task.Delay(1000);
+                await Task.Delay(100);
 
                 var boardState = boardStateService.GetBoardStateFromImagePath(path);
 
-                foreach(var p in boardState.Players)
-                {
-                    Console.WriteLine($"{p.Position}: {p.Stack}");
-                }
+                //foreach(var p in boardState.Players)
+                //{
+                //    Console.WriteLine($"{p.Position}: {p.Stack}");
+                //}
 
                 var predictedAction = new PredictedAction(boardState);
 
-                //WriteStatsToConsole(dateStamp, boardState, predictedAction);
+                WriteStatsToConsole(dateStamp, boardState, predictedAction);
 
                 DoAction(predictedAction, boardState);
 
