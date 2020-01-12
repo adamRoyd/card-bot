@@ -44,7 +44,7 @@ namespace bot
 
                     if (boardImage.Type == OCR.Objects.ImageType.PlayerStack)
                     {
-                        _boardStateHelper.SetPlayerStack(boardImage, boardState);
+                        _boardStateHelper.SetPlayerStack(boardImagepath, boardImage, boardState);
                     }
                     else if (boardImage.Type == OCR.Objects.ImageType.PlayerDealerButton)
                     {

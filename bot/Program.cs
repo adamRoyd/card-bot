@@ -4,6 +4,7 @@ using System.IO;
 using OCR;
 using Engine.Models;
 using System.Threading.Tasks;
+using Engine.Enums;
 
 namespace bot
 {
@@ -25,7 +26,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                dateStamp = "085132";
+                //dateStamp = "033047";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -42,12 +43,20 @@ namespace bot
 
                 var boardState = boardStateService.GetBoardStateFromImagePath(path);
 
-                foreach (var p in boardState.Players)
-                {
-                    Console.WriteLine($"{p.Position}: {p.Stack} {p.IsDealer}");
-                }
+                PredictedAction predictedAction;
 
-                var predictedAction = new PredictedAction(boardState);
+                switch (boardState.GameStage)
+                {
+                    case GameStage.EarlyGame:
+                        predictedAction = new EarlyGamePredictedAction
+                        {
+                            _state = boardState
+                        };
+                        break;
+                    default:
+                        predictedAction = null;
+                        break;
+                }
 
                 WriteStatsToConsole(dateStamp, boardState, predictedAction);
 
@@ -61,7 +70,7 @@ namespace bot
 
         public static void DoAction(PredictedAction action, BoardState state)
         {
-            if (!state.ReadyForAction)
+            if (!state.ReadyForAction || action == null)
             {
                 return;
             }
@@ -73,14 +82,14 @@ namespace bot
                 return;
             }
 
-            if (action.ActionType == ActionType.Fold)
+            if (action.Action == ActionType.Fold)
             {
                 Console.WriteLine("Folding...");
                 System.Windows.Forms.SendKeys.SendWait("f");
                 return;
             }
 
-            if (action.ActionType == ActionType.Limp)
+            if (action.Action == ActionType.Limp)
             {
                 Console.WriteLine("Limping...");
                 System.Windows.Forms.SendKeys.SendWait("c");
@@ -94,6 +103,11 @@ namespace bot
             PredictedAction predictedAction
         )
         {
+            //foreach (var p in boardState.Players)
+            //{
+            //    Console.WriteLine($"{p.Position}: {p.Stack}");
+            //}
+
             var rank = boardState.StartingHand == null ? -1 : boardState.StartingHand.Rank;
             var flop1 = boardState.Flop1 == null ? "  " : $"{boardState.Flop1.SimpleValue}{boardState.Flop1.Suit}";
             var flop2 = boardState.Flop2 == null ? "  " : $"{boardState.Flop2.SimpleValue}{boardState.Flop2.Suit}";
@@ -103,11 +117,12 @@ namespace bot
 
             Console.WriteLine(
                 $"Id: {dateStamp} " +
+                $"Players: {boardState.NumberOfPlayers} " +
                 $"HandCode: {boardState.HandCode} " +
                 $"Rank: {rank} " +
                 $"My Position: {boardState.MyPosition} " +
                 $"BB: {boardState.BigBlind} " +
-                $"Action: {predictedAction.ActionType}");
+                $"Action: {predictedAction?.Action}");
 
             //Console.WriteLine(
             //    $"{flop1} | {flop2} | {flop3} | {turn} | {river}");

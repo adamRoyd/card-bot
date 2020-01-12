@@ -10,5 +10,6 @@ namespace Engine.Models
         public int Stack { get; set; }
         public int Bet { get; set; }
         public bool IsDealer { get; set; }
+        public bool Eliminated { get; set; }
     }
 }

@@ -21,6 +21,11 @@ namespace Engine.Models
             get { return GetHandCode(); }
         }
         public Player[] Players { get; set; }
+        public int NumberOfPlayers
+        {
+            get { return Players.Where(p => !p.Eliminated).Count(); }
+            set { }
+        }
         public int MyPosition
         {
             get { return GetMyPosition(); }
@@ -82,7 +87,7 @@ namespace Engine.Models
 
         private int GetMyPosition()
         {
-            var playersInGame = Players.Where(p => p.Stack > 1);
+            var playersInGame = Players.Where(p => !p.Eliminated).OrderBy(p => p.Position);
 
             var dealer = Players.FirstOrDefault(p => p.IsDealer);
 
@@ -91,7 +96,21 @@ namespace Engine.Models
                 Console.WriteLine("WARNING Dealer is null");
             }
 
-            //TODO count backwards from dealer position in playersInGame - that is your position
+            var dealerPosition = 1;
+
+            foreach(var player in playersInGame)
+            {
+                if (player.IsDealer)
+                {
+                    break;
+                }
+                else
+                {
+                    dealerPosition++;
+                }
+            }
+
+            var myPosition = playersInGame.Count() + 1 - dealerPosition; 
 
             return dealer.Position;
         }

@@ -314,9 +314,9 @@ namespace OCR.Objects
                     Name = ImageName.Stack7,
                     Type = ImageType.PlayerStack,
                     PlayerNumber = 7,
-                    Image = new Bitmap(170, 40),
-                    X = 1455,
-                    Y = 266
+                    Image = new Bitmap(120, 40),
+                    X = 1445,
+                    Y = 260
                 },
                 new BoardImage
                 {

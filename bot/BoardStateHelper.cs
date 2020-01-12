@@ -73,7 +73,7 @@ namespace bot
             return result == "red";
         }
 
-        internal void SetPlayerStack(BoardImage boardImage, BoardState state)
+        internal void SetPlayerStack(string path, BoardImage boardImage, BoardState state)
         {
             string result = _imageProcessor.GetImageCharacters(boardImage.Image, PageSegMode.Auto);
 
@@ -82,6 +82,10 @@ namespace bot
             var index = boardImage.PlayerNumber - 1;
 
             state.Players[index].Stack = value;
+
+            //Set active / inactive 
+            string colour = _suitFinder.GetBlackOrWhite(path);
+            state.Players[index].Eliminated = colour == "white";
         }
 
         internal void SetPlayerIsDealer(string path, BoardImage boardImage, BoardState state)

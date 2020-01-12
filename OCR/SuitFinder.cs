@@ -51,43 +51,13 @@ namespace OCR
         public string GetTopRGBColor(string path)
         {
             Bitmap theBitMap = Bitmap.FromFile(path) as Bitmap;
-
-            TenMostUsedColors = new List<Color>();
-
-            MostUsedColor = Color.Empty;
-            MostUsedColorIncidence = 0;
-
-            dctColorIncidence = new Dictionary<int, int>();
-
-            for (int row = 0; row < theBitMap.Size.Width; row++)
-            {
-                for (int col = 0; col < theBitMap.Size.Height; col++)
-                {
-                    pixelColor = theBitMap.GetPixel(row, col).ToArgb();
-
-                    if (dctColorIncidence.Keys.Contains(pixelColor))
-                    {
-                        dctColorIncidence[pixelColor]++;
-                    }
-                    else
-                    {
-                        dctColorIncidence.Add(pixelColor, 1);
-                    }
-                }
-            }
-
-            var dctSortedByValueHighToLow = dctColorIncidence.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
-
-            foreach (KeyValuePair<int, int> kvp in dctSortedByValueHighToLow.Take(10))
-            {
-                TenMostUsedColors.Add(Color.FromArgb(kvp.Key));
-            }
+            var mostUsedColors = GetTenMostUsedColors(theBitMap);
 
             var redCount = 0;
             var blueCount = 0;
             var greenCount = 0;
 
-            foreach (var topcolor in TenMostUsedColors)
+            foreach (var topcolor in mostUsedColors)
             {
                 if (topcolor.G > topcolor.B && topcolor.G > topcolor.R)
                 {
@@ -123,5 +93,64 @@ namespace OCR
             return "black";
         }
 
+        public string GetBlackOrWhite(string path)
+        {
+            Bitmap theBitMap = Bitmap.FromFile(path) as Bitmap;
+            var mostUsedColors = GetTenMostUsedColors(theBitMap);
+
+            int whiteCount = 0;
+            int blackCount = 0;
+
+            foreach (var colour in mostUsedColors)
+            {
+                var brightness = colour.GetBrightness();
+                if (brightness > 0.5)
+                {
+                    whiteCount++;
+                }
+                else
+                {
+                    blackCount++;
+                }
+            }
+
+            return whiteCount > blackCount ? "white" : "black";
+        }
+
+        private static List<Color> GetTenMostUsedColors(Bitmap theBitMap)
+        {
+            TenMostUsedColors = new List<Color>();
+
+            MostUsedColor = Color.Empty;
+            MostUsedColorIncidence = 0;
+
+            dctColorIncidence = new Dictionary<int, int>();
+
+            for (int row = 0; row < theBitMap.Size.Width; row++)
+            {
+                for (int col = 0; col < theBitMap.Size.Height; col++)
+                {
+                    pixelColor = theBitMap.GetPixel(row, col).ToArgb();
+
+                    if (dctColorIncidence.Keys.Contains(pixelColor))
+                    {
+                        dctColorIncidence[pixelColor]++;
+                    }
+                    else
+                    {
+                        dctColorIncidence.Add(pixelColor, 1);
+                    }
+                }
+            }
+
+            var dctSortedByValueHighToLow = dctColorIncidence.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+
+            foreach (KeyValuePair<int, int> kvp in dctSortedByValueHighToLow.Take(10))
+            {
+                TenMostUsedColors.Add(Color.FromArgb(kvp.Key));
+            }
+
+            return TenMostUsedColors;
+        }
     }
 }
