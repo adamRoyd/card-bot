@@ -156,8 +156,24 @@ namespace Engine.Models
 
         private Hand GetStartingHand()
         {
+            List<Hand> handSet;
+            var stackRatio = Stack1 / BigBlind;
+            Console.WriteLine($"Stack ratio... {stackRatio}");
 
-            var hand = GameHands.EarlyGameHands.FirstOrDefault(h => h.HandCode == HandCode);
+            if (stackRatio > 15 && GameStage == GameStage.EarlyGame)
+            {
+                handSet = GameHands.EarlyGameHands;
+            } else if(stackRatio <= 15)
+            {
+                handSet = GameHands.PushOrFoldHands;
+            }
+            else
+            {
+                handSet = null;
+                return new Hand("", -99);
+            }
+
+            var hand = handSet.FirstOrDefault(h => h.HandCode == HandCode);
 
             if (hand == null)
             {

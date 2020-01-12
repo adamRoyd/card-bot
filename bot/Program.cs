@@ -122,6 +122,7 @@ namespace bot
                 $"Rank: {rank} " +
                 $"My Position: {boardState.MyPosition} " +
                 $"BB: {boardState.BigBlind} " +
+                $"MyStack: {boardState.Stack1} " +
                 $"Action: {predictedAction?.Action}");
 
             //Console.WriteLine(

@@ -38,7 +38,6 @@ namespace Engine.Models
         private ActionType GetLimpHandAction()
         {
             // TODO special consideration for small blind
-
             if (_state.MyPosition > 5)
             {
                 Console.WriteLine("No limp from early position");

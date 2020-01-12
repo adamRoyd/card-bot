@@ -12,6 +12,7 @@ namespace Engine.Enums
         Raise = 4,
         Limp = 5,
         AllIn = 6,
-        Unknown = 6
+        AllInSteal = 7,
+        Unknown = 8
     }
 }
