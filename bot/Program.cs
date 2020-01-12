@@ -25,7 +25,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                //dateStamp = "081723";
+                dateStamp = "085132";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -42,10 +42,10 @@ namespace bot
 
                 var boardState = boardStateService.GetBoardStateFromImagePath(path);
 
-                //foreach(var p in boardState.Players)
-                //{
-                //    Console.WriteLine($"{p.Position}: {p.Stack}");
-                //}
+                foreach (var p in boardState.Players)
+                {
+                    Console.WriteLine($"{p.Position}: {p.Stack} {p.IsDealer}");
+                }
 
                 var predictedAction = new PredictedAction(boardState);
 
@@ -54,6 +54,8 @@ namespace bot
                 DoAction(predictedAction, boardState);
 
                 await Task.Delay(1000);
+
+                break;
             }
         }
 
@@ -93,11 +95,11 @@ namespace bot
         )
         {
             var rank = boardState.StartingHand == null ? -1 : boardState.StartingHand.Rank;
-            var flop1 = boardState.Flop1 == null ? "1" : $"{boardState.Flop1.Value}{boardState.Flop1.Suit}";
-            var flop2 = boardState.Flop2 == null ? "2" : $"{boardState.Flop2.Value}{boardState.Flop2.Suit}";
-            var flop3 = boardState.Flop3 == null ? "3" : $"{boardState.Flop3.Value}{boardState.Flop3.Suit}";
-            var turn = boardState.Turn == null ? "" : $"{boardState.Turn.Value}{boardState.Turn.Suit}";
-            var river = boardState.River == null ? "" : $"{boardState.River.Value}{boardState.River.Suit}";
+            var flop1 = boardState.Flop1 == null ? "  " : $"{boardState.Flop1.SimpleValue}{boardState.Flop1.Suit}";
+            var flop2 = boardState.Flop2 == null ? "  " : $"{boardState.Flop2.SimpleValue}{boardState.Flop2.Suit}";
+            var flop3 = boardState.Flop3 == null ? "  " : $"{boardState.Flop3.SimpleValue}{boardState.Flop3.Suit}";
+            var turn = boardState.Turn == null ? "  " : $"{boardState.Turn.SimpleValue}{boardState.Turn.Suit}";
+            var river = boardState.River == null ? "  " : $"{boardState.River.SimpleValue}{boardState.River.Suit}";
 
             Console.WriteLine(
                 $"Id: {dateStamp} " +
@@ -107,8 +109,8 @@ namespace bot
                 $"BB: {boardState.BigBlind} " +
                 $"Action: {predictedAction.ActionType}");
 
-            Console.WriteLine(
-                $"{flop1} {flop2} {flop3} {turn} {river}");
+            //Console.WriteLine(
+            //    $"{flop1} | {flop2} | {flop3} | {turn} | {river}");
         }
     }
 }

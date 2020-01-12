@@ -33,36 +33,7 @@ namespace bot
 
                 var boardState = new BoardState
                 {
-                    Players = new Player[] 
-                    {
-                        new Player{
-                            Position = 1
-                        },
-                        new Player{
-                            Position = 2
-                        },
-                        new Player{
-                            Position = 3
-                        },
-                        new Player{
-                            Position = 4
-                        },
-                        new Player{
-                            Position = 5
-                        },
-                        new Player{
-                            Position = 6
-                        },
-                        new Player{
-                            Position = 7
-                        },
-                        new Player{
-                            Position = 8
-                        },
-                        new Player{
-                            Position = 9
-                        },
-                    }
+                    
                 };
 
                 _boardStateHelper.SaveBoardImages(boardImages, path);
@@ -77,14 +48,12 @@ namespace bot
                     }
                     else if (boardImage.Type == OCR.Objects.ImageType.PlayerDealerButton)
                     {
-                        // TODO
-                        //_boardStateHelper.GetIsDealerButtonFromImage(boardImagepath)
+                        _boardStateHelper.SetPlayerIsDealer(boardImagepath, boardImage, boardState);
                     }
                     else
                     {
                         boardState[boardImage.Name.ToString()] = boardImage.Type switch
                         {
-                            //TODO rename these image types to Number / Word etc
                             OCR.Objects.ImageType.Card => _boardStateHelper.GetCardFromImage(boardImage.Image, boardImagepath),
                             OCR.Objects.ImageType.Bet => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),
                             OCR.Objects.ImageType.Pot => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),

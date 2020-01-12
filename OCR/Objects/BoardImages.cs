@@ -73,6 +73,7 @@ namespace OCR.Objects
                 new BoardImage
                 {
                     Name = ImageName.Position1,
+                    PlayerNumber = 1,
                     Type = ImageType.PlayerDealerButton,
                     Image = new Bitmap(25, 25),
                     X = 831,
@@ -81,6 +82,7 @@ namespace OCR.Objects
                 new BoardImage
                 {
                     Name = ImageName.Position2,
+                    PlayerNumber = 2,
                     Type = ImageType.PlayerDealerButton,
                     Image = new Bitmap(25, 25),
                     X = 590,
@@ -89,6 +91,7 @@ namespace OCR.Objects
                 new BoardImage
                 {
                     Name = ImageName.Position3,
+                    PlayerNumber = 3,
                     Type = ImageType.PlayerDealerButton,
                     Image = new Bitmap(25, 25),
                     X = 505,
@@ -97,6 +100,7 @@ namespace OCR.Objects
                 new BoardImage
                 {
                     Name = ImageName.Position4,
+                    PlayerNumber = 4,
                     Type = ImageType.PlayerDealerButton,
                     Image = new Bitmap(25, 25),
                     X = 670,
@@ -105,6 +109,7 @@ namespace OCR.Objects
                 new BoardImage
                 {
                     Name = ImageName.Position5,
+                    PlayerNumber = 5,
                     Type = ImageType.PlayerDealerButton,
                     Image = new Bitmap(25, 25),
                     X = 900,
@@ -113,6 +118,7 @@ namespace OCR.Objects
                 new BoardImage
                 {
                     Name = ImageName.Position6,
+                    PlayerNumber = 6,
                     Type = ImageType.PlayerDealerButton,
                     Image = new Bitmap(25, 25),
                     X = 1189,
@@ -121,6 +127,7 @@ namespace OCR.Objects
                 new BoardImage
                 {
                     Name = ImageName.Position7,
+                    PlayerNumber = 7,
                     Type = ImageType.PlayerDealerButton,
                     Image = new Bitmap(25, 25),
                     X = 1339,
@@ -129,6 +136,7 @@ namespace OCR.Objects
                 new BoardImage
                 {
                     Name = ImageName.Position8,
+                    PlayerNumber = 8,
                     Type = ImageType.PlayerDealerButton,
                     Image = new Bitmap(25, 25),
                     X = 1385,
@@ -137,6 +145,7 @@ namespace OCR.Objects
                 new BoardImage
                 {
                     Name = ImageName.Position9,
+                    PlayerNumber = 9,
                     Type = ImageType.PlayerDealerButton,
                     Image = new Bitmap(25, 25),
                     X = 1215,

@@ -1,0 +1,2 @@
+get position when considering players that have been knocked out
+pre flop actions only

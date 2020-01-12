@@ -9,6 +9,6 @@ namespace Engine.Models
         public int Position { get; set; }
         public int Stack { get; set; }
         public int Bet { get; set; }
-        public bool isDealer { get; set; }
+        public bool IsDealer { get; set; }
     }
 }

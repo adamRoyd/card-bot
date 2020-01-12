@@ -45,9 +45,55 @@ namespace Engine.Models
             get { return GetGameStage(); }
         }
 
+        public BoardState()
+        {
+            Players = new Player[]
+                {
+                    new Player{
+                        Position = 1
+                    },
+                    new Player{
+                        Position = 2
+                    },
+                    new Player{
+                        Position = 3
+                    },
+                    new Player{
+                        Position = 4
+                    },
+                    new Player{
+                        Position = 5
+                    },
+                    new Player{
+                        Position = 6
+                    },
+                    new Player{
+                        Position = 7
+                    },
+                    new Player{
+                        Position = 8
+                    },
+                    new Player{
+                        Position = 9
+                    }
+                };
+        }
+
+
         private int GetMyPosition()
         {
-            return 0;
+            var playersInGame = Players.Where(p => p.Stack > 1);
+
+            var dealer = Players.FirstOrDefault(p => p.IsDealer);
+
+            if (dealer == null)
+            {
+                Console.WriteLine("WARNING Dealer is null");
+            }
+
+            //TODO count backwards from dealer position in playersInGame - that is your position
+
+            return dealer.Position;
         }
 
         private GameStage GetGameStage()
@@ -62,7 +108,7 @@ namespace Engine.Models
                 return GameStage.MiddleGame;
             }
 
-            if (false)
+            if (true)
             {
                 return GameStage.LateGame;
             }
@@ -79,13 +125,12 @@ namespace Engine.Models
 
             string suited = StartingCard1.Suit == StartingCard2.Suit ? "s" : "o";
 
-            //TODO this should be in the Card class to get the cleaned up value for Flop turn river
             var card1Number = (int)StartingCard1.Value;
-            var card1 = card1Number < 11 ? card1Number.ToString() : StartingCard1.Value.ToString();
             var card2Number = (int)StartingCard2.Value;
-            var card2 = card2Number < 11 ? card2Number.ToString() : StartingCard2.Value.ToString();
 
-            string handCode = card1Number >= card2Number ? $"{card1}{card2}{suited}" : $"{card2}{card1}{suited}";
+            string handCode = card1Number >= card2Number ? 
+                $"{StartingCard1.SimpleValue}{StartingCard2.SimpleValue}{suited}" : 
+                $"{StartingCard2.SimpleValue}{StartingCard1.SimpleValue}{suited}";
 
             return handCode;
         }

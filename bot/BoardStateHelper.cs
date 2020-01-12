@@ -31,7 +31,7 @@ namespace bot
                 var boardImagePath = $"{path}\\spliced\\{boardImage.Name}.png";
 
                 if (File.Exists(boardImagePath))
-                {                    
+                {
                     return;
                 }
 
@@ -84,6 +84,14 @@ namespace bot
             state.Players[index].Stack = value;
         }
 
+        internal void SetPlayerIsDealer(string path, BoardImage boardImage, BoardState state)
+        {
+            var isDealer = _suitFinder.IsDealerButton(path);
+            var index = boardImage.PlayerNumber - 1;
+            state.Players[index].IsDealer = isDealer;
+
+        }
+
         internal int GetBigBlindFromImage(Image image, string path)
         {
             string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
@@ -120,11 +128,6 @@ namespace bot
                 return 200;
             }
             return 0;
-        }
-
-        internal bool GetIsDealerButtonFromImage(string path)
-        {
-            return _suitFinder.IsDealerButton(path);
         }
     }
 }

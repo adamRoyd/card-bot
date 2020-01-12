@@ -15,5 +15,17 @@ namespace Engine.Models
 
         public CardValue Value { get; set; }
         public CardSuit Suit { get; set; }
+        public string SimpleValue
+        {
+            get { return GetSimpleValue(); }
+            set { }
+        }
+
+        private string GetSimpleValue()
+        {
+            var cardNumber = (int)Value;
+            var simpleValue = cardNumber < 11 ? cardNumber.ToString() : Value.ToString();
+            return simpleValue;
+        }
     }
 }
