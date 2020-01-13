@@ -18,7 +18,7 @@ namespace OCR.Objects
                 {
                     Name = ImageName.StartingCard1,
                     Type = ImageType.Card,
-                    Image = new Bitmap(51, 75),
+                    Image = new Bitmap(51, 65),
                     X = 906,
                     Y = 644
                 },
@@ -26,7 +26,7 @@ namespace OCR.Objects
                 {
                     Name = ImageName.StartingCard2,
                     Type = ImageType.Card,
-                    Image = new Bitmap(51, 75),
+                    Image = new Bitmap(51, 65),
                     X = 996,
                     Y = 644
                 },
@@ -243,8 +243,8 @@ namespace OCR.Objects
                 {
                     Name = ImageName.BigBlind,
                     Type = ImageType.BigBlind,
-                    Image = new Bitmap(200, 25),
-                    X = 1760,
+                    Image = new Bitmap(170, 25),
+                    X = 1750,
                     Y = 110
                 },
                 new BoardImage

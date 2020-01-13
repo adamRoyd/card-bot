@@ -29,38 +29,5 @@ namespace Engine.Tests.Models
             Assert.Equal(state.HandCode, expectedHandcode);
         }
 
-        [Fact]
-        public void StartingHand_AKs_ReturnsCorrectStartingHand()
-        {
-            var state = new BoardState
-            {
-                StartingCard1 = new Card(
-                    Enums.CardValue.A,
-                    Enums.CardSuit.Spades
-                ),
-                StartingCard2 = new Card(
-                    Enums.CardValue.K,
-                    Enums.CardSuit.Spades
-                )
-            };
-
-            Assert.Equal(1, state.StartingHand.Rank);
-            Assert.Equal("AKs", state.StartingHand.HandCode);
-        }
-
-        [Fact]
-        public void StartingHand_BadHand_ReturnsCorrectStartingHand()
-        {
-            var state = new BoardState
-            {
-                StartingCard2 = new Card(
-                    Enums.CardValue.K,
-                    Enums.CardSuit.Spades
-                )
-            };
-
-            Assert.Equal(-1, state.StartingHand.Rank);
-            Assert.Equal("null", state.StartingHand.HandCode);
-        }
     }
 }

@@ -104,7 +104,7 @@ namespace OCR
             foreach (var colour in mostUsedColors)
             {
                 var brightness = colour.GetBrightness();
-                if (brightness > 0.5)
+                if (brightness > 0.20)
                 {
                     whiteCount++;
                 }

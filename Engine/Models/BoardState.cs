@@ -31,16 +31,16 @@ namespace Engine.Models
             get { return GetMyPosition(); }
             set { }
         }
+        public int MyStackRatio
+        {
+            get { return GetMyStack(); }
+            set { }
+        }
+
         public int CallAmount { get; set; }
         public int Pot { get; set; }
-        public int Stack1 { get; set; }
         public int BigBlind { get; set; }
         public bool ReadyForAction { get; set; }
-
-        public Hand StartingHand
-        {
-            get { return GetStartingHand(); }
-        }
         public HandStage HandStage
         {
             get { return GetHandStage(); }
@@ -84,6 +84,18 @@ namespace Engine.Models
                 };
         }
 
+        private int GetMyStack()
+        {
+            if (BigBlind == 0)
+            {
+                return 0;
+            }
+
+            var me = Players.First(p => p.Position == 1);
+            var stackRatio = me.Stack / BigBlind;
+            return stackRatio;
+        }
+
 
         private int GetMyPosition()
         {
@@ -94,11 +106,12 @@ namespace Engine.Models
             if (dealer == null)
             {
                 Console.WriteLine("WARNING Dealer is null");
+                return -1;
             }
 
             var dealerPosition = 1;
 
-            foreach(var player in playersInGame)
+            foreach (var player in playersInGame)
             {
                 if (player.IsDealer)
                 {
@@ -110,7 +123,7 @@ namespace Engine.Models
                 }
             }
 
-            var myPosition = playersInGame.Count() + 1 - dealerPosition; 
+            var myPosition = playersInGame.Count() + 1 - dealerPosition;
 
             return dealer.Position;
         }
@@ -147,45 +160,16 @@ namespace Engine.Models
             var card1Number = (int)StartingCard1.Value;
             var card2Number = (int)StartingCard2.Value;
 
-            string handCode = card1Number >= card2Number ? 
-                $"{StartingCard1.SimpleValue}{StartingCard2.SimpleValue}{suited}" : 
+            string handCode = card1Number >= card2Number ?
+                $"{StartingCard1.SimpleValue}{StartingCard2.SimpleValue}{suited}" :
                 $"{StartingCard2.SimpleValue}{StartingCard1.SimpleValue}{suited}";
 
             return handCode;
         }
 
-        private Hand GetStartingHand()
-        {
-            List<Hand> handSet;
-            var stackRatio = Stack1 / BigBlind;
-            Console.WriteLine($"Stack ratio... {stackRatio}");
-
-            if (stackRatio > 15 && GameStage == GameStage.EarlyGame)
-            {
-                handSet = GameHands.EarlyGameHands;
-            } else if(stackRatio <= 15)
-            {
-                handSet = GameHands.PushOrFoldHands;
-            }
-            else
-            {
-                handSet = null;
-                return new Hand("", -99);
-            }
-
-            var hand = handSet.FirstOrDefault(h => h.HandCode == HandCode);
-
-            if (hand == null)
-            {
-                hand = new Hand(HandCode, -1);
-            }
-
-            return hand;
-        }
-
         private HandStage GetHandStage()
         {
-            if (Flop1 == null && Flop2 == null && Flop3 == null)
+            if (Flop1 == null)
             {
                 return HandStage.PreFlop;
             }

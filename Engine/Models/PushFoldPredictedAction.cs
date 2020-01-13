@@ -1,20 +1,28 @@
 ﻿using Engine.Enums;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Engine.Models
 {
     public class PushFoldPredictedAction : PredictedAction
     {
+        public PushFoldPredictedAction(BoardState state)
+        {
+            _state = state;
+            Hands = GameHands.PushOrFoldHands;
+            HandRank = Hands.FirstOrDefault(h => h.HandCode == _state.HandCode)?.Rank;
+        }
+
         public override ActionType GetAction()
         {
-            if (_state.StartingHand == null)
+            if (_state.HandStage != HandStage.PreFlop)
             {
-                return ActionType.Fold;
+                return ActionType.Unknown;
             }
 
-            switch (_state.StartingHand.Rank)
+            switch (HandRank)
             {
                 case 1:
                 case 2: // TODO take into position...

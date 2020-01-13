@@ -25,26 +25,6 @@ namespace bot
         }
 
         [Fact]
-        public void GetBoardStateFromImagePath_Board1_ReturnsCorrectState()
-        {
-            var path = "..\\..\\..\\images\\1";
-            var expectedState = new BoardState
-            {
-                CallAmount = 536,
-                Stack1 = 1650,
-                Pot = 661,
-            };
-
-            var state = _boardStateService.GetBoardStateFromImagePath(path);
-
-            var serialized = JsonConvert.SerializeObject(state);
-
-            Assert.Equal(expectedState.CallAmount, state.CallAmount);
-            Assert.Equal(expectedState.Stack1, state.Stack1);
-            Assert.Equal(expectedState.Pot, state.Pot);
-        }
-
-        [Fact]
         public void GetBoardStateFromImagePath_Board4_ReturnsCorrectStateCards()
         {
             var path = "..\\..\\..\\images\\board4.png";

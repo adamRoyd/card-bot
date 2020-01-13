@@ -5,6 +5,7 @@ using OCR;
 using Engine.Models;
 using System.Threading.Tasks;
 using Engine.Enums;
+using System.Linq;
 
 namespace bot
 {
@@ -26,7 +27,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                //dateStamp = "033047";
+                dateStamp = "082758";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -45,13 +46,13 @@ namespace bot
 
                 PredictedAction predictedAction;
 
-                switch (boardState.GameStage)
+                switch (boardState.MyStackRatio)
                 {
-                    case GameStage.EarlyGame:
-                        predictedAction = new EarlyGamePredictedAction
-                        {
-                            _state = boardState
-                        };
+                    case int n when n > 15:
+                        predictedAction = new EarlyGamePredictedAction(boardState);
+                        break;
+                    case int n when n <= 15:
+                        predictedAction = new PushFoldPredictedAction(boardState);
                         break;
                     default:
                         predictedAction = null;
@@ -64,7 +65,7 @@ namespace bot
 
                 await Task.Delay(1000);
 
-                break;
+                //break;
             }
         }
 
@@ -105,10 +106,9 @@ namespace bot
         {
             //foreach (var p in boardState.Players)
             //{
-            //    Console.WriteLine($"{p.Position}: {p.Stack}");
+            //    Console.WriteLine($"{p.Position}: {p.Stack} {p.Eliminated}");
             //}
 
-            var rank = boardState.StartingHand == null ? -1 : boardState.StartingHand.Rank;
             var flop1 = boardState.Flop1 == null ? "  " : $"{boardState.Flop1.SimpleValue}{boardState.Flop1.Suit}";
             var flop2 = boardState.Flop2 == null ? "  " : $"{boardState.Flop2.SimpleValue}{boardState.Flop2.Suit}";
             var flop3 = boardState.Flop3 == null ? "  " : $"{boardState.Flop3.SimpleValue}{boardState.Flop3.Suit}";
@@ -117,16 +117,16 @@ namespace bot
 
             Console.WriteLine(
                 $"Id: {dateStamp} " +
-                $"Players: {boardState.NumberOfPlayers} " +
-                $"HandCode: {boardState.HandCode} " +
-                $"Rank: {rank} " +
-                $"My Position: {boardState.MyPosition} " +
-                $"BB: {boardState.BigBlind} " +
-                $"MyStack: {boardState.Stack1} " +
+                $"P: {boardState.NumberOfPlayers} " +
+                $"Hand: {boardState.HandCode} " +
+                $"Rank: {predictedAction.HandRank} " +
+                $"Position: {boardState.MyPosition} " +
+                $"SR: {boardState.MyStackRatio} " +
+                $"Stage: {boardState.HandStage} " +
                 $"Action: {predictedAction?.Action}");
 
-            //Console.WriteLine(
-            //    $"{flop1} | {flop2} | {flop3} | {turn} | {river}");
+            Console.WriteLine(
+                $"{flop1} | {flop2} | {flop3} | {turn} | {river}");
         }
     }
 }

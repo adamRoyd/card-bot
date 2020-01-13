@@ -1,2 +1,2 @@
-get position when considering players that have been knocked out
-pre flop actions only
+082425 position 7 dealer is wrong
+082954 position 4? should be 5

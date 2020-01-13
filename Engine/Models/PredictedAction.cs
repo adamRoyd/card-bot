@@ -7,6 +7,8 @@ namespace Engine.Models
 {
     public abstract class PredictedAction
     {
+        public List<Hand> Hands { get; set; }
+        public int? HandRank { get; set; }
         public ActionType Action 
         {
             get { return GetAction(); }
@@ -16,5 +18,6 @@ namespace Engine.Models
         public BoardState _state { get; set; }
 
         public abstract ActionType GetAction();
+
     }
 }
