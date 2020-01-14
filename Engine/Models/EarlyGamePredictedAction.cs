@@ -32,7 +32,7 @@ namespace Engine.Models
                     return GetLimpHandAction();
                 case 4:
                 case 5:
-                    return ActionType.Fold;
+                    return base.GetCheckOrFold();
                 default:
                     return ActionType.Unknown;
             }

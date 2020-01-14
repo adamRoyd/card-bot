@@ -139,8 +139,8 @@ namespace OCR.Objects
                     PlayerNumber = 8,
                     Type = ImageType.PlayerDealerButton,
                     Image = new Bitmap(25, 25),
-                    X = 1351,
-                    Y = 357
+                    X = 1385,
+                    Y = 517
                 },
                 new BoardImage
                 {
@@ -244,7 +244,7 @@ namespace OCR.Objects
                     Name = ImageName.BigBlind,
                     Type = ImageType.BigBlind,
                     Image = new Bitmap(170, 25),
-                    X = 1750,
+                    X = 1740,
                     Y = 110
                 },
                 new BoardImage

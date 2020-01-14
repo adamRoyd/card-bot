@@ -88,7 +88,7 @@ namespace Engine.Models
         {
             if (BigBlind == 0)
             {
-                return 0;
+                return 999999;
             }
 
             var me = Players.First(p => p.Position == 1);

@@ -100,38 +100,20 @@ namespace bot
         {
             string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
 
-            if (result.Split(" ").Length < 4)
-            {
-                return 0;
-            }
+            result = result.Trim().Replace(" ","").Replace("In1min", "");
 
-            var bigBlind = result.Split(" ")[3];
+            return result switch
+            {
+                "1530" => 20,
+                "2550" => 30,
+                "50100" => 50,
+                "75150" => 100,
+                "100200" => 150,
+                "150300" => 200,
+                "200400" => 300,
+                "_" => 0
+            };
 
-            if(bigBlind == "1530")
-            {
-                return 20;
-            }
-            if (bigBlind == "2550")
-            {
-                return 30;
-            }
-            if(bigBlind == "50100")
-            {
-                return 50;
-            }
-            if(bigBlind == "75150")
-            {
-                return 100;
-            }
-            if(bigBlind == "100200")
-            {
-                return 150;
-            }
-            if(bigBlind == "150300")
-            {
-                return 200;
-            }
-            return 0;
         }
     }
 }

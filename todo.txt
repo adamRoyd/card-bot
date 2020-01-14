@@ -1,14 +1,8 @@
-070703 position 8 dealer is null
-
-071047 should be limp - BB is not read properly
-
 071231 hand is null should be Q5o
 
 071318 should be ready for action and check
 
 071414 should be limp here instead of fold?
-
-press fold button whenever fold action is determined - you will never go back to making a bet
 
 071925 hand is null should be Q6o
 
@@ -17,3 +11,6 @@ press fold button whenever fold action is determined - you will never go back to
 072042 allinsteal should be fold
 
 072210 hand is null shoulld be QJs should be all in?
+
+Do a separate process to calculate readyfor action. Only calculate the full process when
+player is ready for action. This will be quicker and easier to track hands.

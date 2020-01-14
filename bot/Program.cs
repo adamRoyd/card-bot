@@ -12,7 +12,7 @@ namespace bot
     class Program
     {
         public static async Task Main(string[] args)
-        { 
+        {
             await BeTheBot();
         }
 
@@ -21,13 +21,13 @@ namespace bot
             var imageProcessor = new ImageProcessor();
             var suitFinder = new SuitFinder();
             var boardStateHelper = new BoardStateHelper(imageProcessor, suitFinder);
-            var boardStateService = new BoardStateService(imageProcessor,boardStateHelper, suitFinder);
+            var boardStateService = new BoardStateService(imageProcessor, boardStateHelper, suitFinder);
 
             while (true)
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                //dateStamp = "082758";
+                dateStamp = "071231";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -59,6 +59,7 @@ namespace bot
                         break;
                 }
 
+
                 WriteStatsToConsole(dateStamp, boardState, predictedAction);
 
                 DoAction(predictedAction, boardState);
@@ -71,36 +72,29 @@ namespace bot
 
         public static void DoAction(PredictedAction action, BoardState state)
         {
-            if (!state.ReadyForAction || action == null || action.Action == ActionType.Unknown)
+            if (action == null || !state.ReadyForAction)
             {
                 return;
             }
 
-            if(state.CallAmount == 0 && action.Action == ActionType.Fold)
+            var keyPress = action.GetAction() switch
             {
-                Console.WriteLine("Checking...");
-                System.Windows.Forms.SendKeys.SendWait("c");
-                return;
-            }
+                ActionType.Fold => "f",
+                ActionType.Check => "c",
+                ActionType.Limp => "c",
+                ActionType.Unknown => "",
+                ActionType.AllIn => "",
+                ActionType.AllInSteal => "",
+                ActionType.Bet => "",
+                ActionType.Raise => ""
+            };
 
-            if (action.Action == ActionType.Fold)
-            {
-                Console.WriteLine("Folding...");
-                System.Windows.Forms.SendKeys.SendWait("f");
-                return;
-            }
-
-            if (action.Action == ActionType.Limp)
-            {
-                Console.WriteLine("Limping...");
-                System.Windows.Forms.SendKeys.SendWait("c");
-                return;
-            }
+            System.Windows.Forms.SendKeys.SendWait(keyPress);
         }
 
         public static void WriteStatsToConsole(
-            string dateStamp, 
-            BoardState boardState, 
+            string dateStamp,
+            BoardState boardState,
             PredictedAction predictedAction
         )
         {
@@ -115,18 +109,22 @@ namespace bot
             var turn = boardState.Turn == null ? "  " : $"{boardState.Turn.SimpleValue}{boardState.Turn.Suit}";
             var river = boardState.River == null ? "  " : $"{boardState.River.SimpleValue}{boardState.River.Suit}";
 
-            Console.WriteLine(
-                $"Id: {dateStamp} " +
-                $"P: {boardState.NumberOfPlayers} " +
-                $"Hand: {boardState.HandCode} " +
-                $"Rank: {predictedAction.HandRank} " +
-                $"Position: {boardState.MyPosition} " +
-                $"BB: {boardState.BigBlind} " +
-                $"SR: {boardState.MyStackRatio} " +                
-                $"Action: {predictedAction?.Action}");
+            var predictedActionText = boardState.ReadyForAction ? $"Action: {predictedAction?.GetAction()}" : "";
 
             Console.WriteLine(
-                $"{flop1} | {flop2} | {flop3} | {turn} | {river}");
+                $"Id: {dateStamp} " +
+                $"Plyrs: {boardState.NumberOfPlayers} " +
+                $"Pos: {boardState.MyPosition} " +
+                $"Hand: {boardState.HandCode} " +
+                $"Rank: {predictedAction.HandRank} " +
+                $"BB: {boardState.BigBlind} " +
+                $"SR: {boardState.MyStackRatio} " +
+                predictedActionText);
+
+            //Console.WriteLine(
+            //    $"{flop1} | {flop2} | {flop3} | {turn} | {river}");
+
+            Console.WriteLine(" ");
         }
     }
 }

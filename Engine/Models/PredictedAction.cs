@@ -9,15 +9,21 @@ namespace Engine.Models
     {
         public List<Hand> Hands { get; set; }
         public int? HandRank { get; set; }
-        public ActionType Action 
-        {
-            get { return GetAction(); }
-            set { }
-        }
-
         public BoardState _state { get; set; }
 
         public abstract ActionType GetAction();
+
+        internal ActionType GetCheckOrFold()
+        {
+            if (_state.CallAmount == 0)
+            {
+                return ActionType.Check;
+            }
+            else
+            {
+                return ActionType.Fold;
+            }
+        }
 
     }
 }

@@ -30,7 +30,7 @@ namespace Engine.Models
                 case 3:
                     return ActionType.AllInSteal;
                 case 4:
-                    return ActionType.Fold;
+                    return base.GetCheckOrFold();
                 default:
                     return ActionType.Unknown;
             }
