@@ -122,10 +122,11 @@ namespace Engine.Models
                     dealerPosition++;
                 }
             }
-
+            // 1 is SB
+            // 2 is BB
+            // 3 is cutoff etc
             var myPosition = playersInGame.Count() + 1 - dealerPosition;
-
-            return dealer.Position;
+            return myPosition;
         }
 
         private GameStage GetGameStage()

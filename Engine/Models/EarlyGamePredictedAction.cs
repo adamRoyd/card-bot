@@ -40,22 +40,29 @@ namespace Engine.Models
 
         private ActionType GetLimpHandAction()
         {
-            // TODO special consideration for small blind
-            if (_state.MyPosition > 5)
-            {
-                Console.WriteLine("No limp from early position");
-                return ActionType.Fold;
-            }
-
             if (_state.CallAmount != _state.BigBlind)
             {
                 Console.WriteLine("Call Amount does not match big blind");
                 return ActionType.Fold;
             }
 
+            if (_state.MyPosition == 1 || _state.MyPosition == 2)
+            {
+                // BB or SB
+                return ActionType.Limp;
+            }
+
             if (_state.BigBlind > 50)
             {
                 Console.WriteLine("Big blind too high");
+                return ActionType.Fold;
+            }
+            
+            var positionDifference = _state.NumberOfPlayers - _state.MyPosition;
+
+            if (positionDifference > 3) // further than 3 away from dealer button
+            {
+                Console.WriteLine("No limp from early position");
                 return ActionType.Fold;
             }
 

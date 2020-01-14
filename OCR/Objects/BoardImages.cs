@@ -139,8 +139,8 @@ namespace OCR.Objects
                     PlayerNumber = 8,
                     Type = ImageType.PlayerDealerButton,
                     Image = new Bitmap(25, 25),
-                    X = 1385,
-                    Y = 517
+                    X = 1351,
+                    Y = 357
                 },
                 new BoardImage
                 {
