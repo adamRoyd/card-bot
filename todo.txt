@@ -1,16 +1,6 @@
-071231 hand is null should be Q5o
-
-071318 should be ready for action and check
-
 071414 should be limp here instead of fold?
 
-071925 hand is null should be Q6o
-
-071954 hand is null should be A8s
-
-072042 allinsteal should be fold
-
-072210 hand is null shoulld be QJs should be all in?
+072042 allinsteal should be fold - call button is on far right!
 
 Do a separate process to calculate readyfor action. Only calculate the full process when
 player is ready for action. This will be quicker and easier to track hands.

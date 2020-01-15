@@ -18,17 +18,17 @@ namespace OCR.Objects
                 {
                     Name = ImageName.StartingCard1,
                     Type = ImageType.Card,
-                    Image = new Bitmap(51, 65),
-                    X = 906,
-                    Y = 644
+                    Image = new Bitmap(51, 68),
+                    X = 904,
+                    Y = 647
                 },
                 new BoardImage
                 {
                     Name = ImageName.StartingCard2,
                     Type = ImageType.Card,
-                    Image = new Bitmap(51, 65),
+                    Image = new Bitmap(51, 64),
                     X = 996,
-                    Y = 644
+                    Y = 647
                 },
                 new BoardImage
                 {
@@ -251,8 +251,8 @@ namespace OCR.Objects
                 {
                     Name = ImageName.ReadyForAction,
                     Type = ImageType.ReadyForAction,
-                    Image = new Bitmap(160, 50),
-                    X = 1159,
+                    Image = new Bitmap(320, 10),
+                    X = 1110,
                     Y = 967
                 },
                 new BoardImage

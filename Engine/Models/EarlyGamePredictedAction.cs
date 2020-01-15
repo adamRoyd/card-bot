@@ -40,6 +40,11 @@ namespace Engine.Models
 
         private ActionType GetLimpHandAction()
         {
+            if (_state.CallAmount == 0)
+            {
+                return ActionType.Check;
+            }
+
             if (_state.CallAmount != _state.BigBlind)
             {
                 Console.WriteLine("Call Amount does not match big blind");

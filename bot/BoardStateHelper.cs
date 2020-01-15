@@ -100,9 +100,11 @@ namespace bot
         {
             string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
 
-            result = result.Trim().Replace(" ","").Replace("In1min", "");
+            var arry = result.Trim().Replace(" ", "").ToCharArray();
+            string bigBlind = GetNumbersAtEndOfString(arry);
+            bigBlind = Reverse(bigBlind);
 
-            return result switch
+            return bigBlind switch
             {
                 "1530" => 20,
                 "2550" => 30,
@@ -114,6 +116,33 @@ namespace bot
                 "_" => 0
             };
 
+        }
+
+        private static string GetNumbersAtEndOfString(char[] arry)
+        {
+            string bigBlind = "";
+
+            for (var i = arry.Length - 1; i >= 0; i--)
+            {
+                var test = arry[i].ToString();
+                if (int.TryParse(test, out int number))
+                {
+                    bigBlind = bigBlind + test;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            return bigBlind;
+        }
+
+        private static string Reverse(string s)
+        {
+            char[] charArray = s.ToCharArray();
+            Array.Reverse(charArray);
+            return new string(charArray);
         }
     }
 }

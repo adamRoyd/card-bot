@@ -27,7 +27,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                dateStamp = "071231";
+                dateStamp = "071414";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -64,8 +64,6 @@ namespace bot
 
                 DoAction(predictedAction, boardState);
 
-                await Task.Delay(1000);
-
                 //break;
             }
         }
@@ -82,11 +80,11 @@ namespace bot
                 ActionType.Fold => "f",
                 ActionType.Check => "c",
                 ActionType.Limp => "c",
-                ActionType.Unknown => "",
-                ActionType.AllIn => "",
-                ActionType.AllInSteal => "",
-                ActionType.Bet => "",
-                ActionType.Raise => ""
+                ActionType.Unknown => "a",
+                ActionType.AllIn => "a",
+                ActionType.AllInSteal => "a",
+                ActionType.Bet => "a",
+                ActionType.Raise => "a"
             };
 
             System.Windows.Forms.SendKeys.SendWait(keyPress);
