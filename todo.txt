@@ -1,6 +1,0 @@
-if hand problems continue - 
-enable option to show full hole cards
-
-hand is null and ready for action? fold
-
-only save images / do full calculation when ready for action

@@ -150,6 +150,8 @@ namespace OCR
                 TenMostUsedColors.Add(Color.FromArgb(kvp.Key));
             }
 
+            theBitMap.Dispose();
+
             return TenMostUsedColors;
         }
     }

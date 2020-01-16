@@ -31,10 +31,7 @@ namespace bot
             {
                 var boardImages = _imageProcessor.SliceBoardScreenShot(path);
 
-                var boardState = new BoardState
-                {
-                    
-                };
+                var boardState = new BoardState();
 
                 _boardStateHelper.SaveBoardImages(boardImages, path);
 
@@ -63,6 +60,8 @@ namespace bot
                             _ => null
                         };
                     }
+
+                    boardImage.Image.Dispose();
                 }
 
                 return boardState;

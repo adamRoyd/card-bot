@@ -100,6 +100,8 @@ namespace OCR
                 DrawImage(boardImage, img);
             }    
 
+            img.Dispose();
+
             return boardImages.BoardImageList;
         }
 

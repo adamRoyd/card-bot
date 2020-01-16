@@ -6,11 +6,14 @@ using Engine.Models;
 using System.Threading.Tasks;
 using Engine.Enums;
 using System.Linq;
+using bot.Logging;
 
 namespace bot
 {
     class Program
     {
+        private static readonly ILog LogWriter = new FileLogWriter("C:/Temp");
+
         public static async Task Main(string[] args)
         {
             await BeTheBot();
@@ -27,7 +30,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                dateStamp = "064324";
+                //dateStamp = "012006";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -40,31 +43,25 @@ namespace bot
                     ScreenCaptureService.TakeScreenCapture(path);
                 }
 
-                await Task.Delay(100);
-
                 var boardState = boardStateService.GetBoardStateFromImagePath(path);
 
-                PredictedAction predictedAction;
-
-                switch (boardState.MyStackRatio)
+                if (boardState.ReadyForAction)
                 {
-                    case int n when n > 15:
-                        predictedAction = new EarlyGamePredictedAction(boardState);
-                        break;
-                    case int n when n <= 15:
-                        predictedAction = new PushFoldPredictedAction(boardState);
-                        break;
-                    default:
-                        predictedAction = null;
-                        break;
+                    var predictedAction = boardState.MyStackRatio switch
+                    {
+                        int n when n > 15 => (PredictedAction) new EarlyGamePredictedAction(boardState),
+                        int n when n <= 15 => new PushFoldPredictedAction(boardState),
+                        _ => null
+                    };
+
+                    WriteStatsToConsole(dateStamp, boardState, predictedAction);
+
+                    DoAction(predictedAction, boardState);
                 }
-
-
-                WriteStatsToConsole(dateStamp, boardState, predictedAction);
-
-                DoAction(predictedAction, boardState);
-
-                //break;
+                else
+                {
+                    DeleteFiles(path);
+                }
             }
         }
 
@@ -80,7 +77,7 @@ namespace bot
                 ActionType.Fold => "f",
                 ActionType.Check => "c",
                 ActionType.Limp => "c",
-                ActionType.Unknown => "a",
+                ActionType.Unknown => "f",
                 ActionType.AllIn => "a",
                 ActionType.AllInSteal => "a",
                 ActionType.Bet => "a",
@@ -96,11 +93,6 @@ namespace bot
             PredictedAction predictedAction
         )
         {
-            //foreach (var p in boardState.Players)
-            //{
-            //    Console.WriteLine($"{p.Position}: {p.Stack} {p.Eliminated}");
-            //}
-
             var flop1 = boardState.Flop1 == null ? "  " : $"{boardState.Flop1.SimpleValue}{boardState.Flop1.Suit}";
             var flop2 = boardState.Flop2 == null ? "  " : $"{boardState.Flop2.SimpleValue}{boardState.Flop2.Suit}";
             var flop3 = boardState.Flop3 == null ? "  " : $"{boardState.Flop3.SimpleValue}{boardState.Flop3.Suit}";
@@ -109,25 +101,49 @@ namespace bot
 
             var predictedActionText = boardState.ReadyForAction ? $"Action: {predictedAction?.GetAction()}" : "";
 
-            Console.WriteLine(
-                $"Id: {dateStamp} " +
-                $"Plyrs: {boardState.NumberOfPlayers} " +
-                $"Pos: {boardState.MyPosition} " +
-                $"Hand: {boardState.HandCode} " +
-                $"CallAmount: {boardState.CallAmount} " +
-                $"RaiseAmount: {boardState.RaiseAmount} " +
-                $"SR: {boardState.MyStackRatio} " +
-                predictedActionText
-            );
+            var stats = $"Id: {dateStamp} " +
+                         $"Plyrs: {boardState.NumberOfPlayers} " +
+                         $"Pos: {boardState.MyPosition} " +
+                         $"Hand: {boardState.HandCode} " +
+                         $"CallAmount: {boardState.CallAmount} " +
+                         $"RaiseAmount: {boardState.RaiseAmount} " +
+                         $"SR: {boardState.MyStackRatio} " +
+                         predictedActionText;
 
-            Console.WriteLine(
-                $"{boardState.FoldButton} | {boardState.CallButton} | {boardState.RaiseButton}"
-            );
+            //Console.WriteLine(stats);
+
+            LogWriter.WriteLine(stats);
+
+            //Console.WriteLine(
+            //    $"{boardState.FoldButton} | {boardState.CallButton} | {boardState.RaiseButton}"
+            //);
 
             //Console.WriteLine(
             //    $"{flop1} | {flop2} | {flop3} | {turn} | {river}");
 
+            //foreach (var p in boardState.Players)
+            //{
+            //    Console.WriteLine($"{p.Position}: {p.Stack} {p.Eliminated}");
+            //}
+
             Console.WriteLine(" ");
+        }
+
+        public static void DeleteFiles(string path)
+        {
+            System.IO.DirectoryInfo di = new DirectoryInfo(path);
+
+            foreach (FileInfo file in di.GetFiles())
+            {
+                file.Delete();
+            }
+
+            foreach (DirectoryInfo dir in di.GetDirectories())
+            {
+                dir.Delete(true);
+            }
+
+            Directory.Delete(path);
         }
     }
 }
