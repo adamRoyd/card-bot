@@ -15,7 +15,7 @@ namespace Engine.Models
 
         internal ActionType GetCheckOrFold()
         {
-            if (_state.CallAmount == 0)
+            if (_state.CallButton && _state.CallAmount == 0)
             {
                 return ActionType.Check;
             }

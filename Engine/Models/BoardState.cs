@@ -36,11 +36,18 @@ namespace Engine.Models
             get { return GetMyStack(); }
             set { }
         }
-
-        public int CallAmount { get; set; }
         public int Pot { get; set; }
         public int BigBlind { get; set; }
-        public bool ReadyForAction { get; set; }
+        public int CallAmount { get; set; }
+        public int RaiseAmount { get; set; }
+        public bool FoldButton { get; set; }
+        public bool CallButton { get; set; }
+        public bool RaiseButton { get; set; }
+        public bool ReadyForAction
+        {
+            get { return FoldButton || CallButton || RaiseButton; }
+            set { }
+        }
         public HandStage HandStage
         {
             get { return GetHandStage(); }

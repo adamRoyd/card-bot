@@ -38,8 +38,7 @@ namespace OCR.Objects
         Bet6,
         Bet7,
         Bet8,
-        Bet9,
-        CallAmount,
+        Bet9,        
         Pot,
         Stack1,
         Stack2,
@@ -52,7 +51,12 @@ namespace OCR.Objects
         Stack9,
         BigBlind,
         Players,
-        ReadyForAction
+        ReadyForAction,
+        FoldButton,
+        CallButton,
+        RaiseButton,
+        CallAmount,
+        RaiseAmount
     }
 
     public enum ImageType

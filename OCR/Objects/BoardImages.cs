@@ -26,7 +26,7 @@ namespace OCR.Objects
                 {
                     Name = ImageName.StartingCard2,
                     Type = ImageType.Card,
-                    Image = new Bitmap(51, 64),
+                    Image = new Bitmap(51, 68),
                     X = 996,
                     Y = 647
                 },
@@ -241,6 +241,14 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
+                    Name = ImageName.RaiseAmount,
+                    Type = ImageType.Bet,
+                    Image = new Bitmap(170, 40),
+                    X = 1677,
+                    Y = 982
+                },
+                new BoardImage
+                {
                     Name = ImageName.BigBlind,
                     Type = ImageType.BigBlind,
                     Image = new Bitmap(170, 25),
@@ -249,11 +257,27 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
-                    Name = ImageName.ReadyForAction,
+                    Name = ImageName.FoldButton,
                     Type = ImageType.ReadyForAction,
-                    Image = new Bitmap(320, 10),
-                    X = 1110,
-                    Y = 967
+                    Image = new Bitmap(280, 10),
+                    X = 980,
+                    Y = 958
+                },
+                new BoardImage
+                {
+                    Name = ImageName.CallButton,
+                    Type = ImageType.ReadyForAction,
+                    Image = new Bitmap(280, 10),
+                    X = 1284,
+                    Y = 958
+                },
+                new BoardImage
+                {
+                    Name = ImageName.RaiseButton,
+                    Type = ImageType.ReadyForAction,
+                    Image = new Bitmap(280, 10),
+                    X = 1613,
+                    Y = 958
                 },
                 new BoardImage
                 {

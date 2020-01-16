@@ -27,7 +27,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                dateStamp = "071414";
+                dateStamp = "064324";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -70,7 +70,7 @@ namespace bot
 
         public static void DoAction(PredictedAction action, BoardState state)
         {
-            if (action == null || !state.ReadyForAction)
+            if (action == null || !state.FoldButton)
             {
                 return;
             }
@@ -114,10 +114,15 @@ namespace bot
                 $"Plyrs: {boardState.NumberOfPlayers} " +
                 $"Pos: {boardState.MyPosition} " +
                 $"Hand: {boardState.HandCode} " +
-                $"Rank: {predictedAction.HandRank} " +
-                $"BB: {boardState.BigBlind} " +
+                $"CallAmount: {boardState.CallAmount} " +
+                $"RaiseAmount: {boardState.RaiseAmount} " +
                 $"SR: {boardState.MyStackRatio} " +
-                predictedActionText);
+                predictedActionText
+            );
+
+            Console.WriteLine(
+                $"{boardState.FoldButton} | {boardState.CallButton} | {boardState.RaiseButton}"
+            );
 
             //Console.WriteLine(
             //    $"{flop1} | {flop2} | {flop3} | {turn} | {river}");

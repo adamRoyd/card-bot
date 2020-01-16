@@ -1,6 +1,6 @@
-071414 should be limp here instead of fold?
+if hand problems continue - 
+enable option to show full hole cards
 
-072042 allinsteal should be fold - call button is on far right!
+hand is null and ready for action? fold
 
-Do a separate process to calculate readyfor action. Only calculate the full process when
-player is ready for action. This will be quicker and easier to track hands.
+only save images / do full calculation when ready for action

@@ -40,7 +40,7 @@ namespace Engine.Models
 
         private ActionType GetLimpHandAction()
         {
-            if (_state.CallAmount == 0)
+            if (_state.CallAmount == 0) // TODO this needs to change
             {
                 return ActionType.Check;
             }
