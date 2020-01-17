@@ -34,7 +34,7 @@ namespace Engine.Models
                 case 5:
                     return base.GetCheckOrFold();
                 default:
-                    return ActionType.Unknown;
+                    return ActionType.Fold;
             }
         }
 
@@ -62,10 +62,12 @@ namespace Engine.Models
                 Console.WriteLine("Big blind too high");
                 return ActionType.Fold;
             }
-            
-            var positionDifference = _state.NumberOfPlayers - _state.MyPosition;
 
-            if (positionDifference > 3) // further than 3 away from dealer button
+            double positionRatio = (double)_state.MyPosition / (double)_state.NumberOfPlayers;
+
+            Console.WriteLine($"GetLimpHandAction positionRatio: {positionRatio}");
+
+            if (positionRatio <= 0.60)
             {
                 Console.WriteLine("No limp from early position");
                 return ActionType.Fold;

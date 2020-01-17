@@ -30,7 +30,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                //dateStamp = "012006";
+                //dateStamp = "064031";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -76,12 +76,12 @@ namespace bot
             {
                 ActionType.Fold => "f",
                 ActionType.Check => "c",
-                ActionType.Limp => "c",
-                ActionType.Unknown => "f",
-                ActionType.AllIn => "a",
-                ActionType.AllInSteal => "a",
-                ActionType.Bet => "a",
-                ActionType.Raise => "a"
+                ActionType.Limp => "a",
+                ActionType.Unknown => "z",
+                ActionType.AllIn => "i",
+                ActionType.AllInSteal => "i",
+                ActionType.Bet => "z",
+                ActionType.Raise => "z"
             };
 
             System.Windows.Forms.SendKeys.SendWait(keyPress);

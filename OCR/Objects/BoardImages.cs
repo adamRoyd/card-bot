@@ -26,7 +26,7 @@ namespace OCR.Objects
                 {
                     Name = ImageName.StartingCard2,
                     Type = ImageType.Card,
-                    Image = new Bitmap(51, 68),
+                    Image = new Bitmap(51, 64),
                     X = 996,
                     Y = 647
                 },

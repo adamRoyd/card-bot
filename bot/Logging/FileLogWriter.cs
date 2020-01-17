@@ -37,7 +37,7 @@ namespace bot.Logging
             strDebugInfo = string.Empty;
 
 
-            strInfoLine = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss}\t->  {strLogType}{strMessage}{strDebugInfo}";
+            strInfoLine = $"{strLogType}{strMessage}{strDebugInfo}";
             Console.WriteLine(strInfoLine);
             streamWriter.WriteLine(strInfoLine);
         }
