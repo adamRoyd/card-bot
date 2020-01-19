@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Windows.Input;
 using System.IO;
 using OCR;
 using Engine.Models;
 using System.Threading.Tasks;
 using Engine.Enums;
-using System.Linq;
 using bot.Logging;
 
 namespace bot
@@ -30,7 +28,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                //dateStamp = "014357";
+                //dateStamp = "054331";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -102,20 +100,15 @@ namespace bot
             var predictedActionText = boardState.ReadyForAction ? $"Action: {predictedAction?.GetAction()}" : "";
 
             var stats = $"Id: {dateStamp} " +
-                         $"Plyrs: {boardState.NumberOfPlayers} " +
+                         $"Ps: {boardState.NumberOfPlayers} " +
                          $"Pos: {boardState.MyPosition} " +
                          $"Hand: {boardState.HandCode} " +
                          $"Sage: {boardState.SageRank} " +
+                         $"MinPush: {predictedAction.MinSagePush} " +
                          $"SR: {boardState.MyStackRatio} " +
                          predictedActionText;
 
-            //Console.WriteLine(stats);
-
             LogWriter.WriteLine(stats);
-
-            //Console.WriteLine(
-            //    $"{boardState.FoldButton} | {boardState.CallButton} | {boardState.RaiseButton}"
-            //);
 
             //Console.WriteLine(
             //    $"{flop1} | {flop2} | {flop3} | {turn} | {river}");

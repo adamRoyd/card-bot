@@ -22,39 +22,75 @@ namespace Engine.Models
                 return ActionType.Unknown;
             }
 
-            switch (HandRank)
-            {
-                case 1:
-                case 2:
-                    return ActionType.AllIn;
-                case 3:
-                    return GetAllInStealAction();
-                case 4:
-                    return base.GetCheckOrFold();
-                default:
-                    return ActionType.Fold;
-            }
-        }
+            // Factors
+            // My stack DONE
+            // Card sage rank DONE
+            // Position DONE
+            // Call amount 
+            // No. players
+            var positionSageRank = GetMinimumSageRankForPosition();
 
-        private ActionType GetAllInStealAction()
-        {
-            if (_state.MyPosition == 1 && _state.CallAmount <= _state.BigBlind)
+            var stackFactored = FactorInStackSize(positionSageRank);
+
+            // Reraising override
+            if (_state.CallAmount > _state.BigBlind)
             {
-                // SB Action
-                return ActionType.AllInSteal;
+                stackFactored = 55;
             }
 
-            double positionRatio = (double)_state.MyPosition / (double)_state.NumberOfPlayers;
+            MinSagePush = stackFactored;
 
-            Console.WriteLine($"GetAllInStealAction positionRatio: {positionRatio}");
-
-            if (positionRatio >= 0.75)
+            if (_state.SageRank >= stackFactored)
             {
-                return ActionType.AllInSteal;
+                return ActionType.AllIn;
             }
             else
             {
-                return ActionType.Fold;
+                return base.GetCheckOrFold();
+            }
+        }
+
+        private int FactorInStackSize(int positionSageRank)
+        {
+            var difference = 15 - _state.MyStackRatio;
+
+            var factored = positionSageRank - difference;
+
+            return factored;
+        }
+
+        public int GetMinimumSageRankForPosition()
+        {
+            double ratio = (double)_state.MyPosition / (double)_state.NumberOfPlayers;
+
+            // 1 will always be SB
+            // 2 always BB
+            // ratio of 1 is always dealer
+            // the higher the ratio, the better the position
+            if (_state.MyPosition == 1)
+            {
+                return 35;
+            }
+
+            if (_state.MyPosition == 2)
+            {
+                return 45;
+            }
+
+            switch (ratio)
+            {
+                case double n when (n == 1):
+                    return 38;
+                case double n when (n >= 0.75):
+                    return 41;
+                case double n when (n >= 0.66):
+                    return 44;
+                case double n when (n >= 0.5):
+                    return 47;
+                case double n when (n >= 0.2):
+                    return 50;
+                default:
+                    return 50;
             }
         }
     }

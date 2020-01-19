@@ -9,6 +9,7 @@ namespace Engine.Models
     {
         public List<Hand> Hands { get; set; }
         public int? HandRank { get; set; }
+        public int MinSagePush { get; set; }
         public BoardState _state { get; set; }
 
         public abstract ActionType GetAction();
