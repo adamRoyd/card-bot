@@ -29,6 +29,11 @@ namespace OCR
         {
             var result = GetCharacters(image, PageSegMode.SingleBlock);
 
+            if(result == "O")
+            {
+                result = "Q";
+            }
+
             try
             {
                 Enum.TryParse(result, out CardValue cardValue);

@@ -1,1 +1,9 @@
 need actions for bubble play
+
+073701 should be call
+
+073943 does this work
+
+074119 check didnt work
+
+074954 should not be all in

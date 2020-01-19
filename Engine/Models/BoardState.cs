@@ -20,6 +20,10 @@ namespace Engine.Models
         {
             get { return GetHandCode(); }
         }
+        public int SageRank
+        {
+            get { return GetSageRank(); }
+        }
         public Player[] Players { get; set; }
         public int NumberOfPlayers
         {
@@ -45,7 +49,7 @@ namespace Engine.Models
         public bool RaiseButton { get; set; }
         public bool ReadyForAction
         {
-            get { return FoldButton || CallButton || RaiseButton; }
+            get { return (FoldButton || CallButton || RaiseButton) && HandCode != null; }
             set { }
         }
         public HandStage HandStage
@@ -173,6 +177,41 @@ namespace Engine.Models
                 $"{StartingCard2.SimpleValue}{StartingCard1.SimpleValue}{suited}";
 
             return handCode;
+        }
+
+        private int GetSageRank()
+        {
+            if (StartingCard1 == null || StartingCard2 == null)
+            {
+                return 0;
+            }
+
+            int result = 0;
+
+            if (StartingCard1.Suit == StartingCard2.Suit)
+            {
+                result += 4;
+            }
+
+            var card1Number = (int)StartingCard1.Value;
+            var card2Number = (int)StartingCard2.Value;
+
+            if (card1Number == card2Number)
+            {
+                result += 22;
+            }
+
+            var highestNumber = card1Number > card2Number ? card1Number : card2Number;
+            var lowestNumber = card1Number > card2Number ? card2Number : card1Number;
+
+            result = result + (highestNumber * 2) + lowestNumber;
+
+            if((card1Number - card2Number == 1) || (card1Number - card2Number == -1))
+            {
+                result += 2;
+            }
+
+            return result;
         }
 
         private HandStage GetHandStage()

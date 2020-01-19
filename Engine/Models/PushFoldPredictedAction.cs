@@ -25,7 +25,7 @@ namespace Engine.Models
             switch (HandRank)
             {
                 case 1:
-                case 2: // TODO take into position...
+                case 2:
                     return ActionType.AllIn;
                 case 3:
                     return GetAllInStealAction();
@@ -48,7 +48,7 @@ namespace Engine.Models
 
             Console.WriteLine($"GetAllInStealAction positionRatio: {positionRatio}");
 
-            if(positionRatio >= 0.75)
+            if (positionRatio >= 0.75)
             {
                 return ActionType.AllInSteal;
             }

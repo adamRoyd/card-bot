@@ -30,7 +30,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                //dateStamp = "064031";
+                //dateStamp = "014357";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -67,7 +67,7 @@ namespace bot
 
         public static void DoAction(PredictedAction action, BoardState state)
         {
-            if (action == null || !state.FoldButton)
+            if (action == null)
             {
                 return;
             }
@@ -76,12 +76,12 @@ namespace bot
             {
                 ActionType.Fold => "f",
                 ActionType.Check => "c",
-                ActionType.Limp => "a",
-                ActionType.Unknown => "z",
-                ActionType.AllIn => "i",
-                ActionType.AllInSteal => "i",
-                ActionType.Bet => "z",
-                ActionType.Raise => "z"
+                ActionType.Limp => "f",
+                ActionType.Unknown => "f",
+                ActionType.AllIn => "f",
+                ActionType.Bet => "f",
+                ActionType.Raise => "f",
+                _ => "f"
             };
 
             System.Windows.Forms.SendKeys.SendWait(keyPress);
@@ -105,8 +105,7 @@ namespace bot
                          $"Plyrs: {boardState.NumberOfPlayers} " +
                          $"Pos: {boardState.MyPosition} " +
                          $"Hand: {boardState.HandCode} " +
-                         $"CallAmount: {boardState.CallAmount} " +
-                         $"RaiseAmount: {boardState.RaiseAmount} " +
+                         $"Sage: {boardState.SageRank} " +
                          $"SR: {boardState.MyStackRatio} " +
                          predictedActionText;
 
