@@ -19,7 +19,7 @@ namespace Engine.Models
         {
             if (_state.HandStage != HandStage.PreFlop)
             {
-                return ActionType.Unknown;
+                return base.GetCheckOrFold();
             }
 
             // Factors

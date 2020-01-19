@@ -1,9 +1,4 @@
-need actions for bubble play
+all in shove - factor players that have limped in 
 
-073701 should be call
-
-073943 does this work
-
-074119 check didnt work
-
-074954 should not be all in
+change the blind calculation to look at the info tab
+- careful of the Ante blind! example text: 100/200 Ante 25

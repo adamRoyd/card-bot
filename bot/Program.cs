@@ -28,7 +28,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                //dateStamp = "054331";
+                //dateStamp = "034101";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -43,7 +43,7 @@ namespace bot
 
                 var boardState = boardStateService.GetBoardStateFromImagePath(path);
 
-                if (boardState.ReadyForAction)
+                if (boardState.ReadyForAction && boardState.HandCode != "null")
                 {
                     var predictedAction = boardState.MyStackRatio switch
                     {
@@ -55,6 +55,8 @@ namespace bot
                     WriteStatsToConsole(dateStamp, boardState, predictedAction);
 
                     DoAction(predictedAction, boardState);
+
+                    await Task.Delay(2000);
                 }
                 else
                 {
@@ -76,13 +78,15 @@ namespace bot
                 ActionType.Check => "c",
                 ActionType.Limp => "f",
                 ActionType.Unknown => "f",
-                ActionType.AllIn => "f",
+                ActionType.AllIn => "i",
                 ActionType.Bet => "f",
-                ActionType.Raise => "f",
+                ActionType.Raise => "i",
                 _ => "f"
             };
 
             System.Windows.Forms.SendKeys.SendWait(keyPress);
+
+
         }
 
         public static void WriteStatsToConsole(
