@@ -77,6 +77,8 @@ namespace bot
         {
             string result = _imageProcessor.GetImageCharacters(boardImage.Image, PageSegMode.Auto);
 
+            result = result.Trim().Replace(" ","");
+
             int.TryParse(result, out int value);
 
             var index = boardImage.PlayerNumber - 1;
@@ -100,42 +102,20 @@ namespace bot
         {
             string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
 
-            var arry = result.Trim().Replace(" ", "").ToCharArray();
-            string bigBlind = GetNumbersAtEndOfString(arry);
-            bigBlind = Reverse(bigBlind);
+            var bigBlind = result.Trim().Split(" ")[0]; //Replace(" ", "").Trim();
 
             return bigBlind switch
             {
-                "1530" => 20,
-                "2550" => 30,
-                "50100" => 50,
-                "75150" => 100,
-                "100200" => 150,
-                "150300" => 200,
-                "200400" => 300,
+                "1020" => 20,
+                "1530" => 30,
+                "2550" => 50,
+                "50100" => 100,
+                "75150" => 150,
+                "100200" => 200,
+                "150300" => 300,
                 _ => 0
             };
 
-        }
-
-        private static string GetNumbersAtEndOfString(char[] arry)
-        {
-            string bigBlind = "";
-
-            for (var i = arry.Length - 1; i >= 0; i--)
-            {
-                var test = arry[i].ToString();
-                if (int.TryParse(test, out int number))
-                {
-                    bigBlind = bigBlind + test;
-                }
-                else
-                {
-                    break;
-                }
-            }
-
-            return bigBlind;
         }
 
         private static string Reverse(string s)

@@ -28,7 +28,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                //dateStamp = "034101";
+                //dateStamp = "073230";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";

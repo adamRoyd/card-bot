@@ -252,8 +252,8 @@ namespace OCR.Objects
                     Name = ImageName.BigBlind,
                     Type = ImageType.BigBlind,
                     Image = new Bitmap(170, 25),
-                    X = 1740,
-                    Y = 110
+                    X = 146,
+                    Y = 976
                 },
                 new BoardImage
                 {

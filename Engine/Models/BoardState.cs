@@ -97,12 +97,12 @@ namespace Engine.Models
 
         private int GetMyStack()
         {
-            if (BigBlind == 0)
+            var me = Players.First(p => p.Position == 1);
+
+            if (me.Stack == 0 || BigBlind == 0)
             {
                 return 999999;
             }
-
-            var me = Players.First(p => p.Position == 1);
             var stackRatio = me.Stack / BigBlind;
             return stackRatio;
         }
