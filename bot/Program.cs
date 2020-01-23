@@ -15,6 +15,7 @@ namespace bot
         public static async Task Main(string[] args)
         {
             await BeTheBot();
+
         }
 
         public static async Task BeTheBot()
@@ -28,7 +29,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                //dateStamp = "073230";
+                dateStamp = "074610";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -54,7 +55,7 @@ namespace bot
 
                     WriteStatsToConsole(dateStamp, boardState, predictedAction);
 
-                    DoAction(predictedAction, boardState);
+                    //DoAction(predictedAction, boardState);
 
                     await Task.Delay(2000);
                 }
@@ -110,6 +111,7 @@ namespace bot
                          $"Sage: {boardState.SageRank} " +
                          $"MinPush: {predictedAction.MinSagePush} " +
                          $"SR: {boardState.MyStackRatio} " +
+                         $"Hand: {boardState.HandType} " +
                          predictedActionText;
 
             LogWriter.WriteLine(stats);

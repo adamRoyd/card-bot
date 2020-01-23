@@ -1,4 +1,3 @@
 all in shove - factor players that have limped in 
 
-change the blind calculation to look at the info tab
-- careful of the Ante blind! example text: 100/200 Ante 25
+hand calculator for post flop

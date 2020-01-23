@@ -15,7 +15,33 @@ namespace Engine.Models
         public Card Flop3 { get; set; }
         public Card Turn { get; set; }
         public Card River { get; set; }
-        public HandType HandType { get; set; }
+        public HandType HandType {
+            get { return GetHandType(); }
+        }
+
+        private HandType GetHandType()
+        {
+            List<Card> cards = new List<Card>
+            {
+                StartingCard1,
+                StartingCard2,
+                Flop1,
+                Flop2,
+                Flop3,
+                Turn,
+                River
+            };
+
+            cards = cards.Where(c => c != null).OrderBy(c => c.Value).ToList();
+
+            foreach(var card in cards)
+            {
+                Console.WriteLine($"card! {card.SimpleValue}");
+            };
+
+            return HandType.HighCard;
+        }
+
         public string HandCode
         {
             get { return GetHandCode(); }
