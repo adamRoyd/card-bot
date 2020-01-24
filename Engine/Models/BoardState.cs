@@ -34,10 +34,20 @@ namespace Engine.Models
 
             cards = cards.Where(c => c != null).OrderBy(c => c.Value).ToList();
 
-            foreach(var card in cards)
+            var duplicates = cards.GroupBy(x => x.SimpleValue)
+              .Where(g => g.Count() > 1)
+              .Select(y => new { Value = y.Key, Count = y.Count() })
+              .ToList();
+
+            foreach (var card in cards)
             {
                 Console.WriteLine($"card! {card.SimpleValue}");
             };
+
+            foreach (var dupilcate in duplicates)
+            {
+                Console.WriteLine($"duplicate! Value: {dupilcate.Value} Count: {dupilcate.Count}");
+            }
 
             return HandType.HighCard;
         }

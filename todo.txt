@@ -1,3 +1,8 @@
 all in shove - factor players that have limped in 
 
 hand calculator for post flop
+
+075743 why hek????
+
+
+200/400 ante 25 not recognised (around 080016)

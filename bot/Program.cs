@@ -29,7 +29,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                dateStamp = "074610";
+                dateStamp = "075743";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -111,18 +111,19 @@ namespace bot
                          $"Sage: {boardState.SageRank} " +
                          $"MinPush: {predictedAction.MinSagePush} " +
                          $"SR: {boardState.MyStackRatio} " +
-                         $"Hand: {boardState.HandType} " +
                          predictedActionText;
 
             LogWriter.WriteLine(stats);
 
+
+
             //Console.WriteLine(
             //    $"{flop1} | {flop2} | {flop3} | {turn} | {river}");
 
-            //foreach (var p in boardState.Players)
-            //{
-            //    Console.WriteLine($"{p.Position}: {p.Stack} {p.Eliminated}");
-            //}
+            foreach (var p in boardState.Players)
+            {
+                LogWriter.WriteLine($"{p.Position}: Stack: {p.Stack} Bet: {p.Bet}");
+            }
 
             Console.WriteLine(" ");
         }

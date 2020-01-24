@@ -55,7 +55,7 @@ namespace bot
         internal int GetNumberFromImage(Image image, string path)
         {
             string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
-            result = result.ToLower().Replace("pot", "").Replace(":", "").Replace(",", "").Trim();
+            result = result.ToLower().Replace("pot", "").Replace(":", "").Replace(",", "").Replace(" ","").Trim();
             int.TryParse(result, out int value);
             return value;
         }
@@ -90,6 +90,14 @@ namespace bot
             state.Players[index].Eliminated = colour == "white";
         }
 
+        internal void SetPlayerBet(string boardImagepath, BoardImage boardImage, BoardState state)
+        {
+            var value = GetNumberFromImage(boardImage.Image, boardImagepath);
+            var index = boardImage.PlayerNumber - 1;
+
+            state.Players[index].Bet = value;
+        }
+
         internal void SetPlayerIsDealer(string path, BoardImage boardImage, BoardState state)
         {
             var isDealer = _suitFinder.IsDealerButton(path);
@@ -113,6 +121,8 @@ namespace bot
                 "75150" => 150,
                 "100200" => 200,
                 "150300" => 300,
+                "200400" => 400,
+                "300600" => 600,
                 _ => 0
             };
 

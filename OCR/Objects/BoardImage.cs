@@ -63,8 +63,9 @@ namespace OCR.Objects
     {
         Card,
         Pot,
-        Bet,
+        PlayerBet,
         Word,
+        Number,
         PlayerDealerButton,
         BigBlind,
         ReadyForAction,

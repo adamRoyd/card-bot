@@ -47,12 +47,16 @@ namespace bot
                     {
                         _boardStateHelper.SetPlayerIsDealer(boardImagepath, boardImage, boardState);
                     }
+                    else if (boardImage.Type == OCR.Objects.ImageType.PlayerBet)
+                    {
+                        _boardStateHelper.SetPlayerBet(boardImagepath, boardImage, boardState);
+                    }
                     else
                     {
                         boardState[boardImage.Name.ToString()] = boardImage.Type switch
                         {
+                            OCR.Objects.ImageType.Number => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),
                             OCR.Objects.ImageType.Card => _boardStateHelper.GetCardFromImage(boardImage.Image, boardImagepath),
-                            OCR.Objects.ImageType.Bet => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),
                             OCR.Objects.ImageType.Pot => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),
                             OCR.Objects.ImageType.Word => _boardStateHelper.GetWordFromImage(boardImage.Image, boardImagepath),
                             OCR.Objects.ImageType.BigBlind => _boardStateHelper.GetBigBlindFromImage(boardImage.Image, boardImagepath),
