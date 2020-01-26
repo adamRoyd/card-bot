@@ -54,9 +54,17 @@ namespace bot
 
         internal int GetNumberFromImage(Image image, string path)
         {
-            string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
-            result = result.ToLower().Replace("pot", "").Replace(":", "").Replace(",", "").Replace(" ","").Trim();
+            string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);            
+
+            result = result.CleanUp().GetNumbers();
+
             int.TryParse(result, out int value);
+
+            if (value == 341)
+            {
+                value = 0;
+            }
+
             return value;
         }
 
@@ -77,7 +85,7 @@ namespace bot
         {
             string result = _imageProcessor.GetImageCharacters(boardImage.Image, PageSegMode.Auto);
 
-            result = result.Trim().Replace(" ","");
+            result = result.CleanUp().GetNumbers();
 
             int.TryParse(result, out int value);
 
@@ -110,7 +118,7 @@ namespace bot
         {
             string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
 
-            var bigBlind = result.Trim().Split(" ")[0]; //Replace(" ", "").Trim();
+            var bigBlind = result.Trim().Split(" ")[0];
 
             return bigBlind switch
             {

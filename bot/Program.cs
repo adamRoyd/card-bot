@@ -5,6 +5,7 @@ using Engine.Models;
 using System.Threading.Tasks;
 using Engine.Enums;
 using bot.Logging;
+using System.Linq;
 
 namespace bot
 {
@@ -15,7 +16,6 @@ namespace bot
         public static async Task Main(string[] args)
         {
             await BeTheBot();
-
         }
 
         public static async Task BeTheBot()
@@ -29,7 +29,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                dateStamp = "075743";
+                //dateStamp = "103752";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -44,25 +44,24 @@ namespace bot
 
                 var boardState = boardStateService.GetBoardStateFromImagePath(path);
 
-                if (boardState.ReadyForAction && boardState.HandCode != "null")
-                {
-                    var predictedAction = boardState.MyStackRatio switch
-                    {
-                        int n when n > 15 => (PredictedAction) new EarlyGamePredictedAction(boardState),
-                        int n when n <= 15 => new PushFoldPredictedAction(boardState),
-                        _ => null
-                    };
-
-                    WriteStatsToConsole(dateStamp, boardState, predictedAction);
-
-                    //DoAction(predictedAction, boardState);
-
-                    await Task.Delay(2000);
-                }
-                else
+                if (!boardState.ReadyForAction || boardState.HandCode == "null")
                 {
                     DeleteFiles(path);
+                    continue;
                 }
+
+                var predictedAction = boardState.MyStackRatio switch
+                {
+                    int n when n > 15 => (PredictedAction)new EarlyGamePredictedAction(boardState),
+                    int n when n <= 15 => new PushFoldPredictedAction(boardState),
+                    _ => null
+                };
+
+                WriteStatsToConsole(dateStamp, boardState, predictedAction);
+
+                DoAction(predictedAction, boardState);
+
+                await Task.Delay(2000);
             }
         }
 
@@ -86,8 +85,6 @@ namespace bot
             };
 
             System.Windows.Forms.SendKeys.SendWait(keyPress);
-
-
         }
 
         public static void WriteStatsToConsole(
@@ -116,11 +113,10 @@ namespace bot
             LogWriter.WriteLine(stats);
 
 
-
             //Console.WriteLine(
             //    $"{flop1} | {flop2} | {flop3} | {turn} | {river}");
 
-            foreach (var p in boardState.Players)
+            foreach (var p in boardState.Players.Where(p => !p.Eliminated))
             {
                 LogWriter.WriteLine($"{p.Position}: Stack: {p.Stack} Bet: {p.Bet}");
             }

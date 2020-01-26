@@ -28,19 +28,23 @@ namespace Engine.Models
             // Position DONE
             // Call amount 
             // No. players
-            var positionSageRank = GetMinimumSageRankForPosition();
+            var minPushRank = GetMinimumSageRankForPosition();
 
-            var stackFactored = FactorInStackSize(positionSageRank);
+            minPushRank = FactorInStackSize(minPushRank);
+
+            minPushRank = FactorInLimps(minPushRank);
+
+            minPushRank = FactorInNumberOfPlayers(minPushRank);
 
             // Reraising override
-            if (_state.CallAmount > _state.BigBlind)
-            {
-                stackFactored = 55;
-            }
+            //if (_state.CallAmount > _state.BigBlind || !_state.CallButton)
+            //{
+            //    minPushRank = 55;
+            //}
 
-            MinSagePush = stackFactored;
+            MinSagePush = minPushRank;
 
-            if (_state.SageRank >= stackFactored)
+            if (_state.SageRank >= minPushRank)
             {
                 return ActionType.AllIn;
             }
@@ -48,6 +52,30 @@ namespace Engine.Models
             {
                 return base.GetCheckOrFold();
             }
+        }
+
+        private int FactorInNumberOfPlayers(int minPushRank)
+        {
+            var looseness = (9 - _state.NumberOfPlayers) * 2;
+            return minPushRank - looseness;
+        }
+
+        private int FactorInLimps(int minPushRank)
+        {
+            var numberOfLimpers = _state.Players.Where(
+                                    p => p.Bet == _state.BigBlind)
+                                                .Count() - 1;
+            //Console.WriteLine($"Number of limpers: {numberOfLimpers}");
+
+            var result = minPushRank + (numberOfLimpers * 3);
+
+            var numberOfBetters = _state.Players.Where(
+                                    p => p.Bet > _state.BigBlind)
+                                                .Count();
+
+            result += (numberOfBetters * 10);
+
+            return result;
         }
 
         private int FactorInStackSize(int positionSageRank)

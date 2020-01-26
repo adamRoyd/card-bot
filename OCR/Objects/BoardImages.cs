@@ -164,81 +164,81 @@ namespace OCR.Objects
                     Name = ImageName.Bet1,
                     PlayerNumber = 1,
                     Type = ImageType.PlayerBet,
-                    Image = new Bitmap(170, 40),
-                    X = 822,
-                    Y = 601
+                    Image = new Bitmap(160, 25),
+                    X = 898,
+                    Y = 602
                 },
                 new BoardImage
                 {
                     Name = ImageName.Bet2,
                     PlayerNumber = 2,
                     Type = ImageType.PlayerBet,
-                    Image = new Bitmap(170, 40),
-                    X = 561,
-                    Y = 579
+                    Image = new Bitmap(120, 25),
+                    X = 676,
+                    Y = 555
                 },
                 new BoardImage
                 {
                     Name = ImageName.Bet3,
                     PlayerNumber = 3,
                     Type = ImageType.PlayerBet,
-                    Image = new Bitmap(170, 40),
-                    X = 534,
-                    Y = 482
+                    Image = new Bitmap(120, 25),
+                    X = 581,
+                    Y = 483
                 },
                 new BoardImage
                 {
                     Name = ImageName.Bet4,
                     PlayerNumber = 4,
                     Type = ImageType.PlayerBet,
-                    Image = new Bitmap(170, 40),
-                    X = 486,
-                    Y = 321
+                    Image = new Bitmap(160, 25),
+                    X = 555,
+                    Y = 323
                 },
                 new BoardImage
                 {
                     Name = ImageName.Bet5,
                     PlayerNumber = 5,
                     Type = ImageType.PlayerBet,
-                    Image = new Bitmap(170, 40),
-                    X = 724,
-                    Y = 257
+                    Image = new Bitmap(160, 25),
+                    X = 806,
+                    Y = 261
                 },
                 new BoardImage
                 {
                     Name = ImageName.Bet6,
                     PlayerNumber = 6,
                     Type = ImageType.PlayerBet,
-                    Image = new Bitmap(170, 40),
-                    X = 1069,
-                    Y = 232
+                    Image = new Bitmap(160, 25),
+                    X = 977,
+                    Y = 233
                 },
                 new BoardImage
                 {
                     Name = ImageName.Bet7,
                     PlayerNumber = 7,
                     Type = ImageType.PlayerBet,
-                    Image = new Bitmap(170, 40),
-                    X = 1210,
-                    Y = 289
+                    Image = new Bitmap(160, 25),
+                    X = 1158,
+                    Y = 294
                 },
                 new BoardImage
                 {
                     Name = ImageName.Bet8,
                     PlayerNumber = 8,
                     Type = ImageType.PlayerBet,
-                    Image = new Bitmap(170, 40),
-                    X = 1254,
-                    Y = 480
+                    Image = new Bitmap(160, 25),
+                    X = 1186,
+                    Y = 482
                 },
                 new BoardImage
                 {
                     Name = ImageName.Bet9,
                     PlayerNumber = 9,
                     Type = ImageType.PlayerBet,
-                    Image = new Bitmap(170, 40),
-                    X = 1138,
-                    Y = 550
+                    Image = new Bitmap(160, 25),
+                    X = 1084,
+                    Y = 553
                 },
                 new BoardImage
                 {
