@@ -415,16 +415,13 @@ namespace SNGEGT
             // read content of playersData table
             for (int i = 0; i < playersCount; i++)
             {
-
                 if (players[i].chips.Text != "")
                     playersData[i, STACK] = Convert.ToDouble(players[i].chips.Text);
-
 
                 if (players[i].bets.Text != "")
                     playersData[i, BETS] = Convert.ToDouble(players[i].bets.Text);
 
                 playersData[i, CALLRANGE] = Convert.ToDouble(players[i].slider.Range);
-
             }
         }
 

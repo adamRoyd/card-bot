@@ -83,6 +83,7 @@
     <Compile Include="Card.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="FullTiltTable.cs" />
+    <Compile Include="IcmIntegrator.cs" />
     <Compile Include="ImageNet.cs" />
     <Compile Include="kuvaform.cs">
       <SubType>Form</SubType>
