@@ -3,3 +3,9 @@ hand calculator for post flop
 create call range for all-in shoves
 
 120744 should not be all in
+
+
+
+doCalc -
+Set Ranges to optimum ICM ranges
+calcICM returns EV diff value. if over 0.3, then go.

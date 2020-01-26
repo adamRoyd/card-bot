@@ -1,0 +1,15 @@
+C:\Users\adamb\Downloads\SNGEGT-master\sngegt\bin\Debug\SNGEGT.exe
+C:\Users\adamb\Downloads\SNGEGT-master\sngegt\bin\Debug\SNGEGT.pdb
+C:\Users\adamb\Downloads\SNGEGT-master\sngegt\obj\Debug\SNGEGT.csprojAssemblyReference.cache
+C:\Users\adamb\Downloads\SNGEGT-master\sngegt\obj\Debug\SNGEGT.BlindsForm.resources
+C:\Users\adamb\Downloads\SNGEGT-master\sngegt\obj\Debug\SNGEGT.BlindSelectionForm.resources
+C:\Users\adamb\Downloads\SNGEGT-master\sngegt\obj\Debug\SNGEGT.GameSelectForm.resources
+C:\Users\adamb\Downloads\SNGEGT-master\sngegt\obj\Debug\SNGEGT.kuvaform.resources
+C:\Users\adamb\Downloads\SNGEGT-master\sngegt\obj\Debug\SNGEGT.PresetRangeForm.resources
+C:\Users\adamb\Downloads\SNGEGT-master\sngegt\obj\Debug\SNGEGT.RangeSelector.resources
+C:\Users\adamb\Downloads\SNGEGT-master\sngegt\obj\Debug\SNGEGT.SNGPH.resources
+C:\Users\adamb\Downloads\SNGEGT-master\sngegt\obj\Debug\SNGEGT.Properties.Resources.resources
+C:\Users\adamb\Downloads\SNGEGT-master\sngegt\obj\Debug\SNGEGT.StackToRangeForm.resources
+C:\Users\adamb\Downloads\SNGEGT-master\sngegt\obj\Debug\SNGEGT.csproj.GenerateResource.cache
+C:\Users\adamb\Downloads\SNGEGT-master\sngegt\obj\Debug\SNGEGT.exe
+C:\Users\adamb\Downloads\SNGEGT-master\sngegt\obj\Debug\SNGEGT.pdb
