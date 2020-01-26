@@ -1,25 +1,20 @@
-﻿using System;
+﻿using Engine.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SNGEGT
+namespace ICM
 {
     public class IcmIntegrator
     {
         private static readonly short STACK = 0;
         private static readonly short BETS = 1;
         private static readonly short CALLRANGE = 2;
-        //private static readonly short HOLDPERC = 3;
-        private static readonly short CALLPERC = 4;
-        private static readonly short WINPERC = 5;
-        private static readonly short EVWIN = 6;
-        private static readonly short EVLOSE = 7;
-        private static readonly short PREPOST = 8;
         private ICM icm;
         private BlindInfo blindInfo;
         private double[,] playersData;
-        private Player[] players;
+        private BoardState _state;
 
         public IcmIntegrator()
         {
@@ -31,10 +26,11 @@ namespace SNGEGT
             icm = new ICM();
             var numberOfPlayers = 4;
 
-            players = new Player[4]; //TODO replace with engine player
             var myHandIndex = indexFromHand(new int[] { 1, 2 }); // is this correct? might be easier to compare
             // hand codes instead
-            int myIndex = 1; // Is this my position?
+            int myIndex = 1; _state.MyPosition // TODO convert position to PositionFromBigBlind
+            // MyPosition starts at BB (1) and counts clockwise
+            // ICM Position starts at BB (0) and counts anti clockwise
             blindInfo = new BlindInfo(100, 200, 0);
 
             double[,] playerData = GetPlayerData(numberOfPlayers);
@@ -44,12 +40,12 @@ namespace SNGEGT
             var moneyPayouts = new double[] { 0.5, 0.3, 0.2 };
 
             icm.calcPush(
-                numberOfPlayers, 
-                myHandIndex, 
-                myIndex, 
-                playerData, 
-                results, 
-                moneyPayouts, 
+                numberOfPlayers,
+                myHandIndex,
+                myIndex,
+                playerData,
+                results,
+                moneyPayouts,
                 moneyPayouts.Length
             );
 
@@ -58,18 +54,13 @@ namespace SNGEGT
 
         private double[,] GetPlayerData(int playersCount)
         {
-
-            for (int i = 0; i < playersCount; i++)
+            _state.Players.Each((player, n) =>
             {
-                if (players[i].chips.Text != "")
-                    playersData[i, STACK] = Convert.ToDouble(players[i].chips.Text);
-
-                if (players[i].bets.Text != "")
-                    playersData[i, BETS] = Convert.ToDouble(players[i].bets.Text);
-            }
+                playersData[n, STACK] = Convert.ToDouble(player.Stack);
+                playersData[n, BETS] = Convert.ToDouble(player.Bet);
+            });
 
             CalculateRanges(blindInfo, true);
-
 
             return playersData;
         }
@@ -79,7 +70,7 @@ namespace SNGEGT
             var nosb = false;
             var award = new Award
             {
-                name = "9 man",
+                name = "9 max",
                 playercount = 9,
                 wins = { 50, 30, 20 }
             };
@@ -88,7 +79,7 @@ namespace SNGEGT
             int PLAYERCOUNT = 10;
             int[] playerrange = new int[PLAYERCOUNT];
             int[] stacks = new int[PLAYERCOUNT];
-            int allin = -1;
+            int positionFromBigBlind = -1;
 
             for (int i = 0; i < PLAYERCOUNT; i++)
                 playerrange[i] = 1;
@@ -100,33 +91,27 @@ namespace SNGEGT
                     stacks[found++] = (int)playersData[i, STACK];
             }
 
-            // jos ollaan Push -moodissa, niin etsitään oma indeksi pääohjelman vasemmanpuolisimmista radio buttoneista
+            // Get index number of player that is all in.
+            // Index is the position from the BB. SB is 1, D is 2 etc.
             if (isPush)
             {
-                allin = -1;
-                for (int i = 0; i < 10; i++)
-                {
-                    if (players[i].position.Checked == true)
-                    {
-                        allin = i;
-                        break;
-                    }
-                }
+                positionFromBigBlind = -1;
+                var myPosition = _state.MyPosition;
+
+                positionFromBigBlind = // TODO convert position to PositionFromBigBlind
             }
-            // call -moodissa korottaja löytyy all-in radio -buttoneiden avulla
             else
             {
-                for (int i = 0; i < 10; i++)
+                var allInPlayer = _state.Players.FirstOrDefault(p => p.IsAllIn);
+
+                if (allInPlayer != null)
                 {
-                    if (players[i].allin.Checked == true)
-                    {
-                        allin = i;
-                        break;
-                    }
+                    positionFromBigBlind = -1; // TODO convert position to PositionFromBigBlind
+
                 }
             }
 
-            ranges.calc(found, stacks, allin, blinds.Bigblind, blinds.Ante, nosb, 0.1, award.wins.ToArray(), playerrange);
+            ranges.calc(found, stacks, positionFromBigBlind, blinds.Bigblind, blinds.Ante, nosb, 0.1, award.wins.ToArray(), playerrange);
 
             Console.Write("playerrange: ");
             for (int i = 0; i < 10; i++)

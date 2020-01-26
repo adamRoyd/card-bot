@@ -23,7 +23,7 @@ using System.Windows.Forms;
 
 namespace SNGEGT
 {
-    class Player
+    class IcmPlayer
     {
         public RangeSelector slider;
         public RadioButton position;
@@ -37,7 +37,7 @@ namespace SNGEGT
         public Label labelEVlose;        
         public Boolean enabled;
 
-        public Player(RangeSelector iSlider, RadioButton iPosition, TextBox iChips, Label iPrepost, TextBox iBets, RadioButton iAllin, Label iLabelCall, Label iLabelWin, Label iLabelEVwin, Label iLabelEVlose)
+        public IcmPlayer(RangeSelector iSlider, RadioButton iPosition, TextBox iChips, Label iPrepost, TextBox iBets, RadioButton iAllin, Label iLabelCall, Label iLabelWin, Label iLabelEVwin, Label iLabelEVlose)
         {
             slider = iSlider;
             position = iPosition;

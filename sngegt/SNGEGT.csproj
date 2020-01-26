@@ -83,7 +83,6 @@
     <Compile Include="Card.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="FullTiltTable.cs" />
-    <Compile Include="IcmIntegrator.cs" />
     <Compile Include="ImageNet.cs" />
     <Compile Include="kuvaform.cs">
       <SubType>Form</SubType>
@@ -123,7 +122,7 @@
     <Compile Include="TableData.cs" />
     <Compile Include="TableFinder.cs" />
     <Compile Include="partyTableReader.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="IcmPlayer.cs" />
     <Compile Include="SNGEGT.cs">
       <SubType>Form</SubType>
     </Compile>

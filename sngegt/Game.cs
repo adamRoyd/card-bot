@@ -26,7 +26,7 @@ namespace SNGEGT
 
     class Game
     {
-        public Player[] players;
+        public IcmPlayer[] players;
         private Label labelBetSum;
         private Label labelChipSum;
         private Label labelEVpushCall;
@@ -51,10 +51,10 @@ namespace SNGEGT
         private int handIndex;
 
 
-        public Game(Player p0, Player p1, Player p2, Player p3, Player p4, Player p5, Player p6, Player p7, Player p8, Player p9, Label iChipSum, Label iBetSum, Label iLabelEVpushCall, Label iLabelEVfoldVal, Label iLabelEVpushCallVal, Label iLabelEVdiffVal)
+        public Game(IcmPlayer p0, IcmPlayer p1, IcmPlayer p2, IcmPlayer p3, IcmPlayer p4, IcmPlayer p5, IcmPlayer p6, IcmPlayer p7, IcmPlayer p8, IcmPlayer p9, Label iChipSum, Label iBetSum, Label iLabelEVpushCall, Label iLabelEVfoldVal, Label iLabelEVpushCallVal, Label iLabelEVdiffVal)
         {
             icm = new ICM();
-            players = new Player[10];
+            players = new IcmPlayer[10];
             players[0] = p0;
             players[1] = p1;
             players[2] = p2;
@@ -330,7 +330,7 @@ namespace SNGEGT
             int chips;
             for (int i = 0; i < playersCount; i++)
             {
-                Player test = players[i];
+                IcmPlayer test = players[i];
                 chips = Convert.ToInt32(players[i].chips.Text, 10);
 
                 // ante

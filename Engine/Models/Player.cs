@@ -11,5 +11,6 @@ namespace Engine.Models
         public int Bet { get; set; }
         public bool IsDealer { get; set; }
         public bool Eliminated { get; set; }
+        public bool IsAllIn { get; set; }
     }
 }

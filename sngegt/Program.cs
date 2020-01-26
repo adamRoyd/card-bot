@@ -36,8 +36,6 @@ namespace SNGEGT
             SNGPH game = new SNGPH();
             if (game.isOk())
                 Application.Run(game);
-
-
         }
     }
 }
