@@ -15,18 +15,13 @@ namespace ICM.Tests
             icmIntegrator = new IcmService();
         }
 
-        // TODO test that player data returns correct
-        // TODO test hand index returns correct
-        // TODO test blind returns correct
-
-
         [Fact]
         public void GetExpectedValue_Runs()
         {
             var state = new BoardState
             {
                 NumberOfPlayers = 3,
-                HandCode = "KKo",
+                HandCode = "AKs",
                 BigBlind = 200,
                 MyPosition = 1,
                 Players = new Player[]
@@ -60,6 +55,7 @@ namespace ICM.Tests
 
             var result = icmIntegrator.GetExpectedValue(state);
 
+            Assert.Equal(1.4, result);
         }
     }
 }

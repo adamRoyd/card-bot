@@ -14,7 +14,7 @@ namespace ICM
 
         public int GetHandIndex(string handCode)
         {
-            return -1;
+            return 0;
         }
 
         // MyPosition starts at BB (1) and counts clockwise
@@ -34,15 +34,7 @@ namespace ICM
             return myPosition + 1; // All other positions
         }
 
-        // TODO get antes
-        internal BlindInfo GetBlindInfo(int bigBlind)
-        {
-            var smallBlind = bigBlind / 2;
-            return new BlindInfo(smallBlind, bigBlind, 0);
-        }
-
-
-        public double[,] GetPlayerData(BoardState _state, double[,] playersData, BlindInfo blindInfo)
+        public double[,] GetPlayerData(BoardState _state, double[,] playersData)
         {
             _state.Players.Each((player, n) =>
             {
@@ -50,13 +42,16 @@ namespace ICM
                 playersData[n, BETS] = Convert.ToDouble(player.Bet);
             });
 
-            CalculateRanges(_state, playersData, blindInfo, true);
+            CalculateRanges(_state, playersData, true);
 
             return playersData;
         }
 
-        public void CalculateRanges(BoardState _state, double[,] playersData, BlindInfo blindInfo, bool isPush)
+        public void CalculateRanges(BoardState _state, double[,] playersData, bool isPush)
         {
+
+            BlindInfo blindInfo = GetBlindInfo(_state.BigBlind);
+
             var nosb = false;
             var award = new Award
             {
@@ -112,6 +107,13 @@ namespace ICM
             {
                 playersData[i, CALLRANGE] = playerrange[i];
             }
+        }
+
+        // TODO get antes
+        private BlindInfo GetBlindInfo(int bigBlind)
+        {
+            var smallBlind = bigBlind / 2;
+            return new BlindInfo(smallBlind, bigBlind, 0);
         }
     }
 }

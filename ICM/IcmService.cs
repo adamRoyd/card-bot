@@ -31,9 +31,8 @@ namespace ICM
 
             var myHandIndex = _helper.GetHandIndex(_state.HandCode);
             int indexFromBigBlind = _helper.GetIndexFromBigBlind(_state.MyPosition, _state.NumberOfPlayers);
-            blindInfo = _helper.GetBlindInfo(_state.BigBlind);
 
-            double[,] playerData = _helper.GetPlayerData(_state, playersData, blindInfo);
+            double[,] playerData = _helper.GetPlayerData(_state, playersData);
 
             var results = new double[] { 0, 0 };
 
@@ -49,7 +48,11 @@ namespace ICM
                 moneyPayouts.Length
             );
 
-            return results[0];
+            var result = results[1] - results[0];
+
+            var rounded = Math.Round(result, 3);
+
+            return rounded * 100;
         }
     }
 }
