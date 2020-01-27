@@ -567,7 +567,17 @@ namespace SNGEGT
                 }
             }
 
-            ranges.calc(found, stacks, allin, blinds.Bigblind, blinds.Ante, nosb, 0.1, award.wins.ToArray(), playerrange);
+            ranges.calc(
+                found, 
+                stacks, 
+                allin, 
+                blinds.Bigblind, 
+                blinds.Ante, 
+                nosb, 
+                0.1, 
+                award.wins.ToArray(), 
+                playerrange
+            );
 
             Console.Write("playerrange: ");
             for (int i = 0; i < 10; i++)

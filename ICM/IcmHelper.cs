@@ -14,7 +14,11 @@ namespace ICM
 
         public int GetHandIndex(string handCode)
         {
-            return 0;
+            var hands = GetHandArray();
+
+            var result = Array.FindIndex(hands, h => h == handCode);
+
+            return result;
         }
 
         // MyPosition starts at BB (1) and counts clockwise
@@ -38,8 +42,10 @@ namespace ICM
         {
             _state.Players.Each((player, n) =>
             {
-                playersData[n, STACK] = Convert.ToDouble(player.Stack);
-                playersData[n, BETS] = Convert.ToDouble(player.Bet);
+                var index = GetIndexFromBigBlind(player.Position, _state.NumberOfPlayers);
+
+                playersData[index, STACK] = Convert.ToDouble(player.Stack);
+                playersData[index, BETS] = Convert.ToDouble(player.Bet);
             });
 
             CalculateRanges(_state, playersData, true);
@@ -96,7 +102,17 @@ namespace ICM
                 }
             }
 
-            ranges.calc(found, stacks, indexFromBigBlind, blindInfo.Bigblind, blindInfo.Ante, nosb, 0.1, award.wins.ToArray(), playerrange);
+            ranges.calc(
+                found, 
+                stacks,
+                indexFromBigBlind, 
+                blindInfo.Bigblind, 
+                blindInfo.Ante, 
+                nosb, 
+                0.1, 
+                award.wins.ToArray(), 
+                playerrange
+            );
 
             Console.Write("playerrange: ");
             for (int i = 0; i < 10; i++)
@@ -115,5 +131,183 @@ namespace ICM
             var smallBlind = bigBlind / 2;
             return new BlindInfo(smallBlind, bigBlind, 0);
         }
+
+        private static string[] GetHandArray()
+        {
+            var hands = new string[] {
+            "AAo",
+            "AKs",
+            "AKo",
+            "AQs",
+            "AQo",
+            "AJs",
+            "AJo",
+            "ATs",
+            "ATo",
+            "A9s",
+            "A9o",
+            "A8s",
+            "A8o",
+            "A7s",
+            "A7o",
+            "A6s",
+            "A6o",
+            "A5s",
+            "A5o",
+            "A4s",
+            "A4o",
+            "A3s",
+            "A3o",
+            "A2s",
+            "A2o",
+            "KKo",
+            "KQs",
+            "KQo",
+            "KJs",
+            "KJo",
+            "KTs",
+            "KTo",
+            "K9s",
+            "K9o",
+            "K8s",
+            "K8o",
+            "K7s",
+            "K7o",
+            "K6s",
+            "K6o",
+            "K5s",
+            "K5o",
+            "K4s",
+            "K4o",
+            "K3s",
+            "K3o",
+            "K2s",
+            "K2o",
+            "QQo",
+            "QJs",
+            "QJo",
+            "QTs",
+            "QTo",
+            "Q9s",
+            "Q9o",
+            "Q8s",
+            "Q8o",
+            "Q7s",
+            "Q7o",
+            "Q6s",
+            "Q6o",
+            "Q5s",
+            "Q5o",
+            "Q4s",
+            "Q4o",
+            "Q3s",
+            "Q3o",
+            "Q2s",
+            "Q2o",
+            "JJo",
+            "JTs",
+            "JTo",
+            "J9s",
+            "J9o",
+            "J8s",
+            "J8o",
+            "J7s",
+            "J7o",
+            "J6s",
+            "J6o",
+            "J5s",
+            "J5o",
+            "J4s",
+            "J4o",
+            "J3s",
+            "J3o",
+            "J2s",
+            "J2o",
+            "TTo",
+            "T9s",
+            "T9o",
+            "T8s",
+            "T8o",
+            "T7s",
+            "T7o",
+            "T6s",
+            "T6o",
+            "T5s",
+            "T5o",
+            "T4s",
+            "T4o",
+            "T3s",
+            "T3o",
+            "T2s",
+            "T2o",
+            "99o",
+            "98s",
+            "98o",
+            "97s",
+            "97o",
+            "96s",
+            "96o",
+            "95s",
+            "95o",
+            "94s",
+            "94o",
+            "93s",
+            "93o",
+            "92s",
+            "92o",
+            "88o",
+            "87s",
+            "87o",
+            "86s",
+            "86o",
+            "85s",
+            "85o",
+            "84s",
+            "84o",
+            "83s",
+            "83o",
+            "82s",
+            "82o",
+            "77o",
+            "76s",
+            "76o",
+            "75s",
+            "75o",
+            "74s",
+            "74o",
+            "73s",
+            "73o",
+            "72s",
+            "72o",
+            "66o",
+            "65s",
+            "65o",
+            "64s",
+            "64o",
+            "63s",
+            "63o",
+            "62s",
+            "62o",
+            "55o",
+            "54s",
+            "54o",
+            "53s",
+            "53o",
+            "52s",
+            "52o",
+            "44o",
+            "43s",
+            "43o",
+            "42s",
+            "42o",
+            "33o",
+            "32s",
+            "32o",
+            "22o"
+            };
+
+            return hands;
+        }
     }
 }
+
