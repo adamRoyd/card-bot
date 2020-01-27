@@ -55,6 +55,7 @@ namespace Engine.Models
         public string HandCode
         {
             get { return GetHandCode(); }
+            set { }
         }
         public int SageRank
         {

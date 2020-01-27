@@ -1,0 +1,11 @@
+C:\Github\card-bot\ICM\bin\Debug\netstandard2.0\ICM.deps.json
+C:\Github\card-bot\ICM\bin\Debug\netstandard2.0\ICM.dll
+C:\Github\card-bot\ICM\bin\Debug\netstandard2.0\Engine.dll
+C:\Github\card-bot\ICM\bin\Debug\netstandard2.0\Engine.pdb
+C:\Github\card-bot\ICM\obj\Debug\netstandard2.0\ICM.csprojAssemblyReference.cache
+C:\Github\card-bot\ICM\obj\Debug\netstandard2.0\ICM.AssemblyInfoInputs.cache
+C:\Github\card-bot\ICM\obj\Debug\netstandard2.0\ICM.AssemblyInfo.cs
+C:\Github\card-bot\ICM\obj\Debug\netstandard2.0\ICM.csproj.CopyComplete
+C:\Github\card-bot\ICM\bin\Debug\netstandard2.0\ICM.pdb
+C:\Github\card-bot\ICM\obj\Debug\netstandard2.0\ICM.dll
+C:\Github\card-bot\ICM\obj\Debug\netstandard2.0\ICM.pdb

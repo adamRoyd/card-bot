@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SNGEGT", "sngegt\SNGEGT.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICM", "ICM\ICM.csproj", "{57B98063-0FA8-4F2D-9FC5-8492CAE6851E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICM.Tests", "ICM.Tests\ICM.Tests.csproj", "{347F6189-BE4E-4632-AC69-394C0909EE46}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,14 @@ Global
 		{57B98063-0FA8-4F2D-9FC5-8492CAE6851E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{57B98063-0FA8-4F2D-9FC5-8492CAE6851E}.Release|x86.ActiveCfg = Release|Any CPU
 		{57B98063-0FA8-4F2D-9FC5-8492CAE6851E}.Release|x86.Build.0 = Release|Any CPU
+		{347F6189-BE4E-4632-AC69-394C0909EE46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{347F6189-BE4E-4632-AC69-394C0909EE46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{347F6189-BE4E-4632-AC69-394C0909EE46}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{347F6189-BE4E-4632-AC69-394C0909EE46}.Debug|x86.Build.0 = Debug|Any CPU
+		{347F6189-BE4E-4632-AC69-394C0909EE46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{347F6189-BE4E-4632-AC69-394C0909EE46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{347F6189-BE4E-4632-AC69-394C0909EE46}.Release|x86.ActiveCfg = Release|Any CPU
+		{347F6189-BE4E-4632-AC69-394C0909EE46}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
