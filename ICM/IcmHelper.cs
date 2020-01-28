@@ -21,8 +21,8 @@ namespace ICM
             return result;
         }
 
-        // MyPosition starts at BB (1) and counts clockwise
-        // ICM Position starts at BB (0) and counts anti clockwise
+        // Engine Position starts at SB (1)
+        // ICM Position starts at BB (0)
         public int GetIndexFromBigBlind(int myPosition, int numberOfPlayers)
         {
             int diff = numberOfPlayers - myPosition;
@@ -42,7 +42,13 @@ namespace ICM
         {
             _state.Players.Each((player, n) =>
             {
-                var index = GetIndexFromBigBlind(player.Position, _state.NumberOfPlayers);
+                //var position = GetIcmPosition(_state.Players, player);
+
+                var truePosition = Array.IndexOf(_state.Players, player) + 1;
+
+                var enginePosition = GetEnginePosition(_state.Players, player);
+
+                var index = GetIndexFromBigBlind(truePosition, _state.NumberOfPlayers);
 
                 playersData[index, STACK] = Convert.ToDouble(player.Stack);
                 playersData[index, BETS] = Convert.ToDouble(player.Bet);
@@ -51,6 +57,42 @@ namespace ICM
             CalculateRanges(_state, playersData, true);
 
             return playersData;
+        }
+
+        private int GetEnginePosition(Player[] players, Player player)
+        {
+            var playersInGame = players.Where(p => !p.Eliminated).OrderBy(p => p.Position);
+
+            var truePosition = Array.IndexOf(players, player) + 1;
+
+            var dealer = players.FirstOrDefault(p => p.IsDealer);
+
+            if (dealer == null)
+            {
+                Console.WriteLine("WARNING Dealer is null");
+                return -1;
+            }
+
+            var dealerPosition = 1;
+
+            foreach (var p in playersInGame)
+            {
+                if (p.IsDealer)
+                {
+                    break;
+                }
+                else
+                {
+                    dealerPosition++;
+                }
+            }
+
+            // Rewrite the formula as this is not working and is very confusing!!
+            // We know where the dealer is in the list
+            // Keep the counting clockwise and find the position relative to the 
+            // BB, who will always be two positions behind the dealer.
+            var myPosition = playersInGame.Count() + truePosition - dealerPosition;
+            return myPosition;
         }
 
         public void CalculateRanges(BoardState _state, double[,] playersData, bool isPush)
@@ -82,11 +124,14 @@ namespace ICM
                     stacks[found++] = (int)playersData[i, STACK];
             }
 
-            // Get index number of player that is all in.
+            // Get index number of player that is all in (which is you!)
             // Index is the position from the BB. SB is 1, D is 2 etc.
             if (isPush)
             {
                 indexFromBigBlind = -1;
+                var me = _state.Players.First(p => p.Position == 1);
+
+                var truePosition = Array.IndexOf(_state.Players, me) + 1;
                 var myPosition = _state.MyPosition;
 
                 indexFromBigBlind = GetIndexFromBigBlind(_state.MyPosition, _state.NumberOfPlayers);

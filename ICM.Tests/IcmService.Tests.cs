@@ -59,7 +59,7 @@ namespace ICM.Tests
                     new Player
                     {
                         IsDealer = true,
-                        Position = 1,
+                        Position = 1, // engine position 3
                         Bet = 0,
                         Stack = 2000,
                         IsAllIn = true
@@ -67,7 +67,7 @@ namespace ICM.Tests
                     new Player
                     {
                         IsDealer = false,
-                        Position = 2, // BB
+                        Position = 8, // BB // engine position 2
                         Bet = 200,
                         Stack = 2000,
                         IsAllIn = false
@@ -75,7 +75,7 @@ namespace ICM.Tests
                     new Player
                     {
                         IsDealer = false,
-                        Position = 3, // SB
+                        Position = 9, // SB // engine position 1
                         Bet = 100,
                         Stack = 2000,
                         IsAllIn = false

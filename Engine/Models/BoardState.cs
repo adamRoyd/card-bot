@@ -144,7 +144,8 @@ namespace Engine.Models
             return stackRatio;
         }
 
-
+        // My position - calculates position clockwise from SB.
+        // If 7 players, dealer would be position 7.
         private int GetMyPosition()
         {
             var playersInGame = Players.Where(p => !p.Eliminated).OrderBy(p => p.Position);
