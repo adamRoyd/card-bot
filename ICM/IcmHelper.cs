@@ -46,8 +46,6 @@ namespace ICM
 
                 var truePosition = Array.IndexOf(_state.Players, player) + 1;
 
-                var enginePosition = GetEnginePosition(_state.Players, player);
-
                 var index = GetIndexFromBigBlind(truePosition, _state.NumberOfPlayers);
 
                 playersData[index, STACK] = Convert.ToDouble(player.Stack);
@@ -59,40 +57,26 @@ namespace ICM
             return playersData;
         }
 
-        private int GetEnginePosition(Player[] players, Player player)
+        public int GetIndexFromBigBlind(Player[] players, Player player)
         {
-            var playersInGame = players.Where(p => !p.Eliminated).OrderBy(p => p.Position);
+            var numberOfPlayers = players.Where(p => !p.Eliminated).Count();
 
             var truePosition = Array.IndexOf(players, player) + 1;
 
-            var dealer = players.FirstOrDefault(p => p.IsDealer);
+            var dealerPosition = Array.IndexOf(players, players.FirstOrDefault(p => p.IsDealer)) + 1;
 
-            if (dealer == null)
+            // The below only works if the dealer is first. Factor in the dealer position!
+            int diff = numberOfPlayers - truePosition;
+
+            if (diff == 1) // BB
             {
-                Console.WriteLine("WARNING Dealer is null");
-                return -1;
+                return 0;
             }
-
-            var dealerPosition = 1;
-
-            foreach (var p in playersInGame)
+            if (diff == 0) // SB
             {
-                if (p.IsDealer)
-                {
-                    break;
-                }
-                else
-                {
-                    dealerPosition++;
-                }
+                return 1;
             }
-
-            // Rewrite the formula as this is not working and is very confusing!!
-            // We know where the dealer is in the list
-            // Keep the counting clockwise and find the position relative to the 
-            // BB, who will always be two positions behind the dealer.
-            var myPosition = playersInGame.Count() + truePosition - dealerPosition;
-            return myPosition;
+            return truePosition + 1; // All other positions
         }
 
         public void CalculateRanges(BoardState _state, double[,] playersData, bool isPush)

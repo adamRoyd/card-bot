@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Engine.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
@@ -63,5 +64,122 @@ namespace ICM.Tests
 
             Assert.Equal(168, result);
         }
+
+        [Fact]
+        public void GetIndexFromBigBlind_3playersBB_returns0()
+        {
+            var players = new Player[]
+            {
+                    new Player
+                    {
+                        IsDealer = true,
+                        Position = 1,
+                        Bet = 0,
+                        Stack = 2000,
+                        IsAllIn = true
+                    },
+                    new Player
+                    {
+                        IsDealer = false,
+                        Position = 8, // BB
+                        Bet = 200,
+                        Stack = 2000,
+                        IsAllIn = false
+                    },
+                    new Player
+                    {
+                        IsDealer = false,
+                        Position = 9, // SB
+                        Bet = 100,
+                        Stack = 2000,
+                        IsAllIn = false
+                    }
+               };
+
+            var result = _helper.GetIndexFromBigBlind(players, players[1]);
+
+            Assert.Equal(0, result);
+        }
+
+        [Fact]
+        public void GetIndexFromBigBlind_3playersSB_returns1()
+        {
+            var players = new Player[]
+               {
+                    new Player
+                    {
+                        IsDealer = true,
+                        Position = 1,
+                        Bet = 0,
+                        Stack = 2000,
+                        IsAllIn = true
+                    },
+                    new Player
+                    {
+                        IsDealer = false,
+                        Position = 8, // BB
+                        Bet = 200,
+                        Stack = 2000,
+                        IsAllIn = false
+                    },
+                    new Player
+                    {
+                        IsDealer = false,
+                        Position = 9, // SB
+                        Bet = 100,
+                        Stack = 2000,
+                        IsAllIn = false
+                    }
+               };
+
+            var result = _helper.GetIndexFromBigBlind(players, players[2]);
+
+            Assert.Equal(1, result);
+        }
+
+        [Fact]
+        public void GetIndexFromBigBlind_4playersBB_returns0()
+        {
+            var players = new Player[]
+               {
+                    new Player
+                    {
+                        IsDealer = false,
+                        Position = 1,
+                        Bet = 0,
+                        Stack = 2000,
+                        IsAllIn = true
+                    },
+                    new Player
+                    {
+                        IsDealer = true,
+                        Position = 2,
+                        Bet = 0,
+                        Stack = 2000,
+                        IsAllIn = true
+                    },
+                    new Player
+                    {
+                        IsDealer = false,
+                        Position = 8, // BB
+                        Bet = 200,
+                        Stack = 2000,
+                        IsAllIn = false
+                    },
+                    new Player
+                    {
+                        IsDealer = false,
+                        Position = 9, // SB
+                        Bet = 100,
+                        Stack = 2000,
+                        IsAllIn = false
+                    }
+               };
+
+            var result = _helper.GetIndexFromBigBlind(players, players[3]);
+
+            Assert.Equal(0, result);
+        }
+
     }
 }
