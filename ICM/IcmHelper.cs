@@ -18,46 +18,30 @@ namespace ICM
 
             var result = Array.FindIndex(hands, h => h == handCode);
 
+            if(result == -1)
+            {
+                Console.WriteLine("WARNING GetHandIndex is -1");
+            }
+
             return result;
-        }
-
-        // Engine Position starts at SB (1)
-        // ICM Position starts at BB (0)
-        public int GetIndexFromBigBlind(int myPosition, int numberOfPlayers)
-        {
-            int diff = numberOfPlayers - myPosition;
-
-            if (diff == 1) // BB
-            {
-                return 0;
-            }
-            if (diff == 0) // SB
-            {
-                return 1;
-            }
-            return myPosition + 1; // All other positions
         }
 
         public double[,] GetPlayerData(BoardState _state, double[,] playersData)
         {
             _state.Players.Each((player, n) =>
             {
-                //var position = GetIcmPosition(_state.Players, player);
-
-                var truePosition = Array.IndexOf(_state.Players, player) + 1;
-
-                var index = GetIndexFromBigBlind(truePosition, _state.NumberOfPlayers);
+                var index = GetPlayerIndex(_state.Players, player);
 
                 playersData[index, STACK] = Convert.ToDouble(player.Stack);
                 playersData[index, BETS] = Convert.ToDouble(player.Bet);
             });
 
-            CalculateRanges(_state, playersData, true);
+            CalculateRanges(_state, playersData);
 
             return playersData;
         }
 
-        public int GetIndexFromBigBlind(Player[] players, Player player)
+        public int GetPlayerIndex(Player[] players, Player player)
         {
             var numberOfPlayers = players.Where(p => !p.Eliminated).Count();
 
@@ -65,21 +49,36 @@ namespace ICM
 
             var dealerPosition = Array.IndexOf(players, players.FirstOrDefault(p => p.IsDealer)) + 1;
 
-            // The below only works if the dealer is first. Factor in the dealer position!
-            int diff = numberOfPlayers - truePosition;
+            int bigBlindPosition = dealerPosition - 2;
 
-            if (diff == 1) // BB
+            if (bigBlindPosition < 1)
             {
-                return 0;
+                bigBlindPosition = numberOfPlayers + bigBlindPosition;
             }
-            if (diff == 0) // SB
+
+            var index = -1;
+
+            // Count up from big blind position and find a match
+            for (var i = 0; i < numberOfPlayers; i++)
             {
-                return 1;
+                if (bigBlindPosition == truePosition)
+                {
+                    index = i;
+                    break;
+                }
+
+                if(bigBlindPosition == numberOfPlayers)
+                {
+                    bigBlindPosition = 0;
+                }
+
+                bigBlindPosition++;
             }
-            return truePosition + 1; // All other positions
+
+            return index;
         }
 
-        public void CalculateRanges(BoardState _state, double[,] playersData, bool isPush)
+        public void CalculateRanges(BoardState _state, double[,] playersData)
         {
 
             BlindInfo blindInfo = GetBlindInfo(_state.BigBlind);
@@ -108,38 +107,32 @@ namespace ICM
                     stacks[found++] = (int)playersData[i, STACK];
             }
 
-            // Get index number of player that is all in (which is you!)
-            // Index is the position from the BB. SB is 1, D is 2 etc.
+            var isPush = _state.Players.All(p => !p.IsAllIn);
+
+            // Get index number of player that is all in
             if (isPush)
             {
                 indexFromBigBlind = -1;
                 var me = _state.Players.First(p => p.Position == 1);
 
-                var truePosition = Array.IndexOf(_state.Players, me) + 1;
-                var myPosition = _state.MyPosition;
-
-                indexFromBigBlind = GetIndexFromBigBlind(_state.MyPosition, _state.NumberOfPlayers);
+                indexFromBigBlind = GetPlayerIndex(_state.Players, me);
             }
             else
             {
                 var allInPlayer = _state.Players.FirstOrDefault(p => p.IsAllIn);
 
-                if (allInPlayer != null)
-                {
-                    indexFromBigBlind = -1; // TODO convert position to PositionFromBigBlind
-
-                }
+                indexFromBigBlind = GetPlayerIndex(_state.Players, allInPlayer);
             }
 
             ranges.calc(
-                found, 
+                found,
                 stacks,
-                indexFromBigBlind, 
-                blindInfo.Bigblind, 
-                blindInfo.Ante, 
-                nosb, 
-                0.1, 
-                award.wins.ToArray(), 
+                indexFromBigBlind,
+                blindInfo.Bigblind,
+                blindInfo.Ante,
+                nosb,
+                0.1,
+                award.wins.ToArray(),
                 playerrange
             );
 
@@ -171,8 +164,8 @@ namespace ICM
             "AQo",
             "AJs",
             "AJo",
-            "ATs",
-            "ATo",
+            "A10s",
+            "A10o",
             "A9s",
             "A9o",
             "A8s",
@@ -194,8 +187,8 @@ namespace ICM
             "KQo",
             "KJs",
             "KJo",
-            "KTs",
-            "KTo",
+            "K10s",
+            "K10o",
             "K9s",
             "K9o",
             "K8s",
@@ -215,8 +208,8 @@ namespace ICM
             "QQo",
             "QJs",
             "QJo",
-            "QTs",
-            "QTo",
+            "Q10s",
+            "Q10o",
             "Q9s",
             "Q9o",
             "Q8s",
@@ -234,8 +227,8 @@ namespace ICM
             "Q2s",
             "Q2o",
             "JJo",
-            "JTs",
-            "JTo",
+            "J10s",
+            "J10o",
             "J9s",
             "J9o",
             "J8s",
@@ -252,23 +245,23 @@ namespace ICM
             "J3o",
             "J2s",
             "J2o",
-            "TTo",
-            "T9s",
-            "T9o",
-            "T8s",
-            "T8o",
-            "T7s",
-            "T7o",
-            "T6s",
-            "T6o",
-            "T5s",
-            "T5o",
-            "T4s",
-            "T4o",
-            "T3s",
-            "T3o",
-            "T2s",
-            "T2o",
+            "1010o",
+            "109s",
+            "109o",
+            "108s",
+            "108o",
+            "107s",
+            "107o",
+            "106s",
+            "106o",
+            "105s",
+            "105o",
+            "104s",
+            "104o",
+            "103s",
+            "103o",
+            "102s",
+            "102o",
             "99o",
             "98s",
             "98o",

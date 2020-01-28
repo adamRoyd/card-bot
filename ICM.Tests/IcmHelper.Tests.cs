@@ -16,7 +16,7 @@ namespace ICM.Tests
         }
 
         [Fact]
-        public void GetHandIndex_AA_Returns0()
+        public void GetHandIndex_AA()
         {
             const string handCode = "AAo";
 
@@ -66,7 +66,7 @@ namespace ICM.Tests
         }
 
         [Fact]
-        public void GetIndexFromBigBlind_3playersBB_returns0()
+        public void GetIndexFromBigBlind_3playersBB()
         {
             var players = new Player[]
             {
@@ -96,9 +96,9 @@ namespace ICM.Tests
                     }
                };
 
-            var result = _helper.GetIndexFromBigBlind(players, players[1]);
+            var result = _helper.GetPlayerIndex(players, players[0]);
 
-            Assert.Equal(0, result);
+            Assert.Equal(2, result);
         }
 
         [Fact]
@@ -132,13 +132,13 @@ namespace ICM.Tests
                     }
                };
 
-            var result = _helper.GetIndexFromBigBlind(players, players[2]);
+            var result = _helper.GetPlayerIndex(players, players[1]);
 
-            Assert.Equal(1, result);
+            Assert.Equal(0, result);
         }
 
         [Fact]
-        public void GetIndexFromBigBlind_4playersBB_returns0()
+        public void GetIndexFromBigBlind_4playersBB()
         {
             var players = new Player[]
                {
@@ -146,7 +146,7 @@ namespace ICM.Tests
                     {
                         IsDealer = false,
                         Position = 1,
-                        Bet = 0,
+                        Bet = 100, // SB
                         Stack = 2000,
                         IsAllIn = true
                     },
@@ -161,24 +161,61 @@ namespace ICM.Tests
                     new Player
                     {
                         IsDealer = false,
-                        Position = 8, // BB
-                        Bet = 200,
+                        Position = 8,
+                        Bet = 0,
                         Stack = 2000,
                         IsAllIn = false
                     },
                     new Player
                     {
                         IsDealer = false,
-                        Position = 9, // SB
-                        Bet = 100,
+                        Position = 9, // BB
+                        Bet = 200,
                         Stack = 2000,
                         IsAllIn = false
                     }
                };
 
-            var result = _helper.GetIndexFromBigBlind(players, players[3]);
+            var result = _helper.GetPlayerIndex(players, players[0]);
 
-            Assert.Equal(0, result);
+            Assert.Equal(1, result);
+        }
+
+        [Fact]
+        public void GetIndexFromBigBlind_5playersBB()
+        {
+            var players = new Player[]
+               {
+                    new Player
+                    {
+                        IsDealer = false,
+                        Position = 1
+                    },
+                    new Player
+                    {
+                        IsDealer = false,
+                        Position = 2
+                    },
+                    new Player
+                    {
+                        IsDealer = true,
+                        Position = 3
+                    },
+                    new Player
+                    {
+                        IsDealer = false,
+                        Position = 8
+                    },
+                    new Player
+                    {
+                        IsDealer = false,
+                        Position = 9
+                    }
+               };
+
+            var result = _helper.GetPlayerIndex(players, players[3]);
+
+            Assert.Equal(3, result);
         }
 
     }

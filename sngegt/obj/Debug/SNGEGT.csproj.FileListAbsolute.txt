@@ -28,3 +28,6 @@ C:\Github\card-bot\sngegt\obj\Debug\SNGEGT.StackToRangeForm.resources
 C:\Github\card-bot\sngegt\obj\Debug\SNGEGT.csproj.GenerateResource.cache
 C:\Github\card-bot\sngegt\obj\Debug\SNGEGT.exe
 C:\Github\card-bot\sngegt\obj\Debug\SNGEGT.pdb
+C:\Github\card-bot\sngegt\bin\Debug\Newtonsoft.Json.dll
+C:\Github\card-bot\sngegt\bin\Debug\Newtonsoft.Json.xml
+C:\Github\card-bot\sngegt\obj\Debug\SNGEGT.csproj.CopyComplete

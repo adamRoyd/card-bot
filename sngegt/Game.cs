@@ -16,6 +16,7 @@
 */
 
 
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -491,12 +492,36 @@ namespace SNGEGT
             if (mode == true)
             {
                 //System.Windows.Forms.MessageBox.Show("playersCount: " + Convert.ToString(playersCount) + " " + "handIndex: " + Convert.ToString(handIndex) + " " + "myIndex: " + Convert.ToString(myIndex()));
-                icm.calcPush(playersCount, handIndex, myIndex(), playersData, results, ICMs, ICMs.Length);
+                icm.calcPush(
+                    playersCount, 
+                    handIndex, 
+                    myIndex(), 
+                    playersData, 
+                    results, 
+                    ICMs, 
+                    ICMs.Length
+                    );
+
+                //var jsonPlayerData = JsonConvert.SerializeObject(playersData);
+
+                //Console.WriteLine(
+                //    $"NoPlayers: {5} MyHand: {handIndex}" +
+                //    $"myIndex: {myIndex()} PlayerData: {jsonPlayerData}" +
+                //    $"Results: {results[0]} {results[1]}"
+                //);
             }
 
             // call
             if (mode == false)
-                icm.calcCall(playersCount, handIndex, myIndex(), allinIndex(), playersData, results, ICMs, ICMs.Length);
+                icm.calcCall(
+                    playersCount, 
+                    handIndex, 
+                    myIndex(), 
+                    allinIndex(), 
+                    playersData, 
+                    results, 
+                    ICMs, 
+                    ICMs.Length);
 
             return results[1] * 100 - results[0] * 100;
         }
