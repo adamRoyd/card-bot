@@ -1,17 +1,3 @@
-hand calculator for post flop
+065823 caused an error
 
-create call range for all-in shoves
-
-120744 should not be all in
-
-
-
-doCalc -
-Set Ranges to optimum ICM ranges
-calcICM returns EV diff value. if over 0.3, then go.
-
-
-5
-102
-3,
-[2000,200,7],[2000,100,6],[2000,0,5],[2000,0,28],[2000,0,10]
+070402 caused an error
