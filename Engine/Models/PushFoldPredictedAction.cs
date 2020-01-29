@@ -8,9 +8,10 @@ namespace Engine.Models
 {
     public class PushFoldPredictedAction : PredictedAction
     {
-        public PushFoldPredictedAction(BoardState state)
+        public PushFoldPredictedAction(BoardState state, double ev)
         {
             _state = state;
+            _ev = ev;
             Hands = GameHands.PushOrFoldHands;
             HandRank = Hands.FirstOrDefault(h => h.HandCode == _state.HandCode)?.Rank;
         }
@@ -20,6 +21,15 @@ namespace Engine.Models
             if (_state.HandStage != HandStage.PreFlop)
             {
                 return base.GetCheckOrFold();
+            }
+
+            if (_ev >= 0.3)
+            {
+                return ActionType.AllIn;
+            }
+            else
+            {
+                return ActionType.Fold;
             }
 
             // Factors

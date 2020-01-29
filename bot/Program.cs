@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Engine.Enums;
 using bot.Logging;
 using System.Linq;
+using ICM;
 
 namespace bot
 {
@@ -24,6 +25,7 @@ namespace bot
             var suitFinder = new SuitFinder();
             var boardStateHelper = new BoardStateHelper(imageProcessor, suitFinder);
             var boardStateService = new BoardStateService(imageProcessor, boardStateHelper, suitFinder);
+            var icmService = new IcmService(); 
 
             while (true)
             {
@@ -50,10 +52,12 @@ namespace bot
                     continue;
                 }
 
+                var ev = icmService.GetExpectedValue(boardState);
+
                 var predictedAction = boardState.MyStackRatio switch
                 {
-                    int n when n > 15 => (PredictedAction)new EarlyGamePredictedAction(boardState),
-                    int n when n <= 15 => new PushFoldPredictedAction(boardState),
+                    int n when n > 20 => (PredictedAction)new EarlyGamePredictedAction(boardState),
+                    int n when n <= 20 => new PushFoldPredictedAction(boardState, ev),
                     _ => null
                 };
 
@@ -105,9 +109,7 @@ namespace bot
                          $"Ps: {boardState.NumberOfPlayers} " +
                          $"Pos: {boardState.MyPosition} " +
                          $"Hand: {boardState.HandCode} " +
-                         $"Sage: {boardState.SageRank} " +
-                         $"MinPush: {predictedAction.MinSagePush} " +
-                         $"SR: {boardState.MyStackRatio} " +
+                         $"Ev: {predictedAction._ev} " +
                          predictedActionText;
 
             LogWriter.WriteLine(stats);

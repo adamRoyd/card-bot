@@ -74,9 +74,11 @@ namespace ICM
 
             var result = results[1] - results[0];
 
-            var rounded = Math.Round(result, 3);
+            result *= 100;
 
-            return rounded * 100;
+            var rounded = Math.Round(result, 1);
+
+            return rounded;
         }
     }
 }

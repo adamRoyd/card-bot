@@ -9,3 +9,9 @@ create call range for all-in shoves
 doCalc -
 Set Ranges to optimum ICM ranges
 calcICM returns EV diff value. if over 0.3, then go.
+
+
+5
+102
+3,
+[2000,200,7],[2000,100,6],[2000,0,5],[2000,0,28],[2000,0,10]

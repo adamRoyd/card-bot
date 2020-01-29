@@ -72,6 +72,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.csproj" />
+    <ProjectReference Include="..\ICM\ICM.csproj" />
     <ProjectReference Include="..\OCR\OCR.csproj" />
   </ItemGroup>
 

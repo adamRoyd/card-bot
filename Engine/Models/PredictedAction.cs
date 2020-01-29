@@ -11,6 +11,7 @@ namespace Engine.Models
         public int? HandRank { get; set; }
         public int MinSagePush { get; set; }
         public BoardState _state { get; set; }
+        public double _ev { get; set; }
 
         public abstract ActionType GetAction();
 
