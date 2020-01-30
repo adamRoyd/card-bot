@@ -28,9 +28,11 @@ namespace ICM
 
         public double[,] GetPlayerData(BoardState _state, double[,] playersData)
         {
-            _state.Players.Each((player, n) =>
+            var filteredPlayers = _state.Players.Where(p => !p.Eliminated).ToArray();
+
+            filteredPlayers.Where(p => !p.Eliminated).Each((player, n) =>
             {
-                var index = GetPlayerIndex(_state.Players, player);
+                var index = GetPlayerIndex(filteredPlayers, player);
 
                 playersData[index, STACK] = Convert.ToDouble(player.Stack);
                 playersData[index, BETS] = Convert.ToDouble(player.Bet);
