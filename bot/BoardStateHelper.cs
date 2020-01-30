@@ -85,17 +85,26 @@ namespace bot
         {
             string result = _imageProcessor.GetImageCharacters(boardImage.Image, PageSegMode.Auto);
 
-            result = result.CleanUp().GetNumbers();
-
-            int.TryParse(result, out int value);
+            result = result.CleanUp();
 
             var index = boardImage.PlayerNumber - 1;
 
-            state.Players[index].Stack = value;
+            string colour = _suitFinder.GetBlackOrWhite(path);
 
             //Set active / inactive 
-            string colour = _suitFinder.GetBlackOrWhite(path);
-            state.Players[index].Eliminated = colour == "white";
+            if (result.Contains("sitting") || colour == "white")
+            {
+                state.Players[index].Eliminated = true;
+            }
+            else
+            {
+                result = result.GetNumbers();
+
+                int.TryParse(result, out int value);
+
+                state.Players[index].Eliminated = false;
+                state.Players[index].Stack = value;
+            }    
         }
 
         internal void SetPlayerBet(string boardImagepath, BoardImage boardImage, BoardState state)

@@ -45,11 +45,14 @@ namespace ICM
 
         public int GetPlayerIndex(Player[] players, Player player)
         {
-            var numberOfPlayers = players.Where(p => !p.Eliminated).Count();
+            var filteredPlayers = players.Where(p => !p.Eliminated).ToArray();
 
-            var truePosition = Array.IndexOf(players, player) + 1;
+            var numberOfPlayers = filteredPlayers.Where(p => !p.Eliminated).Count();
 
-            var dealerPosition = Array.IndexOf(players, players.FirstOrDefault(p => p.IsDealer)) + 1;
+            var truePosition = Array.IndexOf(filteredPlayers, player) + 1;
+
+            var dealerPosition = Array.IndexOf(filteredPlayers, 
+                                    filteredPlayers.FirstOrDefault(p => p.IsDealer)) + 1;
 
             int bigBlindPosition = dealerPosition - 2;
 

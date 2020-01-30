@@ -100,6 +100,7 @@ namespace Engine.Models
 
         public BoardState()
         {
+            // Position goes ANTI CLOCKWISE starting at hero
             Players = new Player[]
                 {
                     new Player{

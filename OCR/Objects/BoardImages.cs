@@ -81,8 +81,8 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
-                    Name = ImageName.Position2,
-                    PlayerNumber = 2,
+                    Name = ImageName.Position9,
+                    PlayerNumber = 9,
                     Type = ImageType.PlayerDealerButton,
                     Image = new Bitmap(25, 25),
                     X = 590,
@@ -90,8 +90,8 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
-                    Name = ImageName.Position3,
-                    PlayerNumber = 3,
+                    Name = ImageName.Position8,
+                    PlayerNumber = 8,
                     Type = ImageType.PlayerDealerButton,
                     Image = new Bitmap(25, 25),
                     X = 505,
@@ -99,8 +99,8 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
-                    Name = ImageName.Position4,
-                    PlayerNumber = 4,
+                    Name = ImageName.Position7,
+                    PlayerNumber = 7,
                     Type = ImageType.PlayerDealerButton,
                     Image = new Bitmap(25, 25),
                     X = 670,
@@ -108,8 +108,8 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
-                    Name = ImageName.Position5,
-                    PlayerNumber = 5,
+                    Name = ImageName.Position6,
+                    PlayerNumber = 6,
                     Type = ImageType.PlayerDealerButton,
                     Image = new Bitmap(25, 25),
                     X = 900,
@@ -117,8 +117,8 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
-                    Name = ImageName.Position6,
-                    PlayerNumber = 6,
+                    Name = ImageName.Position5,
+                    PlayerNumber = 5,
                     Type = ImageType.PlayerDealerButton,
                     Image = new Bitmap(25, 25),
                     X = 1189,
@@ -126,8 +126,8 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
-                    Name = ImageName.Position7,
-                    PlayerNumber = 7,
+                    Name = ImageName.Position4,
+                    PlayerNumber = 4,
                     Type = ImageType.PlayerDealerButton,
                     Image = new Bitmap(25, 25),
                     X = 1339,
@@ -135,8 +135,8 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
-                    Name = ImageName.Position8,
-                    PlayerNumber = 8,
+                    Name = ImageName.Position3,
+                    PlayerNumber = 3,
                     Type = ImageType.PlayerDealerButton,
                     Image = new Bitmap(25, 25),
                     X = 1385,
@@ -144,8 +144,8 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
-                    Name = ImageName.Position9,
-                    PlayerNumber = 9,
+                    Name = ImageName.Position2,
+                    PlayerNumber = 2,
                     Type = ImageType.PlayerDealerButton,
                     Image = new Bitmap(25, 25),
                     X = 1215,
@@ -170,8 +170,8 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
-                    Name = ImageName.Bet2,
-                    PlayerNumber = 2,
+                    Name = ImageName.Bet9,
+                    PlayerNumber = 9,
                     Type = ImageType.PlayerBet,
                     Image = new Bitmap(120, 25),
                     X = 676,
@@ -179,8 +179,8 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
-                    Name = ImageName.Bet3,
-                    PlayerNumber = 3,
+                    Name = ImageName.Bet8,
+                    PlayerNumber = 8,
                     Type = ImageType.PlayerBet,
                     Image = new Bitmap(120, 25),
                     X = 581,
@@ -188,8 +188,8 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
-                    Name = ImageName.Bet4,
-                    PlayerNumber = 4,
+                    Name = ImageName.Bet7,
+                    PlayerNumber = 7,
                     Type = ImageType.PlayerBet,
                     Image = new Bitmap(160, 25),
                     X = 555,
@@ -197,8 +197,8 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
-                    Name = ImageName.Bet5,
-                    PlayerNumber = 5,
+                    Name = ImageName.Bet6,
+                    PlayerNumber = 6,
                     Type = ImageType.PlayerBet,
                     Image = new Bitmap(160, 25),
                     X = 806,
@@ -206,8 +206,8 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
-                    Name = ImageName.Bet6,
-                    PlayerNumber = 6,
+                    Name = ImageName.Bet5,
+                    PlayerNumber = 5,
                     Type = ImageType.PlayerBet,
                     Image = new Bitmap(160, 25),
                     X = 977,
@@ -215,8 +215,8 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
-                    Name = ImageName.Bet7,
-                    PlayerNumber = 7,
+                    Name = ImageName.Bet4,
+                    PlayerNumber = 4,
                     Type = ImageType.PlayerBet,
                     Image = new Bitmap(160, 25),
                     X = 1158,
@@ -224,8 +224,8 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
-                    Name = ImageName.Bet8,
-                    PlayerNumber = 8,
+                    Name = ImageName.Bet3,
+                    PlayerNumber = 3,
                     Type = ImageType.PlayerBet,
                     Image = new Bitmap(160, 25),
                     X = 1186,
@@ -233,8 +233,8 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
-                    Name = ImageName.Bet9,
-                    PlayerNumber = 9,
+                    Name = ImageName.Bet2,
+                    PlayerNumber = 2,
                     Type = ImageType.PlayerBet,
                     Image = new Bitmap(160, 25),
                     X = 1084,
@@ -299,57 +299,12 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
-                    Name = ImageName.Stack2,
+                    Name = ImageName.Stack9,
                     Type = ImageType.PlayerStack,
-                    PlayerNumber = 2,
+                    PlayerNumber = 9,
                     Image = new Bitmap(150, 40),
                     X = 411,
                     Y = 667
-                },
-                new BoardImage
-                {
-                    Name = ImageName.Stack3,
-                    Type = ImageType.PlayerStack,
-                    PlayerNumber = 3,
-                    Image = new Bitmap(150, 40),
-                    X = 261,
-                    Y = 461
-                },
-                new BoardImage
-                {
-                    Name = ImageName.Stack4,
-                    Type = ImageType.PlayerStack,
-                    PlayerNumber = 4,
-                    Image = new Bitmap(150, 40),
-                    X = 340,
-                    Y = 266
-                },
-                new BoardImage
-                {
-                    Name = ImageName.Stack5,
-                    Type = ImageType.PlayerStack,
-                    PlayerNumber = 5,
-                    Image = new Bitmap(150, 40),
-                    X = 613,
-                    Y = 166
-                },
-                new BoardImage
-                {
-                    Name = ImageName.Stack6,
-                    Type = ImageType.PlayerStack,
-                    PlayerNumber = 6,
-                    Image = new Bitmap(150, 40),
-                    X = 1171,
-                    Y = 162
-                },
-                new BoardImage
-                {
-                    Name = ImageName.Stack7,
-                    Type = ImageType.PlayerStack,
-                    PlayerNumber = 7,
-                    Image = new Bitmap(120, 40),
-                    X = 1445,
-                    Y = 260
                 },
                 new BoardImage
                 {
@@ -357,14 +312,59 @@ namespace OCR.Objects
                     Type = ImageType.PlayerStack,
                     PlayerNumber = 8,
                     Image = new Bitmap(150, 40),
+                    X = 261,
+                    Y = 461
+                },
+                new BoardImage
+                {
+                    Name = ImageName.Stack7,
+                    Type = ImageType.PlayerStack,
+                    PlayerNumber = 7,
+                    Image = new Bitmap(150, 40),
+                    X = 340,
+                    Y = 266
+                },
+                new BoardImage
+                {
+                    Name = ImageName.Stack6,
+                    Type = ImageType.PlayerStack,
+                    PlayerNumber = 6,
+                    Image = new Bitmap(150, 40),
+                    X = 613,
+                    Y = 166
+                },
+                new BoardImage
+                {
+                    Name = ImageName.Stack5,
+                    Type = ImageType.PlayerStack,
+                    PlayerNumber = 5,
+                    Image = new Bitmap(150, 40),
+                    X = 1171,
+                    Y = 162
+                },
+                new BoardImage
+                {
+                    Name = ImageName.Stack4,
+                    Type = ImageType.PlayerStack,
+                    PlayerNumber = 4,
+                    Image = new Bitmap(120, 40),
+                    X = 1445,
+                    Y = 260
+                },
+                new BoardImage
+                {
+                    Name = ImageName.Stack3,
+                    Type = ImageType.PlayerStack,
+                    PlayerNumber = 3,
+                    Image = new Bitmap(150, 40),
                     X = 1496,
                     Y = 462
                 },
                 new BoardImage
                 {
-                    Name = ImageName.Stack9,
+                    Name = ImageName.Stack2,
                     Type = ImageType.PlayerStack,
-                    PlayerNumber = 9,
+                    PlayerNumber = 2,
                     Image = new Bitmap(150, 40),
                     X = 1343,
                     Y = 669
