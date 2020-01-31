@@ -19,7 +19,6 @@ namespace ICM
 
         public IcmService()
         {
-            playersData = new double[10, 9];
             _helper = new IcmHelper();
         }
 
@@ -30,6 +29,7 @@ namespace ICM
             icm = new ICM();
             var numberOfPlayers = _state.NumberOfPlayers;
             var me = _state.Players.First(p => p.Position == 1);
+            var playersData = new double[10, 9];
 
             var myHandIndex = _helper.GetHandIndex(_state.HandCode);
             int indexFromBigBlind = _helper.GetPlayerIndex(_state.Players, me);

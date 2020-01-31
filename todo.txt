@@ -1,4 +1,7 @@
 - how do we make a detailed comparison easier??
 
+-- analyse latest log in depth
 
-RANGES LOOK FINE - it seems like program ignores any set ranges that are disabled (folded)
+082138 KK Why fold
+
+082156 should be 0.6 instead of 0.9

@@ -31,7 +31,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                dateStamp = "070402";
+                //dateStamp = "075053";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -63,7 +63,7 @@ namespace bot
 
                 WriteStatsToConsole(dateStamp, boardState, predictedAction);
 
-                //DoAction(predictedAction, boardState);
+                DoAction(predictedAction, boardState);
 
                 await Task.Delay(2000);
             }
