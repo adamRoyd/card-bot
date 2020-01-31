@@ -1,15 +1,4 @@
-070402 has icm screenshot - do a detailed comparison
-
 - how do we make a detailed comparison easier??
 
 
-7
-137
-?
-995,50,5 correct
-250,25,9 correct
-1115,0,5 correct
-385,0,7 correct
-925,0,13 correct 
-2015,0,10 incorrect // icm thinks they have folded, but they have checked
-1595,0,10 incorrect // icm thinks they have folded, but they have checked
+RANGES LOOK FINE - it seems like program ignores any set ranges that are disabled (folded)

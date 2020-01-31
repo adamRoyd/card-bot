@@ -141,6 +141,11 @@ namespace ICM
                 playerrange
             );
 
+            //Console.Write("playerrange: ");
+            //for (int i = 0; i < 10; i++)
+            //    Console.Write(playerrange[i] + ", ");
+            //Console.Write("\n");
+
             for (int i = 0; i < found; i++)
             {
                 playersData[i, CALLRANGE] = playerrange[i];
