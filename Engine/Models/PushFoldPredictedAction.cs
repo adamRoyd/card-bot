@@ -29,7 +29,7 @@ namespace Engine.Models
             }
             else
             {
-                return ActionType.Fold;
+                return base.GetCheckOrFold();
             }
 
             // Factors

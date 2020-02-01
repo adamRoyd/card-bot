@@ -4,18 +4,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SNGEGT;
 
 namespace ICM
 {
     public class IcmService
     {
-
-        private ICM icm;
-        private BlindInfo blindInfo;
-        private double[,] playersData;
+        private ICMCalc icm;
         private BoardState _state;
         private IcmHelper _helper;
-
 
         public IcmService()
         {
@@ -26,15 +23,14 @@ namespace ICM
         {
             _state = state;
 
-            icm = new ICM();
+            icm = new ICMCalc();
             var numberOfPlayers = _state.NumberOfPlayers;
             var me = _state.Players.First(p => p.Position == 1);
-            var playersData = new double[10, 9];
 
             var myHandIndex = _helper.GetHandIndex(_state.HandCode);
             int indexFromBigBlind = _helper.GetPlayerIndex(_state.Players, me);
 
-            double[,] playerData = _helper.GetPlayerData(_state, playersData);
+            double[,] playerData = _helper.GetPlayerData(_state);
 
             var results = new double[] { 0, 0 };
 
@@ -53,6 +49,21 @@ namespace ICM
                     moneyPayouts,
                     moneyPayouts.Length
                 );
+
+                var evFold = results[0] * 100;
+                evFold = Math.Round(evFold, 2);
+
+                var evPush = results[1] * 100;
+                evPush = Math.Round(evPush, 2);
+
+                Console.WriteLine($"Calc push p: {numberOfPlayers} hand: {myHandIndex} myPos: {indexFromBigBlind} " +
+                    $"evFold: {evFold} evPush: {evPush}");
+
+                for (var i = 0; i < 9; i++)
+                {
+                    Console.WriteLine($"Player {i} Stack: {playerData[i, 0]} " +
+                        $"Bet: {playerData[i, 1]} Range: {playerData[i, 2]}");
+                }
             }
             else
             {

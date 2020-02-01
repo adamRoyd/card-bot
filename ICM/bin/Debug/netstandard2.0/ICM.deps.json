@@ -11,6 +11,7 @@
         "dependencies": {
           "Engine": "1.0.0",
           "NETStandard.Library": "2.0.3",
+          "SNGEGT": "1.0.0",
           "xunit.extensibility.core": "2.4.1"
         },
         "runtime": {
@@ -58,6 +59,11 @@
         "runtime": {
           "Engine.dll": {}
         }
+      },
+      "SNGEGT/1.0.0": {
+        "runtime": {
+          "SNGEGT.exe": {}
+        }
       }
     }
   },
@@ -103,6 +109,11 @@
       "hashPath": "xunit.extensibility.core.2.4.1.nupkg.sha512"
     },
     "Engine/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SNGEGT/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

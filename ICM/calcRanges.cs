@@ -16,6 +16,7 @@
 */
 
 
+using SNGEGT;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -29,7 +30,7 @@ namespace ICM
         private double[,] playersData;
         private double EVthreshold;
         private int[] myHand;
-        private ICM icm;
+        private ICMCalc icm;
         private int[,] ranges;
         private int players;
         private int raiserIndex;
@@ -46,7 +47,7 @@ namespace ICM
 
         public calcRanges()
         {
-            icm = new ICM();
+            icm = new ICMCalc();
             playersData = new double[10, 9];
             ranges = new int[10,2];
             myHand = new int[2];
@@ -203,8 +204,8 @@ namespace ICM
             }
 
             printICMarray();
-            for (int w = 0; w < iPlayers; w++)
-                Console.Write(ranges[w, NEW] + " ");
+            //for (int w = 0; w < iPlayers; w++)
+            //    Console.Write(ranges[w, NEW] + " ");
 #if (DEBUGOMA)
             Debug.WriteLine("\n******************************************");
 #endif

@@ -69,6 +69,15 @@
         "runtime": {
           "bin/placeholder/Engine.dll": {}
         }
+      },
+      "SNGEGT/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/SNGEGT.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SNGEGT.dll": {}
+        }
       }
     }
   },
@@ -286,12 +295,18 @@
       "type": "project",
       "path": "../Engine/Engine.csproj",
       "msbuildProject": "../Engine/Engine.csproj"
+    },
+    "SNGEGT/1.0.0": {
+      "type": "project",
+      "path": "../sngegt/SNGEGT.csproj",
+      "msbuildProject": "../sngegt/SNGEGT.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "Engine >= 1.0.0",
       "NETStandard.Library >= 2.0.3",
+      "SNGEGT >= 1.0.0",
       "xunit.extensibility.core >= 2.4.1"
     ]
   },
@@ -327,6 +342,9 @@
           "projectReferences": {
             "C:\\Github\\card-bot\\Engine\\Engine.csproj": {
               "projectPath": "C:\\Github\\card-bot\\Engine\\Engine.csproj"
+            },
+            "C:\\Github\\card-bot\\sngegt\\SNGEGT.csproj": {
+              "projectPath": "C:\\Github\\card-bot\\sngegt\\SNGEGT.csproj"
             }
           }
         }

@@ -44,7 +44,7 @@ namespace SNGEGT
         private static readonly short EVWIN = 6;
         private static readonly short EVLOSE = 7;
         private static readonly short PREPOST = 8;
-        private ICM icm;
+        private ICMCalc icm;
         private double[,] playersData;
         private double[] ICMs;
         private double[] results;
@@ -54,7 +54,7 @@ namespace SNGEGT
 
         public Game(IcmPlayer p0, IcmPlayer p1, IcmPlayer p2, IcmPlayer p3, IcmPlayer p4, IcmPlayer p5, IcmPlayer p6, IcmPlayer p7, IcmPlayer p8, IcmPlayer p9, Label iChipSum, Label iBetSum, Label iLabelEVpushCall, Label iLabelEVfoldVal, Label iLabelEVpushCallVal, Label iLabelEVdiffVal)
         {
-            icm = new ICM();
+            icm = new ICMCalc();
             players = new IcmPlayer[10];
             players[0] = p0;
             players[1] = p1;

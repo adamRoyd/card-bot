@@ -18,6 +18,7 @@ namespace bot
                 .Replace("pot", "")
                 .Replace(":", "")
                 .Replace(",", "")
+                .Replace("s","5")
                 .Replace(" ", "").Trim();
         }
     }

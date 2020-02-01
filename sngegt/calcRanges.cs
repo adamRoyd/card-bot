@@ -28,7 +28,7 @@ namespace SNGEGT
         private double[,] playersData;
         private double EVthreshold;
         private int[] myHand;
-        private ICM icm;
+        private ICMCalc icm;
         private int[,] ranges;
         private int players;
         private int raiserIndex;
@@ -45,7 +45,7 @@ namespace SNGEGT
 
         public calcRanges()
         {
-            icm = new ICM();
+            icm = new ICMCalc();
             playersData = new double[10, 9];
             ranges = new int[10,2];
             myHand = new int[2];

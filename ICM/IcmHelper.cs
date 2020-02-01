@@ -26,8 +26,9 @@ namespace ICM
             return result;
         }
 
-        public double[,] GetPlayerData(BoardState _state, double[,] playersData)
+        public double[,] GetPlayerData(BoardState _state)
         {
+            var playersData = new double[10, 9];
             var filteredPlayers = _state.Players.Where(p => !p.Eliminated).ToArray();
 
             filteredPlayers.Where(p => !p.Eliminated).Each((player, n) =>

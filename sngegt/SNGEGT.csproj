@@ -101,7 +101,7 @@
       <DependentUpon>HandHistoryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="HistoryReader.cs" />
-    <Compile Include="ICM.cs" />
+    <Compile Include="ICMCalc.cs" />
     <Compile Include="OwnImage.cs" />
     <Compile Include="PresetRangeForm.cs">
       <SubType>Form</SubType>

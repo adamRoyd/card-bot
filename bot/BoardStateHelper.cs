@@ -92,7 +92,7 @@ namespace bot
             string colour = _suitFinder.GetBlackOrWhite(path);
 
             //Set active / inactive 
-            if (result.Contains("sitting") || colour == "white")
+            if (result.Contains("itting") || colour == "white")
             {
                 state.Players[index].Eliminated = true;
             }

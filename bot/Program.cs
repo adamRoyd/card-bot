@@ -31,7 +31,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                //dateStamp = "075053";
+                //dateStamp = "081801";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -64,7 +64,7 @@ namespace bot
                 WriteStatsToConsole(dateStamp, boardState, predictedAction);
 
                 DoAction(predictedAction, boardState);
-
+                
                 await Task.Delay(2000);
             }
         }
@@ -118,12 +118,10 @@ namespace bot
             //Console.WriteLine(
             //    $"{flop1} | {flop2} | {flop3} | {turn} | {river}");
 
-            foreach (var p in boardState.Players.Where(p => !p.Eliminated))
-            {
-                LogWriter.WriteLine($"{p.Position}: Stack: {p.Stack} Bet: {p.Bet}");
-            }
-
-            Console.WriteLine(" ");
+            //foreach (var p in boardState.Players.Where(p => !p.Eliminated))
+            //{
+            //    LogWriter.WriteLine($"{p.Position}: Stack: {p.Stack} Bet: {p.Bet}");
+            //}
         }
 
         public static void DeleteFiles(string path)

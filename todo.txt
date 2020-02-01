@@ -1,7 +1,5 @@
-- how do we make a detailed comparison easier??
+Verified - the call ranges for players that have folder DO NOT MATTER
 
--- analyse latest log in depth
+Limps affect EV! Ensure you have factored this in when testing model
 
-082138 KK Why fold
-
-082156 should be 0.6 instead of 0.9
+TODO You can't push from the Big Blind!
