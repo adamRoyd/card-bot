@@ -28,7 +28,7 @@ namespace ICM
             var me = _state.Players.First(p => p.Position == 1);
 
             var myHandIndex = _helper.GetHandIndex(_state.HandCode);
-            int indexFromBigBlind = _helper.GetPlayerIndex(_state.Players, me);
+            int indexFromBigBlind = _helper.GetPlayerIndex(_state, me);
 
             double[,] playerData = _helper.GetPlayerData(_state);
 
@@ -69,7 +69,7 @@ namespace ICM
             {
                 var allInPlayer = _state.Players.FirstOrDefault(p => p.IsAllIn);
 
-                var allInIndex = _helper.GetPlayerIndex(_state.Players, allInPlayer);
+                var allInIndex = _helper.GetPlayerIndex(_state, allInPlayer);
 
                 icm.calcCall(
                     numberOfPlayers,

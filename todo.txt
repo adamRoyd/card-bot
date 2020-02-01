@@ -1,5 +1,1 @@
 Verified - the call ranges for players that have folder DO NOT MATTER
-
-Limps affect EV! Ensure you have factored this in when testing model
-
-TODO You can't push from the Big Blind!

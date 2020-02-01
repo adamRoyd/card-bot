@@ -96,3 +96,5 @@ C:\Github\card-bot\ICM.Tests\bin\Debug\netcoreapp3.1\xunit.execution.dotnet.dll
 C:\Github\card-bot\ICM.Tests\bin\Debug\netcoreapp3.1\ICM.Tests.pdb
 C:\Github\card-bot\ICM.Tests\obj\Debug\netcoreapp3.1\ICM.Tests.dll
 C:\Github\card-bot\ICM.Tests\obj\Debug\netcoreapp3.1\ICM.Tests.pdb
+C:\Github\card-bot\ICM.Tests\bin\Debug\netcoreapp3.1\SNGEGT.exe
+C:\Github\card-bot\ICM.Tests\bin\Debug\netcoreapp3.1\SNGEGT.pdb

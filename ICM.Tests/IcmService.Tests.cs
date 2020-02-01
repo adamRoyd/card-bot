@@ -295,5 +295,73 @@ namespace ICM.Tests
             var result = icmIntegrator.GetExpectedValue(state);
             Assert.Equal(-7.4, result);
         }
+
+        [Fact]
+        public void GetExpectedValue_Limpers_CorrectEV()
+        {
+            BoardState state = new BoardState
+            {
+                StartingCard1 = new Card(Engine.Enums.CardValue.ten, Engine.Enums.CardSuit.Clubs),
+                StartingCard2 = new Card(Engine.Enums.CardValue.five, Engine.Enums.CardSuit.Hearts),
+                NumberOfPlayers = 6,
+                BigBlind = 50,
+                MyPosition = 1,
+                Players = new Player[]
+                {
+                    new Player
+                    {
+                        IsDealer = false,
+                        Position = 1, //SB
+                        Bet = 25,
+                        Stack = 895,
+                        IsAllIn = false
+                    },
+                    new Player
+                    {
+                        IsDealer = true,
+                        Position = 2, //D
+                        Bet = 0,
+                        Stack = 705,
+                        IsAllIn = false
+                    },
+                    new Player
+                    {
+                        IsDealer = false,
+                        Position = 5, //CO
+                        Bet = 50,
+                        Stack = 320,
+                        IsAllIn = false
+                    },
+                    new Player
+                    {
+                        IsDealer = false,
+                        Position = 6,
+                        Bet = 50, //CO+1
+                        Stack = 2745,
+                        IsAllIn = false
+                    },
+                     new Player
+                    {
+                        IsDealer = false,
+                        Position = 8,
+                        Bet = 50, //CO+2
+                        Stack = 755,
+                        IsAllIn = false
+                    },
+                    new Player
+                    {
+                        IsDealer = false,
+                        Position = 9,
+                        Bet = 50, //BB
+                        Stack = 860,
+                        IsAllIn = false
+                    }
+                }
+            };
+
+            var result = icmIntegrator.GetExpectedValue(state);
+            Assert.Equal(-0.4, result);
+        }
+
     }
 }

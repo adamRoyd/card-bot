@@ -18,7 +18,7 @@ namespace ICM
 
             var result = Array.FindIndex(hands, h => h == handCode);
 
-            if(result == -1)
+            if (result == -1)
             {
                 Console.WriteLine("WARNING GetHandIndex is -1");
             }
@@ -33,7 +33,7 @@ namespace ICM
 
             filteredPlayers.Where(p => !p.Eliminated).Each((player, n) =>
             {
-                var index = GetPlayerIndex(filteredPlayers, player);
+                var index = GetPlayerIndex(_state, player);
 
                 playersData[index, STACK] = Convert.ToDouble(player.Stack);
                 playersData[index, BETS] = Convert.ToDouble(player.Bet);
@@ -41,26 +41,53 @@ namespace ICM
 
             CalculateRanges(_state, playersData);
 
+            // We need to remove any bets from ICM calc as bets massively skew the EV calculation
+            playersData = RemoveBets(playersData, _state);
+
             return playersData;
         }
 
-        public int GetPlayerIndex(Player[] players, Player player)
+        private double[,] RemoveBets(double[,] playersData, BoardState _state)
         {
-            var filteredPlayers = players.Where(p => !p.Eliminated).ToArray();
+            var smallBlind = GetBlindInfo(_state.BigBlind).Smallblind;
+
+            for (var i = 0; i < _state.NumberOfPlayers; i++)
+            {
+                if (playersData[i, BETS] == _state.BigBlind)
+                {
+                    playersData[i, BETS] = 0;
+                }
+                else if (playersData[i, BETS] == smallBlind)
+                {
+                    // Reinstate true big blind
+                    playersData[i - 1, BETS] = _state.BigBlind;
+                }
+            }
+
+            return playersData;
+
+        }
+
+        public int GetPlayerIndex(BoardState _state, Player player)
+        {
+            var filteredPlayers = _state.Players.Where(p => !p.Eliminated).ToArray();
 
             var numberOfPlayers = filteredPlayers.Where(p => !p.Eliminated).Count();
 
             var truePosition = Array.IndexOf(filteredPlayers, player) + 1;
 
-            var dealerPosition = Array.IndexOf(filteredPlayers, 
+            var dealerPosition = Array.IndexOf(filteredPlayers,
                                     filteredPlayers.FirstOrDefault(p => p.IsDealer)) + 1;
 
-            int bigBlindPosition = dealerPosition - 2;
+            //int bigBlindPosition = dealerPosition - 2;
 
-            if (bigBlindPosition < 1)
-            {
-                bigBlindPosition = numberOfPlayers + bigBlindPosition;
-            }
+            //if (bigBlindPosition < 1)
+            //{
+            //    bigBlindPosition = numberOfPlayers + bigBlindPosition;
+            //}
+            var earliestBetter = filteredPlayers.Where(p => p.Bet >= _state.BigBlind).OrderBy(p => p.Position).First();
+            var bigBlindPosition = Array.IndexOf(filteredPlayers, earliestBetter) + 1;
+
 
             var index = -1;
 
@@ -73,7 +100,7 @@ namespace ICM
                     break;
                 }
 
-                if(bigBlindPosition == numberOfPlayers)
+                if (bigBlindPosition == numberOfPlayers)
                 {
                     bigBlindPosition = 0;
                 }
@@ -121,13 +148,13 @@ namespace ICM
                 indexFromBigBlind = -1;
                 var me = _state.Players.First(p => p.Position == 1);
 
-                indexFromBigBlind = GetPlayerIndex(_state.Players, me);
+                indexFromBigBlind = GetPlayerIndex(_state, me);
             }
             else
             {
                 var allInPlayer = _state.Players.FirstOrDefault(p => p.IsAllIn);
 
-                indexFromBigBlind = GetPlayerIndex(_state.Players, allInPlayer);
+                indexFromBigBlind = GetPlayerIndex(_state, allInPlayer);
             }
 
             ranges.calc(
