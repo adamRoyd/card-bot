@@ -219,7 +219,7 @@ namespace OCR.Objects
                     PlayerNumber = 4,
                     Type = ImageType.PlayerBet,
                     Image = new Bitmap(160, 25),
-                    X = 1158,
+                    X = 1128,
                     Y = 294
                 },
                 new BoardImage
@@ -227,18 +227,18 @@ namespace OCR.Objects
                     Name = ImageName.Bet3,
                     PlayerNumber = 3,
                     Type = ImageType.PlayerBet,
-                    Image = new Bitmap(160, 25),
+                    Image = new Bitmap(160, 21),
                     X = 1186,
-                    Y = 482
+                    Y = 486
                 },
                 new BoardImage
                 {
                     Name = ImageName.Bet2,
                     PlayerNumber = 2,
                     Type = ImageType.PlayerBet,
-                    Image = new Bitmap(160, 25),
+                    Image = new Bitmap(160, 21),
                     X = 1084,
-                    Y = 553
+                    Y = 557
                 },
                 new BoardImage
                 {

@@ -1,1 +1,13 @@
-Verified - the call ranges for players that have folder DO NOT MATTER
+Verified - the call ranges for players that have folded DO NOT MATTER
+
+Bets need cleaning up
+
+If you are the big blind and others limp, the limps dont become the big blind index
+
+IMPORTANT Call action is not working
+
+if someone raises behind you, how do you account for that in EV?
+
+045653 order is wrong - folded people are being included ahead of you
+
+050106 should be all in

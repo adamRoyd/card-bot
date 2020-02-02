@@ -53,7 +53,7 @@ namespace ICM
 
             for (var i = 0; i < _state.NumberOfPlayers; i++)
             {
-                if (playersData[i, BETS] == _state.BigBlind)
+                if (playersData[i, BETS] >= _state.BigBlind)
                 {
                     playersData[i, BETS] = 0;
                 }
@@ -70,45 +70,52 @@ namespace ICM
 
         public int GetPlayerIndex(BoardState _state, Player player)
         {
-            var filteredPlayers = _state.Players.Where(p => !p.Eliminated).ToArray();
-
-            var numberOfPlayers = filteredPlayers.Where(p => !p.Eliminated).Count();
-
-            var truePosition = Array.IndexOf(filteredPlayers, player) + 1;
-
-            var dealerPosition = Array.IndexOf(filteredPlayers,
-                                    filteredPlayers.FirstOrDefault(p => p.IsDealer)) + 1;
-
-            //int bigBlindPosition = dealerPosition - 2;
-
-            //if (bigBlindPosition < 1)
-            //{
-            //    bigBlindPosition = numberOfPlayers + bigBlindPosition;
-            //}
-            var earliestBetter = filteredPlayers.Where(p => p.Bet >= _state.BigBlind).OrderBy(p => p.Position).First();
-            var bigBlindPosition = Array.IndexOf(filteredPlayers, earliestBetter) + 1;
-
-
-            var index = -1;
-
-            // Count up from big blind position and find a match
-            for (var i = 0; i < numberOfPlayers; i++)
+            try
             {
-                if (bigBlindPosition == truePosition)
+                var filteredPlayers = _state.Players.Where(p => !p.Eliminated).ToArray();
+
+                var numberOfPlayers = filteredPlayers.Where(p => !p.Eliminated).Count();
+
+                var truePosition = Array.IndexOf(filteredPlayers, player) + 1;
+
+                var dealerPosition = Array.IndexOf(filteredPlayers,
+                                        filteredPlayers.FirstOrDefault(p => p.IsDealer)) + 1;
+
+                var filteredList = filteredPlayers.Where(p => p.Bet >= _state.BigBlind).OrderBy(p => p.Position).ToList();
+                var earliestBetter = filteredList.FirstOrDefault();
+
+                if (earliestBetter == null)
                 {
-                    index = i;
-                    break;
+                    throw new Exception("Earliest Better is null");
                 }
 
-                if (bigBlindPosition == numberOfPlayers)
+                var bigBlindPosition = Array.IndexOf(filteredPlayers, earliestBetter) + 1;
+
+                var index = -1;
+
+                // Count up from big blind position and find a match
+                for (var i = 0; i < numberOfPlayers; i++)
                 {
-                    bigBlindPosition = 0;
+                    if (bigBlindPosition == truePosition)
+                    {
+                        index = i;
+                        break;
+                    }
+
+                    if (bigBlindPosition == numberOfPlayers)
+                    {
+                        bigBlindPosition = 0;
+                    }
+
+                    bigBlindPosition++;
                 }
 
-                bigBlindPosition++;
+                return index;
             }
-
-            return index;
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public void CalculateRanges(BoardState _state, double[,] playersData)
@@ -140,7 +147,8 @@ namespace ICM
                     stacks[found++] = (int)playersData[i, STACK];
             }
 
-            var isPush = _state.Players.All(p => !p.IsAllIn);
+            //TODO implement call properly
+            var isPush = true;//_state.Players.Where(p => !p.Eliminated).All(p => !p.IsAllIn);
 
             // Get index number of player that is all in
             if (isPush)

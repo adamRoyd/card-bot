@@ -25,13 +25,13 @@ namespace bot
             var suitFinder = new SuitFinder();
             var boardStateHelper = new BoardStateHelper(imageProcessor, suitFinder);
             var boardStateService = new BoardStateService(imageProcessor, boardStateHelper, suitFinder);
-            var icmService = new IcmService(); 
+            var icmService = new IcmService();
 
             while (true)
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                //dateStamp = "082706";
+                dateStamp = "045446";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -52,20 +52,29 @@ namespace bot
                     continue;
                 }
 
-                var ev = icmService.GetExpectedValue(boardState);
+                PredictedAction predictedAction;
 
-                var predictedAction = boardState.MyStackRatio switch
+                if (boardState.MyStackRatio > 20)
                 {
-                    int n when n > 20 => (PredictedAction)new EarlyGamePredictedAction(boardState),
-                    int n when n <= 20 => new PushFoldPredictedAction(boardState, ev),
-                    _ => null
-                };
+                    predictedAction = new EarlyGamePredictedAction(boardState);
+                }
+                else
+                {
+                    double ev = 0;
+                    
+                    if(boardState.HandStage == HandStage.PreFlop)
+                    {
+                        ev = icmService.GetExpectedValue(boardState);
+                    }
+                
+                    predictedAction = new PushFoldPredictedAction(boardState, ev);
+                }
 
                 WriteStatsToConsole(dateStamp, boardState, predictedAction);
 
                 //DoAction(predictedAction, boardState);
                 break;
-                
+
                 await Task.Delay(2000);
             }
         }
@@ -119,10 +128,10 @@ namespace bot
             //Console.WriteLine(
             //    $"{flop1} | {flop2} | {flop3} | {turn} | {river}");
 
-            //foreach (var p in boardState.Players.Where(p => !p.Eliminated))
-            //{
-            //    LogWriter.WriteLine($"{p.Position}: Stack: {p.Stack} Bet: {p.Bet}");
-            //}
+            foreach (var p in boardState.Players.Where(p => !p.Eliminated))
+            {
+                LogWriter.WriteLine($"{p.Position}: Stack: {p.Stack} Bet: {p.Bet}");
+            }
         }
 
         public static void DeleteFiles(string path)
