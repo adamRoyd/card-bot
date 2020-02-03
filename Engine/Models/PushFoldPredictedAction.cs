@@ -23,7 +23,7 @@ namespace Engine.Models
                 return base.GetCheckOrFold();
             }
 
-            if (_ev >= 0.3)
+            if (_ev >= 0.1)
             {
                 return ActionType.AllIn;
             }
