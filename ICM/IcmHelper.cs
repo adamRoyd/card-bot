@@ -44,6 +44,23 @@ namespace ICM
             // We need to remove any bets from ICM calc as bets massively skew the EV calculation
             playersData = RemoveBets(playersData, _state);
 
+            playersData = RearrangeFoldedPlayers(playersData, _state.NumberOfPlayers);
+
+            return playersData;
+        }
+
+        private double[,] RearrangeFoldedPlayers(double[,] playersData, int numberOfPlayers)
+        {
+            for(int i = 0; i < numberOfPlayers; i++)
+            {
+                var bet = playersData[i, BETS];
+
+                if (bet == 0)
+                {
+                    // Send to back
+                }
+            }
+
             return playersData;
         }
 
