@@ -2032,7 +2032,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Engine": "1.0.0",
-          "SNGEGT": "1.0.0",
+          "System.Runtime.InteropServices": "4.3.0",
           "xunit.extensibility.core": "2.4.1"
         },
         "compile": {
@@ -2040,15 +2040,6 @@
         },
         "runtime": {
           "bin/placeholder/ICM.dll": {}
-        }
-      },
-      "SNGEGT/1.0.0": {
-        "type": "project",
-        "compile": {
-          "bin/placeholder/SNGEGT.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/SNGEGT.dll": {}
         }
       }
     }
@@ -6664,11 +6655,6 @@
       "type": "project",
       "path": "../ICM/ICM.csproj",
       "msbuildProject": "../ICM/ICM.csproj"
-    },
-    "SNGEGT/1.0.0": {
-      "type": "project",
-      "path": "../sngegt/SNGEGT.csproj",
-      "msbuildProject": "../sngegt/SNGEGT.csproj"
     }
   },
   "projectFileDependencyGroups": {

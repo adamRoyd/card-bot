@@ -15,10 +15,6 @@
     along with SNGEGT.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
-using SNGEGT;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 

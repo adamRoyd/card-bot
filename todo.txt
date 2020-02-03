@@ -7,5 +7,3 @@ If you are the big blind and others limp, the limps dont become the big blind in
 IMPORTANT Call action is not working
 
 if someone raises behind you, how do you account for that in EV?
-
-045653 order is wrong - folded people are being included ahead of you

@@ -1,4 +1,5 @@
 ﻿using Engine.Models;
+using ICM.Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace ICM
 
         public double[,] GetPlayerData(BoardState _state)
         {
-            var playersData = new double[10, 9];
+            var playersData = new double[_state.NumberOfPlayers, 9];
             var filteredPlayers = _state.Players.Where(p => !p.Eliminated).ToArray();
 
             filteredPlayers.Where(p => !p.Eliminated).Each((player, n) =>
@@ -39,29 +40,72 @@ namespace ICM
                 playersData[index, BETS] = Convert.ToDouble(player.Bet);
             });
 
+            
+
+            var me = filteredPlayers.First(p => p.Position == 1);
+            var myIndex = GetPlayerIndex(_state, me);
+
+            playersData = RearrangeFoldedPlayers(playersData, _state.NumberOfPlayers, myIndex);
+
             CalculateRanges(_state, playersData);
 
             // We need to remove any bets from ICM calc as bets massively skew the EV calculation
             playersData = RemoveBets(playersData, _state);
 
-            playersData = RearrangeFoldedPlayers(playersData, _state.NumberOfPlayers);
-
             return playersData;
         }
 
-        private double[,] RearrangeFoldedPlayers(double[,] playersData, int numberOfPlayers)
+        private double[,] RearrangeFoldedPlayers(double[,] playersData, int numberOfPlayers, int myIndex)
         {
-            for(int i = 0; i < numberOfPlayers; i++)
-            {
-                var bet = playersData[i, BETS];
+            List<PlayerData> playersDataList = new List<PlayerData>();
 
-                if (bet == 0)
+            // convert to list!
+            for (var i = 0; i < numberOfPlayers; i++)
+            {
+                playersDataList.Add(new PlayerData
                 {
-                    // Send to back
+                    Stack = playersData[i, STACK],
+                    Bet = playersData[i, BETS],
+                    CallRange = playersData[i, CALLRANGE]
+                });
+            }
+
+            // search for non-betters ahead of hero
+            // if found, send to back and re-scan the same index (since everyone shifted right)
+            for (var i = 0; i < numberOfPlayers; i++)
+            {
+                if (i == myIndex)
+                {
+                    break;
+                }
+
+                var player = playersDataList.ElementAt(i);
+                if (player.Bet == 0)
+                {
+                    // send to back
+                    playersDataList.Add(playersDataList.ElementAt(i));
+                    playersDataList.RemoveAt(i);
+                    //rescan
+                    i -= 1;
+                    myIndex -= 1;
                 }
             }
 
-            return playersData;
+
+            //convert back to 2d array (ugh)
+            var newArray = new double[playersDataList.Count, 9];
+            for (var i = 0; i < playersDataList.Count; i++)
+            {
+                var player = playersDataList.ElementAt(i);
+                
+
+                newArray[i, BETS] = player.Bet;
+                newArray[i, STACK] = player.Stack;
+                newArray[i, CALLRANGE] = player.CallRange;
+
+            }
+
+            return newArray;
         }
 
         private double[,] RemoveBets(double[,] playersData, BoardState _state)
@@ -149,7 +193,7 @@ namespace ICM
             };
 
             calcRanges ranges = new calcRanges();
-            int PLAYERCOUNT = 10;
+            int PLAYERCOUNT = _state.NumberOfPlayers;
             int[] playerrange = new int[PLAYERCOUNT];
             int[] stacks = new int[PLAYERCOUNT];
             int indexFromBigBlind = -1;

@@ -1,10 +1,8 @@
 ﻿using Engine.Models;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using SNGEGT;
+
+
 
 namespace ICM
 {
@@ -62,7 +60,7 @@ namespace ICM
                     Console.WriteLine($"Calc push p: {numberOfPlayers} hand: {myHandIndex} myPos: {indexFromBigBlind} " +
                         $"evFold: {evFold} evPush: {evPush}");
 
-                    for (var i = 0; i < 9; i++)
+                    for (var i = 0; i < numberOfPlayers; i++)
                     {
                         Console.WriteLine($"Player {i} Stack: {playerData[i, 0]} " +
                             $"Bet: {playerData[i, 1]} Range: {playerData[i, 2]}");
