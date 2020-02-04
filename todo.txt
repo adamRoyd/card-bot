@@ -2,9 +2,6 @@ Verified - the call ranges for players that have folded DO NOT MATTER
 
 Bets need cleaning up
 
-070658 players yet to act get removed!
-
-070754 players yet to act get removed!
 
 what is myPos?
 
