@@ -40,12 +40,10 @@ namespace ICM
                 playersData[index, BETS] = Convert.ToDouble(player.Bet);
             });
 
-            
-
             var me = filteredPlayers.First(p => p.Position == 1);
             var myIndex = GetPlayerIndex(_state, me);
 
-            playersData = RearrangeFoldedPlayers(playersData, _state.NumberOfPlayers, myIndex);
+            playersData = RearrangeFoldedPlayers(playersData, _state, myIndex);
 
             CalculateRanges(_state, playersData);
 
@@ -55,12 +53,13 @@ namespace ICM
             return playersData;
         }
 
-        private double[,] RearrangeFoldedPlayers(double[,] playersData, int numberOfPlayers, int myIndex)
+        private double[,] RearrangeFoldedPlayers(double[,] playersData, BoardState state, int myIndex)
         {
             List<PlayerData> playersDataList = new List<PlayerData>();
+            var smallBlind = GetBlindInfo(state.BigBlind).Smallblind;
 
             // convert to list!
-            for (var i = 0; i < numberOfPlayers; i++)
+            for (var i = 0; i < state.NumberOfPlayers; i++)
             {
                 playersDataList.Add(new PlayerData
                 {
@@ -72,14 +71,16 @@ namespace ICM
 
             // search for non-betters ahead of hero
             // if found, send to back and re-scan the same index (since everyone shifted right)
-            for (var i = 0; i < numberOfPlayers; i++)
+            // stop at SB position or at hero position
+            for (var i = 0; i < state.NumberOfPlayers; i++)
             {
-                if (i == myIndex)
+                var player = playersDataList.ElementAt(i);
+
+                if (i == myIndex || player.Bet == smallBlind)
                 {
                     break;
                 }
 
-                var player = playersDataList.ElementAt(i);
                 if (player.Bet == 0)
                 {
                     // send to back
@@ -91,14 +92,12 @@ namespace ICM
                 }
             }
 
-
             //convert back to 2d array (ugh)
             var newArray = new double[playersDataList.Count, 9];
             for (var i = 0; i < playersDataList.Count; i++)
             {
                 var player = playersDataList.ElementAt(i);
                 
-
                 newArray[i, BETS] = player.Bet;
                 newArray[i, STACK] = player.Stack;
                 newArray[i, CALLRANGE] = player.CallRange;

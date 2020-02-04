@@ -2,6 +2,12 @@ Verified - the call ranges for players that have folded DO NOT MATTER
 
 Bets need cleaning up
 
+070658 players yet to act get removed!
+
+070754 players yet to act get removed!
+
+what is myPos?
+
 If you are the big blind and others limp, the limps dont become the big blind index
 
 IMPORTANT Call action is not working
