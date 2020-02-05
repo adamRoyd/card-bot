@@ -97,7 +97,7 @@ namespace ICM
             for (var i = 0; i < playersDataList.Count; i++)
             {
                 var player = playersDataList.ElementAt(i);
-                
+
                 newArray[i, BETS] = player.Bet;
                 newArray[i, STACK] = player.Stack;
                 newArray[i, CALLRANGE] = player.CallRange;
@@ -136,7 +136,7 @@ namespace ICM
 
                 var numberOfPlayers = filteredPlayers.Where(p => !p.Eliminated).Count();
 
-                var truePosition = Array.IndexOf(filteredPlayers, player) + 1;
+                var playerPosition = Array.IndexOf(filteredPlayers, player) + 1;
 
                 var dealerPosition = Array.IndexOf(filteredPlayers,
                                         filteredPlayers.FirstOrDefault(p => p.IsDealer)) + 1;
@@ -144,30 +144,36 @@ namespace ICM
                 var filteredList = filteredPlayers.Where(p => p.Bet >= _state.BigBlind).OrderBy(p => p.Position).ToList();
                 var earliestBetter = filteredList.FirstOrDefault();
 
+                //if (playerPosition == earliestBetter.Position)
+                //{
+                //    // You are the Big Blind. Count from second better
+                //    earliestBetter = filteredList.ElementAt(1);
+                //}
+
                 if (earliestBetter == null)
                 {
                     throw new Exception("Earliest Better is null");
                 }
 
-                var bigBlindPosition = Array.IndexOf(filteredPlayers, earliestBetter) + 1;
+                var earliestBetterPosition = Array.IndexOf(filteredPlayers, earliestBetter) + 1;
 
                 var index = -1;
 
                 // Count up from big blind position and find a match
                 for (var i = 0; i < numberOfPlayers; i++)
                 {
-                    if (bigBlindPosition == truePosition)
+                    if (earliestBetterPosition == playerPosition)
                     {
                         index = i;
                         break;
                     }
 
-                    if (bigBlindPosition == numberOfPlayers)
+                    if (earliestBetterPosition == numberOfPlayers)
                     {
-                        bigBlindPosition = 0;
+                        earliestBetterPosition = 0;
                     }
 
-                    bigBlindPosition++;
+                    earliestBetterPosition++;
                 }
 
                 return index;

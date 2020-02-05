@@ -2,6 +2,8 @@
 bot.tests/bin
 bot.tests/obj
 bot/bin
+ICM/bin
+ICM/obj
 Engine.Tests/obj
 bot/obj
 OCR.tests/bin
@@ -13,3 +15,6 @@ Engine/bin
 .vs
 bot/images/
 bot.tests/images/foldAction.png
+ICM/bin/Debug/netstandard2.0/ICM.pdb
+*/bin
+*/obj
