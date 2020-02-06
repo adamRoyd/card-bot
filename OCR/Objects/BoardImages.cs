@@ -237,7 +237,7 @@ namespace OCR.Objects
                     PlayerNumber = 2,
                     Type = ImageType.PlayerBet,
                     Image = new Bitmap(160, 21),
-                    X = 1084,
+                    X = 1064,
                     Y = 557
                 },
                 new BoardImage

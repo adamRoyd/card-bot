@@ -30,17 +30,17 @@ namespace ICM
                 var myHandIndex = _helper.GetHandIndex(_state.HandCode);
                 int indexFromBigBlind = _helper.GetPlayerIndex(_state, me);
 
-                double[,] playerData = _helper.GetPlayerData(_state);
+
+                var isPush = _state.Players.Where(p => !p.Eliminated).All(p => !p.IsAllIn);
 
                 var results = new double[] { 0, 0 };
 
                 var moneyPayouts = new double[] { 0.5, 0.3, 0.2 };
 
-                // TODO need to make sure calc call works
-                var isPush = true; //_state.Players.Where(p => !p.Eliminated).All(p => !p.IsAllIn);
-
                 if (isPush)
                 {
+                    double[,] playerData = _helper.GetPlaterDataForPush(_state);
+
                     icm.calcPush(
                         numberOfPlayers,
                         myHandIndex,
@@ -68,8 +68,12 @@ namespace ICM
                 }
                 else
                 {
+
+                    double[,] playerData = _helper.GetPlayerDataForFold(_state);
+
                     var allInPlayer = _state.Players.FirstOrDefault(p => p.IsAllIn);
 
+                    // TODO get player index needs to be different for calculating a call?
                     var allInIndex = _helper.GetPlayerIndex(_state, allInPlayer);
 
                     icm.calcCall(
@@ -82,6 +86,21 @@ namespace ICM
                         moneyPayouts,
                         moneyPayouts.Length
                     );
+
+                    var evFold = results[0] * 100;
+                    evFold = Math.Round(evFold, 2);
+
+                    var evPush = results[1] * 100;
+                    evPush = Math.Round(evPush, 2);
+
+                    Console.WriteLine($"Calc fold p: {numberOfPlayers} hand: {myHandIndex} myPos: {indexFromBigBlind} " +
+                        $"evFold: {evFold} evPush: {evPush}");
+
+                    for (var i = 0; i < numberOfPlayers; i++)
+                    {
+                        Console.WriteLine($"Player {i} Stack: {playerData[i, 0]} " +
+                            $"Bet: {playerData[i, 1]} Range: {playerData[i, 2]}");
+                    }
                 }
 
                 var result = results[1] - results[0];

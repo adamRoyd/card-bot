@@ -31,7 +31,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                dateStamp = "064542";
+                dateStamp = "073714";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -54,7 +54,7 @@ namespace bot
 
                 PredictedAction predictedAction;
 
-                if (boardState.MyStackRatio > 20)
+                if (boardState.MyStackRatio > 20 && boardState.NumberOfPlayers > 4)
                 {
                     predictedAction = new EarlyGamePredictedAction(boardState);
                 }

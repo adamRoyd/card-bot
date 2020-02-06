@@ -27,7 +27,7 @@ namespace ICM
             return result;
         }
 
-        public double[,] GetPlayerData(BoardState _state)
+        public double[,] GetPlaterDataForPush(BoardState _state)
         {
             var playersData = new double[_state.NumberOfPlayers, 9];
             var filteredPlayers = _state.Players.Where(p => !p.Eliminated).ToArray();
@@ -53,6 +53,33 @@ namespace ICM
             return playersData;
         }
 
+        public double[,] GetPlayerDataForFold(BoardState _state)
+        {
+            var playersData = new double[_state.NumberOfPlayers, 9];
+            var filteredPlayers = _state.Players.Where(p => !p.Eliminated).ToArray();
+
+            filteredPlayers.Where(p => !p.Eliminated).Each((player, n) =>
+            {
+                var index = GetPlayerIndex(_state, player);
+
+                playersData[index, STACK] = Convert.ToDouble(player.Stack);
+                playersData[index, BETS] = Convert.ToDouble(player.Bet);
+            });
+
+            var me = filteredPlayers.First(p => p.Position == 1);
+            var myIndex = GetPlayerIndex(_state, me);
+
+            //playersData = RearrangeFoldedPlayers(playersData, _state, myIndex);
+
+            CalculateRanges(_state, playersData);
+
+            // We need to remove any bets from ICM calc as bets massively skew the EV calculation
+            //playersData = RemoveBets(playersData, _state);
+
+            return playersData;
+        }
+
+
         private double[,] RearrangeFoldedPlayers(double[,] playersData, BoardState state, int myIndex)
         {
             List<PlayerData> playersDataList = new List<PlayerData>();
@@ -69,26 +96,48 @@ namespace ICM
                 });
             }
 
-            // search for non-betters ahead of hero
-            // if found, send to back and re-scan the same index (since everyone shifted right)
-            // stop at SB position or at hero position
-            for (var i = 0; i < state.NumberOfPlayers; i++)
+            // If the hero is the big blind, there are no non-betters ahead of hero
+            // send hero to the back of the list and then
+            // send non-betting players to back
+            if (myIndex == 0)
             {
-                var player = playersDataList.ElementAt(i);
+                playersDataList.Add(playersDataList.ElementAt(0));
+                playersDataList.RemoveAt(0);
 
-                if (i == myIndex || player.Bet == smallBlind)
+
+                var betterList = playersDataList.Where(p => p.Bet > smallBlind).ToList();
+                var nonBetterList = playersDataList.Where(p => p.Bet <= smallBlind).ToList();
+
+                foreach(var nonBetter in nonBetterList)
                 {
-                    break;
+                    betterList.Add(nonBetter);
                 }
 
-                if (player.Bet == 0)
+                playersDataList = betterList;
+            }
+            else
+            {
+                // search for non-betters ahead of hero
+                // if found, send to back and re-scan the same index (since everyone shifted right)
+                // stop at SB position or at hero position
+                for (var i = 0; i < state.NumberOfPlayers; i++)
                 {
-                    // send to back
-                    playersDataList.Add(playersDataList.ElementAt(i));
-                    playersDataList.RemoveAt(i);
-                    //rescan
-                    i -= 1;
-                    myIndex -= 1;
+                    var player = playersDataList.ElementAt(i);
+
+                    if (i == myIndex || player.Bet == smallBlind)
+                    {
+                        break;
+                    }
+
+                    if (player.Bet == 0)
+                    {
+                        // send to back
+                        playersDataList.Add(playersDataList.ElementAt(i));
+                        playersDataList.RemoveAt(i);
+                        //rescan
+                        i -= 1;
+                        myIndex -= 1;
+                    }
                 }
             }
 
@@ -143,12 +192,6 @@ namespace ICM
 
                 var filteredList = filteredPlayers.Where(p => p.Bet >= _state.BigBlind).OrderBy(p => p.Position).ToList();
                 var earliestBetter = filteredList.FirstOrDefault();
-
-                //if (playerPosition == earliestBetter.Position)
-                //{
-                //    // You are the Big Blind. Count from second better
-                //    earliestBetter = filteredList.ElementAt(1);
-                //}
 
                 if (earliestBetter == null)
                 {

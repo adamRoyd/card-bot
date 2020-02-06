@@ -1,13 +1,10 @@
-Verified - the call ranges for players that have folded DO NOT MATTER
+073714 should be fold - account for raise behind you
+
+075023 account for antes
+
 
 SORT OUT YOUR ACTION ON THE BIG BLIND
 
 Bets need cleaning up
 
-what is myPos?
-
-If you are the big blind and others limp, the limps dont become the big blind index
-
 IMPORTANT Call action is not working
-
-if someone raises behind you, how do you account for that in EV?
