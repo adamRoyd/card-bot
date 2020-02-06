@@ -62,6 +62,7 @@ namespace bot
                             OCR.Objects.ImageType.BigBlind => _boardStateHelper.GetBigBlindFromImage(boardImage.Image, boardImagepath),
                             OCR.Objects.ImageType.Ante => _boardStateHelper.GetAnteFromImage(boardImage.Image, boardImagepath),
                             OCR.Objects.ImageType.ReadyForAction => _boardStateHelper.GetReadyForAction(boardImage.Image, boardImagepath),
+                            OCR.Objects.ImageType.GameIsFinished => _boardStateHelper.GetGameIsFinished(boardImage.Image, boardImagepath),
                             _ => null
                         };
                     }

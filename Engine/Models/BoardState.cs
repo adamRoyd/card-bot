@@ -90,6 +90,7 @@ namespace Engine.Models
             get { return (FoldButton || CallButton || RaiseButton) && HandCode != null; }
             set { }
         }
+        public bool GameIsFinished { get; set; }
         public HandStage HandStage
         {
             get { return GetHandStage(); }

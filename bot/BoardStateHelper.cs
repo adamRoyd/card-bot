@@ -107,6 +107,18 @@ namespace bot
             }
         }
 
+        internal object GetGameIsFinished(Image image, string path)
+        {
+            var value = GetWordFromImage(image, path);
+
+            if (value.Contains("thank"))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         internal void SetPlayerBet(string boardImagepath, BoardImage boardImage, BoardState state)
         {
             var value = GetNumberFromImage(boardImage.Image, boardImagepath);

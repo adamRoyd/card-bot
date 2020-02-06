@@ -376,6 +376,14 @@ namespace OCR.Objects
                     Image = new Bitmap(150, 40),
                     X = 1343,
                     Y = 669
+                },
+                new BoardImage
+                {
+                    Name = ImageName.GameIsFinished,
+                    Type = ImageType.GameIsFinished,
+                    Image = new Bitmap(600, 300),
+                    X = 676,
+                    Y = 326
                 }
             };
         }

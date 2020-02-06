@@ -1,10 +1,13 @@
-073714 find a better example of an all-in call scenario
-
-075023 account for antes
-
+find a better example of an all-in call scenario
 
 SORT OUT YOUR ACTION ON THE BIG BLIND
 
 Bets need cleaning up
 
-IMPORTANT Call action is not working
+Register steps:
+Once table has completed, hit CTRL + S then ENTER to register on
+a similar tourney
+Hit OK
+Maximise window once present
+
+

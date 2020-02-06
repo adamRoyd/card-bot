@@ -31,7 +31,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                dateStamp = "075023";
+                //dateStamp = "085848";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -45,6 +45,12 @@ namespace bot
                 }
 
                 var boardState = boardStateService.GetBoardStateFromImagePath(path);
+
+                if (boardState.GameIsFinished)
+                {
+                    await RegisterForNewGame();
+                    continue;
+                }
 
                 if (!boardState.ReadyForAction || boardState.HandCode == "null")
                 {
@@ -73,10 +79,22 @@ namespace bot
                 WriteStatsToConsole(dateStamp, boardState, predictedAction);
 
                 //DoAction(predictedAction, boardState);
-                break;
+                //break;
 
                 await Task.Delay(2000);
             }
+        }
+
+        private static async Task RegisterForNewGame()
+        {
+            Random rnd = new Random();
+            Console.WriteLine("REGISTERING");
+            await Task.Delay(rnd.Next(1000,3000));
+            System.Windows.Forms.SendKeys.SendWait("{LEFT}");
+            await Task.Delay(rnd.Next(1000, 3000));
+            System.Windows.Forms.SendKeys.SendWait("{ENTER}");
+            await Task.Delay(rnd.Next(1000, 3000));
+            System.Windows.Forms.SendKeys.SendWait("{ENTER}");
         }
 
         public static void DoAction(PredictedAction action, BoardState state)
@@ -116,11 +134,12 @@ namespace bot
             var predictedActionText = boardState.ReadyForAction ? $"Action: {predictedAction?.GetAction()}" : "";
 
             var stats = $"Id: {dateStamp} " +
-                         $"Ps: {boardState.NumberOfPlayers} " +
-                         $"Pos: {boardState.MyPosition} " +
+                         //$"Ps: {boardState.NumberOfPlayers} " +
+                         //$"Pos: {boardState.MyPosition} " +
                          $"Hand: {boardState.HandCode} " +
                          $"Ev: {predictedAction._ev} " +
                          $"Ante: {boardState.Ante} " +
+                         $"Finished: {boardState.GameIsFinished} " +
                          predictedActionText;
 
             LogWriter.WriteLine(stats);
