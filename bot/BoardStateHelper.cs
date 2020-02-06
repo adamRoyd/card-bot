@@ -25,7 +25,7 @@ namespace bot
         }
 
         public void SaveBoardImages(List<BoardImage> boardImages, string path)
-        {            
+        {
             foreach (var boardImage in boardImages)
             {
                 var boardImagePath = $"{path}\\spliced\\{boardImage.Name}.png";
@@ -54,7 +54,7 @@ namespace bot
 
         internal int GetNumberFromImage(Image image, string path)
         {
-            string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);            
+            string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
 
             result = result.CleanUp().GetNumbers();
 
@@ -104,7 +104,7 @@ namespace bot
 
                 state.Players[index].Eliminated = false;
                 state.Players[index].Stack = value;
-            }    
+            }
         }
 
         internal void SetPlayerBet(string boardImagepath, BoardImage boardImage, BoardState state)
@@ -140,9 +140,26 @@ namespace bot
                 "150300" => 300,
                 "200400" => 400,
                 "300600" => 600,
+                "400800" => 800,
+                "5001000" => 1000,
                 _ => 0
             };
+        }
 
+        internal int GetAnteFromImage(Image image, string path)
+        {
+            string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
+
+            if (result.Trim().Split(" ").Length < 3)
+            {
+                return 0;
+            }
+
+            var ante = result.Trim().Split(" ")[2];
+
+            int.TryParse(ante, out int parsed);
+
+            return parsed;
         }
 
         private static string Reverse(string s)

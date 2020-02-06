@@ -31,7 +31,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                dateStamp = "073714";
+                dateStamp = "075023";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -120,6 +120,7 @@ namespace bot
                          $"Pos: {boardState.MyPosition} " +
                          $"Hand: {boardState.HandCode} " +
                          $"Ev: {predictedAction._ev} " +
+                         $"Ante: {boardState.Ante} " +
                          predictedActionText;
 
             LogWriter.WriteLine(stats);

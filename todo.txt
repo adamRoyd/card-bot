@@ -1,4 +1,4 @@
-073714 should be fold - account for raise behind you
+073714 find a better example of an all-in call scenario
 
 075023 account for antes
 

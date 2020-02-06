@@ -30,7 +30,6 @@ namespace ICM
                 var myHandIndex = _helper.GetHandIndex(_state.HandCode);
                 int indexFromBigBlind = _helper.GetPlayerIndex(_state, me);
 
-
                 var isPush = _state.Players.Where(p => !p.Eliminated).All(p => !p.IsAllIn);
 
                 var results = new double[] { 0, 0 };

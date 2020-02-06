@@ -79,6 +79,7 @@ namespace Engine.Models
         }
         public int Pot { get; set; }
         public int BigBlind { get; set; }
+        public int Ante { get; set; }
         public int CallAmount { get; set; }
         public int RaiseAmount { get; set; }
         public bool FoldButton { get; set; }

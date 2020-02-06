@@ -266,6 +266,14 @@ namespace OCR.Objects
                 },
                 new BoardImage
                 {
+                    Name = ImageName.Ante,
+                    Type = ImageType.Ante,
+                    Image = new Bitmap(170, 25),
+                    X = 146,
+                    Y = 976
+                },
+                new BoardImage
+                {
                     Name = ImageName.FoldButton,
                     Type = ImageType.ReadyForAction,
                     Image = new Bitmap(280, 10),

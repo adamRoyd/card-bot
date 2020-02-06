@@ -83,7 +83,7 @@ namespace ICM
         private double[,] RearrangeFoldedPlayers(double[,] playersData, BoardState state, int myIndex)
         {
             List<PlayerData> playersDataList = new List<PlayerData>();
-            var smallBlind = GetBlindInfo(state.BigBlind).Smallblind;
+            var smallBlind = GetBlindInfo(state).Smallblind;
 
             // convert to list!
             for (var i = 0; i < state.NumberOfPlayers; i++)
@@ -158,7 +158,7 @@ namespace ICM
 
         private double[,] RemoveBets(double[,] playersData, BoardState _state)
         {
-            var smallBlind = GetBlindInfo(_state.BigBlind).Smallblind;
+            var smallBlind = GetBlindInfo(_state).Smallblind;
 
             for (var i = 0; i < _state.NumberOfPlayers; i++)
             {
@@ -230,7 +230,7 @@ namespace ICM
         public void CalculateRanges(BoardState _state, double[,] playersData)
         {
 
-            BlindInfo blindInfo = GetBlindInfo(_state.BigBlind);
+            BlindInfo blindInfo = GetBlindInfo(_state);
 
             var nosb = false;
             var award = new Award
@@ -298,10 +298,10 @@ namespace ICM
         }
 
         // TODO get antes
-        private BlindInfo GetBlindInfo(int bigBlind)
+        private BlindInfo GetBlindInfo(BoardState state)
         {
-            var smallBlind = bigBlind / 2;
-            return new BlindInfo(smallBlind, bigBlind, 0);
+            var smallBlind = state.BigBlind / 2;
+            return new BlindInfo(smallBlind, state.BigBlind, state.Ante);
         }
 
         private static string[] GetHandArray()
