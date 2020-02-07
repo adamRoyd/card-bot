@@ -7,6 +7,8 @@ using Engine.Enums;
 using bot.Logging;
 using System.Linq;
 using ICM;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace bot
 {
@@ -85,16 +87,72 @@ namespace bot
             }
         }
 
-        private static async Task RegisterForNewGame()
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint cButtons, uint dwExtraInfo);
+        private const int MOUSEEVENTF_LEFTDOWN = 0x02;
+        private const int MOUSEEVENTF_LEFTUP = 0x04;
+        private const int MOUSEEVENTF_RIGHTDOWN = 0x08;
+        private const int MOUSEEVENTF_RIGHTUP = 0x10;
+
+        //TODO make all points slightly random
+        public static async Task RegisterForNewGame()
         {
             Random rnd = new Random();
             Console.WriteLine("REGISTERING");
-            await Task.Delay(rnd.Next(1000,3000));
+            //Register for next game
+            await Task.Delay(rnd.Next(1000, 3000));
             System.Windows.Forms.SendKeys.SendWait("{LEFT}");
             await Task.Delay(rnd.Next(1000, 3000));
             System.Windows.Forms.SendKeys.SendWait("{ENTER}");
             await Task.Delay(rnd.Next(1000, 3000));
             System.Windows.Forms.SendKeys.SendWait("{ENTER}");
+
+            //Wait for game to fill
+            await Task.Delay(rnd.Next(60000, 60100));
+
+            //Maximise Window
+            var windowMaxPosition = new Point(1843, 14);
+            await LinearSmoothMove(windowMaxPosition, 60);
+            await Task.Delay(rnd.Next(1000, 3000));
+            mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, (uint)Cursor.Position.X, (uint)Cursor.Position.Y, 0, 0);
+
+            await Task.Delay(rnd.Next(1000, 2000));
+
+            //Uncheck sitting out
+            var sittingOutButton = new Point(1642, 606);
+            await LinearSmoothMove(sittingOutButton, 60);
+            mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, (uint)Cursor.Position.X, (uint)Cursor.Position.Y, 0, 0);
+
+            await Task.Delay(rnd.Next(500, 1000));
+
+            //Select info tab
+            var infoPosition = new Point(759, 848);
+            await LinearSmoothMove(infoPosition, 60);
+            mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, (uint)Cursor.Position.X, (uint)Cursor.Position.Y, 0, 0);
+        }
+
+        public static async Task LinearSmoothMove(Point newPosition, int steps)
+        {
+            Point start = System.Windows.Forms.Cursor.Position;
+            PointF iterPoint = start;
+
+            // Find the slope of the line segment defined by start and newPosition
+            PointF slope = new PointF(newPosition.X - start.X, newPosition.Y - start.Y);
+
+            // Divide by the number of steps
+            slope.X = slope.X / steps;
+            slope.Y = slope.Y / steps;
+
+            // Move the mouse to each iterative point.
+            for (int i = 0; i < steps; i++)
+            {
+                iterPoint = new PointF(iterPoint.X + slope.X, iterPoint.Y + slope.Y);
+                System.Windows.Forms.Cursor.Position = Point.Round(iterPoint);
+                await Task.Delay(1);
+            }
+
+            // Move the mouse to the final destination.
+            System.Windows.Forms.Cursor.Position = newPosition;
         }
 
         public static void DoAction(PredictedAction action, BoardState state)
