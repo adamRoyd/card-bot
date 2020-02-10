@@ -63,6 +63,7 @@ namespace bot
                             OCR.Objects.ImageType.Ante => _boardStateHelper.GetAnteFromImage(boardImage.Image, boardImagepath),
                             OCR.Objects.ImageType.ReadyForAction => _boardStateHelper.GetReadyForAction(boardImage.Image, boardImagepath),
                             OCR.Objects.ImageType.GameIsFinished => _boardStateHelper.GetGameIsFinished(boardImage.Image, boardImagepath),
+                            OCR.Objects.ImageType.IsInPlay => _boardStateHelper.GetIsInPlay(boardImage.Image, boardImagepath),
                             _ => null
                         };
                     }

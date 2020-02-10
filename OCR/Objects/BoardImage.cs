@@ -58,7 +58,8 @@ namespace OCR.Objects
         CallAmount,
         RaiseAmount,
         Ante,
-        GameIsFinished
+        GameIsFinished,
+        IsInPlay
     }
 
     public enum ImageType
@@ -73,6 +74,7 @@ namespace OCR.Objects
         ReadyForAction,
         PlayerStack,
         Ante,
-        GameIsFinished
+        GameIsFinished,
+        IsInPlay
     }
 }

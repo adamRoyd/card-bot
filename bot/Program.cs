@@ -33,7 +33,7 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                //dateStamp = "085848";
+                dateStamp = "082001";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -69,12 +69,12 @@ namespace bot
                 else
                 {
                     double ev = 0;
-                    
-                    if(boardState.HandStage == HandStage.PreFlop)
+
+                    if (boardState.HandStage == HandStage.PreFlop)
                     {
                         ev = icmService.GetExpectedValue(boardState);
                     }
-                
+
                     predictedAction = new PushFoldPredictedAction(boardState, ev);
                 }
 
@@ -107,16 +107,12 @@ namespace bot
             await Task.Delay(rnd.Next(1000, 3000));
             System.Windows.Forms.SendKeys.SendWait("{ENTER}");
 
-            //Wait for game to fill
-            await Task.Delay(rnd.Next(60000, 60100));
-
-            //Maximise Window
-            var windowMaxPosition = new Point(1843, 14);
-            await LinearSmoothMove(windowMaxPosition, 60);
-            await Task.Delay(rnd.Next(1000, 3000));
-            mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, (uint)Cursor.Position.X, (uint)Cursor.Position.Y, 0, 0);
-
-            await Task.Delay(rnd.Next(1000, 2000));
+            while (true)
+            {
+                // if isInPlay, carry on
+                // otherwise retake screenshots, wait and try again
+                break;
+            }
 
             //Uncheck sitting out
             var sittingOutButton = new Point(1642, 606);
@@ -198,6 +194,7 @@ namespace bot
                          $"Ev: {predictedAction._ev} " +
                          $"Ante: {boardState.Ante} " +
                          $"Finished: {boardState.GameIsFinished} " +
+                         $"InPlay: {boardState.IsInPlay} " +
                          predictedActionText;
 
             LogWriter.WriteLine(stats);

@@ -384,7 +384,16 @@ namespace OCR.Objects
                     Image = new Bitmap(600, 300),
                     X = 676,
                     Y = 326
-                }
+                },
+                new BoardImage
+                {
+                    Name = ImageName.IsInPlay,
+                    PlayerNumber = 7,
+                    Type = ImageType.IsInPlay,
+                    Image = new Bitmap(160, 25),
+                    X = 555,
+                    Y = 323
+                },
             };
         }
     }

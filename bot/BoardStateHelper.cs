@@ -119,6 +119,12 @@ namespace bot
             return false;
         }
 
+        internal bool GetIsInPlay(Image image, string path)
+        {
+            string result = _suitFinder.GetTopRGBColor(path);
+            return result == "green";
+        }
+
         internal void SetPlayerBet(string boardImagepath, BoardImage boardImage, BoardState state)
         {
             var value = GetNumberFromImage(boardImage.Image, boardImagepath);
@@ -172,13 +178,6 @@ namespace bot
             int.TryParse(ante, out int parsed);
 
             return parsed;
-        }
-
-        private static string Reverse(string s)
-        {
-            char[] charArray = s.ToCharArray();
-            Array.Reverse(charArray);
-            return new string(charArray);
         }
     }
 }

@@ -91,6 +91,7 @@ namespace Engine.Models
             set { }
         }
         public bool GameIsFinished { get; set; }
+        public bool IsInPlay { get; set; }
         public HandStage HandStage
         {
             get { return GetHandStage(); }
