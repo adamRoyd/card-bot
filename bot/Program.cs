@@ -33,8 +33,6 @@ namespace bot
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
 
-                dateStamp = "082001";
-
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
 
@@ -50,7 +48,7 @@ namespace bot
 
                 if (boardState.GameIsFinished)
                 {
-                    await RegisterForNewGame();
+                    await RegisterForNewGame(boardStateService);
                     continue;
                 }
 
@@ -80,7 +78,7 @@ namespace bot
 
                 WriteStatsToConsole(dateStamp, boardState, predictedAction);
 
-                //DoAction(predictedAction, boardState);
+                DoAction(predictedAction, boardState);
                 //break;
 
                 await Task.Delay(2000);
@@ -91,11 +89,8 @@ namespace bot
         public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint cButtons, uint dwExtraInfo);
         private const int MOUSEEVENTF_LEFTDOWN = 0x02;
         private const int MOUSEEVENTF_LEFTUP = 0x04;
-        private const int MOUSEEVENTF_RIGHTDOWN = 0x08;
-        private const int MOUSEEVENTF_RIGHTUP = 0x10;
 
-        //TODO make all points slightly random
-        public static async Task RegisterForNewGame()
+        public static async Task RegisterForNewGame(BoardStateService boardStateService)
         {
             Random rnd = new Random();
             Console.WriteLine("REGISTERING");
@@ -104,25 +99,44 @@ namespace bot
             System.Windows.Forms.SendKeys.SendWait("{LEFT}");
             await Task.Delay(rnd.Next(1000, 3000));
             System.Windows.Forms.SendKeys.SendWait("{ENTER}");
-            await Task.Delay(rnd.Next(1000, 3000));
+            await Task.Delay(rnd.Next(2000, 4000));
             System.Windows.Forms.SendKeys.SendWait("{ENTER}");
 
             while (true)
             {
+                Console.WriteLine("Waiting for game...");
                 // if isInPlay, carry on
                 // otherwise retake screenshots, wait and try again
+                var dateStamp = DateTime.Now.ToString("hhmmss");
+
+                var path = $"..\\..\\..\\images\\{dateStamp}";
+                var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
+
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                    Directory.CreateDirectory(splicedPath);
+
+                    ScreenCaptureService.TakeScreenCapture(path);
+                }
+
+                var boardState = boardStateService.GetBoardStateFromImagePath(path);
+
+                if (!boardState.IsInPlay)
+                {
+                    DeleteFiles(path);
+                    continue;
+                }
+
+                Console.WriteLine("GAME HAS STARTED");
+
                 break;
             }
-
-            //Uncheck sitting out
-            var sittingOutButton = new Point(1642, 606);
-            await LinearSmoothMove(sittingOutButton, 60);
-            mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, (uint)Cursor.Position.X, (uint)Cursor.Position.Y, 0, 0);
 
             await Task.Delay(rnd.Next(500, 1000));
 
             //Select info tab
-            var infoPosition = new Point(759, 848);
+            var infoPosition = new Point(rnd.Next(759,764), rnd.Next(845, 849));
             await LinearSmoothMove(infoPosition, 60);
             mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, (uint)Cursor.Position.X, (uint)Cursor.Position.Y, 0, 0);
         }
@@ -188,13 +202,11 @@ namespace bot
             var predictedActionText = boardState.ReadyForAction ? $"Action: {predictedAction?.GetAction()}" : "";
 
             var stats = $"Id: {dateStamp} " +
-                         //$"Ps: {boardState.NumberOfPlayers} " +
-                         //$"Pos: {boardState.MyPosition} " +
+                         $"Ps: {boardState.NumberOfPlayers} " +
+                         $"Pos: {boardState.MyPosition} " +
                          $"Hand: {boardState.HandCode} " +
                          $"Ev: {predictedAction._ev} " +
                          $"Ante: {boardState.Ante} " +
-                         $"Finished: {boardState.GameIsFinished} " +
-                         $"InPlay: {boardState.IsInPlay} " +
                          predictedActionText;
 
             LogWriter.WriteLine(stats);
@@ -203,10 +215,10 @@ namespace bot
             //Console.WriteLine(
             //    $"{flop1} | {flop2} | {flop3} | {turn} | {river}");
 
-            foreach (var p in boardState.Players.Where(p => !p.Eliminated))
-            {
-                LogWriter.WriteLine($"{p.Position}: Stack: {p.Stack} Bet: {p.Bet}");
-            }
+            //foreach (var p in boardState.Players.Where(p => !p.Eliminated))
+            //{
+            //    LogWriter.WriteLine($"{p.Position}: Stack: {p.Stack} Bet: {p.Bet}");
+            //}
         }
 
         public static void DeleteFiles(string path)
