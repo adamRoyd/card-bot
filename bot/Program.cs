@@ -124,11 +124,12 @@ namespace bot
 
                 if (!boardState.IsInPlay)
                 {
-                    DeleteFiles(path);
+                    //DeleteFiles(path);
                     continue;
                 }
 
-                Console.WriteLine("GAME HAS STARTED");
+                Console.WriteLine("GAME HAS STARTED. Maximising...");
+                System.Windows.Forms.SendKeys.SendWait("m");
 
                 break;
             }
