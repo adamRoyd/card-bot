@@ -32,6 +32,7 @@ namespace bot
             while (true)
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
+                //dateStamp = "123830";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -48,8 +49,10 @@ namespace bot
 
                 if (boardState.GameIsFinished)
                 {
-                    await RegisterForNewGame(boardStateService);
-                    continue;
+                    //TODO add counter here
+                    break;
+                    //await RegisterForNewGame(boardStateService);
+                    //continue;
                 }
 
                 if (!boardState.ReadyForAction || boardState.HandCode == "null")
@@ -84,6 +87,63 @@ namespace bot
                 await Task.Delay(2000);
             }
         }
+
+        public static void DoAction(PredictedAction action, BoardState state)
+        {
+            if (action == null)
+            {
+                return;
+            }
+
+            var keyPress = action.GetAction() switch
+            {
+                ActionType.Fold => "f",
+                ActionType.Check => "c",
+                ActionType.Limp => "f",
+                ActionType.Unknown => "f",
+                ActionType.AllIn => "i",
+                ActionType.Bet => "f",
+                ActionType.Raise => "i",
+                _ => "f"
+            };
+
+            System.Windows.Forms.SendKeys.SendWait(keyPress);
+        }
+
+        public static void WriteStatsToConsole(
+            string dateStamp,
+            BoardState boardState,
+            PredictedAction predictedAction
+        )
+        {
+            var flop1 = boardState.Flop1 == null ? "  " : $"{boardState.Flop1.SimpleValue}{boardState.Flop1.Suit}";
+            var flop2 = boardState.Flop2 == null ? "  " : $"{boardState.Flop2.SimpleValue}{boardState.Flop2.Suit}";
+            var flop3 = boardState.Flop3 == null ? "  " : $"{boardState.Flop3.SimpleValue}{boardState.Flop3.Suit}";
+            var turn = boardState.Turn == null ? "  " : $"{boardState.Turn.SimpleValue}{boardState.Turn.Suit}";
+            var river = boardState.River == null ? "  " : $"{boardState.River.SimpleValue}{boardState.River.Suit}";
+
+            var predictedActionText = boardState.ReadyForAction ? $"Action: {predictedAction?.GetAction()}" : "";
+
+            var stats = $"Id: {dateStamp} " +
+                         $"Ps: {boardState.NumberOfPlayers} " +
+                         $"Pos: {boardState.MyPosition} " +
+                         $"Hand: {boardState.HandCode} " +
+                         $"Ev: {predictedAction._ev} " +
+                         $"Ante: {boardState.Ante} " +
+                         predictedActionText;
+
+            LogWriter.WriteLine(stats);
+
+
+            //Console.WriteLine(
+            //    $"{flop1} | {flop2} | {flop3} | {turn} | {river}");
+
+            foreach (var p in boardState.Players.Where(p => !p.Eliminated))
+            {
+                LogWriter.WriteLine($"{p.Position}: Stack: {p.Stack} Bet: {p.Bet}");
+            }
+        }
+
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint cButtons, uint dwExtraInfo);
@@ -137,7 +197,7 @@ namespace bot
             await Task.Delay(rnd.Next(500, 1000));
 
             //Select info tab
-            var infoPosition = new Point(rnd.Next(759,764), rnd.Next(845, 849));
+            var infoPosition = new Point(rnd.Next(759, 764), rnd.Next(845, 849));
             await LinearSmoothMove(infoPosition, 60);
             mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, (uint)Cursor.Position.X, (uint)Cursor.Position.Y, 0, 0);
         }
@@ -164,62 +224,6 @@ namespace bot
 
             // Move the mouse to the final destination.
             System.Windows.Forms.Cursor.Position = newPosition;
-        }
-
-        public static void DoAction(PredictedAction action, BoardState state)
-        {
-            if (action == null)
-            {
-                return;
-            }
-
-            var keyPress = action.GetAction() switch
-            {
-                ActionType.Fold => "f",
-                ActionType.Check => "c",
-                ActionType.Limp => "f",
-                ActionType.Unknown => "f",
-                ActionType.AllIn => "i",
-                ActionType.Bet => "f",
-                ActionType.Raise => "i",
-                _ => "f"
-            };
-
-            System.Windows.Forms.SendKeys.SendWait(keyPress);
-        }
-
-        public static void WriteStatsToConsole(
-            string dateStamp,
-            BoardState boardState,
-            PredictedAction predictedAction
-        )
-        {
-            var flop1 = boardState.Flop1 == null ? "  " : $"{boardState.Flop1.SimpleValue}{boardState.Flop1.Suit}";
-            var flop2 = boardState.Flop2 == null ? "  " : $"{boardState.Flop2.SimpleValue}{boardState.Flop2.Suit}";
-            var flop3 = boardState.Flop3 == null ? "  " : $"{boardState.Flop3.SimpleValue}{boardState.Flop3.Suit}";
-            var turn = boardState.Turn == null ? "  " : $"{boardState.Turn.SimpleValue}{boardState.Turn.Suit}";
-            var river = boardState.River == null ? "  " : $"{boardState.River.SimpleValue}{boardState.River.Suit}";
-
-            var predictedActionText = boardState.ReadyForAction ? $"Action: {predictedAction?.GetAction()}" : "";
-
-            var stats = $"Id: {dateStamp} " +
-                         $"Ps: {boardState.NumberOfPlayers} " +
-                         $"Pos: {boardState.MyPosition} " +
-                         $"Hand: {boardState.HandCode} " +
-                         $"Ev: {predictedAction._ev} " +
-                         $"Ante: {boardState.Ante} " +
-                         predictedActionText;
-
-            LogWriter.WriteLine(stats);
-
-
-            //Console.WriteLine(
-            //    $"{flop1} | {flop2} | {flop3} | {turn} | {river}");
-
-            //foreach (var p in boardState.Players.Where(p => !p.Eliminated))
-            //{
-            //    LogWriter.WriteLine($"{p.Position}: Stack: {p.Stack} Bet: {p.Bet}");
-            //}
         }
 
         public static void DeleteFiles(string path)

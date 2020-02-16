@@ -28,7 +28,7 @@ namespace ICM
                 var me = _state.Players.First(p => p.Position == 1);
 
                 var myHandIndex = _helper.GetHandIndex(_state.HandCode);
-                int indexFromBigBlind = _helper.GetPlayerIndex(_state, me);
+                int indexFromBigBlind = _helper.GetPlayerIndexForPush(_state, me);
 
                 var isPush = _state.Players.Where(p => !p.Eliminated).All(p => !p.IsAllIn);
 
@@ -38,7 +38,7 @@ namespace ICM
 
                 if (isPush)
                 {
-                    double[,] playerData = _helper.GetPlaterDataForPush(_state);
+                    double[,] playerData = _helper.GetPlayerDataForPush(_state);
 
                     icm.calcPush(
                         numberOfPlayers,
@@ -56,24 +56,22 @@ namespace ICM
                     var evPush = results[1] * 100;
                     evPush = Math.Round(evPush, 2);
 
-                    //Console.WriteLine($"Calc push p: {numberOfPlayers} hand: {myHandIndex} myPos: {indexFromBigBlind} " +
-                    //    $"evFold: {evFold} evPush: {evPush}");
+                    Console.WriteLine($"Calc push p: {numberOfPlayers} hand: {myHandIndex} myPos: {indexFromBigBlind} " +
+                        $"evFold: {evFold} evPush: {evPush}");
 
-                    //for (var i = 0; i < numberOfPlayers; i++)
-                    //{
-                    //    Console.WriteLine($"Player {i} Stack: {playerData[i, 0]} " +
-                    //        $"Bet: {playerData[i, 1]} Range: {playerData[i, 2]}");
-                    //}
+                    for (var i = 0; i < numberOfPlayers; i++)
+                    {
+                        Console.WriteLine($"Player {i} Chips: {playerData[i, 0]} " +
+                            $"Bet: {playerData[i, 1]} Range: {playerData[i, 2]}");
+                    }
                 }
                 else
                 {
+                    double[,] playerData = _helper.GetPlayerDataForCall(_state);
 
-                    double[,] playerData = _helper.GetPlayerDataForFold(_state);
+                    var allInPlayer = _state.Players.FirstOrDefault(p => p.IsAllIn && !p.Eliminated);
 
-                    var allInPlayer = _state.Players.FirstOrDefault(p => p.IsAllIn);
-
-                    // TODO get player index needs to be different for calculating a call?
-                    var allInIndex = _helper.GetPlayerIndex(_state, allInPlayer);
+                    var allInIndex = _helper.GetPlayerIndexForCall(_state, allInPlayer);
 
                     icm.calcCall(
                         numberOfPlayers,
@@ -97,7 +95,7 @@ namespace ICM
 
                     for (var i = 0; i < numberOfPlayers; i++)
                     {
-                        Console.WriteLine($"Player {i} Stack: {playerData[i, 0]} " +
+                        Console.WriteLine($"Player {i} Chips: {playerData[i, 0]} " +
                             $"Bet: {playerData[i, 1]} Range: {playerData[i, 2]}");
                     }
                 }

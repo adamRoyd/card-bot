@@ -27,21 +27,21 @@ namespace ICM
             return result;
         }
 
-        public double[,] GetPlaterDataForPush(BoardState _state)
+        public double[,] GetPlayerDataForPush(BoardState _state)
         {
             var playersData = new double[_state.NumberOfPlayers, 9];
             var filteredPlayers = _state.Players.Where(p => !p.Eliminated).ToArray();
 
             filteredPlayers.Where(p => !p.Eliminated).Each((player, n) =>
             {
-                var index = GetPlayerIndex(_state, player);
+                var index = GetPlayerIndexForPush(_state, player);
 
-                playersData[index, STACK] = Convert.ToDouble(player.Stack);
+                playersData[index, STACK] = Convert.ToDouble(player.Chips);
                 playersData[index, BETS] = Convert.ToDouble(player.Bet);
             });
 
             var me = filteredPlayers.First(p => p.Position == 1);
-            var myIndex = GetPlayerIndex(_state, me);
+            var myIndex = GetPlayerIndexForPush(_state, me);
 
             playersData = RearrangeFoldedPlayers(playersData, _state, myIndex);
 
@@ -53,21 +53,21 @@ namespace ICM
             return playersData;
         }
 
-        public double[,] GetPlayerDataForFold(BoardState _state)
+        public double[,] GetPlayerDataForCall(BoardState _state)
         {
             var playersData = new double[_state.NumberOfPlayers, 9];
             var filteredPlayers = _state.Players.Where(p => !p.Eliminated).ToArray();
 
             filteredPlayers.Where(p => !p.Eliminated).Each((player, n) =>
             {
-                var index = GetPlayerIndex(_state, player);
+                var index = GetPlayerIndexForCall(_state, player);
 
-                playersData[index, STACK] = Convert.ToDouble(player.Stack);
+                playersData[index, STACK] = Convert.ToDouble(player.Chips);
                 playersData[index, BETS] = Convert.ToDouble(player.Bet);
             });
 
             var me = filteredPlayers.First(p => p.Position == 1);
-            var myIndex = GetPlayerIndex(_state, me);
+            var myIndex = GetPlayerIndexForCall(_state, me);
 
             //playersData = RearrangeFoldedPlayers(playersData, _state, myIndex);
 
@@ -108,7 +108,7 @@ namespace ICM
                 var betterList = playersDataList.Where(p => p.Bet > smallBlind).ToList();
                 var nonBetterList = playersDataList.Where(p => p.Bet <= smallBlind).ToList();
 
-                foreach(var nonBetter in nonBetterList)
+                foreach (var nonBetter in nonBetterList)
                 {
                     betterList.Add(nonBetter);
                 }
@@ -177,13 +177,27 @@ namespace ICM
 
         }
 
-        public int GetPlayerIndex(BoardState _state, Player player)
+        public int GetPlayerIndexForPush(BoardState _state, Player player)
         {
             try
             {
                 var filteredPlayers = _state.Players.Where(p => !p.Eliminated).ToArray();
 
                 var numberOfPlayers = filteredPlayers.Where(p => !p.Eliminated).Count();
+
+                if (numberOfPlayers == 2)
+                {
+                    // Heads up you will always be position 1 for pushing
+                    if (player.Position == 1)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+
+                }
 
                 var playerPosition = Array.IndexOf(filteredPlayers, player) + 1;
 
@@ -227,6 +241,55 @@ namespace ICM
             }
         }
 
+        public int GetPlayerIndexForCall(BoardState _state, Player player)
+        {
+            try
+            {
+                var filteredPlayers = _state.Players.Where(p => !p.Eliminated).ToArray();
+
+                var numberOfPlayers = filteredPlayers.Where(p => !p.Eliminated).Count();
+
+                var playerPosition = Array.IndexOf(filteredPlayers, player) + 1;
+
+                var dealerPosition = Array.IndexOf(filteredPlayers,
+                                        filteredPlayers.FirstOrDefault(p => p.IsDealer)) + 1;
+
+                var bigBlind = filteredPlayers.FirstOrDefault(p => p.Bet == _state.BigBlind);
+
+                if (bigBlind == null)
+                {
+                    throw new Exception("Earliest Better is null");
+                }
+
+                var bigBlindPosition = Array.IndexOf(filteredPlayers, bigBlind) + 1;
+
+                var index = -1;
+
+                // Count up from big blind position and find a match
+                for (var i = 0; i < numberOfPlayers; i++)
+                {
+                    if (bigBlindPosition == playerPosition)
+                    {
+                        index = i;
+                        break;
+                    }
+
+                    if (bigBlindPosition == numberOfPlayers)
+                    {
+                        bigBlindPosition = 0;
+                    }
+
+                    bigBlindPosition++;
+                }
+
+                return index;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public void CalculateRanges(BoardState _state, double[,] playersData)
         {
 
@@ -256,22 +319,20 @@ namespace ICM
                     stacks[found++] = (int)playersData[i, STACK];
             }
 
-            //TODO implement call properly
-            var isPush = true;//_state.Players.Where(p => !p.Eliminated).All(p => !p.IsAllIn);
+            var isPush = _state.Players.Where(p => !p.Eliminated).All(p => !p.IsAllIn);
 
-            // Get index number of player that is all in
             if (isPush)
             {
                 indexFromBigBlind = -1;
                 var me = _state.Players.First(p => p.Position == 1);
 
-                indexFromBigBlind = GetPlayerIndex(_state, me);
+                indexFromBigBlind = GetPlayerIndexForPush(_state, me);
             }
             else
             {
-                var allInPlayer = _state.Players.FirstOrDefault(p => p.IsAllIn);
+                var allInPlayer = _state.Players.FirstOrDefault(p => p.IsAllIn && !p.Eliminated);
 
-                indexFromBigBlind = GetPlayerIndex(_state, allInPlayer);
+                indexFromBigBlind = GetPlayerIndexForCall(_state, allInPlayer);
             }
 
             ranges.calc(
