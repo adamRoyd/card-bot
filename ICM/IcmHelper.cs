@@ -66,9 +66,6 @@ namespace ICM
                 playersData[index, BETS] = Convert.ToDouble(player.Bet);
             });
 
-            var me = filteredPlayers.First(p => p.Position == 1);
-            var myIndex = GetPlayerIndexForCall(_state, me);
-
             //playersData = RearrangeFoldedPlayers(playersData, _state, myIndex);
 
             CalculateRanges(_state, playersData);

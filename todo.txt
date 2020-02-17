@@ -1,4 +1,4 @@
-063209 all in???
+063209 all in??? player 3 bet size is wrong. how to calculate?
 
 SORT OUT YOUR ACTION ON THE BIG BLIND
 
@@ -11,5 +11,3 @@ Once table has completed, hit CTRL + S then ENTER to register on
 a similar tourney
 Hit OK
 Maximise window once present
-
-
