@@ -67,6 +67,56 @@ namespace OCR
                         {
                             var text = page.GetText();
                             //Console.WriteLine("Mean confidence: {0}", page.GetMeanConfidence());
+                            var confidence = page.GetMeanConfidence();
+
+                            //Console.WriteLine($"Text (GetText): {text}");
+
+                            text = text.RemoveLineBreaks().StripPunctuation().Trim();
+
+                            result = text;
+
+                        }
+
+                        engine.Dispose();
+                    }
+                }
+
+                return result;
+            }
+            catch (Exception e)
+            {
+                Trace.TraceError(e.ToString());
+                Console.WriteLine("Unexpected Error: " + e.Message);
+                Console.WriteLine("Details: ");
+                Console.WriteLine(e.ToString());
+                result = e.ToString();
+                throw;
+            }
+        }
+
+        public string GetNumbers(Image img, PageSegMode mode)
+        {
+            var byteArray = ImageToByteArray(img);
+
+            var pix = Pix.LoadTiffFromMemory(byteArray);
+
+            string result = null;
+
+            try
+            {
+
+                using (var engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default))
+                {
+                    engine.SetVariable("tessedit_char_whitelist", "01234567890");
+                    engine.DefaultPageSegMode = PageSegMode.SingleBlock;
+
+                    using (pix)
+                    {
+                        using (var page = engine.Process(pix))
+                        {
+                            var text = page.GetText();
+                            //Console.WriteLine("Mean confidence: {0}", page.GetMeanConfidence());
+                            var confidence = page.GetMeanConfidence();
 
                             //Console.WriteLine($"Text (GetText): {text}");
 
