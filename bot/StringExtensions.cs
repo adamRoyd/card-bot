@@ -21,5 +21,34 @@ namespace bot
                 .Replace("s","5")
                 .Replace(" ", "").Trim();
         }
+
+        public static string RemoveOnes(this string input, int playerNumber)
+        {
+            var result = input;
+
+            if (playerNumber < 6)
+            {
+                // remove trailing 1s
+                var arry = input.ToCharArray();
+                
+                for(var i = arry.Length - 1; i >= 0; i--)
+                {
+                    if (arry[i] == '1')
+                    {
+                        result = result.Remove(result.Length - 1);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                // remove leading 1s
+            }
+
+            return result;
+        }
     }
 }

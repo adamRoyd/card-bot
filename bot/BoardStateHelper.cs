@@ -68,22 +68,6 @@ namespace bot
             return value;
         }
 
-        internal int GetBetFromImage(Image image, string path)
-        {
-            string result = _imageProcessor.GetNumbers(image, PageSegMode.Auto);
-
-            result = result.CleanUp().GetNumbers();
-
-            int.TryParse(result, out int value);
-
-            if (value == 341)
-            {
-                value = 0;
-            }
-
-            return value;
-        }
-
         internal string GetWordFromImage(Image image, string path)
         {
             string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
@@ -143,7 +127,17 @@ namespace bot
 
         internal void SetPlayerBet(string boardImagepath, BoardImage boardImage, BoardState state)
         {
-            var value = GetBetFromImage(boardImage.Image, boardImagepath);
+            string result = _imageProcessor.GetNumbers(boardImage.Image, PageSegMode.Auto);
+
+            result = result.CleanUp().GetNumbers().RemoveOnes(boardImage.PlayerNumber);
+
+            int.TryParse(result, out int value);
+
+            if (value == 341)
+            {
+                value = 0;
+            }
+
             var index = boardImage.PlayerNumber - 1;
 
             state.Players[index].Bet = value;
