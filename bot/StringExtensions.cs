@@ -18,7 +18,7 @@ namespace bot
                 .Replace("pot", "")
                 .Replace(":", "")
                 .Replace(",", "")
-                .Replace("s","5")
+                .Replace("s", "5")
                 .Replace(" ", "").Trim();
         }
 
@@ -30,8 +30,8 @@ namespace bot
             {
                 // remove trailing 1s
                 var arry = input.ToCharArray();
-                
-                for(var i = arry.Length - 1; i >= 0; i--)
+
+                for (var i = arry.Length - 1; i >= 0; i--)
                 {
                     if (arry[i] == '1')
                     {
@@ -42,10 +42,37 @@ namespace bot
                         break;
                     }
                 }
+
+                //if string is over 4 characters, remove another
+                while (result.Length > 4)
+                {
+                    result = result.Remove(result.Length - 1);
+                }
             }
             else
             {
                 // remove leading 1s
+                var arry = input.ToCharArray();
+
+                for (var i = 0; i <= arry.Length; i++)
+                {
+                    if (i == arry.Length) break;
+
+                    if (arry[i] == '1' && arry[i + 1] == '1')
+                    {
+                        result = result.Remove(0, 1);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                //if string is over 4 characters, remove another
+                while(result.Length > 4)
+                {
+                    result = result.Remove(0, 1);
+                }
             }
 
             return result;

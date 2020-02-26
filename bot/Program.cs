@@ -32,7 +32,7 @@ namespace bot
             while (true)
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
-                dateStamp = "063209";
+                dateStamp = "075848";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -130,10 +130,10 @@ namespace bot
                          $"Hand: {boardState.HandCode} " +
                          $"Ev: {predictedAction._ev} " +
                          $"Ante: {boardState.Ante} " +
+                         $"SR: {boardState.MyStackRatio} " +
                          predictedActionText;
 
             LogWriter.WriteLine(stats);
-
 
             //Console.WriteLine(
             //    $"{flop1} | {flop2} | {flop3} | {turn} | {river}");

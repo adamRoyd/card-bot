@@ -32,6 +32,12 @@ namespace ICM
 
                 var isPush = _state.Players.Where(p => !p.Eliminated).All(p => !p.IsAllIn);
 
+                if (_state.Players.Where(p => !p.Eliminated && p.IsAllIn).Count() > 1)
+                {
+                    Console.WriteLine("More than 1 player is all in");
+                    return -99;
+                }
+
                 var results = new double[] { 0, 0 };
 
                 var moneyPayouts = new double[] { 0.5, 0.3, 0.2 };
