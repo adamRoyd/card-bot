@@ -1,13 +1,5 @@
-075848 trim bets wrt stack sizes.
-
 SORT OUT YOUR ACTION ON THE BIG BLIND
 
 Bets need cleaning up
 
 Make the bot more human!
-
-Register steps:
-Once table has completed, hit CTRL + S then ENTER to register on
-a similar tourney
-Hit OK
-Maximise window once present
