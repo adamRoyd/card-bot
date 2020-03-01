@@ -209,7 +209,7 @@ namespace OCR.Objects
                     Name = ImageName.Bet5,
                     PlayerNumber = 5,
                     Type = ImageType.PlayerBet,
-                    Image = new Bitmap(160, 25),
+                    Image = new Bitmap(190, 25),
                     X = 937,
                     Y = 233
                 },

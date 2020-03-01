@@ -15,7 +15,7 @@ namespace OCR
 
         public ImageProcessor()
         {
-           
+
         }
 
         public string GetImageCharacters(Image image, PageSegMode segMode)
@@ -29,7 +29,7 @@ namespace OCR
         {
             var result = GetCharacters(image, PageSegMode.SingleBlock);
 
-            if(result == "O")
+            if (result == "O")
             {
                 result = "Q";
             }
@@ -115,10 +115,12 @@ namespace OCR
                         using (var page = engine.Process(pix))
                         {
                             var text = page.GetText();
-                            //Console.WriteLine("Mean confidence: {0}", page.GetMeanConfidence());
                             var confidence = page.GetMeanConfidence();
 
-                            //Console.WriteLine($"Text (GetText): {text}");
+                            if (confidence == 0)
+                            {
+                                return "";
+                            }
 
                             text = text.RemoveLineBreaks().StripPunctuation().Trim();
 
@@ -150,10 +152,10 @@ namespace OCR
             var fileName = $"{path}\\board.png";
             var img = Image.FromFile(fileName);
 
-            foreach(var boardImage in boardImages.BoardImageList)
+            foreach (var boardImage in boardImages.BoardImageList)
             {
                 DrawImage(boardImage, img);
-            }    
+            }
 
             img.Dispose();
 

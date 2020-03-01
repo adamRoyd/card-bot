@@ -127,7 +127,7 @@ namespace bot
 
         internal void SetPlayerBet(string boardImagepath, BoardImage boardImage, BoardState state)
         {
-            string result = _imageProcessor.GetNumbers(boardImage.Image, PageSegMode.Auto);
+            string result = _imageProcessor.GetImageCharacters(boardImage.Image, PageSegMode.Auto);
 
             result = result.CleanUp().GetNumbers().RemoveOnes(boardImage.PlayerNumber);
 
