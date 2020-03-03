@@ -1,28 +1,21 @@
 ﻿using Engine.Models;
 using OCR;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using Tesseract;
 
 namespace bot
 {
-    public class BoardStateService
+    public class BoardStateService : IBoardStateService
     {
         private readonly ImageProcessor _imageProcessor;
         private readonly BoardStateHelper _boardStateHelper;
-        private readonly SuitFinder _suitFinder;
 
         public BoardStateService(
             ImageProcessor imageProcessor,
-            BoardStateHelper boardStateHelper,
-            SuitFinder suitFinder
+            BoardStateHelper boardStateHelper        
         )
         {
             _imageProcessor = imageProcessor;
             _boardStateHelper = boardStateHelper;
-            _suitFinder = suitFinder;
         }
 
         public BoardState GetBoardStateFromImagePath(string path)

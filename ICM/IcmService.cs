@@ -2,11 +2,9 @@
 using System;
 using System.Linq;
 
-
-
 namespace ICM
 {
-    public class IcmService
+    public class IcmService : IIcmService
     {
         private ICMCalc icm;
         private BoardState _state;

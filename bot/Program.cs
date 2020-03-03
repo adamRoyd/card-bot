@@ -9,6 +9,7 @@ using System.Linq;
 using ICM;
 using System.Drawing;
 using System.Windows.Forms;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace bot
 {
@@ -18,21 +19,29 @@ namespace bot
 
         public static async Task Main(string[] args)
         {
-            await BeTheBot();
+            // Dependency Injection setup
+            IServiceProvider serviceProvider = new ServiceCollection()
+                .AddSingleton<IBoardStateService, BoardStateService>()
+                .AddSingleton<IIcmService, IcmService>()
+                .BuildServiceProvider();
+
+            await BeTheBot(serviceProvider);
         }
 
-        public static async Task BeTheBot()
+        public static async Task BeTheBot(IServiceProvider serviceProvider)
         {
+            // TODO you shouldn't have to new these up - they should be done via DI
+            // This is the point! Dependencies are injected via the dependent, not the user.
             var imageProcessor = new ImageProcessor();
             var suitFinder = new SuitFinder();
             var boardStateHelper = new BoardStateHelper(imageProcessor, suitFinder);
-            var boardStateService = new BoardStateService(imageProcessor, boardStateHelper, suitFinder);
-            var icmService = new IcmService();
+            var boardStateService = new BoardStateService(imageProcessor, boardStateHelper);
+            IIcmService icmService = serviceProvider.GetService<IIcmService>();
 
             while (true)
             {
                 var dateStamp = DateTime.Now.ToString("hhmmss");
-                //dateStamp = "012548";
+                dateStamp = "035414";
 
                 var path = $"..\\..\\..\\images\\{dateStamp}";
                 var splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -81,8 +90,8 @@ namespace bot
 
                 WriteStatsToConsole(dateStamp, boardState, predictedAction);
 
-                DoAction(predictedAction, boardState);
-                //break;
+                //DoAction(predictedAction, boardState);
+                break;
 
                 await Task.Delay(2000);
             }
