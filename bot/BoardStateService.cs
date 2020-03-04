@@ -6,12 +6,12 @@ namespace bot
 {
     public class BoardStateService : IBoardStateService
     {
-        private readonly ImageProcessor _imageProcessor;
-        private readonly BoardStateHelper _boardStateHelper;
+        private readonly IImageProcessor _imageProcessor;
+        private readonly IBoardStateHelper _boardStateHelper;
 
         public BoardStateService(
-            ImageProcessor imageProcessor,
-            BoardStateHelper boardStateHelper        
+            IImageProcessor imageProcessor,
+            IBoardStateHelper boardStateHelper        
         )
         {
             _imageProcessor = imageProcessor;

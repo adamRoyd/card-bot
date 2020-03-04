@@ -1,8 +1,6 @@
-﻿using Engine.Enums;
-using Engine.Models;
+﻿using Engine.Models;
 using OCR;
 using OCR.Objects;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -10,14 +8,14 @@ using Tesseract;
 
 namespace bot
 {
-    public class BoardStateHelper
+    public class BoardStateHelper : IBoardStateHelper
     {
-        private readonly ImageProcessor _imageProcessor;
-        private readonly SuitFinder _suitFinder;
+        private readonly IImageProcessor _imageProcessor;
+        private readonly ISuitFinder _suitFinder;
 
         public BoardStateHelper(
-            ImageProcessor imageProcessor,
-            SuitFinder suitFinder
+            IImageProcessor imageProcessor,
+            ISuitFinder suitFinder
         )
         {
             _imageProcessor = imageProcessor;
@@ -39,7 +37,7 @@ namespace bot
             }
         }
 
-        internal Card GetCardFromImage(Image img, string path)
+        public Card GetCardFromImage(Image img, string path)
         {
             var value = _imageProcessor.GetCardValueFromImage(img);
             var suit = _suitFinder.GetSuitFromImage(path);
@@ -52,7 +50,7 @@ namespace bot
             return new Card(value, suit);
         }
 
-        internal int GetNumberFromImage(Image image, string path)
+        public int GetNumberFromImage(Image image, string path)
         {
             string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
 
@@ -68,20 +66,20 @@ namespace bot
             return value;
         }
 
-        internal string GetWordFromImage(Image image, string path)
+        public string GetWordFromImage(Image image, string path)
         {
             string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
             result = result.ToLower().Trim();
             return result;
         }
 
-        internal bool GetReadyForAction(Image image, string path)
+        public bool GetReadyForAction(Image image, string path)
         {
             string result = _suitFinder.GetTopRGBColor(path);
             return result == "red";
         }
 
-        internal void SetPlayerStack(string path, BoardImage boardImage, BoardState state)
+        public void SetPlayerStack(string path, BoardImage boardImage, BoardState state)
         {
             string result = _imageProcessor.GetImageCharacters(boardImage.Image, PageSegMode.Auto);
 
@@ -107,7 +105,7 @@ namespace bot
             }
         }
 
-        internal object GetGameIsFinished(Image image, string path)
+        public object GetGameIsFinished(Image image, string path)
         {
             var value = GetWordFromImage(image, path);
 
@@ -119,13 +117,13 @@ namespace bot
             return false;
         }
 
-        internal bool GetIsInPlay(Image image, string path)
+        public bool GetIsInPlay(Image image, string path)
         {
             string result = _suitFinder.GetTopRGBColor(path);
             return result == "green";
         }
 
-        internal void SetPlayerBet(string boardImagepath, BoardImage boardImage, BoardState state)
+        public void SetPlayerBet(string boardImagepath, BoardImage boardImage, BoardState state)
         {
             string result = _imageProcessor.GetImageCharacters(boardImage.Image, PageSegMode.Auto);
 
@@ -143,7 +141,7 @@ namespace bot
             state.Players[index].Bet = value;
         }
 
-        internal void SetPlayerIsDealer(string path, BoardImage boardImage, BoardState state)
+        public void SetPlayerIsDealer(string path, BoardImage boardImage, BoardState state)
         {
             var isDealer = _suitFinder.IsDealerButton(path);
             var index = boardImage.PlayerNumber - 1;
@@ -151,7 +149,7 @@ namespace bot
 
         }
 
-        internal int GetBigBlindFromImage(Image image, string path)
+        public int GetBigBlindFromImage(Image image, string path)
         {
             string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
 
@@ -174,7 +172,7 @@ namespace bot
             };
         }
 
-        internal int GetAnteFromImage(Image image, string path)
+        public int GetAnteFromImage(Image image, string path)
         {
             string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
 

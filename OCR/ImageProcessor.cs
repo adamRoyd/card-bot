@@ -10,7 +10,7 @@ using Tesseract;
 
 namespace OCR
 {
-    public class ImageProcessor
+    public class ImageProcessor : IImageProcessor
     {
 
         public ImageProcessor()

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace OCR
 {
-    public class SuitFinder
+    public class SuitFinder : ISuitFinder
     {
         public static List<Color> TenMostUsedColors { get; private set; }
         public static List<int> TenMostUsedColorIncidences { get; private set; }
