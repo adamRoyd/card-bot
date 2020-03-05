@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace bot
+namespace bot.Services
 {
     public interface IBoardStateService
     {

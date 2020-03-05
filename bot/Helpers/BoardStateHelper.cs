@@ -1,4 +1,5 @@
-﻿using Engine.Models;
+﻿using bot.Extensions;
+using Engine.Models;
 using OCR;
 using OCR.Objects;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Drawing;
 using System.IO;
 using Tesseract;
 
-namespace bot
+namespace bot.Helpers
 {
     public class BoardStateHelper : IBoardStateHelper
     {
@@ -24,9 +25,9 @@ namespace bot
 
         public void SaveBoardImages(List<BoardImage> boardImages, string path)
         {
-            foreach (var boardImage in boardImages)
+            foreach (BoardImage boardImage in boardImages)
             {
-                var boardImagePath = $"{path}\\spliced\\{boardImage.Name}.png";
+                string boardImagePath = $"{path}\\spliced\\{boardImage.Name}.png";
 
                 if (File.Exists(boardImagePath))
                 {
@@ -39,8 +40,8 @@ namespace bot
 
         public Card GetCardFromImage(Image img, string path)
         {
-            var value = _imageProcessor.GetCardValueFromImage(img);
-            var suit = _suitFinder.GetSuitFromImage(path);
+            Engine.Enums.CardValue value = _imageProcessor.GetCardValueFromImage(img);
+            Engine.Enums.CardSuit suit = _suitFinder.GetSuitFromImage(path);
 
             if (value == 0) // No card found
             {
@@ -85,7 +86,7 @@ namespace bot
 
             result = result.CleanUp();
 
-            var index = boardImage.PlayerNumber - 1;
+            int index = boardImage.PlayerNumber - 1;
 
             string colour = _suitFinder.GetBlackOrWhite(path);
 
@@ -107,7 +108,7 @@ namespace bot
 
         public object GetGameIsFinished(Image image, string path)
         {
-            var value = GetWordFromImage(image, path);
+            string value = GetWordFromImage(image, path);
 
             if (value.Contains("thank"))
             {
@@ -136,15 +137,15 @@ namespace bot
                 value = 0;
             }
 
-            var index = boardImage.PlayerNumber - 1;
+            int index = boardImage.PlayerNumber - 1;
 
             state.Players[index].Bet = value;
         }
 
         public void SetPlayerIsDealer(string path, BoardImage boardImage, BoardState state)
         {
-            var isDealer = _suitFinder.IsDealerButton(path);
-            var index = boardImage.PlayerNumber - 1;
+            bool isDealer = _suitFinder.IsDealerButton(path);
+            int index = boardImage.PlayerNumber - 1;
             state.Players[index].IsDealer = isDealer;
 
         }
@@ -153,7 +154,7 @@ namespace bot
         {
             string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
 
-            var bigBlind = result.Trim().Split(" ")[0];
+            string bigBlind = result.Trim().Split(" ")[0];
 
             return bigBlind switch
             {
@@ -181,7 +182,7 @@ namespace bot
                 return 0;
             }
 
-            var ante = result.Trim().Split(" ")[2];
+            string ante = result.Trim().Split(" ")[2];
 
             int.TryParse(ante, out int parsed);
 

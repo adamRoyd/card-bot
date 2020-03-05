@@ -1,8 +1,9 @@
-﻿using Engine.Models;
+﻿using bot.Helpers;
+using Engine.Models;
 using OCR;
 using System;
 
-namespace bot
+namespace bot.Services
 {
     public class BoardStateService : IBoardStateService
     {
@@ -11,7 +12,7 @@ namespace bot
 
         public BoardStateService(
             IImageProcessor imageProcessor,
-            IBoardStateHelper boardStateHelper        
+            IBoardStateHelper boardStateHelper
         )
         {
             _imageProcessor = imageProcessor;

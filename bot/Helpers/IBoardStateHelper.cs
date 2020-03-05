@@ -3,7 +3,7 @@ using OCR.Objects;
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace bot
+namespace bot.Helpers
 {
     public interface IBoardStateHelper
     {

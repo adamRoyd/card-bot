@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 using Newtonsoft.Json;
+using bot.Services;
 
 namespace bot
 {

@@ -1,17 +1,11 @@
 ﻿using System;
-using System.IO;
 using OCR;
-using Engine.Models;
 using System.Threading.Tasks;
-using Engine.Enums;
-using bot.Logging;
-using System.Linq;
 using ICM;
-using System.Drawing;
-using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
-using System.Drawing.Imaging;
 using bot.Services;
+using bot.Helpers;
+using Microsoft.Extensions.Logging;
 
 namespace bot
 {
@@ -29,6 +23,19 @@ namespace bot
                 .AddSingleton<IBoardStateService, BoardStateService>()
                 .AddSingleton<IScreenCaptureService, ScreenCaptureService>()
                 .BuildServiceProvider();
+
+            var loggerFactory = LoggerFactory.Create(builder =>
+            {
+                builder
+                    .AddFilter("Microsoft", LogLevel.Warning)
+                    .AddFilter("System", LogLevel.Warning)
+                    .AddFilter("LoggingConsoleApp.Program", LogLevel.Debug)
+                    .AddConsole()
+                    .AddEventLog();
+            });
+
+            ILogger logger = loggerFactory.CreateLogger<Program>();
+            logger.LogInformation("Example log message");
 
             // Run the bot
             IPokerBotService pokerBotService = serviceProvider.GetService<IPokerBotService>();

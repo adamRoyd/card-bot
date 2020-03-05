@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
-using System.Text;
 
-namespace bot
+namespace bot.Services
 {
     /// <summary>
     /// Provides functions to capture the entire screen, or a particular window, and save it to a file.

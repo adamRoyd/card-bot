@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace bot
+namespace bot.Services
 {
     public interface IScreenCaptureService
     {
