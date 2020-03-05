@@ -5,23 +5,17 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 using Newtonsoft.Json;
+using bot.Services;
 
 namespace bot
 {
     public class BoardStateServiceTests
     {
-        private readonly ImageProcessor _imageProcessor;
-        private readonly BoardStateHelper _boardStateHelper;
-        private readonly SuitFinder _suitFinder;
-        private readonly BoardStateService _boardStateService;
+        private readonly IBoardStateService _boardStateService;
 
-        public BoardStateServiceTests()
+        public BoardStateServiceTests(IBoardStateService boardStateService)
         {
-            _imageProcessor = new ImageProcessor();
-            _suitFinder = new SuitFinder();
-
-            _boardStateHelper = new BoardStateHelper(_imageProcessor, _suitFinder);
-            _boardStateService = new BoardStateService(_imageProcessor, _boardStateHelper, _suitFinder);
+            _boardStateService = boardStateService;
         }
 
         [Fact]

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
+﻿using System.Linq;
 
-namespace bot
+namespace bot.Extensions
 {
     public static class StringExtensions
     {
@@ -69,7 +66,7 @@ namespace bot
                 }
 
                 //if string is over 4 characters, remove another
-                while(result.Length > 4)
+                while (result.Length > 4)
                 {
                     result = result.Remove(0, 1);
                 }

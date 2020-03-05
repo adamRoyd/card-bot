@@ -1318,16 +1318,11 @@
       "ICM/1.0.0": {
         "dependencies": {
           "Engine": "1.0.0",
-          "SNGEGT": "1.0.0",
+          "System.Runtime.InteropServices": "4.3.0",
           "xunit.extensibility.core": "2.4.1"
         },
         "runtime": {
           "ICM.dll": {}
-        }
-      },
-      "SNGEGT/1.0.0": {
-        "runtime": {
-          "SNGEGT.exe": {}
         }
       }
     }
@@ -2107,11 +2102,6 @@
       "sha512": ""
     },
     "ICM/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "SNGEGT/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

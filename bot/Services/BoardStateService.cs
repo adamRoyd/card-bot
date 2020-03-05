@@ -1,28 +1,22 @@
-﻿using Engine.Models;
+﻿using bot.Helpers;
+using Engine.Models;
 using OCR;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using Tesseract;
 
-namespace bot
+namespace bot.Services
 {
-    public class BoardStateService
+    public class BoardStateService : IBoardStateService
     {
-        private readonly ImageProcessor _imageProcessor;
-        private readonly BoardStateHelper _boardStateHelper;
-        private readonly SuitFinder _suitFinder;
+        private readonly IImageProcessor _imageProcessor;
+        private readonly IBoardStateHelper _boardStateHelper;
 
         public BoardStateService(
-            ImageProcessor imageProcessor,
-            BoardStateHelper boardStateHelper,
-            SuitFinder suitFinder
+            IImageProcessor imageProcessor,
+            IBoardStateHelper boardStateHelper
         )
         {
             _imageProcessor = imageProcessor;
             _boardStateHelper = boardStateHelper;
-            _suitFinder = suitFinder;
         }
 
         public BoardState GetBoardStateFromImagePath(string path)

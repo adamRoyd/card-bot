@@ -18,7 +18,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="phototest.tif" />
     <None Remove="tessdata\eng.cube.bigrams" />
     <None Remove="tessdata\eng.cube.fold" />
     <None Remove="tessdata\eng.cube.lm" />
@@ -31,9 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="phototest.tif">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
     <Content Include="tessdata\eng.cube.bigrams">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -64,6 +60,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.EventLog" Version="3.1.2" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
     <PackageReference Include="Tesseract" Version="3.3.0" />

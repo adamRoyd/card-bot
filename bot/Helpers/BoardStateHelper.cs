@@ -1,23 +1,22 @@
-﻿using Engine.Enums;
+﻿using bot.Extensions;
 using Engine.Models;
 using OCR;
 using OCR.Objects;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using Tesseract;
 
-namespace bot
+namespace bot.Helpers
 {
-    public class BoardStateHelper
+    public class BoardStateHelper : IBoardStateHelper
     {
-        private readonly ImageProcessor _imageProcessor;
-        private readonly SuitFinder _suitFinder;
+        private readonly IImageProcessor _imageProcessor;
+        private readonly ISuitFinder _suitFinder;
 
         public BoardStateHelper(
-            ImageProcessor imageProcessor,
-            SuitFinder suitFinder
+            IImageProcessor imageProcessor,
+            ISuitFinder suitFinder
         )
         {
             _imageProcessor = imageProcessor;
@@ -26,9 +25,9 @@ namespace bot
 
         public void SaveBoardImages(List<BoardImage> boardImages, string path)
         {
-            foreach (var boardImage in boardImages)
+            foreach (BoardImage boardImage in boardImages)
             {
-                var boardImagePath = $"{path}\\spliced\\{boardImage.Name}.png";
+                string boardImagePath = $"{path}\\spliced\\{boardImage.Name}.png";
 
                 if (File.Exists(boardImagePath))
                 {
@@ -39,10 +38,10 @@ namespace bot
             }
         }
 
-        internal Card GetCardFromImage(Image img, string path)
+        public Card GetCardFromImage(Image img, string path)
         {
-            var value = _imageProcessor.GetCardValueFromImage(img);
-            var suit = _suitFinder.GetSuitFromImage(path);
+            Engine.Enums.CardValue value = _imageProcessor.GetCardValueFromImage(img);
+            Engine.Enums.CardSuit suit = _suitFinder.GetSuitFromImage(path);
 
             if (value == 0) // No card found
             {
@@ -52,7 +51,7 @@ namespace bot
             return new Card(value, suit);
         }
 
-        internal int GetNumberFromImage(Image image, string path)
+        public int GetNumberFromImage(Image image, string path)
         {
             string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
 
@@ -68,26 +67,26 @@ namespace bot
             return value;
         }
 
-        internal string GetWordFromImage(Image image, string path)
+        public string GetWordFromImage(Image image, string path)
         {
             string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
             result = result.ToLower().Trim();
             return result;
         }
 
-        internal bool GetReadyForAction(Image image, string path)
+        public bool GetReadyForAction(Image image, string path)
         {
             string result = _suitFinder.GetTopRGBColor(path);
             return result == "red";
         }
 
-        internal void SetPlayerStack(string path, BoardImage boardImage, BoardState state)
+        public void SetPlayerStack(string path, BoardImage boardImage, BoardState state)
         {
             string result = _imageProcessor.GetImageCharacters(boardImage.Image, PageSegMode.Auto);
 
             result = result.CleanUp();
 
-            var index = boardImage.PlayerNumber - 1;
+            int index = boardImage.PlayerNumber - 1;
 
             string colour = _suitFinder.GetBlackOrWhite(path);
 
@@ -107,9 +106,9 @@ namespace bot
             }
         }
 
-        internal object GetGameIsFinished(Image image, string path)
+        public object GetGameIsFinished(Image image, string path)
         {
-            var value = GetWordFromImage(image, path);
+            string value = GetWordFromImage(image, path);
 
             if (value.Contains("thank"))
             {
@@ -119,13 +118,13 @@ namespace bot
             return false;
         }
 
-        internal bool GetIsInPlay(Image image, string path)
+        public bool GetIsInPlay(Image image, string path)
         {
             string result = _suitFinder.GetTopRGBColor(path);
             return result == "green";
         }
 
-        internal void SetPlayerBet(string boardImagepath, BoardImage boardImage, BoardState state)
+        public void SetPlayerBet(string boardImagepath, BoardImage boardImage, BoardState state)
         {
             string result = _imageProcessor.GetImageCharacters(boardImage.Image, PageSegMode.Auto);
 
@@ -138,24 +137,24 @@ namespace bot
                 value = 0;
             }
 
-            var index = boardImage.PlayerNumber - 1;
+            int index = boardImage.PlayerNumber - 1;
 
             state.Players[index].Bet = value;
         }
 
-        internal void SetPlayerIsDealer(string path, BoardImage boardImage, BoardState state)
+        public void SetPlayerIsDealer(string path, BoardImage boardImage, BoardState state)
         {
-            var isDealer = _suitFinder.IsDealerButton(path);
-            var index = boardImage.PlayerNumber - 1;
+            bool isDealer = _suitFinder.IsDealerButton(path);
+            int index = boardImage.PlayerNumber - 1;
             state.Players[index].IsDealer = isDealer;
 
         }
 
-        internal int GetBigBlindFromImage(Image image, string path)
+        public int GetBigBlindFromImage(Image image, string path)
         {
             string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
 
-            var bigBlind = result.Trim().Split(" ")[0];
+            string bigBlind = result.Trim().Split(" ")[0];
 
             return bigBlind switch
             {
@@ -174,7 +173,7 @@ namespace bot
             };
         }
 
-        internal int GetAnteFromImage(Image image, string path)
+        public int GetAnteFromImage(Image image, string path)
         {
             string result = _imageProcessor.GetImageCharacters(image, PageSegMode.Auto);
 
@@ -183,7 +182,7 @@ namespace bot
                 return 0;
             }
 
-            var ante = result.Trim().Split(" ")[2];
+            string ante = result.Trim().Split(" ")[2];
 
             int.TryParse(ante, out int parsed);
 
