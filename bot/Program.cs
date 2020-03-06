@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using bot.Services;
 using bot.Helpers;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.EventLog;
 
 namespace bot
 {
@@ -15,6 +16,15 @@ namespace bot
         {
             // Dependency Injection setup
             IServiceProvider serviceProvider = new ServiceCollection()
+                .AddLogging(configure => configure
+                    .AddConsole()
+                    .AddEventLog(new EventLogSettings()
+                    {
+                        SourceName = "PokerBot",
+                        LogName = "PokerBotLog",
+                        Filter = (x, y) => y >= LogLevel.Information
+                    })
+                )
                 .AddSingleton<IPokerBotService, PokerBotService>()
                 .AddSingleton<IIcmService, IcmService>()
                 .AddSingleton<IImageProcessor, ImageProcessor>()
@@ -23,19 +33,6 @@ namespace bot
                 .AddSingleton<IBoardStateService, BoardStateService>()
                 .AddSingleton<IScreenCaptureService, ScreenCaptureService>()
                 .BuildServiceProvider();
-
-            var loggerFactory = LoggerFactory.Create(builder =>
-            {
-                builder
-                    .AddFilter("Microsoft", LogLevel.Warning)
-                    .AddFilter("System", LogLevel.Warning)
-                    .AddFilter("LoggingConsoleApp.Program", LogLevel.Debug)
-                    .AddConsole()
-                    .AddEventLog();
-            });
-
-            ILogger logger = loggerFactory.CreateLogger<Program>();
-            logger.LogInformation("Example log message");
 
             // Run the bot
             IPokerBotService pokerBotService = serviceProvider.GetService<IPokerBotService>();

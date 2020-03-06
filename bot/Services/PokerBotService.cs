@@ -2,6 +2,7 @@
 using Engine.Enums;
 using Engine.Models;
 using ICM;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -14,22 +15,24 @@ namespace bot.Services
 {
     public class PokerBotService : IPokerBotService
     {
-        private static readonly ILog LogWriter = new FileLogWriter("C:/Temp");
         private readonly Random rnd = new Random();
         private readonly IBoardStateService _boardStateService;
         private readonly IIcmService _icmService;
         private readonly IScreenCaptureService _screenCaptureService;
+        private readonly ILogger _logger;
 
         public PokerBotService
         (
             IBoardStateService boardStateService,
             IIcmService icmService,
-            IScreenCaptureService screenCaptureService
+            IScreenCaptureService screenCaptureService,
+            ILogger<PokerBotService> logger
         )
         {
             _boardStateService = boardStateService;
             _icmService = icmService;
             _screenCaptureService = screenCaptureService;
+            _logger = logger;
         }
 
         public async Task Run()
@@ -84,7 +87,7 @@ namespace bot.Services
                     predictedAction = new PushFoldPredictedAction(boardState, ev);
                 }
 
-                WriteStatsToConsole(dateStamp, boardState, predictedAction);
+                LogStats(dateStamp, boardState, predictedAction);
 
                 DoAction(predictedAction, boardState);
                 break;
@@ -170,7 +173,7 @@ namespace bot.Services
             SendKeys.SendWait(keyPress);
         }
 
-        private void WriteStatsToConsole(
+        private void LogStats(
             string dateStamp,
             BoardState boardState,
             PredictedAction predictedAction
@@ -193,14 +196,14 @@ namespace bot.Services
                          $"SR: {boardState.MyStackRatio} " +
                          predictedActionText;
 
-            LogWriter.WriteLine(stats);
+            _logger.LogInformation(stats);
 
             //Console.WriteLine(
             //    $"{flop1} | {flop2} | {flop3} | {turn} | {river}");
 
             foreach (Player p in boardState.Players.Where(p => !p.Eliminated))
             {
-                LogWriter.WriteLine($"{p.Position}: Stack: {p.Stack} Bet: {p.Bet}");
+                _logger.LogInformation($"{p.Position}: Stack: {p.Stack} Bet: {p.Bet}");
             }
         }
 
