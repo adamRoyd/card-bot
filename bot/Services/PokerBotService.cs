@@ -19,6 +19,7 @@ namespace bot.Services
         private readonly IBoardStateService _boardStateService;
         private readonly IIcmService _icmService;
         private readonly IScreenCaptureService _screenCaptureService;
+        private readonly IHandHistoryService _handHistoryService;
         private readonly ILogger _logger;
         private readonly Player[] playersFromPreviousHand = new Player[]
 {
@@ -58,21 +59,27 @@ namespace bot.Services
             IBoardStateService boardStateService,
             IIcmService icmService,
             IScreenCaptureService screenCaptureService,
+            IHandHistoryService handHistoryService,
             ILogger<PokerBotService> logger
         )
         {
             _boardStateService = boardStateService;
             _icmService = icmService;
             _screenCaptureService = screenCaptureService;
+            _handHistoryService = handHistoryService;
             _logger = logger;
         }
 
         public async Task Run()
         {
+            string historyPath = $"..\\..\\..\\assets\\handHistories\\test.txt";
+            _handHistoryService.GetLatestHistory(historyPath);
+
             while (true)
             {
+                break;
                 //string dateStamp = DateTime.Now.ToString("hhmmss");
-                
+
 
                 string path = $"..\\..\\..\\images\\{dateStamp}";
                 string splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";

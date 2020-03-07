@@ -1,0 +1,2112 @@
+﻿PokerStars Hand #209695250638: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level I (10/20) - 2020/03/01 15:25:29 WET [2020/03/01 10:25:29 ET]
+Table '2817308331 1' 9-max Seat #1 is the button
+Seat 1: Blume3003 (1500 in chips) 
+Seat 2: Joker1823 (1500 in chips) 
+Seat 3: Ciyl (1500 in chips) 
+Seat 4: Kerya142 (1500 in chips) 
+Seat 5: jcbt710 (1500 in chips) 
+Seat 6: DiGGiMiGGi (1500 in chips) 
+Seat 7: CannonballJim (1500 in chips) 
+Seat 8: filios888 (1500 in chips) 
+Seat 9: BRain72rus (1500 in chips) 
+Joker1823: posts small blind 10
+Ciyl: posts big blind 20
+*** HOLE CARDS ***
+Dealt to CannonballJim [2c Jd]
+Kerya142: calls 20
+jcbt710: folds 
+DiGGiMiGGi: calls 20
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: folds 
+Blume3003: folds 
+Joker1823: folds 
+Ciyl: checks 
+*** FLOP *** [3h 6s Td]
+Ciyl: checks 
+Kerya142: bets 35
+DiGGiMiGGi: folds 
+Ciyl: folds 
+Uncalled bet (35) returned to Kerya142
+Kerya142 collected 70 from pot
+*** SUMMARY ***
+Total pot 70 | Rake 0 
+Board [3h 6s Td]
+Seat 1: Blume3003 (button) folded before Flop (didn't bet)
+Seat 2: Joker1823 (small blind) folded before Flop
+Seat 3: Ciyl (big blind) folded on the Flop
+Seat 4: Kerya142 collected (70)
+Seat 5: jcbt710 folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi folded on the Flop
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 folded before Flop (didn't bet)
+Seat 9: BRain72rus folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209695277130: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level I (10/20) - 2020/03/01 15:26:18 WET [2020/03/01 10:26:18 ET]
+Table '2817308331 1' 9-max Seat #2 is the button
+Seat 1: Blume3003 (1500 in chips) 
+Seat 2: Joker1823 (1490 in chips) 
+Seat 3: Ciyl (1480 in chips) 
+Seat 4: Kerya142 (1550 in chips) 
+Seat 5: jcbt710 (1500 in chips) 
+Seat 6: DiGGiMiGGi (1480 in chips) 
+Seat 7: CannonballJim (1500 in chips) 
+Seat 8: filios888 (1500 in chips) 
+Seat 9: BRain72rus (1500 in chips) 
+Ciyl: posts small blind 10
+Kerya142: posts big blind 20
+*** HOLE CARDS ***
+Dealt to CannonballJim [4h 6s]
+jcbt710: folds 
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: folds 
+Blume3003: folds 
+Joker1823: raises 20 to 40
+Ciyl: folds 
+Kerya142: raises 20 to 60
+Joker1823: calls 20
+*** FLOP *** [Ks 3h 5h]
+Kerya142: bets 20
+Joker1823: calls 20
+*** TURN *** [Ks 3h 5h] [4d]
+Kerya142: bets 20
+Joker1823: calls 20
+*** RIVER *** [Ks 3h 5h 4d] [Qs]
+Kerya142: bets 20
+Joker1823: calls 20
+*** SHOW DOWN ***
+Kerya142: shows [Js Ad] (high card Ace)
+Joker1823: shows [Th Qh] (a pair of Queens)
+Joker1823 collected 250 from pot
+*** SUMMARY ***
+Total pot 250 | Rake 0 
+Board [Ks 3h 5h 4d Qs]
+Seat 1: Blume3003 folded before Flop (didn't bet)
+Seat 2: Joker1823 (button) showed [Th Qh] and won (250) with a pair of Queens
+Seat 3: Ciyl (small blind) folded before Flop
+Seat 4: Kerya142 (big blind) showed [Js Ad] and lost with high card Ace
+Seat 5: jcbt710 folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 folded before Flop (didn't bet)
+Seat 9: BRain72rus folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209695310379: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level I (10/20) - 2020/03/01 15:27:20 WET [2020/03/01 10:27:20 ET]
+Table '2817308331 1' 9-max Seat #3 is the button
+Seat 1: Blume3003 (1500 in chips) 
+Seat 2: Joker1823 (1620 in chips) 
+Seat 3: Ciyl (1470 in chips) 
+Seat 4: Kerya142 (1430 in chips) 
+Seat 5: jcbt710 (1500 in chips) 
+Seat 6: DiGGiMiGGi (1480 in chips) 
+Seat 7: CannonballJim (1500 in chips) 
+Seat 8: filios888 (1500 in chips) 
+Seat 9: BRain72rus (1500 in chips) 
+Kerya142: posts small blind 10
+jcbt710: posts big blind 20
+*** HOLE CARDS ***
+Dealt to CannonballJim [Ks Qs]
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: folds 
+Blume3003: folds 
+Joker1823: calls 20
+Ciyl: folds 
+Kerya142: calls 10
+jcbt710: checks 
+*** FLOP *** [Kc 3d 5d]
+Kerya142: bets 30
+jcbt710: folds 
+Joker1823: calls 30
+*** TURN *** [Kc 3d 5d] [7s]
+Kerya142: bets 20
+Joker1823: calls 20
+*** RIVER *** [Kc 3d 5d 7s] [9d]
+Kerya142: bets 20
+Joker1823: calls 20
+*** SHOW DOWN ***
+Kerya142: shows [Kh 8d] (a pair of Kings)
+Joker1823: mucks hand 
+Kerya142 collected 200 from pot
+*** SUMMARY ***
+Total pot 200 | Rake 0 
+Board [Kc 3d 5d 7s 9d]
+Seat 1: Blume3003 folded before Flop (didn't bet)
+Seat 2: Joker1823 mucked [3c 6c]
+Seat 3: Ciyl (button) folded before Flop (didn't bet)
+Seat 4: Kerya142 (small blind) showed [Kh 8d] and won (200) with a pair of Kings
+Seat 5: jcbt710 (big blind) folded on the Flop
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 folded before Flop (didn't bet)
+Seat 9: BRain72rus folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209695352965: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level I (10/20) - 2020/03/01 15:28:24 WET [2020/03/01 10:28:24 ET]
+Table '2817308331 1' 9-max Seat #4 is the button
+Seat 1: Blume3003 (1500 in chips) 
+Seat 2: Joker1823 (1530 in chips) 
+Seat 3: Ciyl (1470 in chips) 
+Seat 4: Kerya142 (1540 in chips) 
+Seat 5: jcbt710 (1480 in chips) 
+Seat 6: DiGGiMiGGi (1480 in chips) 
+Seat 7: CannonballJim (1500 in chips) 
+Seat 8: filios888 (1500 in chips) 
+Seat 9: BRain72rus (1500 in chips) 
+jcbt710: posts small blind 10
+DiGGiMiGGi: posts big blind 20
+*** HOLE CARDS ***
+Dealt to CannonballJim [Ts Td]
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: folds 
+Blume3003: folds 
+Joker1823 has timed out
+Joker1823: folds 
+Joker1823 is sitting out
+Ciyl: folds 
+Joker1823 is disconnected 
+Kerya142: raises 40 to 60
+jcbt710: calls 50
+DiGGiMiGGi: folds 
+*** FLOP *** [3s 4c 2h]
+Joker1823 is disconnected 
+Joker1823 has returned
+jcbt710: checks 
+Kerya142: bets 70
+jcbt710: folds 
+Uncalled bet (70) returned to Kerya142
+Kerya142 collected 140 from pot
+*** SUMMARY ***
+Total pot 140 | Rake 0 
+Board [3s 4c 2h]
+Seat 1: Blume3003 folded before Flop (didn't bet)
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 (button) collected (140)
+Seat 5: jcbt710 (small blind) folded on the Flop
+Seat 6: DiGGiMiGGi (big blind) folded before Flop
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 folded before Flop (didn't bet)
+Seat 9: BRain72rus folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209695400006: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level I (10/20) - 2020/03/01 15:29:52 WET [2020/03/01 10:29:52 ET]
+Table '2817308331 1' 9-max Seat #5 is the button
+Seat 1: Blume3003 (1500 in chips) 
+Seat 2: Joker1823 (1530 in chips) 
+Seat 3: Ciyl (1470 in chips) 
+Seat 4: Kerya142 (1620 in chips) 
+Seat 5: jcbt710 (1420 in chips) 
+Seat 6: DiGGiMiGGi (1460 in chips) 
+Seat 7: CannonballJim (1500 in chips) 
+Seat 8: filios888 (1500 in chips) 
+Seat 9: BRain72rus (1500 in chips) 
+DiGGiMiGGi: posts small blind 10
+CannonballJim: posts big blind 20
+*** HOLE CARDS ***
+Dealt to CannonballJim [Jc 2d]
+filios888: folds 
+BRain72rus: folds 
+Blume3003: folds 
+Joker1823: folds 
+Ciyl: raises 40 to 60
+Kerya142: calls 60
+jcbt710: folds 
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+*** FLOP *** [Jd 4h 8d]
+Ciyl: checks 
+Kerya142: bets 75
+Ciyl: folds 
+Uncalled bet (75) returned to Kerya142
+Kerya142 collected 150 from pot
+*** SUMMARY ***
+Total pot 150 | Rake 0 
+Board [Jd 4h 8d]
+Seat 1: Blume3003 folded before Flop (didn't bet)
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl folded on the Flop
+Seat 4: Kerya142 collected (150)
+Seat 5: jcbt710 (button) folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi (small blind) folded before Flop
+Seat 7: CannonballJim (big blind) folded before Flop
+Seat 8: filios888 folded before Flop (didn't bet)
+Seat 9: BRain72rus folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209695436542: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level II (15/30) - 2020/03/01 15:31:00 WET [2020/03/01 10:31:00 ET]
+Table '2817308331 1' 9-max Seat #6 is the button
+Seat 1: Blume3003 (1500 in chips) 
+Seat 2: Joker1823 (1530 in chips) 
+Seat 3: Ciyl (1410 in chips) 
+Seat 4: Kerya142 (1710 in chips) 
+Seat 5: jcbt710 (1420 in chips) 
+Seat 6: DiGGiMiGGi (1450 in chips) 
+Seat 7: CannonballJim (1480 in chips) 
+Seat 8: filios888 (1500 in chips) 
+Seat 9: BRain72rus (1500 in chips) 
+CannonballJim: posts small blind 15
+filios888: posts big blind 30
+*** HOLE CARDS ***
+Dealt to CannonballJim [5h 9d]
+BRain72rus: folds 
+Blume3003: folds 
+Joker1823: folds 
+Ciyl: folds 
+Kerya142: folds 
+jcbt710: raises 90 to 120
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: calls 90
+*** FLOP *** [4d Js Kc]
+filios888: bets 30
+jcbt710: calls 30
+*** TURN *** [4d Js Kc] [8c]
+filios888: checks 
+jcbt710: checks 
+*** RIVER *** [4d Js Kc 8c] [2d]
+filios888: bets 60
+jcbt710: calls 60
+*** SHOW DOWN ***
+filios888: shows [Ts Ah] (high card Ace)
+jcbt710: shows [Ac Qd] (high card Ace - King+Queen kicker)
+jcbt710 collected 435 from pot
+*** SUMMARY ***
+Total pot 435 | Rake 0 
+Board [4d Js Kc 8c 2d]
+Seat 1: Blume3003 folded before Flop (didn't bet)
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 folded before Flop (didn't bet)
+Seat 5: jcbt710 showed [Ac Qd] and won (435) with high card Ace
+Seat 6: DiGGiMiGGi (button) folded before Flop (didn't bet)
+Seat 7: CannonballJim (small blind) folded before Flop
+Seat 8: filios888 (big blind) showed [Ts Ah] and lost with high card Ace
+Seat 9: BRain72rus folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209695473820: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level II (15/30) - 2020/03/01 15:32:09 WET [2020/03/01 10:32:09 ET]
+Table '2817308331 1' 9-max Seat #7 is the button
+Seat 1: Blume3003 (1500 in chips) 
+Seat 2: Joker1823 (1530 in chips) 
+Seat 3: Ciyl (1410 in chips) 
+Seat 4: Kerya142 (1710 in chips) 
+Seat 5: jcbt710 (1645 in chips) 
+Seat 6: DiGGiMiGGi (1450 in chips) 
+Seat 7: CannonballJim (1465 in chips) 
+Seat 8: filios888 (1290 in chips) 
+Seat 9: BRain72rus (1500 in chips) 
+filios888: posts small blind 15
+BRain72rus: posts big blind 30
+*** HOLE CARDS ***
+Dealt to CannonballJim [Th 9d]
+Blume3003: folds 
+Joker1823: folds 
+Ciyl: folds 
+Kerya142: folds 
+jcbt710: folds 
+DiGGiMiGGi: raises 60 to 90
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: folds 
+Uncalled bet (60) returned to DiGGiMiGGi
+DiGGiMiGGi collected 75 from pot
+DiGGiMiGGi: doesn't show hand 
+*** SUMMARY ***
+Total pot 75 | Rake 0 
+Seat 1: Blume3003 folded before Flop (didn't bet)
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 folded before Flop (didn't bet)
+Seat 5: jcbt710 folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi collected (75)
+Seat 7: CannonballJim (button) folded before Flop (didn't bet)
+Seat 8: filios888 (small blind) folded before Flop
+Seat 9: BRain72rus (big blind) folded before Flop
+
+
+
+PokerStars Hand #209695491963: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level II (15/30) - 2020/03/01 15:32:42 WET [2020/03/01 10:32:42 ET]
+Table '2817308331 1' 9-max Seat #8 is the button
+Seat 1: Blume3003 (1500 in chips) 
+Seat 2: Joker1823 (1530 in chips) 
+Seat 3: Ciyl (1410 in chips) 
+Seat 4: Kerya142 (1710 in chips) 
+Seat 5: jcbt710 (1645 in chips) 
+Seat 6: DiGGiMiGGi (1495 in chips) 
+Seat 7: CannonballJim (1465 in chips) 
+Seat 8: filios888 (1275 in chips) 
+Seat 9: BRain72rus (1470 in chips) 
+BRain72rus: posts small blind 15
+Blume3003: posts big blind 30
+*** HOLE CARDS ***
+Dealt to CannonballJim [Ts 5s]
+Joker1823: folds 
+Ciyl: folds 
+Kerya142: calls 30
+jcbt710: calls 30
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: folds 
+Blume3003: checks 
+*** FLOP *** [4h Tc Qs]
+Blume3003: checks 
+Kerya142: checks 
+jcbt710: bets 150
+Blume3003: folds 
+Kerya142: calls 150
+*** TURN *** [4h Tc Qs] [6c]
+Kerya142: checks 
+jcbt710: bets 450
+Kerya142: calls 450
+*** RIVER *** [4h Tc Qs 6c] [Kh]
+Kerya142: bets 1080 and is all-in
+jcbt710: calls 1015 and is all-in
+Uncalled bet (65) returned to Kerya142
+*** SHOW DOWN ***
+Kerya142: shows [9d Jd] (a straight, Nine to King)
+jcbt710: shows [Th Qd] (two pair, Queens and Tens)
+Kerya142 collected 3335 from pot
+jcbt710 finished the tournament in 9th place
+*** SUMMARY ***
+Total pot 3335 | Rake 0 
+Board [4h Tc Qs 6c Kh]
+Seat 1: Blume3003 (big blind) folded on the Flop
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 showed [9d Jd] and won (3335) with a straight, Nine to King
+Seat 5: jcbt710 showed [Th Qd] and lost with two pair, Queens and Tens
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 (button) folded before Flop (didn't bet)
+Seat 9: BRain72rus (small blind) folded before Flop
+
+
+
+PokerStars Hand #209695542087: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level II (15/30) - 2020/03/01 15:34:15 WET [2020/03/01 10:34:15 ET]
+Table '2817308331 1' 9-max Seat #9 is the button
+Seat 1: Blume3003 (1470 in chips) 
+Seat 2: Joker1823 (1530 in chips) 
+Seat 3: Ciyl (1410 in chips) 
+Seat 4: Kerya142 (3400 in chips) 
+Seat 6: DiGGiMiGGi (1495 in chips) 
+Seat 7: CannonballJim (1465 in chips) 
+Seat 8: filios888 (1275 in chips) 
+Seat 9: BRain72rus (1455 in chips) 
+Blume3003: posts small blind 15
+Joker1823: posts big blind 30
+*** HOLE CARDS ***
+Dealt to CannonballJim [9c 6h]
+Ciyl: folds 
+Kerya142: raises 60 to 90
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: calls 90
+Blume3003: folds 
+Joker1823: calls 60
+*** FLOP *** [Qc 9s Ac]
+Joker1823: checks 
+Kerya142: bets 30
+BRain72rus: folds 
+Joker1823: calls 30
+*** TURN *** [Qc 9s Ac] [Ad]
+Joker1823: checks 
+Kerya142: bets 30
+Joker1823: calls 30
+*** RIVER *** [Qc 9s Ac Ad] [4s]
+Joker1823: bets 210
+Kerya142: folds 
+Uncalled bet (210) returned to Joker1823
+Joker1823 collected 405 from pot
+Joker1823: doesn't show hand 
+*** SUMMARY ***
+Total pot 405 | Rake 0 
+Board [Qc 9s Ac Ad 4s]
+Seat 1: Blume3003 (small blind) folded before Flop
+Seat 2: Joker1823 (big blind) collected (405)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 folded on the River
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 folded before Flop (didn't bet)
+Seat 9: BRain72rus (button) folded on the Flop
+
+
+
+PokerStars Hand #209695574068: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level II (15/30) - 2020/03/01 15:35:13 WET [2020/03/01 10:35:13 ET]
+Table '2817308331 1' 9-max Seat #1 is the button
+Seat 1: Blume3003 (1455 in chips) 
+Seat 2: Joker1823 (1785 in chips) 
+Seat 3: Ciyl (1410 in chips) 
+Seat 4: Kerya142 (3250 in chips) 
+Seat 6: DiGGiMiGGi (1495 in chips) 
+Seat 7: CannonballJim (1465 in chips) 
+Seat 8: filios888 (1275 in chips) 
+Seat 9: BRain72rus (1365 in chips) 
+Joker1823: posts small blind 15
+Ciyl: posts big blind 30
+*** HOLE CARDS ***
+Dealt to CannonballJim [Js 2s]
+Kerya142: calls 30
+DiGGiMiGGi: raises 90 to 120
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: folds 
+Blume3003: folds 
+Joker1823: folds 
+Ciyl: folds 
+Kerya142: folds 
+Uncalled bet (90) returned to DiGGiMiGGi
+DiGGiMiGGi collected 105 from pot
+DiGGiMiGGi: doesn't show hand 
+*** SUMMARY ***
+Total pot 105 | Rake 0 
+Seat 1: Blume3003 (button) folded before Flop (didn't bet)
+Seat 2: Joker1823 (small blind) folded before Flop
+Seat 3: Ciyl (big blind) folded before Flop
+Seat 4: Kerya142 folded before Flop
+Seat 6: DiGGiMiGGi collected (105)
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 folded before Flop (didn't bet)
+Seat 9: BRain72rus folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209695592563: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level III (25/50) - 2020/03/01 15:35:47 WET [2020/03/01 10:35:47 ET]
+Table '2817308331 1' 9-max Seat #2 is the button
+Seat 1: Blume3003 (1455 in chips) 
+Seat 2: Joker1823 (1770 in chips) 
+Seat 3: Ciyl (1380 in chips) 
+Seat 4: Kerya142 (3220 in chips) 
+Seat 6: DiGGiMiGGi (1570 in chips) 
+Seat 7: CannonballJim (1465 in chips) 
+Seat 8: filios888 (1275 in chips) 
+Seat 9: BRain72rus (1365 in chips) 
+Ciyl: posts small blind 25
+Kerya142: posts big blind 50
+*** HOLE CARDS ***
+Dealt to CannonballJim [9d Ac]
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: calls 50
+BRain72rus: folds 
+Blume3003: folds 
+Joker1823: folds 
+Ciyl: folds 
+Kerya142: checks 
+*** FLOP *** [6d 6s 4s]
+Kerya142: checks 
+filios888: bets 1225 and is all-in
+Kerya142: folds 
+Uncalled bet (1225) returned to filios888
+filios888 collected 125 from pot
+filios888: doesn't show hand 
+*** SUMMARY ***
+Total pot 125 | Rake 0 
+Board [6d 6s 4s]
+Seat 1: Blume3003 folded before Flop (didn't bet)
+Seat 2: Joker1823 (button) folded before Flop (didn't bet)
+Seat 3: Ciyl (small blind) folded before Flop
+Seat 4: Kerya142 (big blind) folded on the Flop
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 collected (125)
+Seat 9: BRain72rus folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209695614152: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level III (25/50) - 2020/03/01 15:36:26 WET [2020/03/01 10:36:26 ET]
+Table '2817308331 1' 9-max Seat #3 is the button
+Seat 1: Blume3003 (1455 in chips) 
+Seat 2: Joker1823 (1770 in chips) 
+Seat 3: Ciyl (1355 in chips) 
+Seat 4: Kerya142 (3170 in chips) 
+Seat 6: DiGGiMiGGi (1570 in chips) 
+Seat 7: CannonballJim (1465 in chips) 
+Seat 8: filios888 (1350 in chips) 
+Seat 9: BRain72rus (1365 in chips) 
+Kerya142: posts small blind 25
+DiGGiMiGGi: posts big blind 50
+*** HOLE CARDS ***
+Dealt to CannonballJim [Ks 6s]
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: folds 
+Blume3003: calls 50
+Joker1823: folds 
+Ciyl: folds 
+Kerya142: calls 25
+DiGGiMiGGi: checks 
+*** FLOP *** [9h 2d 3s]
+Kerya142: bets 50
+DiGGiMiGGi: folds 
+Blume3003: calls 50
+*** TURN *** [9h 2d 3s] [4h]
+Kerya142: checks 
+Blume3003: checks 
+*** RIVER *** [9h 2d 3s 4h] [Qd]
+Kerya142: checks 
+Blume3003: checks 
+*** SHOW DOWN ***
+Kerya142: shows [2s Js] (a pair of Deuces)
+Blume3003: mucks hand 
+Kerya142 collected 250 from pot
+*** SUMMARY ***
+Total pot 250 | Rake 0 
+Board [9h 2d 3s 4h Qd]
+Seat 1: Blume3003 mucked [Ah 6h]
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl (button) folded before Flop (didn't bet)
+Seat 4: Kerya142 (small blind) showed [2s Js] and won (250) with a pair of Deuces
+Seat 6: DiGGiMiGGi (big blind) folded on the Flop
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 folded before Flop (didn't bet)
+Seat 9: BRain72rus folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209695654656: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level III (25/50) - 2020/03/01 15:37:39 WET [2020/03/01 10:37:39 ET]
+Table '2817308331 1' 9-max Seat #4 is the button
+Seat 1: Blume3003 (1355 in chips) 
+Seat 2: Joker1823 (1770 in chips) 
+Seat 3: Ciyl (1355 in chips) 
+Seat 4: Kerya142 (3320 in chips) 
+Seat 6: DiGGiMiGGi (1520 in chips) 
+Seat 7: CannonballJim (1465 in chips) 
+Seat 8: filios888 (1350 in chips) 
+Seat 9: BRain72rus (1365 in chips) 
+DiGGiMiGGi: posts small blind 25
+CannonballJim: posts big blind 50
+*** HOLE CARDS ***
+Dealt to CannonballJim [5d Ac]
+filios888: folds 
+BRain72rus: folds 
+Blume3003: folds 
+Joker1823: raises 100 to 150
+Ciyl: folds 
+Kerya142: folds 
+Kerya142 is sitting out
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+Uncalled bet (100) returned to Joker1823
+Joker1823 collected 125 from pot
+Joker1823: doesn't show hand 
+*** SUMMARY ***
+Total pot 125 | Rake 0 
+Seat 1: Blume3003 folded before Flop (didn't bet)
+Seat 2: Joker1823 collected (125)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 (button) folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi (small blind) folded before Flop
+Seat 7: CannonballJim (big blind) folded before Flop
+Seat 8: filios888 folded before Flop (didn't bet)
+Seat 9: BRain72rus folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209695671699: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level III (25/50) - 2020/03/01 15:38:09 WET [2020/03/01 10:38:09 ET]
+Table '2817308331 1' 9-max Seat #6 is the button
+Seat 1: Blume3003 (1355 in chips) 
+Seat 2: Joker1823 (1845 in chips) 
+Seat 3: Ciyl (1355 in chips) 
+Seat 4: Kerya142 (3320 in chips) is sitting out
+Seat 6: DiGGiMiGGi (1495 in chips) 
+Seat 7: CannonballJim (1415 in chips) 
+Seat 8: filios888 (1350 in chips) 
+Seat 9: BRain72rus (1365 in chips) 
+CannonballJim: posts small blind 25
+filios888: posts big blind 50
+*** HOLE CARDS ***
+Dealt to CannonballJim [Kc 3d]
+BRain72rus: calls 50
+Blume3003: folds 
+Joker1823: folds 
+Ciyl: folds 
+Kerya142: folds 
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: checks 
+*** FLOP *** [As 8c Ad]
+Kerya142 has returned
+filios888: bets 150
+BRain72rus: folds 
+Uncalled bet (150) returned to filios888
+filios888 collected 125 from pot
+filios888: doesn't show hand 
+*** SUMMARY ***
+Total pot 125 | Rake 0 
+Board [As 8c Ad]
+Seat 1: Blume3003 folded before Flop (didn't bet)
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi (button) folded before Flop (didn't bet)
+Seat 7: CannonballJim (small blind) folded before Flop
+Seat 8: filios888 (big blind) collected (125)
+Seat 9: BRain72rus folded on the Flop
+
+
+
+PokerStars Hand #209695691494: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level III (25/50) - 2020/03/01 15:38:45 WET [2020/03/01 10:38:45 ET]
+Table '2817308331 1' 9-max Seat #7 is the button
+Seat 1: Blume3003 (1355 in chips) 
+Seat 2: Joker1823 (1845 in chips) 
+Seat 3: Ciyl (1355 in chips) 
+Seat 4: Kerya142 (3320 in chips) 
+Seat 6: DiGGiMiGGi (1495 in chips) 
+Seat 7: CannonballJim (1390 in chips) 
+Seat 8: filios888 (1425 in chips) 
+Seat 9: BRain72rus (1315 in chips) 
+filios888: posts small blind 25
+BRain72rus: posts big blind 50
+*** HOLE CARDS ***
+Dealt to CannonballJim [3h Jh]
+Blume3003: folds 
+Joker1823: folds 
+Ciyl: folds 
+Kerya142: folds 
+DiGGiMiGGi: raises 75 to 125
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: folds 
+Uncalled bet (75) returned to DiGGiMiGGi
+DiGGiMiGGi collected 125 from pot
+DiGGiMiGGi: doesn't show hand 
+*** SUMMARY ***
+Total pot 125 | Rake 0 
+Seat 1: Blume3003 folded before Flop (didn't bet)
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi collected (125)
+Seat 7: CannonballJim (button) folded before Flop (didn't bet)
+Seat 8: filios888 (small blind) folded before Flop
+Seat 9: BRain72rus (big blind) folded before Flop
+
+
+
+PokerStars Hand #209695709161: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level III (25/50) - 2020/03/01 15:39:17 WET [2020/03/01 10:39:17 ET]
+Table '2817308331 1' 9-max Seat #8 is the button
+Seat 1: Blume3003 (1355 in chips) 
+Seat 2: Joker1823 (1845 in chips) 
+Seat 3: Ciyl (1355 in chips) 
+Seat 4: Kerya142 (3320 in chips) 
+Seat 6: DiGGiMiGGi (1570 in chips) 
+Seat 7: CannonballJim (1390 in chips) 
+Seat 8: filios888 (1400 in chips) 
+Seat 9: BRain72rus (1265 in chips) 
+BRain72rus: posts small blind 25
+Blume3003: posts big blind 50
+*** HOLE CARDS ***
+Dealt to CannonballJim [5h 4s]
+Joker1823: raises 50 to 100
+Ciyl: folds 
+Kerya142: folds 
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: folds 
+Blume3003: calls 50
+*** FLOP *** [Ah 7h 9d]
+Blume3003: checks 
+Joker1823: checks 
+*** TURN *** [Ah 7h 9d] [6c]
+Blume3003: checks 
+Joker1823: bets 100
+Blume3003: calls 100
+*** RIVER *** [Ah 7h 9d 6c] [2s]
+Blume3003: checks 
+Joker1823: checks 
+*** SHOW DOWN ***
+Blume3003: shows [Th Kh] (high card Ace)
+Joker1823: shows [Kd Kc] (a pair of Kings)
+Joker1823 collected 425 from pot
+*** SUMMARY ***
+Total pot 425 | Rake 0 
+Board [Ah 7h 9d 6c 2s]
+Seat 1: Blume3003 (big blind) showed [Th Kh] and lost with high card Ace
+Seat 2: Joker1823 showed [Kd Kc] and won (425) with a pair of Kings
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 (button) folded before Flop (didn't bet)
+Seat 9: BRain72rus (small blind) folded before Flop
+
+
+
+PokerStars Hand #209695752364: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level IV (50/100) - 2020/03/01 15:40:36 WET [2020/03/01 10:40:36 ET]
+Table '2817308331 1' 9-max Seat #9 is the button
+Seat 1: Blume3003 (1155 in chips) 
+Seat 2: Joker1823 (2070 in chips) 
+Seat 3: Ciyl (1355 in chips) 
+Seat 4: Kerya142 (3320 in chips) 
+Seat 6: DiGGiMiGGi (1570 in chips) 
+Seat 7: CannonballJim (1390 in chips) 
+Seat 8: filios888 (1400 in chips) 
+Seat 9: BRain72rus (1240 in chips) 
+Blume3003: posts small blind 50
+Joker1823: posts big blind 100
+*** HOLE CARDS ***
+Dealt to CannonballJim [5h Jd]
+Ciyl: folds 
+Kerya142: folds 
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: folds 
+Blume3003: folds 
+Uncalled bet (50) returned to Joker1823
+Joker1823 collected 100 from pot
+Joker1823: doesn't show hand 
+*** SUMMARY ***
+Total pot 100 | Rake 0 
+Seat 1: Blume3003 (small blind) folded before Flop
+Seat 2: Joker1823 (big blind) collected (100)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 folded before Flop (didn't bet)
+Seat 9: BRain72rus (button) folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209695770621: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level IV (50/100) - 2020/03/01 15:40:56 WET [2020/03/01 10:40:56 ET]
+Table '2817308331 1' 9-max Seat #1 is the button
+Seat 1: Blume3003 (1105 in chips) 
+Seat 2: Joker1823 (2120 in chips) 
+Seat 3: Ciyl (1355 in chips) 
+Seat 4: Kerya142 (3320 in chips) 
+Seat 6: DiGGiMiGGi (1570 in chips) 
+Seat 7: CannonballJim (1390 in chips) 
+Seat 8: filios888 (1400 in chips) 
+Seat 9: BRain72rus (1240 in chips) 
+Joker1823: posts small blind 50
+Ciyl: posts big blind 100
+*** HOLE CARDS ***
+Dealt to CannonballJim [2h 7h]
+Kerya142: folds 
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: folds 
+Blume3003: folds 
+Joker1823: calls 50
+Ciyl: raises 1255 to 1355 and is all-in
+Joker1823: folds 
+Uncalled bet (1255) returned to Ciyl
+Ciyl collected 200 from pot
+*** SUMMARY ***
+Total pot 200 | Rake 0 
+Seat 1: Blume3003 (button) folded before Flop (didn't bet)
+Seat 2: Joker1823 (small blind) folded before Flop
+Seat 3: Ciyl (big blind) collected (200)
+Seat 4: Kerya142 folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 folded before Flop (didn't bet)
+Seat 9: BRain72rus folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209695794958: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level IV (50/100) - 2020/03/01 15:41:40 WET [2020/03/01 10:41:40 ET]
+Table '2817308331 1' 9-max Seat #2 is the button
+Seat 1: Blume3003 (1105 in chips) 
+Seat 2: Joker1823 (2020 in chips) 
+Seat 3: Ciyl (1455 in chips) 
+Seat 4: Kerya142 (3320 in chips) 
+Seat 6: DiGGiMiGGi (1570 in chips) 
+Seat 7: CannonballJim (1390 in chips) 
+Seat 8: filios888 (1400 in chips) 
+Seat 9: BRain72rus (1240 in chips) 
+Ciyl: posts small blind 50
+Kerya142: posts big blind 100
+*** HOLE CARDS ***
+Dealt to CannonballJim [Td 2h]
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: folds 
+Blume3003: folds 
+Joker1823: folds 
+Ciyl: raises 150 to 250
+Kerya142: calls 150
+*** FLOP *** [7d 8h Kh]
+Ciyl: checks 
+Kerya142: checks 
+*** TURN *** [7d 8h Kh] [3s]
+Ciyl: checks 
+Kerya142: bets 100
+Ciyl: calls 100
+*** RIVER *** [7d 8h Kh 3s] [Qd]
+Ciyl: checks 
+Kerya142: bets 100
+Ciyl: folds 
+Uncalled bet (100) returned to Kerya142
+Kerya142 collected 700 from pot
+*** SUMMARY ***
+Total pot 700 | Rake 0 
+Board [7d 8h Kh 3s Qd]
+Seat 1: Blume3003 folded before Flop (didn't bet)
+Seat 2: Joker1823 (button) folded before Flop (didn't bet)
+Seat 3: Ciyl (small blind) folded on the River
+Seat 4: Kerya142 (big blind) collected (700)
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 folded before Flop (didn't bet)
+Seat 9: BRain72rus folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209695820126: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level IV (50/100) - 2020/03/01 15:42:26 WET [2020/03/01 10:42:26 ET]
+Table '2817308331 1' 9-max Seat #3 is the button
+Seat 1: Blume3003 (1105 in chips) 
+Seat 2: Joker1823 (2020 in chips) 
+Seat 3: Ciyl (1105 in chips) 
+Seat 4: Kerya142 (3670 in chips) 
+Seat 6: DiGGiMiGGi (1570 in chips) 
+Seat 7: CannonballJim (1390 in chips) 
+Seat 8: filios888 (1400 in chips) 
+Seat 9: BRain72rus (1240 in chips) 
+Kerya142: posts small blind 50
+DiGGiMiGGi: posts big blind 100
+*** HOLE CARDS ***
+Dealt to CannonballJim [6d 2h]
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: raises 1140 to 1240 and is all-in
+Blume3003: folds 
+Joker1823: folds 
+Ciyl: folds 
+Kerya142: folds 
+DiGGiMiGGi: folds 
+Uncalled bet (1140) returned to BRain72rus
+BRain72rus collected 250 from pot
+BRain72rus: doesn't show hand 
+*** SUMMARY ***
+Total pot 250 | Rake 0 
+Seat 1: Blume3003 folded before Flop (didn't bet)
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl (button) folded before Flop (didn't bet)
+Seat 4: Kerya142 (small blind) folded before Flop
+Seat 6: DiGGiMiGGi (big blind) folded before Flop
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 folded before Flop (didn't bet)
+Seat 9: BRain72rus collected (250)
+
+
+
+PokerStars Hand #209695836144: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level IV (50/100) - 2020/03/01 15:42:55 WET [2020/03/01 10:42:55 ET]
+Table '2817308331 1' 9-max Seat #4 is the button
+Seat 1: Blume3003 (1105 in chips) 
+Seat 2: Joker1823 (2020 in chips) 
+Seat 3: Ciyl (1105 in chips) 
+Seat 4: Kerya142 (3620 in chips) 
+Seat 6: DiGGiMiGGi (1470 in chips) 
+Seat 7: CannonballJim (1390 in chips) 
+Seat 8: filios888 (1400 in chips) 
+Seat 9: BRain72rus (1390 in chips) 
+DiGGiMiGGi: posts small blind 50
+CannonballJim: posts big blind 100
+*** HOLE CARDS ***
+Dealt to CannonballJim [3h 8h]
+filios888: folds 
+BRain72rus: folds 
+Blume3003: folds 
+Joker1823: folds 
+Ciyl: folds 
+Kerya142: folds 
+DiGGiMiGGi: folds 
+Uncalled bet (50) returned to CannonballJim
+CannonballJim collected 100 from pot
+CannonballJim: doesn't show hand 
+*** SUMMARY ***
+Total pot 100 | Rake 0 
+Seat 1: Blume3003 folded before Flop (didn't bet)
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 (button) folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi (small blind) folded before Flop
+Seat 7: CannonballJim (big blind) collected (100)
+Seat 8: filios888 folded before Flop (didn't bet)
+Seat 9: BRain72rus folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209695847230: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level IV (50/100) - 2020/03/01 15:43:16 WET [2020/03/01 10:43:16 ET]
+Table '2817308331 1' 9-max Seat #6 is the button
+Seat 1: Blume3003 (1105 in chips) 
+Seat 2: Joker1823 (2020 in chips) 
+Seat 3: Ciyl (1105 in chips) 
+Seat 4: Kerya142 (3620 in chips) 
+Seat 6: DiGGiMiGGi (1420 in chips) 
+Seat 7: CannonballJim (1440 in chips) 
+Seat 8: filios888 (1400 in chips) 
+Seat 9: BRain72rus (1390 in chips) 
+CannonballJim: posts small blind 50
+filios888: posts big blind 100
+*** HOLE CARDS ***
+Dealt to CannonballJim [Ks 3d]
+BRain72rus: folds 
+Blume3003: folds 
+Joker1823: folds 
+Ciyl: folds 
+Kerya142: calls 100
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: checks 
+*** FLOP *** [2c 3s 6d]
+filios888: checks 
+Kerya142: checks 
+*** TURN *** [2c 3s 6d] [Ah]
+filios888: bets 200
+Kerya142: folds 
+Uncalled bet (200) returned to filios888
+filios888 collected 250 from pot
+filios888: doesn't show hand 
+*** SUMMARY ***
+Total pot 250 | Rake 0 
+Board [2c 3s 6d Ah]
+Seat 1: Blume3003 folded before Flop (didn't bet)
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 folded on the Turn
+Seat 6: DiGGiMiGGi (button) folded before Flop (didn't bet)
+Seat 7: CannonballJim (small blind) folded before Flop
+Seat 8: filios888 (big blind) collected (250)
+Seat 9: BRain72rus folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209695872754: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level IV (50/100) - 2020/03/01 15:44:02 WET [2020/03/01 10:44:02 ET]
+Table '2817308331 1' 9-max Seat #7 is the button
+Seat 1: Blume3003 (1105 in chips) 
+Seat 2: Joker1823 (2020 in chips) 
+Seat 3: Ciyl (1105 in chips) 
+Seat 4: Kerya142 (3520 in chips) 
+Seat 6: DiGGiMiGGi (1420 in chips) 
+Seat 7: CannonballJim (1390 in chips) 
+Seat 8: filios888 (1550 in chips) 
+Seat 9: BRain72rus (1390 in chips) 
+filios888: posts small blind 50
+BRain72rus: posts big blind 100
+*** HOLE CARDS ***
+Dealt to CannonballJim [8s 4h]
+Blume3003: folds 
+Joker1823: folds 
+Ciyl: folds 
+Kerya142: raises 200 to 300
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: folds 
+Uncalled bet (200) returned to Kerya142
+Kerya142 collected 250 from pot
+*** SUMMARY ***
+Total pot 250 | Rake 0 
+Seat 1: Blume3003 folded before Flop (didn't bet)
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 collected (250)
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim (button) folded before Flop (didn't bet)
+Seat 8: filios888 (small blind) folded before Flop
+Seat 9: BRain72rus (big blind) folded before Flop
+
+
+
+PokerStars Hand #209695894928: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level IV (50/100) - 2020/03/01 15:44:43 WET [2020/03/01 10:44:43 ET]
+Table '2817308331 1' 9-max Seat #8 is the button
+Seat 1: Blume3003 (1105 in chips) 
+Seat 2: Joker1823 (2020 in chips) 
+Seat 3: Ciyl (1105 in chips) 
+Seat 4: Kerya142 (3670 in chips) 
+Seat 6: DiGGiMiGGi (1420 in chips) 
+Seat 7: CannonballJim (1390 in chips) 
+Seat 8: filios888 (1500 in chips) 
+Seat 9: BRain72rus (1290 in chips) 
+BRain72rus: posts small blind 50
+Blume3003: posts big blind 100
+*** HOLE CARDS ***
+Dealt to CannonballJim [8d 5c]
+Joker1823: folds 
+Ciyl: folds 
+Kerya142: folds 
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: folds 
+Uncalled bet (50) returned to Blume3003
+Blume3003 collected 100 from pot
+Blume3003: doesn't show hand 
+*** SUMMARY ***
+Total pot 100 | Rake 0 
+Seat 1: Blume3003 (big blind) collected (100)
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 (button) folded before Flop (didn't bet)
+Seat 9: BRain72rus (small blind) folded before Flop
+
+
+
+PokerStars Hand #209695911341: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level IV (50/100) - 2020/03/01 15:45:13 WET [2020/03/01 10:45:13 ET]
+Table '2817308331 1' 9-max Seat #9 is the button
+Seat 1: Blume3003 (1155 in chips) 
+Seat 2: Joker1823 (2020 in chips) 
+Seat 3: Ciyl (1105 in chips) 
+Seat 4: Kerya142 (3670 in chips) 
+Seat 6: DiGGiMiGGi (1420 in chips) 
+Seat 7: CannonballJim (1390 in chips) 
+Seat 8: filios888 (1500 in chips) 
+Seat 9: BRain72rus (1240 in chips) 
+Blume3003: posts small blind 50
+Joker1823: posts big blind 100
+*** HOLE CARDS ***
+Dealt to CannonballJim [9s 5h]
+Ciyl: folds 
+Kerya142: folds 
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: raises 1140 to 1240 and is all-in
+Blume3003: folds 
+Joker1823: folds 
+Uncalled bet (1140) returned to BRain72rus
+BRain72rus collected 250 from pot
+BRain72rus: doesn't show hand 
+*** SUMMARY ***
+Total pot 250 | Rake 0 
+Seat 1: Blume3003 (small blind) folded before Flop
+Seat 2: Joker1823 (big blind) folded before Flop
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 folded before Flop (didn't bet)
+Seat 9: BRain72rus (button) collected (250)
+
+
+
+PokerStars Hand #209695936325: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level V (75/150) - 2020/03/01 15:45:59 WET [2020/03/01 10:45:59 ET]
+Table '2817308331 1' 9-max Seat #1 is the button
+Seat 1: Blume3003 (1105 in chips) 
+Seat 2: Joker1823 (1920 in chips) 
+Seat 3: Ciyl (1105 in chips) 
+Seat 4: Kerya142 (3670 in chips) 
+Seat 6: DiGGiMiGGi (1420 in chips) 
+Seat 7: CannonballJim (1390 in chips) 
+Seat 8: filios888 (1500 in chips) 
+Seat 9: BRain72rus (1390 in chips) 
+Joker1823: posts small blind 75
+Ciyl: posts big blind 150
+*** HOLE CARDS ***
+Dealt to CannonballJim [2s 4h]
+Kerya142: folds 
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: folds 
+Blume3003: folds 
+Joker1823: folds 
+Uncalled bet (75) returned to Ciyl
+Ciyl collected 150 from pot
+*** SUMMARY ***
+Total pot 150 | Rake 0 
+Seat 1: Blume3003 (button) folded before Flop (didn't bet)
+Seat 2: Joker1823 (small blind) folded before Flop
+Seat 3: Ciyl (big blind) collected (150)
+Seat 4: Kerya142 folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 folded before Flop (didn't bet)
+Seat 9: BRain72rus folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209695950624: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level V (75/150) - 2020/03/01 15:46:25 WET [2020/03/01 10:46:25 ET]
+Table '2817308331 1' 9-max Seat #2 is the button
+Seat 1: Blume3003 (1105 in chips) 
+Seat 2: Joker1823 (1845 in chips) 
+Seat 3: Ciyl (1180 in chips) 
+Seat 4: Kerya142 (3670 in chips) 
+Seat 6: DiGGiMiGGi (1420 in chips) 
+Seat 7: CannonballJim (1390 in chips) 
+Seat 8: filios888 (1500 in chips) 
+Seat 9: BRain72rus (1390 in chips) 
+Ciyl: posts small blind 75
+Kerya142: posts big blind 150
+*** HOLE CARDS ***
+Dealt to CannonballJim [3s Ts]
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: raises 1240 to 1390 and is all-in
+Blume3003: folds 
+Joker1823: folds 
+Ciyl: folds 
+Kerya142: folds 
+Uncalled bet (1240) returned to BRain72rus
+BRain72rus collected 375 from pot
+BRain72rus: doesn't show hand 
+*** SUMMARY ***
+Total pot 375 | Rake 0 
+Seat 1: Blume3003 folded before Flop (didn't bet)
+Seat 2: Joker1823 (button) folded before Flop (didn't bet)
+Seat 3: Ciyl (small blind) folded before Flop
+Seat 4: Kerya142 (big blind) folded before Flop
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 folded before Flop (didn't bet)
+Seat 9: BRain72rus collected (375)
+
+
+
+PokerStars Hand #209695966697: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level V (75/150) - 2020/03/01 15:46:53 WET [2020/03/01 10:46:53 ET]
+Table '2817308331 1' 9-max Seat #3 is the button
+Seat 1: Blume3003 (1105 in chips) 
+Seat 2: Joker1823 (1845 in chips) 
+Seat 3: Ciyl (1105 in chips) 
+Seat 4: Kerya142 (3520 in chips) 
+Seat 6: DiGGiMiGGi (1420 in chips) 
+Seat 7: CannonballJim (1390 in chips) 
+Seat 8: filios888 (1500 in chips) 
+Seat 9: BRain72rus (1615 in chips) 
+Kerya142: posts small blind 75
+DiGGiMiGGi: posts big blind 150
+*** HOLE CARDS ***
+Dealt to CannonballJim [9s Qc]
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: folds 
+Blume3003: folds 
+Joker1823: calls 150
+Ciyl: folds 
+Kerya142: calls 75
+DiGGiMiGGi: checks 
+*** FLOP *** [6c Jh 3s]
+Kerya142: checks 
+DiGGiMiGGi: checks 
+Joker1823: checks 
+*** TURN *** [6c Jh 3s] [8d]
+Kerya142: checks 
+DiGGiMiGGi: checks 
+Joker1823: checks 
+*** RIVER *** [6c Jh 3s 8d] [Kh]
+Kerya142: checks 
+DiGGiMiGGi: checks 
+Joker1823: checks 
+*** SHOW DOWN ***
+Kerya142: shows [7d 4d] (high card King)
+DiGGiMiGGi: shows [Th Qd] (high card King - Queen kicker)
+Joker1823: shows [Ac Ts] (high card Ace)
+Joker1823 collected 450 from pot
+*** SUMMARY ***
+Total pot 450 | Rake 0 
+Board [6c Jh 3s 8d Kh]
+Seat 1: Blume3003 folded before Flop (didn't bet)
+Seat 2: Joker1823 showed [Ac Ts] and won (450) with high card Ace
+Seat 3: Ciyl (button) folded before Flop (didn't bet)
+Seat 4: Kerya142 (small blind) showed [7d 4d] and lost with high card King
+Seat 6: DiGGiMiGGi (big blind) showed [Th Qd] and lost with high card King
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 folded before Flop (didn't bet)
+Seat 9: BRain72rus folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209695997898: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level V (75/150) - 2020/03/01 15:47:49 WET [2020/03/01 10:47:49 ET]
+Table '2817308331 1' 9-max Seat #4 is the button
+Seat 1: Blume3003 (1105 in chips) 
+Seat 2: Joker1823 (2145 in chips) 
+Seat 3: Ciyl (1105 in chips) 
+Seat 4: Kerya142 (3370 in chips) 
+Seat 6: DiGGiMiGGi (1270 in chips) 
+Seat 7: CannonballJim (1390 in chips) 
+Seat 8: filios888 (1500 in chips) 
+Seat 9: BRain72rus (1615 in chips) 
+DiGGiMiGGi: posts small blind 75
+CannonballJim: posts big blind 150
+*** HOLE CARDS ***
+Dealt to CannonballJim [Kc Ac]
+filios888: folds 
+BRain72rus: folds 
+Blume3003: folds 
+Joker1823: calls 150
+Ciyl: folds 
+Kerya142: calls 150
+DiGGiMiGGi: folds 
+CannonballJim: checks 
+*** FLOP *** [Ks Jd Tc]
+CannonballJim: checks 
+Joker1823: bets 300
+Kerya142: calls 300
+CannonballJim: folds 
+*** TURN *** [Ks Jd Tc] [3c]
+Joker1823: checks 
+Kerya142: checks 
+*** RIVER *** [Ks Jd Tc 3c] [9d]
+Joker1823: bets 300
+Kerya142: folds 
+Uncalled bet (300) returned to Joker1823
+Joker1823 collected 1125 from pot
+Joker1823: doesn't show hand 
+*** SUMMARY ***
+Total pot 1125 | Rake 0 
+Board [Ks Jd Tc 3c 9d]
+Seat 1: Blume3003 folded before Flop (didn't bet)
+Seat 2: Joker1823 collected (1125)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 (button) folded on the River
+Seat 6: DiGGiMiGGi (small blind) folded before Flop
+Seat 7: CannonballJim (big blind) folded on the Flop
+Seat 8: filios888 folded before Flop (didn't bet)
+Seat 9: BRain72rus folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209696036213: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level V (75/150) - 2020/03/01 15:48:58 WET [2020/03/01 10:48:58 ET]
+Table '2817308331 1' 9-max Seat #6 is the button
+Seat 1: Blume3003 (1105 in chips) 
+Seat 2: Joker1823 (2820 in chips) 
+Seat 3: Ciyl (1105 in chips) 
+Seat 4: Kerya142 (2920 in chips) 
+Seat 6: DiGGiMiGGi (1195 in chips) 
+Seat 7: CannonballJim (1240 in chips) 
+Seat 8: filios888 (1500 in chips) 
+Seat 9: BRain72rus (1615 in chips) 
+CannonballJim: posts small blind 75
+filios888: posts big blind 150
+*** HOLE CARDS ***
+Dealt to CannonballJim [9d Jc]
+BRain72rus: folds 
+Blume3003: folds 
+Joker1823: folds 
+Ciyl: folds 
+Kerya142: folds 
+DiGGiMiGGi: folds 
+CannonballJim: raises 1090 to 1240 and is all-in
+filios888: folds 
+Uncalled bet (1090) returned to CannonballJim
+CannonballJim collected 300 from pot
+CannonballJim: doesn't show hand 
+*** SUMMARY ***
+Total pot 300 | Rake 0 
+Seat 1: Blume3003 folded before Flop (didn't bet)
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi (button) folded before Flop (didn't bet)
+Seat 7: CannonballJim (small blind) collected (300)
+Seat 8: filios888 (big blind) folded before Flop
+Seat 9: BRain72rus folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209696054524: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level V (75/150) - 2020/03/01 15:49:31 WET [2020/03/01 10:49:31 ET]
+Table '2817308331 1' 9-max Seat #7 is the button
+Seat 1: Blume3003 (1105 in chips) 
+Seat 2: Joker1823 (2820 in chips) 
+Seat 3: Ciyl (1105 in chips) 
+Seat 4: Kerya142 (2920 in chips) 
+Seat 6: DiGGiMiGGi (1195 in chips) 
+Seat 7: CannonballJim (1390 in chips) 
+Seat 8: filios888 (1350 in chips) 
+Seat 9: BRain72rus (1615 in chips) 
+filios888: posts small blind 75
+BRain72rus: posts big blind 150
+*** HOLE CARDS ***
+Dealt to CannonballJim [2d 4h]
+Blume3003: folds 
+Joker1823: folds 
+Ciyl: folds 
+Kerya142: folds 
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+Uncalled bet (75) returned to BRain72rus
+BRain72rus collected 150 from pot
+BRain72rus: doesn't show hand 
+*** SUMMARY ***
+Total pot 150 | Rake 0 
+Seat 1: Blume3003 folded before Flop (didn't bet)
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim (button) folded before Flop (didn't bet)
+Seat 8: filios888 (small blind) folded before Flop
+Seat 9: BRain72rus (big blind) collected (150)
+
+
+
+PokerStars Hand #209696072767: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level V (75/150) - 2020/03/01 15:50:04 WET [2020/03/01 10:50:04 ET]
+Table '2817308331 1' 9-max Seat #8 is the button
+Seat 1: Blume3003 (1105 in chips) 
+Seat 2: Joker1823 (2820 in chips) 
+Seat 3: Ciyl (1105 in chips) 
+Seat 4: Kerya142 (2920 in chips) 
+Seat 6: DiGGiMiGGi (1195 in chips) 
+Seat 7: CannonballJim (1390 in chips) 
+Seat 8: filios888 (1275 in chips) 
+Seat 9: BRain72rus (1690 in chips) 
+BRain72rus: posts small blind 75
+Blume3003: posts big blind 150
+*** HOLE CARDS ***
+Dealt to CannonballJim [7c 4c]
+Joker1823: folds 
+Ciyl: folds 
+Kerya142: folds 
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: folds 
+Uncalled bet (75) returned to Blume3003
+Blume3003 collected 150 from pot
+Blume3003: doesn't show hand 
+*** SUMMARY ***
+Total pot 150 | Rake 0 
+Seat 1: Blume3003 (big blind) collected (150)
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 (button) folded before Flop (didn't bet)
+Seat 9: BRain72rus (small blind) folded before Flop
+
+
+
+PokerStars Hand #209696088860: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VI (100/200) - 2020/03/01 15:50:33 WET [2020/03/01 10:50:33 ET]
+Table '2817308331 1' 9-max Seat #9 is the button
+Seat 1: Blume3003 (1180 in chips) 
+Seat 2: Joker1823 (2820 in chips) 
+Seat 3: Ciyl (1105 in chips) 
+Seat 4: Kerya142 (2920 in chips) 
+Seat 6: DiGGiMiGGi (1195 in chips) 
+Seat 7: CannonballJim (1390 in chips) 
+Seat 8: filios888 (1275 in chips) 
+Seat 9: BRain72rus (1615 in chips) 
+Blume3003: posts small blind 100
+Joker1823: posts big blind 200
+*** HOLE CARDS ***
+Dealt to CannonballJim [Qd 7s]
+Ciyl: folds 
+Kerya142: folds 
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+BRain72rus: raises 1415 to 1615 and is all-in
+Blume3003: calls 1080 and is all-in
+Joker1823: calls 1415
+*** FLOP *** [3s 5h 5c]
+*** TURN *** [3s 5h 5c] [Ks]
+*** RIVER *** [3s 5h 5c Ks] [7h]
+*** SHOW DOWN ***
+Joker1823: shows [Ah Ad] (two pair, Aces and Fives)
+BRain72rus: shows [Qc Tc] (a pair of Fives)
+Joker1823 collected 870 from side pot
+Blume3003: shows [8c 8d] (two pair, Eights and Fives)
+Joker1823 collected 3540 from main pot
+BRain72rus finished the tournament in 7th place
+Blume3003 finished the tournament in 8th place
+*** SUMMARY ***
+Total pot 4410 Main pot 3540. Side pot 870. | Rake 0 
+Board [3s 5h 5c Ks 7h]
+Seat 1: Blume3003 (small blind) showed [8c 8d] and lost with two pair, Eights and Fives
+Seat 2: Joker1823 (big blind) showed [Ah Ad] and won (4410) with two pair, Aces and Fives
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 folded before Flop (didn't bet)
+Seat 9: BRain72rus (button) showed [Qc Tc] and lost with a pair of Fives
+
+
+
+PokerStars Hand #209696118655: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VI (100/200) - 2020/03/01 15:51:27 WET [2020/03/01 10:51:27 ET]
+Table '2817308331 1' 9-max Seat #2 is the button
+Seat 2: Joker1823 (5615 in chips) 
+Seat 3: Ciyl (1105 in chips) 
+Seat 4: Kerya142 (2920 in chips) 
+Seat 6: DiGGiMiGGi (1195 in chips) 
+Seat 7: CannonballJim (1390 in chips) 
+Seat 8: filios888 (1275 in chips) 
+Ciyl: posts small blind 100
+Kerya142: posts big blind 200
+*** HOLE CARDS ***
+Dealt to CannonballJim [Jd 5c]
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+Joker1823: folds 
+Ciyl: folds 
+Uncalled bet (100) returned to Kerya142
+Kerya142 collected 200 from pot
+*** SUMMARY ***
+Total pot 200 | Rake 0 
+Seat 2: Joker1823 (button) folded before Flop (didn't bet)
+Seat 3: Ciyl (small blind) folded before Flop
+Seat 4: Kerya142 (big blind) collected (200)
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209696137221: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VI (100/200) - 2020/03/01 15:52:01 WET [2020/03/01 10:52:01 ET]
+Table '2817308331 1' 9-max Seat #3 is the button
+Seat 2: Joker1823 (5615 in chips) 
+Seat 3: Ciyl (1005 in chips) 
+Seat 4: Kerya142 (3020 in chips) 
+Seat 6: DiGGiMiGGi (1195 in chips) 
+Seat 7: CannonballJim (1390 in chips) 
+Seat 8: filios888 (1275 in chips) 
+Kerya142: posts small blind 100
+DiGGiMiGGi: posts big blind 200
+*** HOLE CARDS ***
+Dealt to CannonballJim [9c 5h]
+CannonballJim: folds 
+filios888: folds 
+Joker1823: folds 
+Ciyl: folds 
+Kerya142: calls 100
+DiGGiMiGGi: checks 
+*** FLOP *** [Tc Ts 4h]
+Kerya142: bets 200
+DiGGiMiGGi: folds 
+Uncalled bet (200) returned to Kerya142
+Kerya142 collected 400 from pot
+*** SUMMARY ***
+Total pot 400 | Rake 0 
+Board [Tc Ts 4h]
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl (button) folded before Flop (didn't bet)
+Seat 4: Kerya142 (small blind) collected (400)
+Seat 6: DiGGiMiGGi (big blind) folded on the Flop
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209696161986: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VI (100/200) - 2020/03/01 15:52:46 WET [2020/03/01 10:52:46 ET]
+Table '2817308331 1' 9-max Seat #4 is the button
+Seat 2: Joker1823 (5615 in chips) 
+Seat 3: Ciyl (1005 in chips) 
+Seat 4: Kerya142 (3220 in chips) 
+Seat 6: DiGGiMiGGi (995 in chips) 
+Seat 7: CannonballJim (1390 in chips) 
+Seat 8: filios888 (1275 in chips) 
+DiGGiMiGGi: posts small blind 100
+CannonballJim: posts big blind 200
+*** HOLE CARDS ***
+Dealt to CannonballJim [Jd Qh]
+filios888: raises 1075 to 1275 and is all-in
+Joker1823: folds 
+Ciyl: folds 
+Kerya142: folds 
+DiGGiMiGGi: calls 895 and is all-in
+CannonballJim: folds 
+Uncalled bet (280) returned to filios888
+*** FLOP *** [2s 4s Ad]
+*** TURN *** [2s 4s Ad] [Ah]
+*** RIVER *** [2s 4s Ad Ah] [4h]
+*** SHOW DOWN ***
+DiGGiMiGGi: shows [Js Ac] (a full house, Aces full of Fours)
+filios888: shows [Qs As] (a full house, Aces full of Fours)
+DiGGiMiGGi collected 1095 from pot
+filios888 collected 1095 from pot
+*** SUMMARY ***
+Total pot 2190 | Rake 0 
+Board [2s 4s Ad Ah 4h]
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 (button) folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi (small blind) showed [Js Ac] and won (1095) with a full house, Aces full of Fours
+Seat 7: CannonballJim (big blind) folded before Flop
+Seat 8: filios888 showed [Qs As] and won (1095) with a full house, Aces full of Fours
+
+
+
+PokerStars Hand #209696183990: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VI (100/200) - 2020/03/01 15:53:26 WET [2020/03/01 10:53:26 ET]
+Table '2817308331 1' 9-max Seat #6 is the button
+Seat 2: Joker1823 (5615 in chips) 
+Seat 3: Ciyl (1005 in chips) 
+Seat 4: Kerya142 (3220 in chips) 
+Seat 6: DiGGiMiGGi (1095 in chips) 
+Seat 7: CannonballJim (1190 in chips) 
+Seat 8: filios888 (1375 in chips) 
+CannonballJim: posts small blind 100
+filios888: posts big blind 200
+*** HOLE CARDS ***
+Dealt to CannonballJim [4h Qs]
+Joker1823: calls 200
+Ciyl: folds 
+Kerya142: folds 
+DiGGiMiGGi: raises 895 to 1095 and is all-in
+CannonballJim: folds 
+filios888: folds 
+Joker1823: calls 895
+*** FLOP *** [Ad 4c 2h]
+*** TURN *** [Ad 4c 2h] [Kc]
+*** RIVER *** [Ad 4c 2h Kc] [7c]
+*** SHOW DOWN ***
+Joker1823: shows [As 8s] (a pair of Aces)
+DiGGiMiGGi: shows [Js Ah] (a pair of Aces - King+Jack kicker)
+DiGGiMiGGi collected 2490 from pot
+*** SUMMARY ***
+Total pot 2490 | Rake 0 
+Board [Ad 4c 2h Kc 7c]
+Seat 2: Joker1823 showed [As 8s] and lost with a pair of Aces
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi (button) showed [Js Ah] and won (2490) with a pair of Aces
+Seat 7: CannonballJim (small blind) folded before Flop
+Seat 8: filios888 (big blind) folded before Flop
+
+
+
+PokerStars Hand #209696204652: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VI (100/200) - 2020/03/01 15:54:04 WET [2020/03/01 10:54:04 ET]
+Table '2817308331 1' 9-max Seat #7 is the button
+Seat 2: Joker1823 (4520 in chips) 
+Seat 3: Ciyl (1005 in chips) 
+Seat 4: Kerya142 (3220 in chips) 
+Seat 6: DiGGiMiGGi (2490 in chips) 
+Seat 7: CannonballJim (1090 in chips) 
+Seat 8: filios888 (1175 in chips) 
+filios888: posts small blind 100
+Joker1823: posts big blind 200
+*** HOLE CARDS ***
+Dealt to CannonballJim [Kc 4d]
+Ciyl: folds 
+Kerya142: raises 200 to 400
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: raises 775 to 1175 and is all-in
+Joker1823: calls 975
+Kerya142: calls 775
+*** FLOP *** [7s 8d Qs]
+Joker1823: checks 
+Kerya142: checks 
+*** TURN *** [7s 8d Qs] [Qc]
+Joker1823: checks 
+Kerya142: bets 200
+Joker1823: calls 200
+*** RIVER *** [7s 8d Qs Qc] [9c]
+Joker1823: checks 
+Kerya142: bets 1845 and is all-in
+Joker1823: folds 
+Uncalled bet (1845) returned to Kerya142
+*** SHOW DOWN ***
+Kerya142: shows [As 2d] (a pair of Queens)
+Kerya142 collected 400 from side pot
+filios888: shows [Tc Qh] (three of a kind, Queens)
+filios888 collected 3525 from main pot
+*** SUMMARY ***
+Total pot 3925 Main pot 3525. Side pot 400. | Rake 0 
+Board [7s 8d Qs Qc 9c]
+Seat 2: Joker1823 (big blind) folded on the River
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 showed [As 2d] and won (400) with a pair of Queens
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim (button) folded before Flop (didn't bet)
+Seat 8: filios888 (small blind) showed [Tc Qh] and won (3525) with three of a kind, Queens
+
+
+
+PokerStars Hand #209696238118: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VI (100/200) - 2020/03/01 15:55:06 WET [2020/03/01 10:55:06 ET]
+Table '2817308331 1' 9-max Seat #8 is the button
+Seat 2: Joker1823 (3145 in chips) 
+Seat 3: Ciyl (1005 in chips) 
+Seat 4: Kerya142 (2245 in chips) 
+Seat 6: DiGGiMiGGi (2490 in chips) 
+Seat 7: CannonballJim (1090 in chips) 
+Seat 8: filios888 (3525 in chips) 
+Joker1823: posts small blind 100
+Ciyl: posts big blind 200
+*** HOLE CARDS ***
+Dealt to CannonballJim [Td 3d]
+Kerya142: folds 
+DiGGiMiGGi: folds 
+CannonballJim has timed out
+CannonballJim: folds 
+CannonballJim is sitting out
+filios888: folds 
+Joker1823: raises 200 to 400
+Ciyl: folds 
+Uncalled bet (200) returned to Joker1823
+Joker1823 collected 400 from pot
+Joker1823: doesn't show hand 
+*** SUMMARY ***
+Total pot 400 | Rake 0 
+Seat 2: Joker1823 (small blind) collected (400)
+Seat 3: Ciyl (big blind) folded before Flop
+Seat 4: Kerya142 folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 (button) folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209696255250: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VII (100/200) - 2020/03/01 15:55:44 WET [2020/03/01 10:55:44 ET]
+Table '2817308331 1' 9-max Seat #2 is the button
+Seat 2: Joker1823 (3345 in chips) 
+Seat 3: Ciyl (805 in chips) 
+Seat 4: Kerya142 (2245 in chips) 
+Seat 6: DiGGiMiGGi (2490 in chips) 
+Seat 7: CannonballJim (1090 in chips) is sitting out
+Seat 8: filios888 (3525 in chips) 
+Joker1823: posts the ante 25
+Ciyl: posts the ante 25
+Kerya142: posts the ante 25
+DiGGiMiGGi: posts the ante 25
+CannonballJim: posts the ante 25
+filios888: posts the ante 25
+Ciyl: posts small blind 100
+Kerya142: posts big blind 200
+*** HOLE CARDS ***
+Dealt to CannonballJim [7s Kd]
+DiGGiMiGGi: raises 2265 to 2465 and is all-in
+CannonballJim: folds 
+filios888: folds 
+Joker1823: folds 
+Ciyl: folds 
+Kerya142: calls 2020 and is all-in
+Uncalled bet (245) returned to DiGGiMiGGi
+*** FLOP *** [4h 2c 5h]
+*** TURN *** [4h 2c 5h] [Qs]
+*** RIVER *** [4h 2c 5h Qs] [9d]
+*** SHOW DOWN ***
+Kerya142: shows [Ts Kh] (high card King)
+DiGGiMiGGi: shows [Kc Ac] (high card Ace)
+DiGGiMiGGi collected 4690 from pot
+Kerya142 finished the tournament in 6th place
+*** SUMMARY ***
+Total pot 4690 | Rake 0 
+Board [4h 2c 5h Qs 9d]
+Seat 2: Joker1823 (button) folded before Flop (didn't bet)
+Seat 3: Ciyl (small blind) folded before Flop
+Seat 4: Kerya142 (big blind) showed [Ts Kh] and lost with high card King
+Seat 6: DiGGiMiGGi showed [Kc Ac] and won (4690) with high card Ace
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209696266824: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VII (100/200) - 2020/03/01 15:56:12 WET [2020/03/01 10:56:12 ET]
+Table '2817308331 1' 9-max Seat #3 is the button
+Seat 2: Joker1823 (3320 in chips) 
+Seat 3: Ciyl (680 in chips) 
+Seat 6: DiGGiMiGGi (4935 in chips) 
+Seat 7: CannonballJim (1065 in chips) is sitting out
+Seat 8: filios888 (3500 in chips) 
+Joker1823: posts the ante 25
+Ciyl: posts the ante 25
+DiGGiMiGGi: posts the ante 25
+CannonballJim: posts the ante 25
+filios888: posts the ante 25
+DiGGiMiGGi: posts small blind 100
+CannonballJim: posts big blind 200
+*** HOLE CARDS ***
+Dealt to CannonballJim [Ts Kc]
+filios888: folds 
+Joker1823: folds 
+Ciyl: folds 
+DiGGiMiGGi: raises 200 to 400
+CannonballJim: folds 
+Uncalled bet (200) returned to DiGGiMiGGi
+DiGGiMiGGi collected 525 from pot
+DiGGiMiGGi: doesn't show hand 
+*** SUMMARY ***
+Total pot 525 | Rake 0 
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl (button) folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi (small blind) collected (525)
+Seat 7: CannonballJim (big blind) folded before Flop
+Seat 8: filios888 folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209696275719: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VII (100/200) - 2020/03/01 15:56:33 WET [2020/03/01 10:56:33 ET]
+Table '2817308331 1' 9-max Seat #6 is the button
+Seat 2: Joker1823 (3295 in chips) 
+Seat 3: Ciyl (655 in chips) 
+Seat 6: DiGGiMiGGi (5235 in chips) 
+Seat 7: CannonballJim (840 in chips) is sitting out
+Seat 8: filios888 (3475 in chips) 
+Joker1823: posts the ante 25
+Ciyl: posts the ante 25
+DiGGiMiGGi: posts the ante 25
+CannonballJim: posts the ante 25
+filios888: posts the ante 25
+CannonballJim: posts small blind 100
+filios888: posts big blind 200
+*** HOLE CARDS ***
+Dealt to CannonballJim [5d Kc]
+Joker1823: folds 
+Ciyl: folds 
+DiGGiMiGGi: raises 200 to 400
+CannonballJim: folds 
+filios888: folds 
+Uncalled bet (200) returned to DiGGiMiGGi
+DiGGiMiGGi collected 625 from pot
+DiGGiMiGGi: doesn't show hand 
+*** SUMMARY ***
+Total pot 625 | Rake 0 
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi (button) collected (625)
+Seat 7: CannonballJim (small blind) folded before Flop
+Seat 8: filios888 (big blind) folded before Flop
+
+
+
+PokerStars Hand #209696281077: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VII (100/200) - 2020/03/01 15:56:46 WET [2020/03/01 10:56:46 ET]
+Table '2817308331 1' 9-max Seat #7 is the button
+Seat 2: Joker1823 (3270 in chips) 
+Seat 3: Ciyl (630 in chips) 
+Seat 6: DiGGiMiGGi (5635 in chips) 
+Seat 7: CannonballJim (715 in chips) is sitting out
+Seat 8: filios888 (3250 in chips) 
+Joker1823: posts the ante 25
+Ciyl: posts the ante 25
+DiGGiMiGGi: posts the ante 25
+CannonballJim: posts the ante 25
+filios888: posts the ante 25
+filios888: posts small blind 100
+Joker1823: posts big blind 200
+*** HOLE CARDS ***
+Dealt to CannonballJim [Ad 9h]
+Ciyl: raises 405 to 605 and is all-in
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+Joker1823: calls 405
+*** FLOP *** [3h 4c 2d]
+*** TURN *** [3h 4c 2d] [6h]
+*** RIVER *** [3h 4c 2d 6h] [3d]
+*** SHOW DOWN ***
+Joker1823: shows [8c Kd] (a pair of Threes)
+Ciyl: shows [Qd Ah] (a pair of Threes - Ace kicker)
+Ciyl collected 1435 from pot
+*** SUMMARY ***
+Total pot 1435 | Rake 0 
+Board [3h 4c 2d 6h 3d]
+Seat 2: Joker1823 (big blind) showed [8c Kd] and lost with a pair of Threes
+Seat 3: Ciyl showed [Qd Ah] and won (1435) with a pair of Threes
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim (button) folded before Flop (didn't bet)
+Seat 8: filios888 (small blind) folded before Flop
+
+
+
+PokerStars Hand #209696289369: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VII (100/200) - 2020/03/01 15:57:05 WET [2020/03/01 10:57:05 ET]
+Table '2817308331 1' 9-max Seat #8 is the button
+Seat 2: Joker1823 (2640 in chips) 
+Seat 3: Ciyl (1435 in chips) 
+Seat 6: DiGGiMiGGi (5610 in chips) 
+Seat 7: CannonballJim (690 in chips) is sitting out
+Seat 8: filios888 (3125 in chips) 
+Joker1823: posts the ante 25
+Ciyl: posts the ante 25
+DiGGiMiGGi: posts the ante 25
+CannonballJim: posts the ante 25
+filios888: posts the ante 25
+Joker1823: posts small blind 100
+Ciyl: posts big blind 200
+*** HOLE CARDS ***
+Dealt to CannonballJim [6c 7s]
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+Joker1823: calls 100
+Ciyl: checks 
+*** FLOP *** [5c Kh Ah]
+Joker1823: checks 
+Ciyl: checks 
+*** TURN *** [5c Kh Ah] [Td]
+Joker1823: checks 
+Ciyl: checks 
+*** RIVER *** [5c Kh Ah Td] [4h]
+Joker1823: checks 
+Ciyl: checks 
+*** SHOW DOWN ***
+Joker1823: shows [8s 5s] (a pair of Fives)
+Ciyl: shows [5d 2d] (a pair of Fives)
+Joker1823 collected 263 from pot
+Ciyl collected 262 from pot
+*** SUMMARY ***
+Total pot 525 | Rake 0 
+Board [5c Kh Ah Td 4h]
+Seat 2: Joker1823 (small blind) showed [8s 5s] and won (263) with a pair of Fives
+Seat 3: Ciyl (big blind) showed [5d 2d] and won (262) with a pair of Fives
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 (button) folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209696305867: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VII (100/200) - 2020/03/01 15:57:44 WET [2020/03/01 10:57:44 ET]
+Table '2817308331 1' 9-max Seat #2 is the button
+Seat 2: Joker1823 (2678 in chips) 
+Seat 3: Ciyl (1472 in chips) 
+Seat 6: DiGGiMiGGi (5585 in chips) 
+Seat 7: CannonballJim (665 in chips) is sitting out
+Seat 8: filios888 (3100 in chips) 
+Joker1823: posts the ante 25
+Ciyl: posts the ante 25
+DiGGiMiGGi: posts the ante 25
+CannonballJim: posts the ante 25
+filios888: posts the ante 25
+Ciyl: posts small blind 100
+DiGGiMiGGi: posts big blind 200
+*** HOLE CARDS ***
+Dealt to CannonballJim [Jd 5c]
+CannonballJim: folds 
+filios888: folds 
+Joker1823: calls 200
+Ciyl: folds 
+DiGGiMiGGi: checks 
+*** FLOP *** [Ad 4h 8h]
+DiGGiMiGGi: checks 
+Joker1823: checks 
+*** TURN *** [Ad 4h 8h] [2s]
+DiGGiMiGGi: checks 
+Joker1823: checks 
+*** RIVER *** [Ad 4h 8h 2s] [9h]
+DiGGiMiGGi: checks 
+Joker1823: checks 
+*** SHOW DOWN ***
+DiGGiMiGGi: shows [2d Ts] (a pair of Deuces)
+Joker1823: shows [6d 6s] (a pair of Sixes)
+Joker1823 collected 625 from pot
+*** SUMMARY ***
+Total pot 625 | Rake 0 
+Board [Ad 4h 8h 2s 9h]
+Seat 2: Joker1823 (button) showed [6d 6s] and won (625) with a pair of Sixes
+Seat 3: Ciyl (small blind) folded before Flop
+Seat 6: DiGGiMiGGi (big blind) showed [2d Ts] and lost with a pair of Deuces
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209696322807: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VII (100/200) - 2020/03/01 15:58:23 WET [2020/03/01 10:58:23 ET]
+Table '2817308331 1' 9-max Seat #3 is the button
+Seat 2: Joker1823 (3078 in chips) 
+Seat 3: Ciyl (1347 in chips) 
+Seat 6: DiGGiMiGGi (5360 in chips) 
+Seat 7: CannonballJim (640 in chips) is sitting out
+Seat 8: filios888 (3075 in chips) 
+Joker1823: posts the ante 25
+Ciyl: posts the ante 25
+DiGGiMiGGi: posts the ante 25
+CannonballJim: posts the ante 25
+filios888: posts the ante 25
+DiGGiMiGGi: posts small blind 100
+CannonballJim: posts big blind 200
+*** HOLE CARDS ***
+Dealt to CannonballJim [4d As]
+filios888: folds 
+Joker1823: folds 
+Ciyl: folds 
+DiGGiMiGGi: raises 5135 to 5335 and is all-in
+CannonballJim: folds 
+Uncalled bet (5135) returned to DiGGiMiGGi
+DiGGiMiGGi collected 525 from pot
+DiGGiMiGGi: doesn't show hand 
+*** SUMMARY ***
+Total pot 525 | Rake 0 
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl (button) folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi (small blind) collected (525)
+Seat 7: CannonballJim (big blind) folded before Flop
+Seat 8: filios888 folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209696327545: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VII (100/200) - 2020/03/01 15:58:34 WET [2020/03/01 10:58:34 ET]
+Table '2817308331 1' 9-max Seat #6 is the button
+Seat 2: Joker1823 (3053 in chips) 
+Seat 3: Ciyl (1322 in chips) 
+Seat 6: DiGGiMiGGi (5660 in chips) 
+Seat 7: CannonballJim (415 in chips) is sitting out
+Seat 8: filios888 (3050 in chips) 
+Joker1823: posts the ante 25
+Ciyl: posts the ante 25
+DiGGiMiGGi: posts the ante 25
+CannonballJim: posts the ante 25
+filios888: posts the ante 25
+CannonballJim: posts small blind 100
+filios888: posts big blind 200
+*** HOLE CARDS ***
+Dealt to CannonballJim [9h 7h]
+Joker1823: folds 
+Ciyl: folds 
+DiGGiMiGGi: raises 200 to 400
+CannonballJim: folds 
+filios888: folds 
+Uncalled bet (200) returned to DiGGiMiGGi
+DiGGiMiGGi collected 625 from pot
+DiGGiMiGGi: doesn't show hand 
+*** SUMMARY ***
+Total pot 625 | Rake 0 
+Seat 2: Joker1823 folded before Flop (didn't bet)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi (button) collected (625)
+Seat 7: CannonballJim (small blind) folded before Flop
+Seat 8: filios888 (big blind) folded before Flop
+
+
+
+PokerStars Hand #209696338550: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VII (100/200) - 2020/03/01 15:59:00 WET [2020/03/01 10:59:00 ET]
+Table '2817308331 1' 9-max Seat #7 is the button
+Seat 2: Joker1823 (3028 in chips) 
+Seat 3: Ciyl (1297 in chips) 
+Seat 6: DiGGiMiGGi (6060 in chips) 
+Seat 7: CannonballJim (290 in chips) is sitting out
+Seat 8: filios888 (2825 in chips) 
+Joker1823: posts the ante 25
+Ciyl: posts the ante 25
+DiGGiMiGGi: posts the ante 25
+CannonballJim: posts the ante 25
+filios888: posts the ante 25
+filios888: posts small blind 100
+Joker1823: posts big blind 200
+*** HOLE CARDS ***
+Dealt to CannonballJim [4d Tc]
+Ciyl: folds 
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+Uncalled bet (100) returned to Joker1823
+Joker1823 collected 325 from pot
+Joker1823: doesn't show hand 
+*** SUMMARY ***
+Total pot 325 | Rake 0 
+Seat 2: Joker1823 (big blind) collected (325)
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim (button) folded before Flop (didn't bet)
+Seat 8: filios888 (small blind) folded before Flop
+
+
+
+PokerStars Hand #209696347490: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VII (100/200) - 2020/03/01 15:59:21 WET [2020/03/01 10:59:21 ET]
+Table '2817308331 1' 9-max Seat #8 is the button
+Seat 2: Joker1823 (3228 in chips) 
+Seat 3: Ciyl (1272 in chips) 
+Seat 6: DiGGiMiGGi (6035 in chips) 
+Seat 7: CannonballJim (265 in chips) is sitting out
+Seat 8: filios888 (2700 in chips) 
+Joker1823: posts the ante 25
+Ciyl: posts the ante 25
+DiGGiMiGGi: posts the ante 25
+CannonballJim: posts the ante 25
+filios888: posts the ante 25
+Joker1823: posts small blind 100
+Ciyl: posts big blind 200
+*** HOLE CARDS ***
+Dealt to CannonballJim [2h 9h]
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+filios888: folds 
+Joker1823: folds 
+Uncalled bet (100) returned to Ciyl
+Ciyl collected 325 from pot
+*** SUMMARY ***
+Total pot 325 | Rake 0 
+Seat 2: Joker1823 (small blind) folded before Flop
+Seat 3: Ciyl (big blind) collected (325)
+Seat 6: DiGGiMiGGi folded before Flop (didn't bet)
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 (button) folded before Flop (didn't bet)
+
+
+
+PokerStars Hand #209696352570: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VII (100/200) - 2020/03/01 15:59:33 WET [2020/03/01 10:59:33 ET]
+Table '2817308331 1' 9-max Seat #2 is the button
+Seat 2: Joker1823 (3103 in chips) 
+Seat 3: Ciyl (1472 in chips) 
+Seat 6: DiGGiMiGGi (6010 in chips) 
+Seat 7: CannonballJim (240 in chips) is sitting out
+Seat 8: filios888 (2675 in chips) 
+Joker1823: posts the ante 25
+Ciyl: posts the ante 25
+DiGGiMiGGi: posts the ante 25
+CannonballJim: posts the ante 25
+filios888: posts the ante 25
+Ciyl: posts small blind 100
+DiGGiMiGGi: posts big blind 200
+*** HOLE CARDS ***
+Dealt to CannonballJim [3s 2d]
+CannonballJim: folds 
+filios888: raises 200 to 400
+Joker1823: folds 
+Ciyl: folds 
+DiGGiMiGGi: folds 
+Uncalled bet (200) returned to filios888
+filios888 collected 625 from pot
+filios888: doesn't show hand 
+*** SUMMARY ***
+Total pot 625 | Rake 0 
+Seat 2: Joker1823 (button) folded before Flop (didn't bet)
+Seat 3: Ciyl (small blind) folded before Flop
+Seat 6: DiGGiMiGGi (big blind) folded before Flop
+Seat 7: CannonballJim folded before Flop (didn't bet)
+Seat 8: filios888 collected (625)
+
+
+
+PokerStars Hand #209696362909: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VII (100/200) - 2020/03/01 15:59:57 WET [2020/03/01 10:59:57 ET]
+Table '2817308331 1' 9-max Seat #3 is the button
+Seat 2: Joker1823 (3078 in chips) 
+Seat 3: Ciyl (1347 in chips) 
+Seat 6: DiGGiMiGGi (5785 in chips) 
+Seat 7: CannonballJim (215 in chips) is sitting out
+Seat 8: filios888 (3075 in chips) 
+Joker1823: posts the ante 25
+Ciyl: posts the ante 25
+DiGGiMiGGi: posts the ante 25
+CannonballJim: posts the ante 25
+filios888: posts the ante 25
+DiGGiMiGGi: posts small blind 100
+CannonballJim: posts big blind 190 and is all-in
+*** HOLE CARDS ***
+Dealt to CannonballJim [7d 3d]
+filios888: folds 
+Joker1823: raises 210 to 400
+Ciyl: folds 
+DiGGiMiGGi: folds 
+CannonballJim: folds 
+Uncalled bet (210) returned to Joker1823
+Joker1823 collected 605 from pot
+CannonballJim finished the tournament in 5th place
+Joker1823: doesn't show hand 
+*** SUMMARY ***
+Total pot 605 | Rake 0 
+Seat 2: Joker1823 collected (605)
+Seat 3: Ciyl (button) folded before Flop (didn't bet)
+Seat 6: DiGGiMiGGi (small blind) folded before Flop
+Seat 7: CannonballJim (big blind) folded before Flop
+Seat 8: filios888 folded before Flop (didn't bet)
+
+
+
