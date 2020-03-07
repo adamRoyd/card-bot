@@ -1,7 +1,7 @@
-034811 should be all in
+Stack sizes needed to be captured immediately before a hand
+ - how fast can the bot go? benchmark and optimise
+ - look to hand history or chat as an alternative
 
 SORT OUT YOUR ACTION ON THE BIG BLIND
-
-Bets need cleaning up
 
 Make the bot more human!

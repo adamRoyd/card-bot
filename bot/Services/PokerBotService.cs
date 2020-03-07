@@ -87,6 +87,12 @@ namespace bot.Services
 
                 BoardState boardState = _boardStateService.GetBoardStateFromImagePath(path, playersFromPreviousHand);
 
+                // TODO call this immediately after setting the stack. 
+                for (var i = 0; i < playersFromPreviousHand.Length; i++)
+                {
+                    playersFromPreviousHand[i].Stack = boardState.Players[i].Stack;
+                }
+
                 if (boardState.GameIsFinished)
                 {
                     //TODO add counter here
@@ -122,11 +128,6 @@ namespace bot.Services
                 LogStats(dateStamp, boardState, predictedAction);
 
                 //DoAction(predictedAction, boardState);
-
-                for (var i = 0; i < playersFromPreviousHand.Length; i++)
-                {
-                    playersFromPreviousHand[i].Stack = boardState.Players[i].Stack;
-                }
 
                 dateStamp = "033905";
 
