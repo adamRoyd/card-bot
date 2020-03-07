@@ -19,13 +19,13 @@ namespace bot.Services
             _boardStateHelper = boardStateHelper;
         }
 
-        public BoardState GetBoardStateFromImagePath(string path)
+        public BoardState GetBoardStateFromImagePath(string path, Player[] playersFromPreviousHand)
         {
             try
             {
                 var boardImages = _imageProcessor.SliceBoardScreenShot(path);
 
-                var boardState = new BoardState();
+                var boardState = new BoardState(playersFromPreviousHand);
 
                 _boardStateHelper.SaveBoardImages(boardImages, path);
 
@@ -40,10 +40,6 @@ namespace bot.Services
                     else if (boardImage.Type == OCR.Objects.ImageType.PlayerDealerButton)
                     {
                         _boardStateHelper.SetPlayerIsDealer(boardImagepath, boardImage, boardState);
-                    }
-                    else if (boardImage.Type == OCR.Objects.ImageType.PlayerBet)
-                    {
-                        _boardStateHelper.SetPlayerBet(boardImagepath, boardImage, boardState);
                     }
                     else
                     {
@@ -64,6 +60,8 @@ namespace bot.Services
 
                     boardImage.Image.Dispose();
                 }
+
+                _boardStateHelper.SetPlayerBets(boardState);
 
                 return boardState;
             }

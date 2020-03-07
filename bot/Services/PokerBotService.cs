@@ -20,6 +20,38 @@ namespace bot.Services
         private readonly IIcmService _icmService;
         private readonly IScreenCaptureService _screenCaptureService;
         private readonly ILogger _logger;
+        private readonly Player[] playersFromPreviousHand = new Player[]
+{
+                    new Player{
+                        Position = 1
+                    },
+                    new Player{
+                        Position = 2
+                    },
+                    new Player{
+                        Position = 3
+                    },
+                    new Player{
+                        Position = 4
+                    },
+                    new Player{
+                        Position = 5
+                    },
+                    new Player{
+                        Position = 6
+                    },
+                    new Player{
+                        Position = 7
+                    },
+                    new Player{
+                        Position = 8
+                    },
+                    new Player{
+                        Position = 9
+                    }
+};
+
+        string dateStamp = "033828";
 
         public PokerBotService
         (
@@ -39,8 +71,8 @@ namespace bot.Services
         {
             while (true)
             {
-                string dateStamp = DateTime.Now.ToString("hhmmss");
-                dateStamp = "035414";
+                //string dateStamp = DateTime.Now.ToString("hhmmss");
+                
 
                 string path = $"..\\..\\..\\images\\{dateStamp}";
                 string splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -53,7 +85,7 @@ namespace bot.Services
                     _screenCaptureService.CaptureScreenToFile($"{path}\\board.png", ImageFormat.Png);
                 }
 
-                BoardState boardState = _boardStateService.GetBoardStateFromImagePath(path);
+                BoardState boardState = _boardStateService.GetBoardStateFromImagePath(path, playersFromPreviousHand);
 
                 if (boardState.GameIsFinished)
                 {
@@ -63,7 +95,7 @@ namespace bot.Services
                     //continue;
                 }
 
-                if (!boardState.ReadyForAction ||  boardState.HandCode == "null")
+                if (!boardState.ReadyForAction || boardState.HandCode == "null")
                 {
                     DeleteFiles(path);
                     continue;
@@ -89,8 +121,14 @@ namespace bot.Services
 
                 LogStats(dateStamp, boardState, predictedAction);
 
-                DoAction(predictedAction, boardState);
-                break;
+                //DoAction(predictedAction, boardState);
+
+                for (var i = 0; i < playersFromPreviousHand.Length; i++)
+                {
+                    playersFromPreviousHand[i].Stack = boardState.Players[i].Stack;
+                }
+
+                dateStamp = "033905";
 
                 await Task.Delay(2000);
             }
@@ -129,7 +167,7 @@ namespace bot.Services
                     screenCaptureService.CaptureScreenToFile($"{path}\\board.png", ImageFormat.Png);
                 }
 
-                BoardState boardState = boardStateService.GetBoardStateFromImagePath(path);
+                BoardState boardState = boardStateService.GetBoardStateFromImagePath(path, null);
 
                 if (!boardState.IsInPlay)
                 {

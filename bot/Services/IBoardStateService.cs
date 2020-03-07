@@ -7,6 +7,6 @@ namespace bot.Services
 {
     public interface IBoardStateService
     {
-        BoardState GetBoardStateFromImagePath(string path);
+        BoardState GetBoardStateFromImagePath(string path, Player[] playersFromPreviousHand);
     }
 }

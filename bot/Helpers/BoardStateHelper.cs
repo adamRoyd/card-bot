@@ -124,22 +124,17 @@ namespace bot.Helpers
             return result == "green";
         }
 
-        public void SetPlayerBet(string boardImagepath, BoardImage boardImage, BoardState state)
+        public void SetPlayerBets(BoardState state)
         {
-            string result = _imageProcessor.GetImageCharacters(boardImage.Image, PageSegMode.Auto);
-
-            result = result.CleanUp().GetNumbers().RemoveOnes(boardImage.PlayerNumber);
-
-            int.TryParse(result, out int value);
-
-            if (value == 341)
+            for (var i = 0; i < state.Players.Length; i++)
             {
-                value = 0;
+                state.Players[i].Bet = state.PlayersFromPreviousHand[i].Stack - state.Players[i].Stack;
+
+                if (state.Players[i].Bet < 0)
+                {
+                    state.Players[i].Bet = 0;
+                }
             }
-
-            int index = boardImage.PlayerNumber - 1;
-
-            state.Players[index].Bet = value;
         }
 
         public void SetPlayerIsDealer(string path, BoardImage boardImage, BoardState state)

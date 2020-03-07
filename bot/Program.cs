@@ -36,7 +36,16 @@ namespace bot
 
             // Run the bot
             IPokerBotService pokerBotService = serviceProvider.GetService<IPokerBotService>();
-            await pokerBotService.Run();
+
+            try
+            {
+                await pokerBotService.Run();
+            }
+            catch (Exception e)
+            {
+                //TODO add real logging here
+                Console.WriteLine(e);
+            }
         }
     }
 }

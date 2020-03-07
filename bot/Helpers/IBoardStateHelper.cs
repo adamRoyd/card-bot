@@ -16,7 +16,7 @@ namespace bot.Helpers
         bool GetReadyForAction(Image image, string path);
         string GetWordFromImage(Image image, string path);
         void SaveBoardImages(List<BoardImage> boardImages, string path);
-        void SetPlayerBet(string boardImagepath, BoardImage boardImage, BoardState state);
+        void SetPlayerBets(BoardState state);
         void SetPlayerIsDealer(string path, BoardImage boardImage, BoardState state);
         void SetPlayerStack(string path, BoardImage boardImage, BoardState state);
     }

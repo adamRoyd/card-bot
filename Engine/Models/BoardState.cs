@@ -101,40 +101,15 @@ namespace Engine.Models
             get { return GetGameStage(); }
         }
 
-        public BoardState()
+        public BoardState(Player[] playersFromPreviousHand)
         {
             // Position goes ANTI CLOCKWISE starting at hero
-            Players = new Player[]
-                {
-                    new Player{
-                        Position = 1
-                    },
-                    new Player{
-                        Position = 2
-                    },
-                    new Player{
-                        Position = 3
-                    },
-                    new Player{
-                        Position = 4
-                    },
-                    new Player{
-                        Position = 5
-                    },
-                    new Player{
-                        Position = 6
-                    },
-                    new Player{
-                        Position = 7
-                    },
-                    new Player{
-                        Position = 8
-                    },
-                    new Player{
-                        Position = 9
-                    }
-                };
+            Players = GetPlayers();
+
+            PlayersFromPreviousHand = playersFromPreviousHand;
         }
+
+        public Player[] PlayersFromPreviousHand { get; set; }
 
         private int GetMyStack()
         {
@@ -291,6 +266,40 @@ namespace Engine.Models
                 myPropInfo.SetValue(this, value, null);
 
             }
+        }
+
+        public Player[] GetPlayers()
+        {
+            return new Player[]
+                {
+                    new Player{
+                        Position = 1
+                    },
+                    new Player{
+                        Position = 2
+                    },
+                    new Player{
+                        Position = 3
+                    },
+                    new Player{
+                        Position = 4
+                    },
+                    new Player{
+                        Position = 5
+                    },
+                    new Player{
+                        Position = 6
+                    },
+                    new Player{
+                        Position = 7
+                    },
+                    new Player{
+                        Position = 8
+                    },
+                    new Player{
+                        Position = 9
+                    }
+                };
         }
     }
 }
