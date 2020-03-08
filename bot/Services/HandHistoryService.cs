@@ -14,12 +14,31 @@ namespace bot.Services
 
             var index = lines.FindLastIndex(t => t == "*** SUMMARY ***");
 
-            lines.RemoveRange(0, index + 2);
+            lines.RemoveRange(0, index);
 
-            foreach (var line in lines)
+            lines.RemoveAll(line => !line.StartsWith("Seat"));
+
+            //lines = lines.Where(line => line.Contains("collected") || line.Contains("wins")).ToList();
+
+            int heroIndex = lines.FindIndex(line => line.Contains("CannonballJim"));
+            int numberOfPlayers = lines.Count();
+
+            // First count down from hero and assign players
+            for (var i = heroIndex; i >= 0; i --)
             {
-                Console.WriteLine(line);
+                var line = lines.ElementAt(i);
+                int seatPosition = GetPosition(line);
+                int truePosition = (numberOfPlayers + 1) - seatPosition;
+                Console.WriteLine($"Position {truePosition} {line}");
             }
+
+            // Then count anybody beyond hero
+        }
+
+        private int GetPosition(string line)
+        {
+            int.TryParse(line.Split(" ")[1].Replace(":", ""), out int position);
+            return position;
         }
     }
 }

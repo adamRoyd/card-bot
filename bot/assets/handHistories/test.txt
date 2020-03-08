@@ -2108,5 +2108,53 @@ Seat 6: DiGGiMiGGi (small blind) folded before Flop
 Seat 7: CannonballJim (big blind) folded before Flop
 Seat 8: filios888 folded before Flop (didn't bet)
 
+PokerStars Hand #209910137039: Tournament #2822679053, 8500+1500 Hold'em No Limit - Level I (10/20) - 2020/03/08 8:56:51 WET [2020/03/08 4:56:51 ET]
+Table '2822679053 1' 9-max Seat #1 is the button
+Seat 1: childball (1000 in chips) 
+Seat 2: tcklbrtchs (1000 in chips) 
+Seat 3: zsuzsika11 (1000 in chips) 
+Seat 4: xxxDovixxx (1000 in chips) 
+Seat 5: Gobble job (1000 in chips) 
+Seat 6: nazareno2007 (1000 in chips) 
+Seat 7: doidão13 (1000 in chips) 
+Seat 8: Meszes63 (1000 in chips) is sitting out
+Seat 9: CannonballJim (1000 in chips) 
+tcklbrtchs: posts small blind 10
+zsuzsika11: posts big blind 20
+*** HOLE CARDS ***
+Dealt to CannonballJim [3s 5h]
+xxxDovixxx: folds 
+Gobble job: folds 
+nazareno2007: raises 80 to 100
+doidão13: calls 100
+Meszes63: folds 
+CannonballJim: folds 
+childball: folds 
+tcklbrtchs is disconnected 
+tcklbrtchs has timed out while disconnected
+tcklbrtchs: folds 
+zsuzsika11: folds 
+*** FLOP *** [Qs 3h 5s]
+nazareno2007: bets 100
+doidão13: calls 100
+*** TURN *** [Qs 3h 5s] [2h]
+nazareno2007: bets 800 and is all-in
+doidão13: folds 
+Uncalled bet (800) returned to nazareno2007
+nazareno2007 collected 430 from pot
+nazareno2007: doesn't show hand 
+*** SUMMARY ***
+Total pot 430 | Rake 0 
+Board [Qs 3h 5s 2h]
+Seat 1: childball (button) folded before Flop (didn't bet)
+Seat 2: tcklbrtchs (small blind) folded before Flop
+Seat 3: zsuzsika11 (big blind) folded before Flop
+Seat 4: xxxDovixxx folded before Flop (didn't bet)
+Seat 5: Gobble job folded before Flop (didn't bet)
+Seat 6: nazareno2007 collected (430)
+Seat 7: doidão13 folded on the Turn
+Seat 8: Meszes63 folded before Flop (didn't bet)
+Seat 9: CannonballJim folded before Flop (didn't bet)
+
 
 
