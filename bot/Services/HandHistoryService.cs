@@ -21,18 +21,30 @@ namespace bot.Services
             //lines = lines.Where(line => line.Contains("collected") || line.Contains("wins")).ToList();
 
             int heroIndex = lines.FindIndex(line => line.Contains("CannonballJim"));
-            int numberOfPlayers = lines.Count();
+            int numberOfPlayers = 9;
+            int truePosition = 1;
+            int oldPosition = GetPosition(lines.ElementAt(heroIndex));
 
             // First count down from hero and assign players
-            for (var i = heroIndex; i >= 0; i --)
+            for (var i = heroIndex; i >= 0; i--)
             {
                 var line = lines.ElementAt(i);
                 int seatPosition = GetPosition(line);
-                int truePosition = (numberOfPlayers + 1) - seatPosition;
+                int positionDifference = oldPosition - seatPosition;
+                truePosition += positionDifference;
                 Console.WriteLine($"Position {truePosition} {line}");
+            
+                oldPosition = seatPosition;
             }
 
             // Then count anybody beyond hero
+            for (var i = lines.Count() - 1; i > heroIndex; i--)
+            {
+                var line = lines.ElementAt(i);
+                int seatPosition = GetPosition(line);
+                truePosition++; // TODO work out position difference here
+                Console.WriteLine($"Position {truePosition} {line}");
+            }
         }
 
         private int GetPosition(string line)
