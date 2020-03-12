@@ -1,64 +1,35 @@
-﻿PokerStars Hand #209910937767: Tournament #2822689344, 8500+1500 Hold'em No Limit - Level I (10/20) - 2020/03/08 9:49:31 WET [2020/03/08 5:49:31 ET]
-Table '2822689344 1' 9-max Seat #1 is the button
-Seat 1: TRANKY86 (500 in chips) 
-Seat 2: FoxyLove64 (500 in chips) is sitting out
-Seat 3: vadiken (500 in chips) 
-Seat 4: RivverBoat (500 in chips) 
-Seat 5: KingsPoke185 (500 in chips) 
-Seat 6: CannonballJim (500 in chips) 
-Seat 7: Johannes GH (500 in chips) is sitting out
-Seat 8: BATIKA74 (500 in chips) 
-Seat 9: Paddygree92 (500 in chips) 
-TRANKY86: posts the ante 2
-FoxyLove64: posts the ante 2
-vadiken: posts the ante 2
-RivverBoat: posts the ante 2
-KingsPoke185: posts the ante 2
-CannonballJim: posts the ante 2
-Johannes GH: posts the ante 2
-BATIKA74: posts the ante 2
-Paddygree92: posts the ante 2
-FoxyLove64: posts small blind 10
-vadiken: posts big blind 20
+﻿PokerStars Hand #209696183990: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VI (100/200) - 2020/03/01 15:53:26 WET [2020/03/01 10:53:26 ET]
+Table '2817308331 1' 9-max Seat #6 is the button
+Seat 2: Joker1823 (5615 in chips) 
+Seat 3: Ciyl (1005 in chips) 
+Seat 4: Kerya142 (3220 in chips) 
+Seat 6: DiGGiMiGGi (1095 in chips) 
+Seat 7: CannonballJim (1190 in chips) 
+Seat 8: filios888 (1375 in chips) 
+CannonballJim: posts small blind 100
+filios888: posts big blind 200
 *** HOLE CARDS ***
-Dealt to CannonballJim [2c Ah]
-RivverBoat: folds 
-KingsPoke185: calls 20
+Dealt to CannonballJim [4h Qs]
+Joker1823: calls 200
+Ciyl: folds 
+Kerya142: folds 
+DiGGiMiGGi: raises 895 to 1095 and is all-in
 CannonballJim: folds 
-Johannes GH: folds 
-BATIKA74: calls 20
-Paddygree92: folds 
-TRANKY86: folds 
-FoxyLove64: folds 
-vadiken: checks 
-*** FLOP *** [4d 9c 8h]
-vadiken: checks 
-KingsPoke185: checks 
-BATIKA74: checks 
-*** TURN *** [4d 9c 8h] [Kc]
-vadiken: checks 
-KingsPoke185: checks 
-BATIKA74: checks 
-*** RIVER *** [4d 9c 8h Kc] [4h]
-vadiken: bets 60
-KingsPoke185: folds 
-BATIKA74: calls 60
+filios888: folds 
+Joker1823: calls 895
+*** FLOP *** [Ad 4c 2h]
+*** TURN *** [Ad 4c 2h] [Kc]
+*** RIVER *** [Ad 4c 2h Kc] [7c]
 *** SHOW DOWN ***
-vadiken: shows [Kh 2s] (two pair, Kings and Fours)
-BATIKA74: mucks hand 
-vadiken collected 208 from pot
+Joker1823: shows [As 8s] (a pair of Aces)
+DiGGiMiGGi: shows [Js Ah] (a pair of Aces - King+Jack kicker)
+DiGGiMiGGi collected 2490 from pot
 *** SUMMARY ***
-Total pot 208 | Rake 0 
-Board [4d 9c 8h Kc 4h]
-Seat 1: TRANKY86 (button) folded before Flop (didn't bet)
-Seat 2: FoxyLove64 (small blind) folded before Flop
-Seat 3: vadiken (big blind) showed [Kh 2s] and won (208) with two pair, Kings and Fours
-Seat 4: RivverBoat folded before Flop (didn't bet)
-Seat 5: KingsPoke185 folded on the River
-Seat 6: CannonballJim folded before Flop (didn't bet)
-Seat 7: Johannes GH folded before Flop (didn't bet)
-Seat 8: BATIKA74 mucked [9h 7h]
-Seat 9: Paddygree92 folded before Flop (didn't bet)
-
-
-
+Total pot 2490 | Rake 0 
+Board [Ad 4c 2h Kc 7c]
+Seat 2: Joker1823 showed [As 8s] and lost with a pair of Aces
+Seat 3: Ciyl folded before Flop (didn't bet)
+Seat 4: Kerya142 folded before Flop (didn't bet)
+Seat 6: CannonballJim (small blind) folded before Flop
+Seat 7: DiGGiMiGGi (button) showed [Js Ah] and won (2490) with a pair of Aces
+Seat 9: DiGGiMiGGi (button) showed [Js Ah] and won (900) with a pair of Aces
