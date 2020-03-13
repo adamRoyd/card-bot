@@ -78,8 +78,8 @@ namespace bot.Services
             while (true)
             {
                 break;
-                //string dateStamp = DateTime.Now.ToString("hhmmss");
-
+                string dateStamp = DateTime.Now.ToString("hhmmss");
+                dateStamp = "035344";
 
                 string path = $"..\\..\\..\\images\\{dateStamp}";
                 string splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";

@@ -12,57 +12,73 @@ namespace bot.Services
         {
             List<string> lines = File.ReadLines(path).ToList();
 
-            int index = lines.FindLastIndex(t => t == "*** SUMMARY ***");
-
-            lines.RemoveRange(0, index);
-
-            lines.RemoveAll(line => !line.StartsWith("Seat"));
-
             Player[] players = GetPlayers();
 
-            //lines = lines.Where(line => line.Contains("collected") || line.Contains("wins")).ToList();
+            int index = lines.FindLastIndex(t => t == "*** SUMMARY ***");
 
-            int heroIndex = lines.FindIndex(line => line.Contains("CannonballJim"));
-            int truePosition = 1;
-            int oldPosition = GetPosition(lines.ElementAt(heroIndex));
+            var stackSection = lines.Skip(lines.FindLastIndex(t => t == "PokerStars Hand"))
+                                    .Take(lines.FindLastIndex(t => t == "*** HOLE CARDS ***")); // TODO is hole cards always present?
 
-            // First count down from hero and assign players
-            for (int i = heroIndex; i >= 0; i--)
-            {
-                string line = lines.ElementAt(i);
-                int seatPosition = GetPosition(line);
-                int positionDifference = oldPosition - seatPosition;
-                truePosition += positionDifference;
-                //Console.WriteLine($"Position {truePosition} {line}");
+            var betsSection = lines.Skip(lines.FindLastIndex(t => t == "*** HOLE CARDS ***")) 
+                                    .Take(lines.FindLastIndex(t => t == "*** SUMMARY ***"));
 
-                if (players.FirstOrDefault(p => p.Position == truePosition) != null)
-                {
-                    players.FirstOrDefault(p => p.Position == truePosition).Stack += GetStackChange(line);
-                }
+            var winningsSection = lines.Skip(lines.FindLastIndex(t => t == "*** SUMMARY ***"))
+                                    .Take(lines.Count - 1);
 
-                oldPosition = seatPosition;
-            }
+            Console.WriteLine("/// STACKS ///");
+            stackSection.ToList().ForEach(line => Console.WriteLine(line));
+            Console.WriteLine("/// BETS ///");
+            betsSection.ToList().ForEach(line => Console.WriteLine(line));
+            Console.WriteLine("/// SUMMARY ///");
+            winningsSection.ToList().ForEach(line => Console.WriteLine(line));
 
-            oldPosition = GetPosition(lines.ElementAt(heroIndex));
 
-            // Then count anybody beyond hero
-            for (int i = lines.Count() - 1; i > heroIndex; i--)
-            {
-                string line = lines.ElementAt(i);
-                int seatPosition = GetPosition(line);
-                int positionDifference = seatPosition - oldPosition;
-                truePosition += positionDifference;
-                //Console.WriteLine($"Position {truePosition} {line}");
-                if (players.FirstOrDefault(p => p.Position == truePosition) != null)
-                {
-                    players.FirstOrDefault(p => p.Position == truePosition).Stack += GetStackChange(line);
-                }
-            }
 
-            foreach (Player player in players)
-            {
-                Console.WriteLine($"Player: {player.Position} Stack: {player.Stack}");
-            }
+            //lines.RemoveAll(line => !line.StartsWith("Seat"));
+
+            //int heroIndex = lines.FindIndex(line => line.Contains("CannonballJim"));
+            //int truePosition = 1;
+            //int oldPosition = GetPosition(lines.ElementAt(heroIndex));
+
+            //// First count down from hero and assign players
+            //for (int i = heroIndex; i >= 0; i--)
+            //{
+            //    string line = lines.ElementAt(i);
+            //    int seatPosition = GetPosition(line);
+            //    int positionDifference = oldPosition - seatPosition;
+            //    truePosition += positionDifference;
+
+            //    if (players.FirstOrDefault(p => p.Position == truePosition) != null)
+            //    {
+            //        players.FirstOrDefault(p => p.Position == truePosition).Stack += GetStackChange(line);
+            //    }
+
+            //    oldPosition = seatPosition;
+            //}
+
+            //oldPosition = GetPosition(lines.ElementAt(heroIndex));
+            //truePosition = 10;
+
+            //// Then count anybody beyond hero
+            //for (int i = heroIndex + 1; i < lines.Count(); i++)
+            //{
+            //    string line = lines.ElementAt(i);
+            //    int seatPosition = GetPosition(line);
+            //    int positionDifference = seatPosition - oldPosition;
+            //    truePosition -= positionDifference;
+
+            //    if (players.FirstOrDefault(p => p.Position == truePosition) != null)
+            //    {
+            //        players.FirstOrDefault(p => p.Position == truePosition).Stack += GetStackChange(line);
+            //    }
+
+            //    oldPosition = seatPosition;
+            //}
+
+            //foreach (Player player in players)
+            //{
+            //    Console.WriteLine($"Player: {player.Position} Stack: {player.Stack}");
+            //}
         }
 
         private int GetStackChange(string line)
