@@ -12,31 +12,33 @@ namespace bot.Services
     {
         public void GetLatestHistory(string path)
         {
-            List<string> lines = File.ReadLines(path).ToList();
+            var directory = new DirectoryInfo(path);
+            var latestHistoryFile = directory.GetFiles().OrderByDescending(f => f.LastWriteTime).First();
+
+            List<string> lines = File.ReadLines(latestHistoryFile.FullName).ToList();
 
             Player[] players = GetPlayers();
 
-            int index = lines.FindLastIndex(t => t == "*** SUMMARY ***");
+            int pokerStarsHandIndex = lines.FindLastIndex(t => t.Contains("PokerStars Hand"));
+            int summaryIndex = lines.FindLastIndex(t => t.Contains("*** SUMMARY ***"));
 
-            List<string> stackSection = lines.Skip(lines.FindLastIndex(t => t == "PokerStars Hand"))
-                                    .Take(lines.FindLastIndex(t => t == "*** HOLE CARDS ***"))
+
+            List<string> latestGameHistory = lines.Skip(pokerStarsHandIndex)
+                                    .Take(summaryIndex - pokerStarsHandIndex)
                                     .ToList();
 
-            List<string> betsSection = lines.Skip(lines.FindLastIndex(t => t == "*** HOLE CARDS ***"))
-                                    .Take(lines.FindLastIndex(t => t == "*** SUMMARY ***"))
-                                    .ToList();
+            SetNames(latestGameHistory, players);
 
-            SetNames(stackSection, players);
+            SetInitialStacks(latestGameHistory, players);
 
-            SetInitialStacks(stackSection, players);
-
-            AddOrDeduct(stackSection, players, "small blind ", false);
-            AddOrDeduct(stackSection, players, "big blind ", false);
-            AddOrDeduct(betsSection, players, "bets ", false);
-            AddOrDeduct(betsSection, players, "calls ", false);
-            AddOrDeduct(betsSection, players, "raises \\d+ to ", false);
-            AddOrDeduct(betsSection, players, "collected ", true);
-            AddOrDeduct(betsSection, players, "Uncalled bet ", true);
+            AddOrDeduct(latestGameHistory, players, "small blind ", false);
+            AddOrDeduct(latestGameHistory, players, "big blind ", false);
+            AddOrDeduct(latestGameHistory, players, "ante ", false);
+            AddOrDeduct(latestGameHistory, players, "bets ", false);
+            AddOrDeduct(latestGameHistory, players, "calls ", false);
+            AddOrDeduct(latestGameHistory, players, "raises \\d+ to ", false);
+            AddOrDeduct(latestGameHistory, players, "collected ", true);
+            AddOrDeduct(latestGameHistory, players, "Uncalled bet ", true);
 
             foreach (Player player in players)
             {

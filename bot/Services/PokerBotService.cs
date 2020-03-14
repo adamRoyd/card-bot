@@ -72,7 +72,7 @@ namespace bot.Services
 
         public async Task Run()
         {
-            string historyPath = $"..\\..\\..\\assets\\handHistories\\test.txt";
+            string historyPath = $"C:\\Temp\\handhistories\\CannonballJim";
             _handHistoryService.GetLatestHistory(historyPath);
 
             while (true)
