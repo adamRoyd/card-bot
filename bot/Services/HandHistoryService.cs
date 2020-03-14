@@ -1,8 +1,10 @@
 ﻿using Engine.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace bot.Services
 {
@@ -16,91 +18,177 @@ namespace bot.Services
 
             int index = lines.FindLastIndex(t => t == "*** SUMMARY ***");
 
-            var stackSection = lines.Skip(lines.FindLastIndex(t => t == "PokerStars Hand"))
-                                    .Take(lines.FindLastIndex(t => t == "*** HOLE CARDS ***")); // TODO is hole cards always present?
+            List<string> stackSection = lines.Skip(lines.FindLastIndex(t => t == "PokerStars Hand"))
+                                    .Take(lines.FindLastIndex(t => t == "*** HOLE CARDS ***"))
+                                    .ToList();
 
-            var betsSection = lines.Skip(lines.FindLastIndex(t => t == "*** HOLE CARDS ***")) 
-                                    .Take(lines.FindLastIndex(t => t == "*** SUMMARY ***"));
+            List<string> betsSection = lines.Skip(lines.FindLastIndex(t => t == "*** HOLE CARDS ***"))
+                                    .Take(lines.FindLastIndex(t => t == "*** SUMMARY ***"))
+                                    .ToList();
 
-            var winningsSection = lines.Skip(lines.FindLastIndex(t => t == "*** SUMMARY ***"))
-                                    .Take(lines.Count - 1);
+            SetNames(stackSection, players);
 
-            Console.WriteLine("/// STACKS ///");
-            stackSection.ToList().ForEach(line => Console.WriteLine(line));
-            Console.WriteLine("/// BETS ///");
-            betsSection.ToList().ForEach(line => Console.WriteLine(line));
-            Console.WriteLine("/// SUMMARY ///");
-            winningsSection.ToList().ForEach(line => Console.WriteLine(line));
+            SetInitialStacks(stackSection, players);
 
+            AddOrDeduct(stackSection, players, "small blind ", false);
+            AddOrDeduct(stackSection, players, "big blind ", false);
+            AddOrDeduct(betsSection, players, "bets ", false);
+            AddOrDeduct(betsSection, players, "calls ", false);
+            AddOrDeduct(betsSection, players, "raises \\d+ to ", false);
+            AddOrDeduct(betsSection, players, "collected ", true);
+            AddOrDeduct(betsSection, players, "Uncalled bet ", true);
 
+            foreach (Player player in players)
+            {
+                Console.WriteLine($"Player: {player.Position} {player.Name} Stack: {player.Stack}");
+            }
+        }
 
-            //lines.RemoveAll(line => !line.StartsWith("Seat"));
+        private void AddOrDeduct(List<string> lines, Player[] players, string expression, bool isAddition)
+        {
+            lines
+                .Where(line => Regex.IsMatch(line, expression))
+                .ToList()
+                .ForEach(line =>
+                {
+                    string name = GetName(line);
 
-            //int heroIndex = lines.FindIndex(line => line.Contains("CannonballJim"));
-            //int truePosition = 1;
-            //int oldPosition = GetPosition(lines.ElementAt(heroIndex));
+                    if (IsMatch(players, name))
+                    {
+                        string numberInText = Regex.Split(line, expression)[1].Split(" ")[0].Replace("(", "").Replace(")", "");
 
-            //// First count down from hero and assign players
-            //for (int i = heroIndex; i >= 0; i--)
-            //{
-            //    string line = lines.ElementAt(i);
-            //    int seatPosition = GetPosition(line);
-            //    int positionDifference = oldPosition - seatPosition;
-            //    truePosition += positionDifference;
+                        int.TryParse(numberInText, out int value);
 
-            //    if (players.FirstOrDefault(p => p.Position == truePosition) != null)
-            //    {
-            //        players.FirstOrDefault(p => p.Position == truePosition).Stack += GetStackChange(line);
-            //    }
+                        if (isAddition)
+                        {
+                            Debug.WriteLine($"Add {expression}, {name}, +{value}");
+                            players.FirstOrDefault(p => p.Name == name).Stack += value;
+                        }
+                        else
+                        {
+                            Debug.WriteLine($"Deduct {expression}, {name}, -{value}");
+                            players.FirstOrDefault(p => p.Name == name).Stack -= value;
+                        }
+                    }
+                }
+            );
+        }
 
-            //    oldPosition = seatPosition;
-            //}
+        private static bool IsMatch(Player[] players, string name)
+        {
+            return !string.IsNullOrEmpty(name) && players.FirstOrDefault(p => p.Name == name) != null;
+        }
 
-            //oldPosition = GetPosition(lines.ElementAt(heroIndex));
-            //truePosition = 10;
+        private void SetInitialStacks(List<string> lines, Player[] players)
+        {
+            lines.Where(line => line.StartsWith("Seat"))
+                .ToList()
+                .ForEach(line =>
+            {
+                string name = GetName(line);
 
-            //// Then count anybody beyond hero
-            //for (int i = heroIndex + 1; i < lines.Count(); i++)
-            //{
-            //    string line = lines.ElementAt(i);
-            //    int seatPosition = GetPosition(line);
-            //    int positionDifference = seatPosition - oldPosition;
-            //    truePosition -= positionDifference;
+                if (IsMatch(players, name))
+                {
+                    players.FirstOrDefault(p => p.Name == name).Stack = GetStack(line);
+                }
+            });
+        }
 
-            //    if (players.FirstOrDefault(p => p.Position == truePosition) != null)
-            //    {
-            //        players.FirstOrDefault(p => p.Position == truePosition).Stack += GetStackChange(line);
-            //    }
+        private void SetNames(List<string> lines, Player[] players)
+        {
+            List<string> playerList = lines.Where(line => line.StartsWith("Seat")).ToList();
 
-            //    oldPosition = seatPosition;
-            //}
+            int heroIndex = playerList.FindIndex(line => line.Contains("CannonballJim"));
+            int truePosition = 1;
+            int oldPosition = GetPosition(playerList.ElementAt(heroIndex));
 
-            //foreach (Player player in players)
-            //{
-            //    Console.WriteLine($"Player: {player.Position} Stack: {player.Stack}");
-            //}
+            // First count down from hero and assign players
+            for (int i = heroIndex; i >= 0; i--)
+            {
+                string line = playerList.ElementAt(i);
+                int seatPosition = GetPosition(line);
+                int positionDifference = oldPosition - seatPosition;
+                truePosition += positionDifference;
+
+                if (players.FirstOrDefault(p => p.Position == truePosition) != null)
+                {
+                    players.FirstOrDefault(p => p.Position == truePosition).Name = GetName(line);
+                }
+
+                oldPosition = seatPosition;
+            }
+
+            oldPosition = GetPosition(playerList.ElementAt(heroIndex));
+            truePosition = 10;
+
+            // Then count anybody beyond hero
+            for (int i = heroIndex + 1; i < playerList.Count(); i++)
+            {
+                string line = playerList.ElementAt(i);
+                int seatPosition = GetPosition(line);
+                int positionDifference = seatPosition - oldPosition;
+                truePosition -= positionDifference;
+
+                if (players.FirstOrDefault(p => p.Position == truePosition) != null)
+                {
+                    players.FirstOrDefault(p => p.Position == truePosition).Name += GetName(line);
+                }
+
+                oldPosition = seatPosition;
+            }
+        }
+
+        private string GetName(string line)
+        {
+            if (line.Contains("Seat "))
+            {
+                string[] output = line.Split('(', ')')[0].Split(':');
+
+                return output[1].Trim();
+            }
+            else if (line.Contains("Uncalled bet "))
+            {
+                string[] output = line.Split(" ");
+
+                return output[^1].Trim();
+            }
+            else if (line.Contains(":"))
+            {
+                return line.Split(":")[0];
+            }
+            else
+            {
+                return line.Split(" ")[0];
+            }
         }
 
         private int GetStackChange(string line)
         {
             if (line.Contains("collected") || line.Contains("wins") || line.Contains("won"))
             {
-                string[] output = line.Split('(', ')');
-
-                foreach (string section in output)
-                {
-                    if (int.TryParse(section, out int value))
-                    {
-                        return value;
-                    }
-                }
-
-                return 0;
+                return GetStack(line);
             }
             else
             {
                 return 0;
             }
+        }
+
+        private int GetStack(string line)
+        {
+            line = line.Replace("in chips", "");
+
+            string[] output = line.Split('(', ')');
+
+            foreach (string section in output)
+            {
+                if (int.TryParse(section, out int value))
+                {
+                    return value;
+                }
+            }
+
+            return 0;
         }
 
         private int GetPosition(string line)

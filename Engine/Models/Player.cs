@@ -6,6 +6,7 @@ namespace Engine.Models
 {
     public class Player
     {
+        public string Name { get; set; }
         public int Position { get; set; }
         public int Chips
         {

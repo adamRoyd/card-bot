@@ -1,36 +1,47 @@
-﻿PokerStars Hand #209696161986: Tournament #2817308331, $0.44+$0.06 USD Hold'em No Limit - Level VI (100/200) - 2020/03/01 15:52:46 WET [2020/03/01 10:52:46 ET]
-Table '2817308331 1' 9-max Seat #4 is the button
-Seat 2: Joker1823 (5615 in chips) 
-Seat 3: Ciyl (1005 in chips) 
-Seat 4: Kerya142 (3220 in chips) 
-Seat 6: DiGGiMiGGi (995 in chips) 
-Seat 7: CannonballJim (1390 in chips) 
-Seat 8: filios888 (1275 in chips) 
-DiGGiMiGGi: posts small blind 100
-CannonballJim: posts big blind 200
+﻿PokerStars Hand #209910137039: Tournament #2822679053, 8500+1500 Hold'em No Limit - Level I (10/20) - 2020/03/08 8:56:51 WET [2020/03/08 4:56:51 ET]
+Table '2822679053 1' 9-max Seat #1 is the button
+Seat 1: childball (1000 in chips) 
+Seat 2: tcklbrtchs (1000 in chips) 
+Seat 3: zsuzsika11 (1000 in chips) 
+Seat 4: xxxDovixxx (1000 in chips) 
+Seat 5: Gobble job (1000 in chips) 
+Seat 6: nazareno2007 (1000 in chips) 
+Seat 7: doidão13 (1000 in chips) 
+Seat 8: Meszes63 (1000 in chips) is sitting out
+Seat 9: CannonballJim (1000 in chips) 
+tcklbrtchs: posts small blind 10
+zsuzsika11: posts big blind 20
 *** HOLE CARDS ***
-Dealt to CannonballJim [Jd Qh]
-filios888: raises 1075 to 1275 and is all-in
-Joker1823: folds 
-Ciyl: folds 
-Kerya142: folds 
-DiGGiMiGGi: calls 895 and is all-in
+Dealt to CannonballJim [3s 5h]
+xxxDovixxx: folds 
+Gobble job: folds 
+nazareno2007: raises 80 to 100
+doidão13: calls 100
+Meszes63: folds 
 CannonballJim: folds 
-Uncalled bet (280) returned to filios888
-*** FLOP *** [2s 4s Ad]
-*** TURN *** [2s 4s Ad] [Ah]
-*** RIVER *** [2s 4s Ad Ah] [4h]
-*** SHOW DOWN ***
-DiGGiMiGGi: shows [Js Ac] (a full house, Aces full of Fours)
-filios888: shows [Qs As] (a full house, Aces full of Fours)
-DiGGiMiGGi collected 1095 from pot
-filios888 collected 1095 from pot
+childball: folds 
+tcklbrtchs is disconnected 
+tcklbrtchs has timed out while disconnected
+tcklbrtchs: folds 
+zsuzsika11: folds 
+*** FLOP *** [Qs 3h 5s]
+nazareno2007: bets 100
+doidão13: calls 100
+*** TURN *** [Qs 3h 5s] [2h]
+nazareno2007: bets 800 and is all-in
+doidão13: folds 
+Uncalled bet (800) returned to nazareno2007
+nazareno2007 collected 430 from pot
+nazareno2007: doesn't show hand 
 *** SUMMARY ***
-Total pot 2190 | Rake 0 
-Board [2s 4s Ad Ah 4h]
-Seat 2: Joker1823 folded before Flop (didn't bet)
-Seat 3: Ciyl folded before Flop (didn't bet)
-Seat 4: Kerya142 (button) folded before Flop (didn't bet)
-Seat 6: DiGGiMiGGi (small blind) showed [Js Ac] and won (1095) with a full house, Aces full of Fours
-Seat 7: CannonballJim (big blind) folded before Flop
-Seat 8: filios888 showed [Qs As] and won (1095) with a full house, Aces full of Fours
+Total pot 430 | Rake 0 
+Board [Qs 3h 5s 2h]
+Seat 1: childball (button) folded before Flop (didn't bet)
+Seat 2: tcklbrtchs (small blind) folded before Flop
+Seat 3: zsuzsika11 (big blind) folded before Flop
+Seat 4: xxxDovixxx folded before Flop (didn't bet)
+Seat 5: Gobble job folded before Flop (didn't bet)
+Seat 6: nazareno2007 collected (430)
+Seat 7: doidão13 folded on the Turn
+Seat 8: Meszes63 folded before Flop (didn't bet)
+Seat 9: CannonballJim folded before Flop (didn't bet)
