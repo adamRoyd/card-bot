@@ -1,16 +1,5 @@
-The current setup will only work if the previous stack snapshot matches the correct state before players
-won any chips.
-
-This is probably not going to be reliable enough.
-
-We need to work out the stack size purely from hand history. There are three stages:
-Original Stacks
-Betting Stage
-Winning Stage (this has already been done)
-
-We are testing
--- history 035309
--- actual 035344
+040642 bet is negative - probably because big blind recoupment not taken into account
+raises to.... take first value if in a blind?
 
 SORT OUT YOUR ACTION ON THE BIG BLIND
 

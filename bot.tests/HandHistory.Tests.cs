@@ -20,7 +20,7 @@ namespace bot.tests
         {
             string path = $"..\\..\\..\\assets\\handHistories\\test.txt";
 
-            _handHistoryService.GetLatestHistory(path);
+            _handHistoryService.GetPlayersFromHistory(path);
 
             Assert.NotNull(path);
         }

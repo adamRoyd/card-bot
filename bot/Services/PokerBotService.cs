@@ -21,38 +21,6 @@ namespace bot.Services
         private readonly IScreenCaptureService _screenCaptureService;
         private readonly IHandHistoryService _handHistoryService;
         private readonly ILogger _logger;
-        private readonly Player[] playersFromPreviousHand = new Player[]
-{
-                    new Player{
-                        Position = 1
-                    },
-                    new Player{
-                        Position = 2
-                    },
-                    new Player{
-                        Position = 3
-                    },
-                    new Player{
-                        Position = 4
-                    },
-                    new Player{
-                        Position = 5
-                    },
-                    new Player{
-                        Position = 6
-                    },
-                    new Player{
-                        Position = 7
-                    },
-                    new Player{
-                        Position = 8
-                    },
-                    new Player{
-                        Position = 9
-                    }
-};
-
-        string dateStamp = "033828";
 
         public PokerBotService
         (
@@ -72,14 +40,10 @@ namespace bot.Services
 
         public async Task Run()
         {
-            string historyPath = $"C:\\Temp\\handhistories\\CannonballJim";
-            _handHistoryService.GetLatestHistory(historyPath);
-
             while (true)
             {
-                break;
                 string dateStamp = DateTime.Now.ToString("hhmmss");
-                dateStamp = "035344";
+                dateStamp = "040642";
 
                 string path = $"..\\..\\..\\images\\{dateStamp}";
                 string splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -92,13 +56,10 @@ namespace bot.Services
                     _screenCaptureService.CaptureScreenToFile($"{path}\\board.png", ImageFormat.Png);
                 }
 
-                BoardState boardState = _boardStateService.GetBoardStateFromImagePath(path, playersFromPreviousHand);
+                string historyPath = $"C:\\Temp\\handhistories\\CannonballJim";
+                Player[] players = _handHistoryService.GetPlayersFromHistory(historyPath);
 
-                // TODO call this immediately after setting the stack. 
-                for (var i = 0; i < playersFromPreviousHand.Length; i++)
-                {
-                    playersFromPreviousHand[i].Stack = boardState.Players[i].Stack;
-                }
+                BoardState boardState = _boardStateService.GetBoardStateFromImagePath(path, players);
 
                 if (boardState.GameIsFinished)
                 {
@@ -133,10 +94,8 @@ namespace bot.Services
                 }
 
                 LogStats(dateStamp, boardState, predictedAction);
-
+                break;
                 //DoAction(predictedAction, boardState);
-
-                dateStamp = "033905";
 
                 await Task.Delay(2000);
             }
@@ -225,14 +184,6 @@ namespace bot.Services
             PredictedAction predictedAction
         )
         {
-            string flop1 = boardState.Flop1 == null ? "  " : $"{boardState.Flop1.SimpleValue}{boardState.Flop1.Suit}";
-            string flop2 = boardState.Flop2 == null ? "  " : $"{boardState.Flop2.SimpleValue}{boardState.Flop2.Suit}";
-            string flop3 = boardState.Flop3 == null ? "  " : $"{boardState.Flop3.SimpleValue}{boardState.Flop3.Suit}";
-            string turn = boardState.Turn == null ? "  " : $"{boardState.Turn.SimpleValue}{boardState.Turn.Suit}";
-            string river = boardState.River == null ? "  " : $"{boardState.River.SimpleValue}{boardState.River.Suit}";
-
-            string predictedActionText = boardState.ReadyForAction ? $"Action: {predictedAction?.GetAction()}" : "";
-
             string stats = $"Id: {dateStamp} " +
                          $"Ps: {boardState.NumberOfPlayers} " +
                          $"Pos: {boardState.MyPosition} " +
@@ -240,16 +191,14 @@ namespace bot.Services
                          $"Ev: {predictedAction._ev} " +
                          $"Ante: {boardState.Ante} " +
                          $"SR: {boardState.MyStackRatio} " +
-                         predictedActionText;
+                         $"Action: {predictedAction?.GetAction()}";
 
-            _logger.LogInformation(stats);
-
-            //Console.WriteLine(
-            //    $"{flop1} | {flop2} | {flop3} | {turn} | {river}");
+            Console.WriteLine(stats);
 
             foreach (Player p in boardState.Players.Where(p => !p.Eliminated))
             {
-                _logger.LogInformation($"{p.Position}: Stack: {p.Stack} Bet: {p.Bet}");
+                Console.WriteLine($"{p.Position}: Stack: {p.Stack} Bet: {p.Bet}");
+
             }
         }
 

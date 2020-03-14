@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Engine.Models;
 
 namespace bot.Services
 {
     public interface IHandHistoryService
     {
-        void GetLatestHistory(string path);
+        Player[] GetPlayersFromHistory(string path);
     }
 }

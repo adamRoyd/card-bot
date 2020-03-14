@@ -10,7 +10,7 @@ namespace bot.Services
 {
     public class HandHistoryService : IHandHistoryService
     {
-        public void GetLatestHistory(string path)
+        public Player[] GetPlayersFromHistory(string path)
         {
             var directory = new DirectoryInfo(path);
             var latestHistoryFile = directory.GetFiles().OrderByDescending(f => f.LastWriteTime).First();
@@ -42,8 +42,10 @@ namespace bot.Services
 
             foreach (Player player in players)
             {
-                Console.WriteLine($"Player: {player.Position} {player.Name} Stack: {player.Stack}");
+                Debug.WriteLine($"Player: {player.Position} {player.Name} Stack: {player.Stack}");
             }
+
+            return players;
         }
 
         private void AddOrDeduct(List<string> lines, Player[] players, string expression, bool isAddition)

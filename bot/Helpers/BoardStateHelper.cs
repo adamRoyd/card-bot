@@ -130,10 +130,10 @@ namespace bot.Helpers
             {
                 state.Players[i].Bet = state.PlayersFromPreviousHand[i].Stack - state.Players[i].Stack;
 
-                if (state.Players[i].Bet < 0)
-                {
-                    state.Players[i].Bet = 0;
-                }
+                //if (state.Players[i].Bet < 0)
+                //{
+                //    state.Players[i].Bet = 0;
+                //}
             }
         }
 
