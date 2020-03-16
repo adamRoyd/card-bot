@@ -159,87 +159,6 @@ namespace OCR.Objects
                     X = 894,
                     Y = 318
                 },
-                //new BoardImage
-                //{
-                //    Name = ImageName.Bet1,
-                //    PlayerNumber = 1,
-                //    Type = ImageType.PlayerBet,
-                //    Image = new Bitmap(160, 25),
-                //    X = 898,
-                //    Y = 602
-                //},
-                //new BoardImage
-                //{
-                //    Name = ImageName.Bet9,
-                //    PlayerNumber = 9,
-                //    Type = ImageType.PlayerBet,
-                //    Image = new Bitmap(120, 25),
-                //    X = 676,
-                //    Y = 555
-                //},
-                //new BoardImage
-                //{
-                //    Name = ImageName.Bet8,
-                //    PlayerNumber = 8,
-                //    Type = ImageType.PlayerBet,
-                //    Image = new Bitmap(120, 25),
-                //    X = 581,
-                //    Y = 483
-                //},
-                //new BoardImage
-                //{
-                //    Name = ImageName.Bet7,
-                //    PlayerNumber = 7,
-                //    Type = ImageType.PlayerBet,
-                //    Image = new Bitmap(160, 25),
-                //    X = 555,
-                //    Y = 323
-                //},
-                //new BoardImage
-                //{
-                //    Name = ImageName.Bet6,
-                //    PlayerNumber = 6,
-                //    Type = ImageType.PlayerBet,
-                //    Image = new Bitmap(160, 25),
-                //    X = 806,
-                //    Y = 261
-                //},
-                //new BoardImage
-                //{
-                //    Name = ImageName.Bet5,
-                //    PlayerNumber = 5,
-                //    Type = ImageType.PlayerBet,
-                //    Image = new Bitmap(190, 25),
-                //    X = 937,
-                //    Y = 233
-                //},
-                //new BoardImage
-                //{
-                //    Name = ImageName.Bet4,
-                //    PlayerNumber = 4,
-                //    Type = ImageType.PlayerBet,
-                //    Image = new Bitmap(160, 25),
-                //    X = 1088,
-                //    Y = 294
-                //},
-                //new BoardImage
-                //{
-                //    Name = ImageName.Bet3,
-                //    PlayerNumber = 3,
-                //    Type = ImageType.PlayerBet,
-                //    Image = new Bitmap(160, 21),
-                //    X = 1186,
-                //    Y = 486
-                //},
-                //new BoardImage
-                //{
-                //    Name = ImageName.Bet2,
-                //    PlayerNumber = 2,
-                //    Type = ImageType.PlayerBet,
-                //    Image = new Bitmap(160, 21),
-                //    X = 1064,
-                //    Y = 557
-                //},
                 new BoardImage
                 {
                     Name = ImageName.CallAmount,
@@ -393,6 +312,14 @@ namespace OCR.Objects
                     Image = new Bitmap(160, 25),
                     X = 555,
                     Y = 323
+                },
+                new BoardImage
+                {
+                    Name = ImageName.SittingOut,
+                    Type = ImageType.SittingOut,
+                    Image = new Bitmap(180, 90),
+                    X = 1346,
+                    Y = 947
                 },
             };
         }

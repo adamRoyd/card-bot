@@ -19,5 +19,6 @@ namespace bot.Helpers
         void SetPlayerBets(BoardState state);
         void SetPlayerIsDealer(string path, BoardImage boardImage, BoardState state);
         void SetPlayerStack(string path, BoardImage boardImage, BoardState state);
+        bool GetSittingOut(Image image, string boardImagepath);
     }
 }

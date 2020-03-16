@@ -45,7 +45,7 @@ namespace bot.Services
                 try
                 {
                     string dateStamp = DateTime.Now.ToString("hhmmss");
-                    dateStamp = "103114";
+                    //dateStamp = "021526";
 
                     string path = $"..\\..\\..\\images\\{dateStamp}";
                     string splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -62,6 +62,13 @@ namespace bot.Services
                     Player[] players = _handHistoryService.GetPlayersFromHistory(historyPath);
 
                     BoardState boardState = _boardStateService.GetBoardStateFromImagePath(path, players);
+
+                    if (boardState.SittingOut)
+                    {
+                        Console.WriteLine("Sitting out!");
+                        await ClickImBackButton();
+                        continue;
+                    }
 
                     if (boardState.GameIsFinished)
                     {
@@ -96,7 +103,7 @@ namespace bot.Services
                     }
 
                     LogStats(dateStamp, boardState, predictedAction);
-                    break;
+                    //break;
                     DoAction(predictedAction, boardState);
 
                     await Task.Delay(2000);
@@ -161,6 +168,19 @@ namespace bot.Services
             Point infoPosition = new Point(rnd.Next(759, 764), rnd.Next(845, 849));
             await MouseService.LinearSmoothMove(infoPosition, 60);
             MouseService.Click();
+        }
+
+        private async Task ClickImBackButton()
+        {
+            await Task.Delay(rnd.Next(500, 1000));
+            Point infoPosition = new Point(rnd.Next(1370, 1390), rnd.Next(960, 980));
+            await MouseService.LinearSmoothMove(infoPosition, 60);
+            MouseService.Click();
+            await Task.Delay(rnd.Next(500, 1000));
+            infoPosition = new Point(rnd.Next(760, 764), rnd.Next(940, 944));
+            await MouseService.LinearSmoothMove(infoPosition, 60);
+            await Task.Delay(rnd.Next(500, 1000));
+
         }
 
         private void DoAction(PredictedAction action, BoardState state)

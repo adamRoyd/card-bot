@@ -92,6 +92,7 @@ namespace Engine.Models
         }
         public bool GameIsFinished { get; set; }
         public bool IsInPlay { get; set; }
+        public bool SittingOut { get; set; }
         public HandStage HandStage
         {
             get { return GetHandStage(); }

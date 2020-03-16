@@ -29,16 +29,7 @@ namespace OCR.Objects
         Position6,
         Position7,
         Position8,
-        Position9,
-        Bet1,
-        Bet2,
-        Bet3,
-        Bet4,
-        Bet5,
-        Bet6,
-        Bet7,
-        Bet8,
-        Bet9,        
+        Position9,      
         Pot,
         Stack1,
         Stack2,
@@ -59,7 +50,8 @@ namespace OCR.Objects
         RaiseAmount,
         Ante,
         GameIsFinished,
-        IsInPlay
+        IsInPlay,
+        SittingOut
     }
 
     public enum ImageType
@@ -75,6 +67,7 @@ namespace OCR.Objects
         PlayerStack,
         Ante,
         GameIsFinished,
-        IsInPlay
+        IsInPlay,
+        SittingOut
     }
 }

@@ -124,16 +124,18 @@ namespace bot.Helpers
             return result == "green";
         }
 
+        public bool GetSittingOut(Image image, string path)
+        {
+            string value = GetWordFromImage(image, path);
+
+            return value.ToLower().Contains("back");
+        }
+
         public void SetPlayerBets(BoardState state)
         {
             for (var i = 0; i < state.Players.Length; i++)
             {
                 state.Players[i].Bet = state.PlayersFromPreviousHand[i].Stack - state.Players[i].Stack;
-
-                //if (state.Players[i].Bet < 0)
-                //{
-                //    state.Players[i].Bet = 0;
-                //}
             }
         }
 
@@ -183,5 +185,7 @@ namespace bot.Helpers
 
             return parsed;
         }
+
+
     }
 }
