@@ -17,6 +17,7 @@ namespace Engine.Models
         public int Bet { get; set; } // Bet on table
         public bool IsDealer { get; set; }
         public bool Eliminated { get; set; }
+        public bool IsBlind { get; set; } = false;
         public bool IsAllIn { 
             get { return Chips == Bet; }
             set { }

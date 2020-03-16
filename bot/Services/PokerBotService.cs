@@ -42,62 +42,69 @@ namespace bot.Services
         {
             while (true)
             {
-                string dateStamp = DateTime.Now.ToString("hhmmss");
-                dateStamp = "040642";
-
-                string path = $"..\\..\\..\\images\\{dateStamp}";
-                string splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
-
-                if (!Directory.Exists(path))
+                try
                 {
-                    Directory.CreateDirectory(path);
-                    Directory.CreateDirectory(splicedPath);
+                    string dateStamp = DateTime.Now.ToString("hhmmss");
+                    dateStamp = "103114";
 
-                    _screenCaptureService.CaptureScreenToFile($"{path}\\board.png", ImageFormat.Png);
-                }
+                    string path = $"..\\..\\..\\images\\{dateStamp}";
+                    string splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
 
-                string historyPath = $"C:\\Temp\\handhistories\\CannonballJim";
-                Player[] players = _handHistoryService.GetPlayersFromHistory(historyPath);
-
-                BoardState boardState = _boardStateService.GetBoardStateFromImagePath(path, players);
-
-                if (boardState.GameIsFinished)
-                {
-                    //TODO add counter here
-                    await RegisterForNewGame();
-                    await WaitForGameToStart(_boardStateService, _screenCaptureService);
-                    //continue;
-                }
-
-                if (!boardState.ReadyForAction || boardState.HandCode == "null")
-                {
-                    DeleteFiles(path);
-                    continue;
-                }
-
-                PredictedAction predictedAction;
-
-                if (boardState.MyStackRatio > 20 && boardState.NumberOfPlayers > 4)
-                {
-                    predictedAction = new EarlyGamePredictedAction(boardState);
-                }
-                else
-                {
-                    double ev = 0;
-
-                    if (boardState.HandStage == HandStage.PreFlop)
+                    if (!Directory.Exists(path))
                     {
-                        ev = _icmService.GetExpectedValue(boardState);
+                        Directory.CreateDirectory(path);
+                        Directory.CreateDirectory(splicedPath);
+
+                        _screenCaptureService.CaptureScreenToFile($"{path}\\board.png", ImageFormat.Png);
                     }
 
-                    predictedAction = new PushFoldPredictedAction(boardState, ev);
+                    string historyPath = $"C:\\Temp\\handhistories\\CannonballJim";
+                    Player[] players = _handHistoryService.GetPlayersFromHistory(historyPath);
+
+                    BoardState boardState = _boardStateService.GetBoardStateFromImagePath(path, players);
+
+                    if (boardState.GameIsFinished)
+                    {
+                        break;
+                        await RegisterForNewGame();
+                        await WaitForGameToStart(_boardStateService, _screenCaptureService);
+                        continue;
+                    }
+
+                    if (!boardState.ReadyForAction || boardState.HandCode == "null")
+                    {
+                        DeleteFiles(path);
+                        continue;
+                    }
+
+                    PredictedAction predictedAction;
+
+                    if (boardState.MyStackRatio > 20 && boardState.NumberOfPlayers > 4)
+                    {
+                        predictedAction = new EarlyGamePredictedAction(boardState);
+                    }
+                    else
+                    {
+                        double ev = 0;
+
+                        if (boardState.HandStage == HandStage.PreFlop)
+                        {
+                            ev = _icmService.GetExpectedValue(boardState);
+                        }
+
+                        predictedAction = new PushFoldPredictedAction(boardState, ev);
+                    }
+
+                    LogStats(dateStamp, boardState, predictedAction);
+                    break;
+                    DoAction(predictedAction, boardState);
+
+                    await Task.Delay(2000);
                 }
-
-                LogStats(dateStamp, boardState, predictedAction);
-                break;
-                //DoAction(predictedAction, boardState);
-
-                await Task.Delay(2000);
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
             }
         }
 
@@ -158,7 +165,7 @@ namespace bot.Services
 
         private void DoAction(PredictedAction action, BoardState state)
         {
-            if (action == null)
+            if (action == null || state.HandStage != HandStage.PreFlop)
             {
                 return;
             }

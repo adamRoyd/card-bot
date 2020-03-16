@@ -20,25 +20,48 @@ namespace bot.Services
             Player[] players = GetPlayers();
 
             int pokerStarsHandIndex = lines.FindLastIndex(t => t.Contains("PokerStars Hand"));
+            int flopIndex = lines.FindLastIndex(t => t.Contains("*** FLOP ***"));
             int summaryIndex = lines.FindLastIndex(t => t.Contains("*** SUMMARY ***"));
 
 
-            List<string> latestGameHistory = lines.Skip(pokerStarsHandIndex)
+            List<string> fullHistory = lines.Skip(pokerStarsHandIndex)
                                     .Take(summaryIndex - pokerStarsHandIndex)
                                     .ToList();
 
-            SetNames(latestGameHistory, players);
+            List<string> preFlop = lines.Skip(pokerStarsHandIndex)
+                                    .Take(flopIndex - pokerStarsHandIndex)
+                                    .ToList();
 
-            SetInitialStacks(latestGameHistory, players);
+            List<string> postFlop = lines.Skip(flopIndex)
+                        .Take(summaryIndex - flopIndex)
+                        .ToList();
 
-            AddOrDeduct(latestGameHistory, players, "small blind ", false);
-            AddOrDeduct(latestGameHistory, players, "big blind ", false);
-            AddOrDeduct(latestGameHistory, players, "ante ", false);
-            AddOrDeduct(latestGameHistory, players, "bets ", false);
-            AddOrDeduct(latestGameHistory, players, "calls ", false);
-            AddOrDeduct(latestGameHistory, players, "raises \\d+ to ", false);
-            AddOrDeduct(latestGameHistory, players, "collected ", true);
-            AddOrDeduct(latestGameHistory, players, "Uncalled bet ", true);
+            LogHistoryId(fullHistory.First());
+
+            SetNames(fullHistory, players);
+
+            SetInitialStacks(fullHistory, players);
+
+            SetBlinds(fullHistory, players);
+
+            AddOrDeduct(fullHistory, players, "small blind ", false);
+            AddOrDeduct(fullHistory, players, "big blind ", false);
+            AddOrDeduct(fullHistory, players, "ante ", false);
+            AddOrDeduct(fullHistory, players, "bets ", false);
+            AddOrDeduct(fullHistory, players, "calls ", false);
+            AddOrDeduct(fullHistory, players, "collected ", true);
+            AddOrDeduct(fullHistory, players, "Uncalled bet ", true);
+
+            // Check if flop dealt. If not, treat full history as pre flop.
+            if (flopIndex > pokerStarsHandIndex)
+            {
+                DeductPreFlopRaise(preFlop, players);
+                AddOrDeduct(postFlop, players, "raises \\d+ to ", false);
+            }
+            else
+            {
+                DeductPreFlopRaise(fullHistory, players);
+            }
 
             foreach (Player player in players)
             {
@@ -46,6 +69,46 @@ namespace bot.Services
             }
 
             return players;
+        }
+
+        private void DeductPreFlopRaise(List<string> lines, Player[] players)
+        {
+            lines
+            .Where(line => Regex.IsMatch(line, "raises "))
+            .ToList()
+            .ForEach(line =>
+            {
+                string name = GetName(line);
+
+                if (IsMatch(players, name))
+                {
+                    string firstRaise = Regex.Split(line, "raises ")[1].Split(" ")[0];
+                    string secondRaise = Regex.Split(line, " to ")[1].Split(" ")[0];
+
+                    int.TryParse(firstRaise, out int first);
+                    int.TryParse(secondRaise, out int second);
+
+                    if (players.FirstOrDefault(p => p.Name == name).IsBlind)
+                    {
+                        Debug.WriteLine($"Add firstRaise, {name}, +{first}");
+                        players.FirstOrDefault(p => p.Name == name).Stack -= first;
+                    }
+                    else
+                    {
+                        Debug.WriteLine($"Add secondRaise, {name}, +{second}");
+                        players.FirstOrDefault(p => p.Name == name).Stack -= second;
+                    }
+
+                }
+            }
+            );
+        }
+
+        private void LogHistoryId(string line)
+        {
+            var expression = "#\\d+:";
+            var id = Regex.Match(line, expression);
+            Debug.WriteLine($"History: {id}");
         }
 
         private void AddOrDeduct(List<string> lines, Player[] players, string expression, bool isAddition)
@@ -96,6 +159,21 @@ namespace bot.Services
                     players.FirstOrDefault(p => p.Name == name).Stack = GetStack(line);
                 }
             });
+        }
+
+        private void SetBlinds(List<string> lines, Player[] players)
+        {
+            lines.Where(line => line.Contains("posts small blind") || line.Contains("posts big blind"))
+                .ToList()
+                .ForEach(line =>
+                {
+                    string name = GetName(line);
+
+                    if (IsMatch(players, name))
+                    {
+                        players.FirstOrDefault(p => p.Name == name).IsBlind = true;
+                    }
+                });
         }
 
         private void SetNames(List<string> lines, Player[] players)
@@ -150,7 +228,7 @@ namespace bot.Services
 
                 return output[1].Trim();
             }
-            else if (line.Contains("Uncalled bet "))
+            else if (line.Contains(" returned to "))
             {
                 string[] output = line.Split(" ");
 
@@ -160,8 +238,13 @@ namespace bot.Services
             {
                 return line.Split(":")[0];
             }
+            else if (line.Contains(" collected "))
+            {
+                return line.Split(" collected ")[0];
+            }
             else
             {
+                Console.WriteLine($"Get name not accurate! line: {line}");
                 return line.Split(" ")[0];
             }
         }

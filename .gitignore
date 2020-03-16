@@ -18,3 +18,4 @@ bot.tests/images/foldAction.png
 ICM/bin/Debug/netstandard2.0/ICM.pdb
 */bin
 */obj
+*.dll
