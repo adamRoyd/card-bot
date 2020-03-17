@@ -1,4 +1,6 @@
-Click Sitting Out Button
+split history by ***
+if player raises, ignore their last bet
+per section
 
 SORT OUT YOUR ACTION ON THE BIG BLIND
 

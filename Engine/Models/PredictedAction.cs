@@ -1,7 +1,5 @@
 ﻿using Engine.Enums;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Engine.Models
 {
@@ -9,12 +7,9 @@ namespace Engine.Models
     {
         public List<Hand> Hands { get; set; }
         public int? HandRank { get; set; }
-        public int MinSagePush { get; set; }
         public BoardState _state { get; set; }
         public double _ev { get; set; }
-
         public abstract ActionType GetAction();
-
         internal ActionType GetCheckOrFold()
         {
             if (_state.CallButton && _state.CallAmount == 0)

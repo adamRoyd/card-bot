@@ -15,9 +15,7 @@ namespace Engine.Models
         public Card Flop3 { get; set; }
         public Card Turn { get; set; }
         public Card River { get; set; }
-        public HandType HandType {
-            get { return GetHandType(); }
-        }
+        public HandType HandType => GetHandType();
 
         private HandType GetHandType()
         {
@@ -39,7 +37,7 @@ namespace Engine.Models
               .Select(y => new { Value = y.Key, Count = y.Count() })
               .ToList();
 
-            foreach (var card in cards)
+            foreach (Card card in cards)
             {
                 Console.WriteLine($"card! {card.SimpleValue}");
             };
@@ -54,27 +52,23 @@ namespace Engine.Models
 
         public string HandCode
         {
-            get { return GetHandCode(); }
+            get => GetHandCode();
             set { }
-        }
-        public int SageRank
-        {
-            get { return GetSageRank(); }
         }
         public Player[] Players { get; set; }
         public int NumberOfPlayers
         {
-            get { return Players.Where(p => !p.Eliminated).Count(); }
+            get => Players.Where(p => !p.Eliminated).Count();
             set { }
         }
         public int MyPosition
         {
-            get { return GetMyPosition(); }
+            get => GetMyPosition();
             set { }
         }
         public int MyStackRatio
         {
-            get { return GetMyStack(); }
+            get => GetMyStack();
             set { }
         }
         public int Pot { get; set; }
@@ -87,20 +81,14 @@ namespace Engine.Models
         public bool RaiseButton { get; set; }
         public bool ReadyForAction
         {
-            get { return (FoldButton || CallButton || RaiseButton) && HandCode != null; }
+            get => (FoldButton || CallButton || RaiseButton) && HandCode != null;
             set { }
         }
         public bool GameIsFinished { get; set; }
         public bool IsInPlay { get; set; }
         public bool SittingOut { get; set; }
-        public HandStage HandStage
-        {
-            get { return GetHandStage(); }
-        }
-        public GameStage GameStage
-        {
-            get { return GetGameStage(); }
-        }
+        public HandStage HandStage => GetHandStage();
+        public GameStage GameStage => GetGameStage();
 
         public BoardState(Player[] playersFromPreviousHand)
         {
@@ -114,13 +102,13 @@ namespace Engine.Models
 
         private int GetMyStack()
         {
-            var me = Players.First(p => p.Position == 1);
+            Player me = Players.First(p => p.Position == 1);
 
             if (me.Stack == 0 || BigBlind == 0)
             {
                 return 999999;
             }
-            var stackRatio = me.Stack / BigBlind;
+            int stackRatio = me.Stack / BigBlind;
             return stackRatio;
         }
 
@@ -128,9 +116,9 @@ namespace Engine.Models
         // If 7 players, dealer would be position 7.
         private int GetMyPosition()
         {
-            var playersInGame = Players.Where(p => !p.Eliminated).OrderBy(p => p.Position);
+            IOrderedEnumerable<Player> playersInGame = Players.Where(p => !p.Eliminated).OrderBy(p => p.Position);
 
-            var dealer = Players.FirstOrDefault(p => p.IsDealer);
+            Player dealer = Players.FirstOrDefault(p => p.IsDealer);
 
             if (dealer == null)
             {
@@ -138,9 +126,9 @@ namespace Engine.Models
                 return -1;
             }
 
-            var dealerPosition = 1;
+            int dealerPosition = 1;
 
-            foreach (var player in playersInGame)
+            foreach (Player player in playersInGame)
             {
                 if (player.IsDealer)
                 {
@@ -154,7 +142,7 @@ namespace Engine.Models
             // 1 is SB
             // 2 is BB
             // 3 is cutoff etc
-            var myPosition = playersInGame.Count() + 1 - dealerPosition;
+            int myPosition = playersInGame.Count() + 1 - dealerPosition;
             return myPosition;
         }
 
@@ -187,49 +175,14 @@ namespace Engine.Models
 
             string suited = StartingCard1.Suit == StartingCard2.Suit ? "s" : "o";
 
-            var card1Number = (int)StartingCard1.Value;
-            var card2Number = (int)StartingCard2.Value;
+            int card1Number = (int)StartingCard1.Value;
+            int card2Number = (int)StartingCard2.Value;
 
             string handCode = card1Number >= card2Number ?
                 $"{StartingCard1.SimpleValue}{StartingCard2.SimpleValue}{suited}" :
                 $"{StartingCard2.SimpleValue}{StartingCard1.SimpleValue}{suited}";
 
             return handCode;
-        }
-
-        private int GetSageRank()
-        {
-            if (StartingCard1 == null || StartingCard2 == null)
-            {
-                return 0;
-            }
-
-            int result = 0;
-
-            if (StartingCard1.Suit == StartingCard2.Suit)
-            {
-                result += 4;
-            }
-
-            var card1Number = (int)StartingCard1.Value;
-            var card2Number = (int)StartingCard2.Value;
-
-            if (card1Number == card2Number)
-            {
-                result += 22;
-            }
-
-            var highestNumber = card1Number > card2Number ? card1Number : card2Number;
-            var lowestNumber = card1Number > card2Number ? card2Number : card1Number;
-
-            result = result + (highestNumber * 2) + lowestNumber;
-
-            if((card1Number - card2Number == 1) || (card1Number - card2Number == -1))
-            {
-                result += 2;
-            }
-
-            return result;
         }
 
         private HandStage GetHandStage()

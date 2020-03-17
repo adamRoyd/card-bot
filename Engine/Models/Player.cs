@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Engine.Models
+﻿namespace Engine.Models
 {
     public class Player
     {
@@ -10,7 +6,7 @@ namespace Engine.Models
         public int Position { get; set; }
         public int Chips
         {
-            get { return Stack + Bet; }
+            get => Stack + Bet;
             set { }
         }
         public int Stack { get; set; } // How much is left after bets
@@ -18,8 +14,9 @@ namespace Engine.Models
         public bool IsDealer { get; set; }
         public bool Eliminated { get; set; }
         public bool IsBlind { get; set; } = false;
-        public bool IsAllIn { 
-            get { return Chips == Bet; }
+        public bool IsAllIn
+        {
+            get => Chips == Bet;
             set { }
         }
     }

@@ -90,12 +90,12 @@ namespace bot.Services
 
                     if (players.FirstOrDefault(p => p.Name == name).IsBlind)
                     {
-                        Debug.WriteLine($"Add firstRaise, {name}, +{first}");
+                        Debug.WriteLine($"Deduct firstRaise, {name}, -{first}");
                         players.FirstOrDefault(p => p.Name == name).Stack -= first;
                     }
                     else
                     {
-                        Debug.WriteLine($"Add secondRaise, {name}, +{second}");
+                        Debug.WriteLine($"Deduct secondRaise, {name}, -{second}");
                         players.FirstOrDefault(p => p.Name == name).Stack -= second;
                     }
 
@@ -246,18 +246,6 @@ namespace bot.Services
             {
                 Console.WriteLine($"Get name not accurate! line: {line}");
                 return line.Split(" ")[0];
-            }
-        }
-
-        private int GetStackChange(string line)
-        {
-            if (line.Contains("collected") || line.Contains("wins") || line.Contains("won"))
-            {
-                return GetStack(line);
-            }
-            else
-            {
-                return 0;
             }
         }
 
