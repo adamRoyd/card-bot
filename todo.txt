@@ -1,6 +1,4 @@
-split history by ***
-if player raises, ignore their last bet
-per section
+nearly there.... only count the last raise and any call actions after that.
 
 SORT OUT YOUR ACTION ON THE BIG BLIND
 

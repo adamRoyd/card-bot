@@ -59,11 +59,27 @@ namespace bot.Services
             // DEDUCT
             foreach (var section in sections)
             {
-                var sectionLines = section.Split(",").ToList();
-                
-                
-                AddOrDeduct(fullHistory, players, "bets ", false);
-                AddOrDeduct(fullHistory, players, "calls ", false);
+                var sectionLines = section.Split(",").Reverse().ToList();
+
+                foreach (var player in players)
+                {
+                    if (player.Name == null)
+                    {
+                        continue;
+                    }
+
+                    var playerLines = sectionLines.Where(line => line.Contains(player.Name)).ToList();
+
+                    if (playerLines.Any(line => line.Contains("raises")))
+                    {
+                        AddOrDeduct(playerLines, players, "raises \\d+ to ", false);
+                    }
+                    else
+                    {
+                        AddOrDeduct(playerLines, players, "bets ", false);
+                        AddOrDeduct(playerLines, players, "calls ", false);
+                    }
+                }
             }
 
             // Check if flop dealt. If not, treat full history as pre flop.
