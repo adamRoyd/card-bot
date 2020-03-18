@@ -21,6 +21,7 @@ namespace bot.Services
 
             int pokerStarsHandIndex = lines.FindLastIndex(t => t.Contains("PokerStars Hand"));
             int flopIndex = lines.FindLastIndex(t => t.Contains("*** FLOP ***"));
+            int holeCardsIndex = lines.FindLastIndex(t => t.Contains("*** HOLE CARDS ***"));
             int summaryIndex = lines.FindLastIndex(t => t.Contains("*** SUMMARY ***"));
 
 
@@ -33,35 +34,53 @@ namespace bot.Services
                                     .ToList();
 
             List<string> postFlop = lines.Skip(flopIndex)
-                        .Take(summaryIndex - flopIndex)
-                        .ToList();
+                                    .Take(summaryIndex - flopIndex)
+                                    .ToList();
 
+            List<string> bettingSection = lines.Skip(holeCardsIndex)
+                                    .Take(summaryIndex - holeCardsIndex)
+                                    .ToList();
+
+            // SET UP
             LogHistoryId(fullHistory.First());
-
             SetNames(fullHistory, players);
-
             SetInitialStacks(fullHistory, players);
-
             SetBlinds(fullHistory, players);
-
             AddOrDeduct(fullHistory, players, "small blind ", false);
             AddOrDeduct(fullHistory, players, "big blind ", false);
             AddOrDeduct(fullHistory, players, "ante ", false);
-            AddOrDeduct(fullHistory, players, "bets ", false);
-            AddOrDeduct(fullHistory, players, "calls ", false);
-            AddOrDeduct(fullHistory, players, "collected ", true);
-            AddOrDeduct(fullHistory, players, "Uncalled bet ", true);
+
+
+
+            var bettingSectionString = string.Join(",", bettingSection.ToArray());
+            var expression = @"\*\*\*\s([A-Z])\w+\b\s\*\*\*";
+            var sections = Regex.Split(bettingSectionString, expression);
+
+            // DEDUCT
+            foreach (var section in sections)
+            {
+                var sectionLines = section.Split(",").ToList();
+                
+                
+                AddOrDeduct(fullHistory, players, "bets ", false);
+                AddOrDeduct(fullHistory, players, "calls ", false);
+            }
 
             // Check if flop dealt. If not, treat full history as pre flop.
-            if (flopIndex > pokerStarsHandIndex)
-            {
-                DeductPreFlopRaise(preFlop, players);
-                AddOrDeduct(postFlop, players, "raises \\d+ to ", false);
-            }
-            else
-            {
-                DeductPreFlopRaise(fullHistory, players);
-            }
+            //if (flopIndex > pokerStarsHandIndex)
+            //{
+            //    DeductPreFlopRaise(preFlop, players);
+            //    AddOrDeduct(postFlop, players, "raises \\d+ to ", false);
+            //}
+            //else
+            //{
+            //    DeductPreFlopRaise(fullHistory, players);
+            //}
+
+
+            // ADD
+            AddOrDeduct(fullHistory, players, "collected ", true);
+            AddOrDeduct(fullHistory, players, "Uncalled bet ", true);
 
             foreach (Player player in players)
             {
