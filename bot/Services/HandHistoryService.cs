@@ -1,5 +1,6 @@
 ﻿using Engine.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -21,7 +22,7 @@ namespace bot.Services
 
             int pokerStarsHandIndex = lines.FindLastIndex(t => t.Contains("PokerStars Hand"));
             int flopIndex = lines.FindLastIndex(t => t.Contains("*** FLOP ***"));
-            int holeCardsIndex = lines.FindLastIndex(t => t.Contains("*** HOLE CARDS ***"));
+            int holeCardsIndex = lines.FindLastIndex(t => t.Contains("posts small blind"));
             int summaryIndex = lines.FindLastIndex(t => t.Contains("*** SUMMARY ***"));
 
 
@@ -46,11 +47,6 @@ namespace bot.Services
             SetNames(fullHistory, players);
             SetInitialStacks(fullHistory, players);
             SetBlinds(fullHistory, players);
-            AddOrDeduct(fullHistory, players, "small blind ", false);
-            AddOrDeduct(fullHistory, players, "big blind ", false);
-            AddOrDeduct(fullHistory, players, "ante ", false);
-
-
 
             var bettingSectionString = string.Join(",", bettingSection.ToArray());
             var expression = @"\*\*\*\s([A-Z])\w+\b\s\*\*\*";
@@ -68,31 +64,36 @@ namespace bot.Services
                         continue;
                     }
 
-                    var playerLines = sectionLines.Where(line => line.Contains(player.Name)).ToList();
+                    var playerLines = new List<string>();
+
+                    foreach (var line in sectionLines)
+                    {
+                        if (line.Contains(player.Name))
+                        {
+                            playerLines.Add(line);
+                        }
+                    }
 
                     if (playerLines.Any(line => line.Contains("raises")))
                     {
-                        AddOrDeduct(playerLines, players, "raises \\d+ to ", false);
+                        // Deduct last raise - all preceding bets will be included in this raise
+                        var lastRaise = playerLines.First(line => line.Contains("raises"));
+                        AddOrDeductLine(lastRaise, players, "raises \\d+ to ", false);
+
+                        // Deduct any call after the last raise
+                        var remainingLines = playerLines.Where(line => playerLines.IndexOf(line) > playerLines.IndexOf(lastRaise)).ToList();
+                        AddOrDeduct(remainingLines, players, "calls ", false);
                     }
                     else
                     {
+                        AddOrDeduct(playerLines, players, "small blind ", false);
+                        AddOrDeduct(playerLines, players, "big blind ", false);
+                        AddOrDeduct(playerLines, players, "ante ", false);
                         AddOrDeduct(playerLines, players, "bets ", false);
                         AddOrDeduct(playerLines, players, "calls ", false);
                     }
                 }
             }
-
-            // Check if flop dealt. If not, treat full history as pre flop.
-            //if (flopIndex > pokerStarsHandIndex)
-            //{
-            //    DeductPreFlopRaise(preFlop, players);
-            //    AddOrDeduct(postFlop, players, "raises \\d+ to ", false);
-            //}
-            //else
-            //{
-            //    DeductPreFlopRaise(fullHistory, players);
-            //}
-
 
             // ADD
             AddOrDeduct(fullHistory, players, "collected ", true);
@@ -106,46 +107,6 @@ namespace bot.Services
             return players;
         }
 
-        private void DeductPreFlopRaise(List<string> lines, Player[] players)
-        {
-            lines
-            .Where(line => Regex.IsMatch(line, "raises "))
-            .ToList()
-            .ForEach(line =>
-            {
-                string name = GetName(line);
-
-                if (IsMatch(players, name))
-                {
-                    string firstRaise = Regex.Split(line, "raises ")[1].Split(" ")[0];
-                    string secondRaise = Regex.Split(line, " to ")[1].Split(" ")[0];
-
-                    int.TryParse(firstRaise, out int first);
-                    int.TryParse(secondRaise, out int second);
-
-                    if (players.FirstOrDefault(p => p.Name == name).IsBlind)
-                    {
-                        Debug.WriteLine($"Deduct firstRaise, {name}, -{first}");
-                        players.FirstOrDefault(p => p.Name == name).Stack -= first;
-                    }
-                    else
-                    {
-                        Debug.WriteLine($"Deduct secondRaise, {name}, -{second}");
-                        players.FirstOrDefault(p => p.Name == name).Stack -= second;
-                    }
-
-                }
-            }
-            );
-        }
-
-        private void LogHistoryId(string line)
-        {
-            var expression = "#\\d+:";
-            var id = Regex.Match(line, expression);
-            Debug.WriteLine($"History: {id}");
-        }
-
         private void AddOrDeduct(List<string> lines, Player[] players, string expression, bool isAddition)
         {
             lines
@@ -153,27 +114,32 @@ namespace bot.Services
                 .ToList()
                 .ForEach(line =>
                 {
-                    string name = GetName(line);
-
-                    if (IsMatch(players, name))
-                    {
-                        string numberInText = Regex.Split(line, expression)[1].Split(" ")[0].Replace("(", "").Replace(")", "");
-
-                        int.TryParse(numberInText, out int value);
-
-                        if (isAddition)
-                        {
-                            Debug.WriteLine($"Add {expression}, {name}, +{value}");
-                            players.FirstOrDefault(p => p.Name == name).Stack += value;
-                        }
-                        else
-                        {
-                            Debug.WriteLine($"Deduct {expression}, {name}, -{value}");
-                            players.FirstOrDefault(p => p.Name == name).Stack -= value;
-                        }
-                    }
+                    AddOrDeductLine(line, players, expression, isAddition);
                 }
             );
+        }
+
+        private void AddOrDeductLine(string line, Player[] players, string expression, bool isAddition)
+        {
+            string name = GetName(line);
+
+            if (IsMatch(players, name))
+            {
+                string numberInText = Regex.Split(line, expression)[1].Split(" ")[0].Replace("(", "").Replace(")", "");
+
+                int.TryParse(numberInText, out int value);
+
+                if (isAddition)
+                {
+                    Debug.WriteLine($"Add {expression}, {name}, +{value}");
+                    players.FirstOrDefault(p => p.Name == name).Stack += value;
+                }
+                else
+                {
+                    Debug.WriteLine($"Deduct {expression}, {name}, -{value}");
+                    players.FirstOrDefault(p => p.Name == name).Stack -= value;
+                }
+            }
         }
 
         private static bool IsMatch(Player[] players, string name)
@@ -299,6 +265,13 @@ namespace bot.Services
             }
 
             return 0;
+        }
+
+        private void LogHistoryId(string line)
+        {
+            var expression = "#\\d+:";
+            var id = Regex.Match(line, expression);
+            Debug.WriteLine($"History: {id}");
         }
 
         private int GetPosition(string line)

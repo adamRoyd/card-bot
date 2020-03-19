@@ -1,4 +1,4 @@
-nearly there.... only count the last raise and any call actions after that.
+find out why it's not quite right yet.
 
 SORT OUT YOUR ACTION ON THE BIG BLIND
 
