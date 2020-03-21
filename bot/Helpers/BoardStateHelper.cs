@@ -2,9 +2,11 @@
 using Engine.Models;
 using OCR;
 using OCR.Objects;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using Tesseract;
 
 namespace bot.Helpers
@@ -80,7 +82,7 @@ namespace bot.Helpers
             return result == "red";
         }
 
-        public void SetPlayerStack(string path, BoardImage boardImage, BoardState state)
+        public void SetPlayerStack(string path, BoardImage boardImage, BoardState state, Player[] playersFromPreviousHand)
         {
             string result = _imageProcessor.GetImageCharacters(boardImage.Image, PageSegMode.Auto);
 
@@ -90,10 +92,14 @@ namespace bot.Helpers
 
             string colour = _suitFinder.GetBlackOrWhite(path);
 
-            //Set active / inactive 
-            if (result.Contains("itting") || colour == "white")
+            if (colour == "white")
             {
                 state.Players[index].Eliminated = true;
+            }
+            else if (result.Contains("itting"))
+            {
+                state.Players[index].Stack = playersFromPreviousHand[index].Stack;
+                state.Players[index].SittingOut = true;
             }
             else
             {
@@ -101,7 +107,6 @@ namespace bot.Helpers
 
                 int.TryParse(result, out int value);
 
-                state.Players[index].Eliminated = false;
                 state.Players[index].Stack = value;
             }
         }
@@ -124,7 +129,7 @@ namespace bot.Helpers
             return result == "green";
         }
 
-        public bool GetSittingOut(Image image, string path)
+        public bool GetHeroSittingOut(Image image, string path)
         {
             string value = GetWordFromImage(image, path);
 
@@ -135,7 +140,23 @@ namespace bot.Helpers
         {
             for (var i = 0; i < state.Players.Length; i++)
             {
-                state.Players[i].Bet = state.PlayersFromPreviousHand[i].Stack - state.Players[i].Stack;
+                state.Players[i].Bet = state.PlayersFromPreviousHand[i].Stack - state.Players[i].Stack - state.Ante;
+            }
+
+            // If no big blind bet found, it should be on a player sitting out
+            if (state.Players.All(p => p.Bet != state.BigBlind) && state.HandStage == Engine.Enums.HandStage.PreFlop && state.ReadyForAction)
+            {
+                Console.WriteLine("No big blind found! Attempting set...");
+                var filteredPlayers = state.Players.Where(p => !p.Eliminated).ToArray();
+                var smallBlind = filteredPlayers.FirstOrDefault(p => p.Bet == (state.BigBlind / 2));
+
+                if (smallBlind != null)
+                {
+                    var bigBlindIndex = Array.IndexOf(filteredPlayers, smallBlind) - 1;
+                    var bigBlindPlayer = filteredPlayers[bigBlindIndex];
+                    state.Players.FirstOrDefault(p => p.Position == bigBlindPlayer.Position).Bet = state.BigBlind;
+                    state.Players.FirstOrDefault(p => p.Position == bigBlindPlayer.Position).Stack -= state.BigBlind;
+                }
             }
         }
 

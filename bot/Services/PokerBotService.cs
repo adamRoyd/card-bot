@@ -45,7 +45,7 @@ namespace bot.Services
                 try
                 {
                     string dateStamp = DateTime.Now.ToString("hhmmss");
-                    dateStamp = "075606";
+                    dateStamp = "023602";
 
                     string path = $"..\\..\\..\\images\\{dateStamp}";
                     string splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";

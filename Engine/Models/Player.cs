@@ -12,7 +12,8 @@
         public int Stack { get; set; } // How much is left after bets
         public int Bet { get; set; } // Bet on table
         public bool IsDealer { get; set; }
-        public bool Eliminated { get; set; }
+        public bool Eliminated { get; set; } = false;
+        public bool SittingOut { get; set; } = false;
         public bool IsBlind { get; set; } = false;
         public bool IsAllIn
         {

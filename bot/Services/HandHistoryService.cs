@@ -22,7 +22,7 @@ namespace bot.Services
 
             int pokerStarsHandIndex = lines.FindLastIndex(t => t.Contains("PokerStars Hand"));
             int flopIndex = lines.FindLastIndex(t => t.Contains("*** FLOP ***"));
-            int holeCardsIndex = lines.FindLastIndex(t => t.Contains("posts small blind"));
+            //int holeCardsIndex = lines.FindLastIndex(t => t.Contains("posts small blind"));
             int summaryIndex = lines.FindLastIndex(t => t.Contains("*** SUMMARY ***"));
 
 
@@ -38,24 +38,23 @@ namespace bot.Services
                                     .Take(summaryIndex - flopIndex)
                                     .ToList();
 
-            List<string> bettingSection = lines.Skip(holeCardsIndex)
-                                    .Take(summaryIndex - holeCardsIndex)
-                                    .ToList();
+            //List<string> bettingSection = lines.Skip(pokerStarsHandIndex)
+            //                        .Take(summaryIndex - pokerStarsHandIndex)
+            //                        .ToList();
 
             // SET UP
             LogHistoryId(fullHistory.First());
             SetNames(fullHistory, players);
             SetInitialStacks(fullHistory, players);
-            SetBlinds(fullHistory, players);
 
-            var bettingSectionString = string.Join(",", bettingSection.ToArray());
+            var bettingSectionString = string.Join(",", fullHistory.ToArray());
             var expression = @"\*\*\*\s([A-Z])\w+\b\s\*\*\*";
             var sections = Regex.Split(bettingSectionString, expression);
 
             // DEDUCT
             foreach (var section in sections)
             {
-                var sectionLines = section.Split(",").Reverse().ToList();
+                var sectionLines = section.Split(",").ToList();
 
                 foreach (var player in players)
                 {
@@ -88,7 +87,7 @@ namespace bot.Services
                     {
                         AddOrDeduct(playerLines, players, "small blind ", false);
                         AddOrDeduct(playerLines, players, "big blind ", false);
-                        AddOrDeduct(playerLines, players, "ante ", false);
+                        
                         AddOrDeduct(playerLines, players, "bets ", false);
                         AddOrDeduct(playerLines, players, "calls ", false);
                     }
@@ -96,6 +95,7 @@ namespace bot.Services
             }
 
             // ADD
+            AddOrDeduct(fullHistory, players, "ante ", false);
             AddOrDeduct(fullHistory, players, "collected ", true);
             AddOrDeduct(fullHistory, players, "Uncalled bet ", true);
 
@@ -160,21 +160,6 @@ namespace bot.Services
                     players.FirstOrDefault(p => p.Name == name).Stack = GetStack(line);
                 }
             });
-        }
-
-        private void SetBlinds(List<string> lines, Player[] players)
-        {
-            lines.Where(line => line.Contains("posts small blind") || line.Contains("posts big blind"))
-                .ToList()
-                .ForEach(line =>
-                {
-                    string name = GetName(line);
-
-                    if (IsMatch(players, name))
-                    {
-                        players.FirstOrDefault(p => p.Name == name).IsBlind = true;
-                    }
-                });
         }
 
         private void SetNames(List<string> lines, Player[] players)

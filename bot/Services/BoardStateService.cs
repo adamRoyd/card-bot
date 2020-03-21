@@ -35,7 +35,7 @@ namespace bot.Services
 
                     if (boardImage.Type == OCR.Objects.ImageType.PlayerStack)
                     {
-                        _boardStateHelper.SetPlayerStack(boardImagepath, boardImage, boardState);
+                        _boardStateHelper.SetPlayerStack(boardImagepath, boardImage, boardState, playersFromPreviousHand);
                     }
                     else if (boardImage.Type == OCR.Objects.ImageType.PlayerDealerButton)
                     {
@@ -54,7 +54,7 @@ namespace bot.Services
                             OCR.Objects.ImageType.ReadyForAction => _boardStateHelper.GetReadyForAction(boardImage.Image, boardImagepath),
                             OCR.Objects.ImageType.GameIsFinished => _boardStateHelper.GetGameIsFinished(boardImage.Image, boardImagepath),
                             OCR.Objects.ImageType.IsInPlay => _boardStateHelper.GetIsInPlay(boardImage.Image, boardImagepath),
-                            OCR.Objects.ImageType.SittingOut => _boardStateHelper.GetSittingOut(boardImage.Image, boardImagepath),
+                            OCR.Objects.ImageType.SittingOut => _boardStateHelper.GetHeroSittingOut(boardImage.Image, boardImagepath),
                             _ => null
                         };
                     }
