@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -36,6 +37,19 @@ namespace bot.Services
 
             // Move the mouse to the final destination.
             Cursor.Position = newPosition;
+        }
+
+        public static async Task ClickImBackButton()
+        {
+            Random rnd = new Random();
+            await Task.Delay(rnd.Next(500, 1000));
+            Point infoPosition = new Point(rnd.Next(1370, 1390), rnd.Next(960, 980));
+            await MouseService.LinearSmoothMove(infoPosition, 60);
+            MouseService.Click();
+            await Task.Delay(rnd.Next(500, 1000));
+            infoPosition = new Point(rnd.Next(760, 764), rnd.Next(940, 944));
+            await MouseService.LinearSmoothMove(infoPosition, 60);
+            await Task.Delay(rnd.Next(500, 1000));
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]

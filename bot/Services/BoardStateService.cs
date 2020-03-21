@@ -1,7 +1,9 @@
 ﻿using bot.Helpers;
 using Engine.Models;
 using OCR;
+using OCR.Objects;
 using System;
+using System.Collections.Generic;
 
 namespace bot.Services
 {
@@ -19,17 +21,50 @@ namespace bot.Services
             _boardStateHelper = boardStateHelper;
         }
 
-        public BoardState GetBoardStateFromImagePath(string path, Player[] playersFromPreviousHand)
+        public BoardState SetGameStatus(string path, BoardState boardState)
         {
             try
             {
-                var boardImages = _imageProcessor.SliceBoardScreenShot(path);
+                BoardImages boardImages = new BoardImages();
 
-                var boardState = new BoardState(playersFromPreviousHand);
+                List<BoardImage> gameStatusImages = _imageProcessor.SliceBoardScreenShot(path, boardImages.GameStatusImages);
+                _boardStateHelper.SaveBoardImages(gameStatusImages, path);
 
-                _boardStateHelper.SaveBoardImages(boardImages, path);
+                foreach (var boardImage in gameStatusImages)
+                {
+                    var boardImagepath = $"{path}\\spliced\\{boardImage.Name}.png";
 
-                foreach (var boardImage in boardImages)
+                    boardState[boardImage.Name.ToString()] = boardImage.Type switch
+                    {
+                        ImageType.ReadyForAction => _boardStateHelper.GetReadyForAction(boardImage.Image, boardImagepath),
+                        ImageType.GameIsFinished => _boardStateHelper.GetGameIsFinished(boardImage.Image, boardImagepath),
+                        ImageType.IsInPlay => _boardStateHelper.GetIsInPlay(boardImage.Image, boardImagepath),
+                        ImageType.SittingOut => _boardStateHelper.GetHeroSittingOut(boardImage.Image, boardImagepath),
+                        _ => null
+                    };
+
+                    boardImage.Image.Dispose();
+                }
+
+                return boardState;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public BoardState SetLiveHand(string path, BoardState boardState, Player[] playersFromPreviousHand)
+        {
+            try
+            {
+                BoardImages boardImages = new BoardImages();
+
+                List<BoardImage> liveHandImages = _imageProcessor.SliceBoardScreenShot(path, boardImages.LiveHandList);
+                _boardStateHelper.SaveBoardImages(liveHandImages, path);
+
+                foreach (var boardImage in liveHandImages)
                 {
                     var boardImagepath = $"{path}\\spliced\\{boardImage.Name}.png";
 
@@ -45,16 +80,12 @@ namespace bot.Services
                     {
                         boardState[boardImage.Name.ToString()] = boardImage.Type switch
                         {
-                            OCR.Objects.ImageType.Number => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),
-                            OCR.Objects.ImageType.Card => _boardStateHelper.GetCardFromImage(boardImage.Image, boardImagepath),
-                            OCR.Objects.ImageType.Pot => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),
-                            OCR.Objects.ImageType.Word => _boardStateHelper.GetWordFromImage(boardImage.Image, boardImagepath),
-                            OCR.Objects.ImageType.BigBlind => _boardStateHelper.GetBigBlindFromImage(boardImage.Image, boardImagepath),
-                            OCR.Objects.ImageType.Ante => _boardStateHelper.GetAnteFromImage(boardImage.Image, boardImagepath),
-                            OCR.Objects.ImageType.ReadyForAction => _boardStateHelper.GetReadyForAction(boardImage.Image, boardImagepath),
-                            OCR.Objects.ImageType.GameIsFinished => _boardStateHelper.GetGameIsFinished(boardImage.Image, boardImagepath),
-                            OCR.Objects.ImageType.IsInPlay => _boardStateHelper.GetIsInPlay(boardImage.Image, boardImagepath),
-                            OCR.Objects.ImageType.SittingOut => _boardStateHelper.GetHeroSittingOut(boardImage.Image, boardImagepath),
+                            ImageType.Number => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),
+                            ImageType.Card => _boardStateHelper.GetCardFromImage(boardImage.Image, boardImagepath),
+                            ImageType.Pot => _boardStateHelper.GetNumberFromImage(boardImage.Image, boardImagepath),
+                            ImageType.Word => _boardStateHelper.GetWordFromImage(boardImage.Image, boardImagepath),
+                            ImageType.BigBlind => _boardStateHelper.GetBigBlindFromImage(boardImage.Image, boardImagepath),
+                            ImageType.Ante => _boardStateHelper.GetAnteFromImage(boardImage.Image, boardImagepath),
                             _ => null
                         };
                     }
@@ -71,7 +102,6 @@ namespace bot.Services
                 Console.WriteLine(e);
                 throw;
             }
-
         }
     }
 }

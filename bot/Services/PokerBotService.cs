@@ -3,6 +3,7 @@ using Engine.Enums;
 using Engine.Models;
 using ICM;
 using Microsoft.Extensions.Logging;
+using OCR.Objects;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -45,7 +46,7 @@ namespace bot.Services
                 try
                 {
                     string dateStamp = DateTime.Now.ToString("hhmmss");
-                    dateStamp = "023602";
+                    //dateStamp = "021930";
 
                     string path = $"..\\..\\..\\images\\{dateStamp}";
                     string splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -59,14 +60,15 @@ namespace bot.Services
                     }
 
                     string historyPath = $"C:\\Temp\\handhistories\\CannonballJim";
-                    Player[] players = _handHistoryService.GetPlayersFromHistory(historyPath);
-
-                    BoardState boardState = _boardStateService.GetBoardStateFromImagePath(path, players);
+                    Player[] playersFromPreviousHand = _handHistoryService.GetPlayersFromHistory(historyPath);
+                    BoardState boardState = new BoardState(playersFromPreviousHand);
+                    
+                    boardState = _boardStateService.SetGameStatus(path, boardState);
 
                     if (boardState.SittingOut)
                     {
                         Console.WriteLine("Sitting out!");
-                        await ClickImBackButton();
+                        await MouseService.ClickImBackButton();
                         continue;
                     }
 
@@ -78,11 +80,14 @@ namespace bot.Services
                         continue;
                     }
 
-                    if (!boardState.ReadyForAction || boardState.HandCode == "null")
+                    if (!boardState.ReadyForAction)
                     {
                         DeleteFiles(path);
+
                         continue;
                     }
+
+                    boardState = _boardStateService.SetLiveHand(path, boardState, playersFromPreviousHand);
 
                     PredictedAction predictedAction;
 
@@ -102,7 +107,12 @@ namespace bot.Services
                         predictedAction = new PushFoldPredictedAction(boardState, ev);
                     }
 
-                    LogStats(dateStamp, boardState, predictedAction);
+
+                    if (boardState.HandStage == HandStage.PreFlop)
+                    {
+                        LogStats(dateStamp, boardState, predictedAction);
+                    }
+
                     break;
                     DoAction(predictedAction, boardState);
 
@@ -148,7 +158,8 @@ namespace bot.Services
                     screenCaptureService.CaptureScreenToFile($"{path}\\board.png", ImageFormat.Png);
                 }
 
-                BoardState boardState = boardStateService.GetBoardStateFromImagePath(path, null);
+                BoardState boardState = new BoardState(null);
+                boardState = boardStateService.SetGameStatus(path, boardState);
 
                 if (!boardState.IsInPlay)
                 {
@@ -168,19 +179,6 @@ namespace bot.Services
             Point infoPosition = new Point(rnd.Next(759, 764), rnd.Next(845, 849));
             await MouseService.LinearSmoothMove(infoPosition, 60);
             MouseService.Click();
-        }
-
-        private async Task ClickImBackButton()
-        {
-            await Task.Delay(rnd.Next(500, 1000));
-            Point infoPosition = new Point(rnd.Next(1370, 1390), rnd.Next(960, 980));
-            await MouseService.LinearSmoothMove(infoPosition, 60);
-            MouseService.Click();
-            await Task.Delay(rnd.Next(500, 1000));
-            infoPosition = new Point(rnd.Next(760, 764), rnd.Next(940, 944));
-            await MouseService.LinearSmoothMove(infoPosition, 60);
-            await Task.Delay(rnd.Next(500, 1000));
-
         }
 
         private void DoAction(PredictedAction action, BoardState state)

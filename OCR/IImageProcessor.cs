@@ -11,6 +11,6 @@ namespace OCR
         CardValue GetCardValueFromImage(Image image);
         string GetImageCharacters(Image image, PageSegMode segMode);
         string GetNumbers(Image img, PageSegMode mode);
-        List<BoardImage> SliceBoardScreenShot(string path);
+        List<BoardImage> SliceBoardScreenShot(string path, List<BoardImage> boardImageList);
     }
 }

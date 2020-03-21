@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Text.RegularExpressions;
 using Tesseract;
 
 namespace OCR
@@ -145,21 +144,19 @@ namespace OCR
             }
         }
 
-        public List<BoardImage> SliceBoardScreenShot(string path)
+        public List<BoardImage> SliceBoardScreenShot(string path, List<BoardImage> boardImageList)
         {
-            var boardImages = new BoardImages();
-
             var fileName = $"{path}\\board.png";
             var img = Image.FromFile(fileName);
 
-            foreach (var boardImage in boardImages.BoardImageList)
+            foreach (var boardImage in boardImageList)
             {
                 DrawImage(boardImage, img);
             }
 
             img.Dispose();
 
-            return boardImages.BoardImageList;
+            return boardImageList;
         }
 
         private void DrawImage(BoardImage boardImage, Image baseImage)

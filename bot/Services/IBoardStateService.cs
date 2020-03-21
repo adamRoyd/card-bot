@@ -4,6 +4,7 @@ namespace bot.Services
 {
     public interface IBoardStateService
     {
-        BoardState GetBoardStateFromImagePath(string path, Player[] playersFromPreviousHand);
+        BoardState SetGameStatus(string path, BoardState boardState);
+        BoardState SetLiveHand(string path, BoardState boardState, Player[] playersFromPreviousHand);
     }
 }

@@ -1,18 +1,67 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
-
 namespace OCR.Objects
 {
     public class BoardImages
     {
-        public List<BoardImage> BoardImageList { get; set; }
+        public List<BoardImage> GameStatusImages { get; set; }
+        public List<BoardImage> LiveHandList { get; set; }
 
         public BoardImages()
         {
+            GameStatusImages = new List<BoardImage>
+            {
+                new BoardImage
+                {
+                    Name = ImageName.FoldButton,
+                    Type = ImageType.ReadyForAction,
+                    Image = new Bitmap(280, 10),
+                    X = 980,
+                    Y = 958
+                },
+                new BoardImage
+                {
+                    Name = ImageName.CallButton,
+                    Type = ImageType.ReadyForAction,
+                    Image = new Bitmap(280, 10),
+                    X = 1284,
+                    Y = 958
+                },
+                new BoardImage
+                {
+                    Name = ImageName.RaiseButton,
+                    Type = ImageType.ReadyForAction,
+                    Image = new Bitmap(280, 10),
+                    X = 1613,
+                    Y = 958
+                },
+                new BoardImage
+                {
+                    Name = ImageName.GameIsFinished,
+                    Type = ImageType.GameIsFinished,
+                    Image = new Bitmap(600, 300),
+                    X = 676,
+                    Y = 326
+                },
+                new BoardImage
+                {
+                    Name = ImageName.IsInPlay,
+                    Type = ImageType.IsInPlay,
+                    Image = new Bitmap(160, 25),
+                    X = 555,
+                    Y = 323
+                },
+                new BoardImage
+                {
+                    Name = ImageName.SittingOut,
+                    Type = ImageType.SittingOut,
+                    Image = new Bitmap(180, 90),
+                    X = 1346,
+                    Y = 947
+                },
+            };
 
-            BoardImageList = new List<BoardImage>
+            LiveHandList = new List<BoardImage>
             {
                 new BoardImage
                 {
@@ -30,46 +79,46 @@ namespace OCR.Objects
                     X = 996,
                     Y = 647
                 },
-                new BoardImage
-                {
-                    Name = ImageName.Flop1,
-                    Type = ImageType.Card,
-                    Image = new Bitmap(51, 75),
-                    X = 749,
-                    Y = 357
-                },
-                new BoardImage
-                {
-                    Name = ImageName.Flop2,
-                    Type = ImageType.Card,
-                    Image = new Bitmap(51, 75),
-                    X = 848,
-                    Y = 357
-                },
-                new BoardImage
-                {
-                    Name = ImageName.Flop3,
-                    Type = ImageType.Card,
-                    Image = new Bitmap(51, 75),
-                    X = 949,
-                    Y = 357
-                },
-                new BoardImage
-                {
-                    Name = ImageName.Turn,
-                    Type = ImageType.Card,
-                    Image = new Bitmap(51, 75),
-                    X = 1050,
-                    Y = 357
-                },
-                new BoardImage
-                {
-                    Name = ImageName.River,
-                    Type = ImageType.Card,
-                    Image = new Bitmap(51, 75),
-                    X = 1152,
-                    Y = 357
-                },
+                //new BoardImage
+                //{
+                //    Name = ImageName.Flop1,
+                //    Type = ImageType.Card,
+                //    Image = new Bitmap(51, 75),
+                //    X = 749,
+                //    Y = 357
+                //},
+                //new BoardImage
+                //{
+                //    Name = ImageName.Flop2,
+                //    Type = ImageType.Card,
+                //    Image = new Bitmap(51, 75),
+                //    X = 848,
+                //    Y = 357
+                //},
+                //new BoardImage
+                //{
+                //    Name = ImageName.Flop3,
+                //    Type = ImageType.Card,
+                //    Image = new Bitmap(51, 75),
+                //    X = 949,
+                //    Y = 357
+                //},
+                //new BoardImage
+                //{
+                //    Name = ImageName.Turn,
+                //    Type = ImageType.Card,
+                //    Image = new Bitmap(51, 75),
+                //    X = 1050,
+                //    Y = 357
+                //},
+                //new BoardImage
+                //{
+                //    Name = ImageName.River,
+                //    Type = ImageType.Card,
+                //    Image = new Bitmap(51, 75),
+                //    X = 1152,
+                //    Y = 357
+                //},
                 new BoardImage
                 {
                     Name = ImageName.Position1,
@@ -191,30 +240,7 @@ namespace OCR.Objects
                     X = 146,
                     Y = 976
                 },
-                new BoardImage
-                {
-                    Name = ImageName.FoldButton,
-                    Type = ImageType.ReadyForAction,
-                    Image = new Bitmap(280, 10),
-                    X = 980,
-                    Y = 958
-                },
-                new BoardImage
-                {
-                    Name = ImageName.CallButton,
-                    Type = ImageType.ReadyForAction,
-                    Image = new Bitmap(280, 10),
-                    X = 1284,
-                    Y = 958
-                },
-                new BoardImage
-                {
-                    Name = ImageName.RaiseButton,
-                    Type = ImageType.ReadyForAction,
-                    Image = new Bitmap(280, 10),
-                    X = 1613,
-                    Y = 958
-                },
+
                 new BoardImage
                 {
                     Name = ImageName.Stack1,
@@ -295,32 +321,7 @@ namespace OCR.Objects
                     Image = new Bitmap(150, 40),
                     X = 1343,
                     Y = 669
-                },
-                new BoardImage
-                {
-                    Name = ImageName.GameIsFinished,
-                    Type = ImageType.GameIsFinished,
-                    Image = new Bitmap(600, 300),
-                    X = 676,
-                    Y = 326
-                },
-                new BoardImage
-                {
-                    Name = ImageName.IsInPlay,
-                    PlayerNumber = 7,
-                    Type = ImageType.IsInPlay,
-                    Image = new Bitmap(160, 25),
-                    X = 555,
-                    Y = 323
-                },
-                new BoardImage
-                {
-                    Name = ImageName.SittingOut,
-                    Type = ImageType.SittingOut,
-                    Image = new Bitmap(180, 90),
-                    X = 1346,
-                    Y = 947
-                },
+                }
             };
         }
     }

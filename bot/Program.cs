@@ -7,7 +7,6 @@ using bot.Services;
 using bot.Helpers;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.EventLog;
-using System.IO;
 
 namespace bot
 {

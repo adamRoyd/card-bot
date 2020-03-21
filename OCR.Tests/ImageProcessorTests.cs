@@ -1,3 +1,4 @@
+using OCR.Objects;
 using System;
 using System.Linq;
 using Tesseract;
@@ -164,11 +165,9 @@ namespace OCR.Tests
         public void SliceBoardImage_Board4_ReturnsCorrectStartingCard1()
         {
             var path = "..\\..\\..\\images\\board1.png";
+            var images = imageProcessor.SliceBoardScreenShot(path, BoardImages.LiveHandList);
 
-
-            var boardImages = imageProcessor.SliceBoardScreenShot(path);
-
-            var boardImage = boardImages.FirstOrDefault(b => b.Name == Objects.ImageName.StartingCard1);
+            var boardImage = images.FirstOrDefault(b => b.Name == Objects.ImageName.StartingCard1);
             var cardValue = imageProcessor.GetCardValueFromImage(boardImage.Image);
 
             Assert.Equal(Engine.Enums.CardValue.A, cardValue);
@@ -180,10 +179,9 @@ namespace OCR.Tests
         {
             var path = "..\\..\\..\\images\\1";
 
+            var images = imageProcessor.SliceBoardScreenShot(path, BoardImages.LiveHandList);
 
-            var boardImages = imageProcessor.SliceBoardScreenShot(path);
-
-            var boardImage = boardImages.FirstOrDefault(b => b.Name == Objects.ImageName.BigBlind);
+            var boardImage = images.FirstOrDefault(b => b.Name == Objects.ImageName.BigBlind);
             var raw = imageProcessor.GetImageCharacters(boardImage.Image,PageSegMode.SingleLine);
 
             var bigBlind = raw.Split(" ")[3];
