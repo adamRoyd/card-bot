@@ -113,7 +113,7 @@ namespace bot.Services
                         LogStats(dateStamp, boardState, predictedAction);
                     }
 
-                    break;
+                    //break;
                     DoAction(predictedAction, boardState);
 
                     await Task.Delay(2000);
@@ -220,11 +220,10 @@ namespace bot.Services
 
             Console.WriteLine(stats);
 
-            foreach (Player p in boardState.Players.Where(p => !p.Eliminated))
-            {
-                Console.WriteLine($"{p.Position}: Stack: {p.Stack} Bet: {p.Bet}");
-
-            }
+            //foreach (Player p in boardState.Players.Where(p => !p.Eliminated))
+            //{
+            //    Console.WriteLine($"{p.Position}: Stack: {p.Stack} Bet: {p.Bet}");
+            //}
         }
 
         private void DeleteFiles(string path)
