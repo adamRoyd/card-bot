@@ -46,7 +46,7 @@ namespace bot.Services
                 try
                 {
                     string dateStamp = DateTime.Now.ToString("hhmmss");
-                    //dateStamp = "021930";
+                    dateStamp = "104237";
 
                     string path = $"..\\..\\..\\images\\{dateStamp}";
                     string splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
@@ -113,7 +113,7 @@ namespace bot.Services
                         LogStats(dateStamp, boardState, predictedAction);
                     }
 
-                    //break;
+                    break;
                     DoAction(predictedAction, boardState);
 
                     await Task.Delay(2000);

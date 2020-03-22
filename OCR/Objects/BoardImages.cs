@@ -79,46 +79,46 @@ namespace OCR.Objects
                     X = 996,
                     Y = 647
                 },
-                //new BoardImage
-                //{
-                //    Name = ImageName.Flop1,
-                //    Type = ImageType.Card,
-                //    Image = new Bitmap(51, 75),
-                //    X = 749,
-                //    Y = 357
-                //},
-                //new BoardImage
-                //{
-                //    Name = ImageName.Flop2,
-                //    Type = ImageType.Card,
-                //    Image = new Bitmap(51, 75),
-                //    X = 848,
-                //    Y = 357
-                //},
-                //new BoardImage
-                //{
-                //    Name = ImageName.Flop3,
-                //    Type = ImageType.Card,
-                //    Image = new Bitmap(51, 75),
-                //    X = 949,
-                //    Y = 357
-                //},
-                //new BoardImage
-                //{
-                //    Name = ImageName.Turn,
-                //    Type = ImageType.Card,
-                //    Image = new Bitmap(51, 75),
-                //    X = 1050,
-                //    Y = 357
-                //},
-                //new BoardImage
-                //{
-                //    Name = ImageName.River,
-                //    Type = ImageType.Card,
-                //    Image = new Bitmap(51, 75),
-                //    X = 1152,
-                //    Y = 357
-                //},
+                new BoardImage
+                {
+                    Name = ImageName.Flop1,
+                    Type = ImageType.Card,
+                    Image = new Bitmap(51, 75),
+                    X = 749,
+                    Y = 357
+                },
+                new BoardImage
+                {
+                    Name = ImageName.Flop2,
+                    Type = ImageType.Card,
+                    Image = new Bitmap(51, 75),
+                    X = 848,
+                    Y = 357
+                },
+                new BoardImage
+                {
+                    Name = ImageName.Flop3,
+                    Type = ImageType.Card,
+                    Image = new Bitmap(51, 75),
+                    X = 949,
+                    Y = 357
+                },
+                new BoardImage
+                {
+                    Name = ImageName.Turn,
+                    Type = ImageType.Card,
+                    Image = new Bitmap(51, 75),
+                    X = 1050,
+                    Y = 357
+                },
+                new BoardImage
+                {
+                    Name = ImageName.River,
+                    Type = ImageType.Card,
+                    Image = new Bitmap(51, 75),
+                    X = 1152,
+                    Y = 357
+                },
                 new BoardImage
                 {
                     Name = ImageName.Position1,

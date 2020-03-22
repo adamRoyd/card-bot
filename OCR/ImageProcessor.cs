@@ -103,7 +103,6 @@ namespace OCR
 
             try
             {
-
                 using (var engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default))
                 {
                     engine.SetVariable("tessedit_char_whitelist", "01234567890");
