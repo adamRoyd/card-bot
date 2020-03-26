@@ -23,7 +23,6 @@ namespace OCR
             return result;
         }
 
-
         public CardValue GetCardValueFromImage(Image image)
         {
             var result = GetCharacters(image, PageSegMode.SingleBlock);
