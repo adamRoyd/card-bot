@@ -17,9 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bot.tests", "bot.tests\bot.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SNGEGT", "sngegt\SNGEGT.csproj", "{17115C61-C0B4-47FC-810C-23620907357A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICM", "ICM\ICM.csproj", "{57B98063-0FA8-4F2D-9FC5-8492CAE6851E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICM", "ICM\ICM.csproj", "{57B98063-0FA8-4F2D-9FC5-8492CAE6851E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICM.Tests", "ICM.Tests\ICM.Tests.csproj", "{347F6189-BE4E-4632-AC69-394C0909EE46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICM.Tests", "ICM.Tests\ICM.Tests.csproj", "{347F6189-BE4E-4632-AC69-394C0909EE46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotClient", "BotClient\BotClient.csproj", "{F91C2F15-8750-49C9-A15A-EA27C6458992}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +103,14 @@ Global
 		{347F6189-BE4E-4632-AC69-394C0909EE46}.Release|Any CPU.Build.0 = Release|Any CPU
 		{347F6189-BE4E-4632-AC69-394C0909EE46}.Release|x86.ActiveCfg = Release|Any CPU
 		{347F6189-BE4E-4632-AC69-394C0909EE46}.Release|x86.Build.0 = Release|Any CPU
+		{F91C2F15-8750-49C9-A15A-EA27C6458992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F91C2F15-8750-49C9-A15A-EA27C6458992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F91C2F15-8750-49C9-A15A-EA27C6458992}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F91C2F15-8750-49C9-A15A-EA27C6458992}.Debug|x86.Build.0 = Debug|Any CPU
+		{F91C2F15-8750-49C9-A15A-EA27C6458992}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F91C2F15-8750-49C9-A15A-EA27C6458992}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F91C2F15-8750-49C9-A15A-EA27C6458992}.Release|x86.ActiveCfg = Release|Any CPU
+		{F91C2F15-8750-49C9-A15A-EA27C6458992}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
