@@ -43,85 +43,88 @@ namespace bot.Services
         {
             while (true)
             {
-                try
-                {
-                    string dateStamp = DateTime.Now.ToString("hhmmss");
-                    //dateStamp = "115936";
+                SendKeys.SendWait("f");
+                await Task.Delay(2000);
 
-                    string path = $"..\\..\\..\\images\\{dateStamp}";
-                    string splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
+                //try
+                //{
+                //    string dateStamp = DateTime.Now.ToString("hhmmss");
+                //    //dateStamp = "115936";
 
-                    if (!Directory.Exists(path))
-                    {
-                        Directory.CreateDirectory(path);
-                        Directory.CreateDirectory(splicedPath);
+                //    string path = $"..\\..\\..\\images\\{dateStamp}";
+                //    string splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
 
-                        _screenCaptureService.CaptureScreenToFile($"{path}\\board.png", ImageFormat.Png);
-                    }
+                //    if (!Directory.Exists(path))
+                //    {
+                //        Directory.CreateDirectory(path);
+                //        Directory.CreateDirectory(splicedPath);
 
-                    string historyPath = $"C:\\Temp\\handhistories\\CannonballJim";
-                    Player[] playersFromPreviousHand = _handHistoryService.GetPlayersFromHistory(historyPath);
-                    BoardState boardState = new BoardState(playersFromPreviousHand);
-                    
-                    boardState = _boardStateService.SetGameStatus(path, boardState);
+                //        _screenCaptureService.CaptureScreenToFile($"{path}\\board.png", ImageFormat.Png);
+                //    }
 
-                    if (boardState.SittingOut)
-                    {
-                        Console.WriteLine("Sitting out!");
-                        await MouseService.ClickImBackButton();
-                        continue;
-                    }
+                //    string historyPath = $"C:\\Temp\\handhistories\\CannonballJim";
+                //    Player[] playersFromPreviousHand = _handHistoryService.GetPlayersFromHistory(historyPath);
+                //    BoardState boardState = new BoardState(playersFromPreviousHand);
 
-                    if (boardState.GameIsFinished)
-                    {
-                        break;
-                        await RegisterForNewGame();
-                        await WaitForGameToStart(_boardStateService, _screenCaptureService);
-                        continue;
-                    }
+                //    boardState = _boardStateService.SetGameStatus(path, boardState);
 
-                    if (!boardState.ReadyForAction)
-                    {
-                        DeleteFiles(path);
+                //    if (boardState.SittingOut)
+                //    {
+                //        Console.WriteLine("Sitting out!");
+                //        await MouseService.ClickImBackButton();
+                //        continue;
+                //    }
 
-                        continue;
-                    }
+                //    if (boardState.GameIsFinished)
+                //    {
+                //        break;
+                //        await RegisterForNewGame();
+                //        await WaitForGameToStart(_boardStateService, _screenCaptureService);
+                //        continue;
+                //    }
 
-                    boardState = _boardStateService.SetLiveHand(path, boardState, playersFromPreviousHand);
+                //    if (!boardState.ReadyForAction)
+                //    {
+                //        DeleteFiles(path);
 
-                    PredictedAction predictedAction;
+                //        continue;
+                //    }
 
-                    if (boardState.MyStackRatio > 20 && boardState.NumberOfPlayers > 4)
-                    {
-                        predictedAction = new EarlyGamePredictedAction(boardState);
-                    }
-                    else
-                    {
-                        double ev = 0;
+                //    boardState = _boardStateService.SetLiveHand(path, boardState, playersFromPreviousHand);
 
-                        if (boardState.HandStage == HandStage.PreFlop)
-                        {
-                            ev = _icmService.GetExpectedValue(boardState);
-                        }
+                //    PredictedAction predictedAction;
 
-                        predictedAction = new PushFoldPredictedAction(boardState, ev);
-                    }
+                //    if (boardState.MyStackRatio > 20 && boardState.NumberOfPlayers > 4)
+                //    {
+                //        predictedAction = new EarlyGamePredictedAction(boardState);
+                //    }
+                //    else
+                //    {
+                //        double ev = 0;
+
+                //        if (boardState.HandStage == HandStage.PreFlop)
+                //        {
+                //            ev = _icmService.GetExpectedValue(boardState);
+                //        }
+
+                //        predictedAction = new PushFoldPredictedAction(boardState, ev);
+                //    }
 
 
-                    if (boardState.HandStage == HandStage.PreFlop)
-                    {
-                        LogStats(dateStamp, boardState, predictedAction);
-                    }
+                //    if (boardState.HandStage == HandStage.PreFlop)
+                //    {
+                //        LogStats(dateStamp, boardState, predictedAction);
+                //    }
 
-                    //break;
-                    DoAction(predictedAction, boardState);
+                //    //break;
+                //    DoAction(predictedAction, boardState);
 
-                    await Task.Delay(2000);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                }
+                //    await Task.Delay(2000);
+                //}
+                //catch (Exception e)
+                //{
+                //    Console.WriteLine(e);
+                //}
             }
         }
 
