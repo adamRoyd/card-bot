@@ -11,6 +11,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsInput;
+using WindowsInput.Native;
 
 namespace bot.Services
 {
@@ -22,6 +24,7 @@ namespace bot.Services
         private readonly IScreenCaptureService _screenCaptureService;
         private readonly IHandHistoryService _handHistoryService;
         private readonly ILogger _logger;
+        private readonly IInputSimulator _inputSimulator;
 
         public PokerBotService
         (
@@ -29,7 +32,8 @@ namespace bot.Services
             IIcmService icmService,
             IScreenCaptureService screenCaptureService,
             IHandHistoryService handHistoryService,
-            ILogger<PokerBotService> logger
+            ILogger<PokerBotService> logger,
+            IInputSimulator inputSimulator
         )
         {
             _boardStateService = boardStateService;
@@ -37,94 +41,92 @@ namespace bot.Services
             _screenCaptureService = screenCaptureService;
             _handHistoryService = handHistoryService;
             _logger = logger;
+            _inputSimulator = inputSimulator;
         }
 
         public async Task Run()
         {
             while (true)
             {
-                SendKeys.SendWait("f");
-                await Task.Delay(2000);
+                try
+                {
+                    string dateStamp = DateTime.Now.ToString("hhmmss");
+                    //dateStamp = "115936";
 
-                //try
-                //{
-                //    string dateStamp = DateTime.Now.ToString("hhmmss");
-                //    //dateStamp = "115936";
+                    string path = $"..\\..\\..\\images\\{dateStamp}";
+                    string splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
 
-                //    string path = $"..\\..\\..\\images\\{dateStamp}";
-                //    string splicedPath = $"..\\..\\..\\images\\{dateStamp}\\spliced";
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                        Directory.CreateDirectory(splicedPath);
 
-                //    if (!Directory.Exists(path))
-                //    {
-                //        Directory.CreateDirectory(path);
-                //        Directory.CreateDirectory(splicedPath);
+                        _screenCaptureService.CaptureScreenToFile($"{path}\\board.png", ImageFormat.Png);
+                    }
 
-                //        _screenCaptureService.CaptureScreenToFile($"{path}\\board.png", ImageFormat.Png);
-                //    }
+                    string historyPath = $"C:\\Temp\\handhistories\\CannonballJim";
+                    Player[] playersFromPreviousHand = _handHistoryService.GetPlayersFromHistory(historyPath);
+                    BoardState boardState = new BoardState(playersFromPreviousHand);
 
-                //    string historyPath = $"C:\\Temp\\handhistories\\CannonballJim";
-                //    Player[] playersFromPreviousHand = _handHistoryService.GetPlayersFromHistory(historyPath);
-                //    BoardState boardState = new BoardState(playersFromPreviousHand);
+                    boardState = _boardStateService.SetGameStatus(path, boardState);
 
-                //    boardState = _boardStateService.SetGameStatus(path, boardState);
+                    if (boardState.SittingOut)
+                    {
+                        Console.WriteLine("Sitting out!");
+                        await MouseService.ClickImBackButton();
+                        continue;
+                    }
 
-                //    if (boardState.SittingOut)
-                //    {
-                //        Console.WriteLine("Sitting out!");
-                //        await MouseService.ClickImBackButton();
-                //        continue;
-                //    }
+                    if (boardState.GameIsFinished)
+                    {
+                        break;
+                        await RegisterForNewGame();
+                        await WaitForGameToStart(_boardStateService, _screenCaptureService);
+                        continue;
+                    }
 
-                //    if (boardState.GameIsFinished)
-                //    {
-                //        break;
-                //        await RegisterForNewGame();
-                //        await WaitForGameToStart(_boardStateService, _screenCaptureService);
-                //        continue;
-                //    }
+                    if (!boardState.ReadyForAction)
+                    {
+                        DeleteFiles(path);
 
-                //    if (!boardState.ReadyForAction)
-                //    {
-                //        DeleteFiles(path);
+                        continue;
+                    }
 
-                //        continue;
-                //    }
+                    boardState = _boardStateService.SetLiveHand(path, boardState, playersFromPreviousHand);
 
-                //    boardState = _boardStateService.SetLiveHand(path, boardState, playersFromPreviousHand);
+                    PredictedAction predictedAction;
 
-                //    PredictedAction predictedAction;
+                    if (boardState.MyStackRatio > 20 && boardState.NumberOfPlayers > 4)
+                    {
+                        predictedAction = new EarlyGamePredictedAction(boardState);
+                    }
+                    else
+                    {
+                        double ev = 0;
 
-                //    if (boardState.MyStackRatio > 20 && boardState.NumberOfPlayers > 4)
-                //    {
-                //        predictedAction = new EarlyGamePredictedAction(boardState);
-                //    }
-                //    else
-                //    {
-                //        double ev = 0;
+                        if (boardState.HandStage == HandStage.PreFlop)
+                        {
+                            ev = _icmService.GetExpectedValue(boardState);
+                        }
 
-                //        if (boardState.HandStage == HandStage.PreFlop)
-                //        {
-                //            ev = _icmService.GetExpectedValue(boardState);
-                //        }
-
-                //        predictedAction = new PushFoldPredictedAction(boardState, ev);
-                //    }
+                        predictedAction = new PushFoldPredictedAction(boardState, ev);
+                    }
 
 
-                //    if (boardState.HandStage == HandStage.PreFlop)
-                //    {
-                //        LogStats(dateStamp, boardState, predictedAction);
-                //    }
+                    if (boardState.HandStage == HandStage.PreFlop)
+                    {
+                        LogStats(dateStamp, boardState, predictedAction);
+                    }
 
-                //    //break;
-                //    DoAction(predictedAction, boardState);
+                    //break;
+                    DoAction(predictedAction, boardState);
 
-                //    await Task.Delay(2000);
-                //}
-                //catch (Exception e)
-                //{
-                //    Console.WriteLine(e);
-                //}
+                    await Task.Delay(2000);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
             }
         }
 
@@ -191,19 +193,20 @@ namespace bot.Services
                 return;
             }
 
-            string keyPress = action.GetAction() switch
+            VirtualKeyCode keyPress = action.GetAction() switch
             {
-                ActionType.Fold => "f",
-                ActionType.Check => "c",
-                ActionType.Limp => "f",
-                ActionType.Unknown => "f",
-                ActionType.AllIn => "i",
-                ActionType.Bet => "f",
-                ActionType.Raise => "i",
-                _ => "f"
+                ActionType.Fold => VirtualKeyCode.VK_F,
+                ActionType.Check => VirtualKeyCode.VK_C,
+                ActionType.Limp => VirtualKeyCode.VK_F,
+                ActionType.Unknown => VirtualKeyCode.VK_F,
+                ActionType.AllIn => VirtualKeyCode.VK_I,
+                ActionType.Bet => VirtualKeyCode.VK_F,
+                ActionType.Raise => VirtualKeyCode.VK_I,
+                _ => VirtualKeyCode.VK_F
             };
 
-            SendKeys.SendWait(keyPress);
+            _inputSimulator.Keyboard
+                .KeyPress(keyPress);
         }
 
         private void LogStats(

@@ -7,6 +7,7 @@ using bot.Services;
 using bot.Helpers;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.EventLog;
+using WindowsInput;
 
 namespace bot
 {
@@ -33,6 +34,7 @@ namespace bot
                 .AddSingleton<IBoardStateService, BoardStateService>()
                 .AddSingleton<IScreenCaptureService, ScreenCaptureService>()
                 .AddSingleton<IHandHistoryService, HandHistoryService>()
+                .AddSingleton<IInputSimulator, InputSimulator>()
                 .BuildServiceProvider();
 
             // Run the bot
