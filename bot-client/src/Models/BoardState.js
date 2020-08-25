@@ -1,8 +1,8 @@
-import Player from "./Player";
+import PlayerModel from "./PlayerModel";
 
 const BoardState = {
     handCode: "",
-    players: new Array(Player, Player, Player, Player, Player, Player, Player, Player, Player),
+    players: [PlayerModel, PlayerModel, PlayerModel, PlayerModel, PlayerModel, PlayerModel, PlayerModel, PlayerModel, PlayerModel],
 
 };
 

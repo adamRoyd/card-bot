@@ -1,9 +1,9 @@
-const Player = {
-    name: '',
+const PlayerModel = {
+    name: 'adam',
     position: 1,
-    chips: 1,
-    stack: 1,
-    bet: 1,
+    chips: 1500,
+    stack: 1400,
+    bet: 100,
     isDealer: true,
     eliminated: false,
     sittingOut: false,
@@ -11,4 +11,4 @@ const Player = {
     isAllIn: false
 }
 
-export default Player;
+export default PlayerModel;
